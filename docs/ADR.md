@@ -171,6 +171,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** The player asked for a mole after a hull got hit. A mine kill is still a hit. Hiding the hole taught a physics footnote and looked like a bug.
 - **Rejected:** A second picker named Mine Warfare before Iran is a human seat.
 
+## ADR-023. Traffic balks after blood until the Navy sweeps.
+
+- **Status:** accepted
+- **Context:** User: endless spider holes. Strike, hull lost, strike, hull lost, week 39, one hull a week. Captains should balk after a ship was lost.
+- **Decision:** Scripted waiters do not clear `crewSour`. Only a US sweep or a tanker Wait talks crews down. After a kill, remaining companies that week balk. Next week nobody sails until the Navy is on the ribbon. Striking a spider hole eats the week. Captains stay tied. No new mole.
+- **Why:** Six CEOs sitting was treated as a Wait verb, so balk died the same night. One tired hull then ran the unswept mines and lit a new hole. The mole taught you to never sweep.
+- **Rejected:** An endless coastal stash as the US sitting.
+
 ## Open questions
 
 

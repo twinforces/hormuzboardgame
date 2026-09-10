@@ -492,6 +492,48 @@ test("a lost traffic hull lights a spider hole, mine or shot", () => {
   assert.match(eng.state().lastUsLine, /spider hole showed/);
 });
 
+test("after a lost hull, traffic sits until the Navy sweeps", () => {
+  const eng = createEngine(1, "mine-warfare");
+  let weeks = 0;
+  while (eng.state().books.hullsLost === 0 && weeks < 40) {
+    assert.equal(eng.dispatch({ type: "us-sweep" }).ok, true);
+    weeks += 1;
+  }
+  const hole = eng.state().spiderHoles.find((h) => h.alive);
+  assert.ok(hole, "blood lights a hole");
+  const lost = eng.state().books.hullsLost;
+  const sent = eng.state().books.hullsSent;
+  const strike = eng.dispatch({
+    type: "us-strike",
+    target: "spider-hole",
+    pitId: hole!.id,
+  });
+  assert.equal(strike.ok, true);
+  assert.equal(eng.state().books.hullsLost, lost, "no new blood while captains balk");
+  assert.equal(eng.state().books.hullsSent, sent);
+  assert.equal(eng.state().lastReport?.kind, "wait");
+  assert.equal(eng.state().lastReport?.wave?.sent, 0);
+  assert.equal(eng.state().spiderHoles.some((h) => h.alive), false);
+  assert.equal(eng.state().crewSour, true);
+  assert.match(eng.state().lastUsLine, /Captains refuse/);
+
+  let n = 0;
+  while (eng.state().crewSour && n < 8) {
+    const r = eng.dispatch({ type: "us-strike", target: "radar" });
+    assert.equal(r.ok, true);
+    assert.equal(eng.state().books.hullsLost, lost, `strike week ${n} must not feed the mole`);
+    n += 1;
+  }
+  assert.equal(eng.state().books.hullsLost, lost);
+
+  const sentAfterSit = eng.state().books.hullsSent;
+  eng.dispatch({ type: "us-sweep" });
+  assert.ok(
+    eng.state().books.hullsSent > sentAfterSit,
+    "Navy hole talks them into the ribbon",
+  );
+});
+
 test("a spent spider pit can light again after the dump", () => {
   const eng = createEngine(1, "mine-warfare");
   let weeks = 0;

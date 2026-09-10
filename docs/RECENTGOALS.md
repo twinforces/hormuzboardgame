@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-US sitting is Anti-Mine Warfare (`57d4003`). A lost or grazed hull lights a spider hole, mine or shot. Circles with emojis. Continue row highlights the hole. Iran as Mine Warfare is later.
+Traffic balks after blood until you sweep. Striking a spider hole is not a mole mill. US sitting is Anti-Mine Warfare (`57d4003`). Iran as Mine Warfare is later.
 
 ## Next
 
@@ -22,3 +22,4 @@ US sitting is Anti-Mine Warfare (`57d4003`). A lost or grazed hull lights a spid
 - Do not print Mine factory, Drone factory, Warehouse, Radar, Port as a numbered plan.
 - Do not let radar shrink mine circles.
 - Do not add an Iran Mine Warfare picker until Iran is a human seat.
+- Do not let scripted waiters talk crews down after blood.

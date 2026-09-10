@@ -58,6 +58,9 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.scenarioMine, /hundred/);
   assert.equal(SCENARIO_KIT["mine-warfare"].label, "Anti-Mine Warfare");
   assert.match(COPY.warLock, /anti-mine warfare/i);
+  assert.match(COPY.warLock, /sit until you sweep/);
+  assert.match(COPY.warHint, /After blood/);
+  assert.match(COPY.trafficBalk, /Sweep the ribbon/);
   assert.match(COPY.tabIran, /Strikes/);
   assert.match(COPY.tabStrait, /Strait/);
   assert.match(COPY.warLock, /hundred/);

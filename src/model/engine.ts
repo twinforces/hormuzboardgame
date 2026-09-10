@@ -753,8 +753,17 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     if (shipHit) {
       cur = revealSpider(cur);
     }
-    if (wave.waited > 0) {
-      cur = { ...cur, crewSour: false };
+    // Scripted waiters are not a Wait verb. Six CEOs sitting must not
+    // talk crews down or one tired hull keeps dying into unswept mines
+    // and lighting a new mole every week. ADR-023.
+    if (wave.sent === 0 && cur.crewSour) {
+      const line = COPY.trafficBalk;
+      const already = cur.lastUsLine.includes("Captains refuse");
+      cur = {
+        ...cur,
+        lastUsLine: already ? cur.lastUsLine : `${cur.lastUsLine} ${line}`.trim(),
+        log: [...cur.log, line],
+      };
     }
     cur = finishTurn(cur);
     const kind: TurnReport["kind"] =
@@ -813,9 +822,11 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       if (state.phase !== "usOrders") {
         return { ok: false, reason: `Illegal in phase ${state.phase}.`, state };
       }
+      // Human US sweep talks crews down. Scripted US on the tanker
+      // sitting must not. That Wait is the owner's verb. ADR-023.
       state =
         action.type === "us-sweep"
-          ? applyUsOrders(state)
+          ? { ...applyUsOrders(state), crewSour: false }
           : applyUsStrike(state, action.target, action.type === "us-strike" ? action.pitId : undefined);
       state = afterUsVerb(state);
       return { ok: true, state };
