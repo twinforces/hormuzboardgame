@@ -5,7 +5,7 @@
 - **What:** Click a factory, warehouse, radar, port, or sweep while a spider hole is live and the board asks first. Keep the hole is the gold chip. Strike anyway dumps. The Iran board stays up. A Dumped mark sits on the pit that week.
 - **Why:** User: hole appeared, then disappeared when they decided to strike something else.
 - **How:** View confirm before `usStrike` / `usSweep`. `dumpedTurn` remnant. Stay on strikes. ADR-025.
-- **Hash:** pending.
+- **Hash:** `74f247a`.
 
 ## 2026-09-10 - Leaving a spider hole dumps it. Headline says so.
 

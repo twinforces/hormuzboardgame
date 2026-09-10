@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Leave a spider hole is a confirm, then a dump, not a silent vanish. Traffic balks after blood until you sweep. US sitting is Anti-Mine Warfare. Iran as Mine Warfare is later.
+Leave a spider hole is a confirm, then a dump, not a silent vanish (`74f247a`). Traffic balks after blood until you sweep. US sitting is Anti-Mine Warfare. Iran as Mine Warfare is later.
 
 ## Next
 
