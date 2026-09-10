@@ -42,6 +42,14 @@ test("Hormuz owner receipts teach three buckets, not a few-ship tramp", () => {
   assert.ok(freight);
   assert.match(freight!.annotation, /\$20 million/);
   assert.match(freight!.annotation, /not the owner eating/);
+  assert.match(freight!.annotation, /Do not also charge it as idle/);
+  const idleGo = receiptById("og360-vlcc-oman-china-2026");
+  const idleMeg = receiptById("lloyds-vlcc-td3c-2026-09");
+  assert.ok(idleGo && idleMeg);
+  assert.match(idleGo!.annotation, /\$220k\/day/);
+  assert.match(idleGo!.annotation, /idleUsdMPerHull is 2/);
+  assert.match(idleMeg!.annotation, /\$759,969/);
+  assert.match(idleMeg!.annotation, /GOO outside option/);
 });
 
 test("every receipt has id, url, annotation, and at least one beat", () => {

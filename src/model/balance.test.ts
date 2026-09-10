@@ -12,6 +12,7 @@ test("company books use a cited VLCC newbuild", () => {
   assert.equal(COMPANY.crewBonusUsdM, 2);
   assert.equal(COMPANY.traderBonusByBand.cheap, 0);
   assert.ok(COMPANY.traderBonusByBand.panic > COMPANY.traderBonusByBand.high);
+  assert.equal(COMPANY.idleUsdMPerHull, 2);
 });
 
 test("architect locks split hulls by size and do not average transcripts", () => {

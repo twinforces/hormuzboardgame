@@ -1,8 +1,8 @@
-import { useState, type KeyboardEvent, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import type { GameState, MineCircle, NmPolyline } from "@/model/types.ts";
-import { IRANIAN_INBOUND, JMIC_INBOUND, JMIC_OUTBOUND, MAP, PLACES, WATER_LABELS, COUNTRY_LABELS, radiusNm } from "@/model/balance.ts";
+import { IRANIAN_INBOUND, JMIC_INBOUND, JMIC_OUTBOUND, DEEP_WATER, MAP, PLACES, WATER_LABELS, COUNTRY_LABELS, radiusNm } from "@/model/balance.ts";
 import { COPY, fogTip } from "@/model/copy.ts";
-import { lonLatToNm, mineFogCovered, mineHoles, nmRadiusToPx, nmToPx, pickMine, pxToNm } from "@/model/geo.ts";
+import { lonLatToNm, mineHoles, nmRadiusToPx, nmToPx, pickMine, pxToNm } from "@/model/geo.ts";
 import { cn } from "@/lib/cn.ts";
 
 /** Visible crop height in viewBox units. Matches aspect-[2016/1220] + object-top. */
@@ -24,6 +24,8 @@ type Props = {
   boardAct: string;
   omaniKill: string;
   iranKill: string;
+  omaniShot: string;
+  iranShot: string;
   onWait: () => void;
   onOmani: () => void;
   onIran: () => void;
@@ -53,10 +55,6 @@ const DOOR_LABELS = [
   { id: "iran-door", label: COPY.iranDoor, lat: 26.82, lon: 56.31, fill: "fill-danger" },
 ] as const;
 
-function ellipseD(cx: number, cy: number, rx: number, ry: number): string {
-  return `M ${cx - rx} ${cy} a ${rx} ${ry} 0 1 0 ${2 * rx} 0 a ${rx} ${ry} 0 1 0 ${-2 * rx} 0`;
-}
-
 const OMANI_PARK = lonLatToNm({ lat: 26.12, lon: 56.22 });
 
 export function MapBoard({
@@ -75,6 +73,8 @@ export function MapBoard({
   boardAct,
   omaniKill,
   iranKill,
+  omaniShot,
+  iranShot,
   onOmani,
   onIran,
   onBoardAct,
@@ -86,8 +86,14 @@ export function MapBoard({
   const running = lastPath.length >= 2 && (state.lastDoor === "omani" || state.lastDoor === "iran");
   const [hoverMine, setHoverMine] = useState<string | null>(null);
   const [pinnedMine, setPinnedMine] = useState<string | null>(null);
+  const [chartReady, setChartReady] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
   const activeMineId = hoverMine ?? pinnedMine;
   const activeMine = state.mines.find((m) => m.id === activeMineId) ?? null;
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setChartReady(true);
+  }, []);
 
   function toggleMine(id: string) {
     setPinnedMine((cur) => (cur === id ? null : id));
@@ -114,15 +120,22 @@ export function MapBoard({
         }}
       >
         <img
+          ref={imgRef}
           src={MAP.imageSrc}
           alt="Sentinel-2 crop of the Strait of Hormuz. Iran north, UAE southwest, Musandam is Oman."
           width={MAP.widthPx}
-          height={MAP.heightPx}
+          height={CHART_VIEW_H}
           className="map-photo absolute inset-0 size-full object-cover object-top"
           draggable={false}
+          onLoad={() => setChartReady(true)}
         />
+        {!chartReady ? (
+          <div className="absolute inset-0 z-20 grid place-items-center bg-surface/80 font-mono text-sm text-muted">
+            {COPY.chartLoading}
+          </div>
+        ) : null}
         <svg
-          viewBox={`0 0 ${MAP.widthPx} ${MAP.heightPx}`}
+          viewBox={`0 0 ${MAP.widthPx} ${CHART_VIEW_H}`}
           preserveAspectRatio="xMidYMin slice"
           className="absolute inset-0 size-full"
           role="img"
@@ -130,53 +143,65 @@ export function MapBoard({
         >
           <title>Strait of Hormuz doors</title>
           <g className="pointer-events-none">
+          <defs>
+            <clipPath id="deep-water-clip">
+              <polygon
+                points={DEEP_WATER.map((p) => {
+                  const c = nmToPx(lonLatToNm(p));
+                  return `${c.x},${c.y}`;
+                }).join(" ")}
+              />
+            </clipPath>
+          </defs>
           {(() => {
             const holes = mineHoles(state.mines);
-            return state.mines.map((m) => {
-            const c = nmToPx(m.center);
-            const r = nmRadiusToPx(radiusNm(m.radiusSteps));
-            const hot = state.lastDetonatedMineId === m.id;
-            const inspect = m.id === activeMineId;
-            const hole = m.hole ? nmRadiusToPx(m.hole.radiusNm) : null;
-            const laidNow = m.laidTurn === state.turn;
-            const covered = mineFogCovered(m, holes);
-            let fogD = ellipseD(c.x, c.y, r.rx, r.ry);
-            for (const h of holes) {
-              const hc = nmToPx(h.center);
-              const hr = nmRadiusToPx(h.radiusNm);
-              fogD += ` ${ellipseD(hc.x, hc.y, hr.rx, hr.ry)}`;
-            }
             return (
-              <g key={m.id}>
-                {covered ? null : (
-                  <path
-                    d={fogD}
-                    fillRule="evenodd"
-                    className={cn(
-                      hot
-                        ? "fill-danger/30 stroke-danger"
-                        : inspect
-                          ? "fill-danger/20 stroke-accent"
-                          : "fill-danger/10 stroke-danger/75",
-                      laidNow && "fog-laid",
-                    )}
-                    strokeWidth={hot || inspect ? 4 : 3}
-                  />
-                )}
-                {hole ? (
-                  <ellipse
-                    cx={c.x}
-                    cy={c.y}
-                    rx={hole.rx}
-                    ry={hole.ry}
-                    className="fog-hole fill-ok/15 stroke-ok"
-                    strokeWidth={4}
-                    strokeDasharray="10 7"
-                  />
-                ) : null}
-              </g>
+              <>
+                {state.mines.map((m) => {
+                  const c = nmToPx(m.center);
+                  const r = nmRadiusToPx(radiusNm(m.radiusSteps));
+                  const hot = state.lastDetonatedMineId === m.id;
+                  const inspect = m.id === activeMineId;
+                  const laidNow = m.laidTurn === state.turn;
+                  return (
+                    <ellipse
+                      key={m.id}
+                      cx={c.x}
+                      cy={c.y}
+                      rx={r.rx}
+                      ry={r.ry}
+                      className={cn(
+                        hot
+                          ? "fill-danger/30 stroke-danger"
+                          : inspect
+                            ? "fill-danger/20 stroke-accent"
+                            : "fill-danger/10 stroke-danger/75",
+                        laidNow && "fog-laid",
+                      )}
+                      strokeWidth={hot || inspect ? 4 : 3}
+                    />
+                  );
+                })}
+                <g clipPath="url(#deep-water-clip)">
+                  {holes.map((h, i) => {
+                    const hc = nmToPx(h.center);
+                    const hr = nmRadiusToPx(h.radiusNm);
+                    return (
+                      <ellipse
+                        key={`hole-${i}`}
+                        cx={hc.x}
+                        cy={hc.y}
+                        rx={hr.rx}
+                        ry={hr.ry}
+                        className="fog-hole fill-ok/25 stroke-ok"
+                        strokeWidth={4}
+                        strokeDasharray="10 7"
+                      />
+                    );
+                  })}
+                </g>
+              </>
             );
-          });
           })()}
           </g>
           <CorridorHit
@@ -325,7 +350,7 @@ export function MapBoard({
           lat={26.14}
           lon={56.25}
           label={COPY.omaniDoor}
-          sub={`${omaniKill} ${COPY.mineKill}`}
+          sub={`${omaniKill} ${COPY.mineKill} · ${omaniShot} ${COPY.shotKill}`}
           tone="lane"
           canAct={doorsOpen}
           hot={recommended === "omani"}
@@ -335,7 +360,7 @@ export function MapBoard({
           lat={26.82}
           lon={56.31}
           label={COPY.iranDoor}
-          sub={`${iranKill} ${COPY.mineKill}`}
+          sub={`${iranKill} ${COPY.mineKill} · ${iranShot} ${COPY.shotKill}`}
           tone="danger"
           canAct={doorsOpen}
           hot={recommended === "iran"}

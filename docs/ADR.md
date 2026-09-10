@@ -111,6 +111,13 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Decision:** Door percents are mine kill on that track tonight, not an escort failing and not a missile volley. Pay Iran waves boats. Mines still apply. Toll is $2M (IRGC VLCC floor) and posts to books. War-risk is a checkbox before a door while paper is open. Premium follows heat ($2M cheap to $13M panic). A bought policy pays the hull back. Families still sit on you. Cargo is the trader's. One boom collapses paper for the sitting; you cannot buy after. `lastLoss` feeds a dialog the View must show.
 - **Why:** The industrial math is mine density plus a market that walks. Paying Iran is a next-wave factory, not a sweeper.
 
+## ADR-020. Idle is the Oman-China week, not Hormuz TCE twice
+
+- **Status:** accepted
+- **Context:** User: idle $4M a hull a week seems high, justify.
+- **Decision:** `COMPANY.idleUsdMPerHull` is $2M. That is the teaching round of Gulf of Oman to China (~$220k/day, Oil & Gas 360; Lloyd's peak $358k). Not VLCC cash opex (~$10k/day). Not MEG-China TD3C ~$760k/day. Freight plus bonus already book the Hormuz payday when a hull sails. Leftover hulls still scale because you only send one a week and the rest could have left the queue.
+- **Why:** $4M was ~$571k/day, 75 percent of the Hormuz day rate, charged on hulls that did not sail. Accountants do not pay themselves the voyage they skipped and then also bill Hormuz TCE as rent.
+
 ## ADR-013. Price P is a seeded teaching index
 
 - **Status:** accepted
@@ -132,6 +139,21 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Decision:** Three legal paths, in order. (1) User pastes YouTube Show transcript into chat. (2) Agent walks each watch URL in timestamp chunks into `docs/ingest/nd-<id>.txt`. (3) Search-index excerpts stay partial. Never mark full without a complete file in-repo.
 - **Why:** The teaching claim is industrial math. Pretending a 3 minute caption scrape is a 15 minute watch is a Reviewer fail.
 
+## ADR-016. The tanker is a CEO script, not an accountant
+
+- **Status:** accepted
+- **Context:** User play: wait until mine and shot are quiet, never pay Iran, accountants are not the CEO. Iran/US play needs a scripted tanker to fight over.
+- **Decision:** `ceoPick` is the gold chip and `actRecommended`. Wait while Omani mine > 15% or shot > 12%, then Oman. Never Iran. After 6 waits, sail anyway (charterers). `accountantPick` still computes EV so the pane can show the temptation.
+- **Why:** Tolls buy mines. A plus-EV till is how you fund the next wave. The owner does not do that. Accountants remain on the books as a warning, not a door.
+
+## ADR-017. Next slice is mine warfare, not factories
+
+- **Status:** proposed
+- **Context:** `usOrders` and `iranOrders` auto-fire sweep+lay every week. Types already list strike-industry, pits, off-board levers. Tanker is now a script, so those phases are the game.
+- **Decision:** First US/Iran slice is mine verbs only. US: sweep, sense, escort, hold. Iran: lay TSS, surge, hold. Not the till. High P funds Iran's pool (ARCHITECTURE invariant 8) because the CEO never pays the toll. Factories, off-board, secret pipeline wait.
+- **Why:** One new input phase per faction. If we open factories in the same slice, STEEL years and mine holes fight for attention and neither teaches.
+- **Rejected:** Keep auto-firing both sides while the human is still the tanker. That sitting is done.
+
 ## Open questions
 
-None from the Architect bootstrap. Factions, bribes, secret pipeline, and AI wait on this slice being green.
+Mine-warfare AI tendencies and whether the default human seat is US or Iran. See `docs/MINE-WARFARE.md`.

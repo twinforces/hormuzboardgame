@@ -17,9 +17,12 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(play, /session\.toll\(\)/);
   assert.match(play, /session\.wait\(\)/);
   assert.match(play, /session\.setPolicy/);
-  assert.match(play, /LossDialog/);
+  assert.match(play, /OutcomeDialog/);
   assert.match(play, /ScoreDialog/);
   assert.match(play, /COPY\.booksIdle/);
+  assert.match(play, /labels\.idleWhy/);
+  assert.match(play, /labels\.omaniShot/);
+  assert.match(board, /COPY\.chartLoading/);
   assert.match(play, /COPY\.scoreReplay/);
   assert.match(play, /COPY\.booksBonus/);
   assert.match(play, /COPY\.mineKill/);
@@ -39,7 +42,7 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(play, /lg:grid-cols-2/);
   assert.doesNotMatch(play, /lg:grid-cols-3/);
   assert.match(play, /COPY\.sittingTitle/);
-  assert.match(play, /COPY\.accountant/);
+  assert.match(play, /COPY\.ceo/);
   assert.doesNotMatch(play, />\s*Fuses\s*</);
   assert.match(board, /onIran: \(\) => void/);
   assert.match(board, /onBoardAct: \(\) => void/);
@@ -48,8 +51,8 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(board, /COPY\.clickIran/);
   assert.match(board, /strokeWidth=\{96\}/);
   assert.match(board, /lat=\{26\.82\}/);
-  assert.match(board, /fillRule="evenodd"/);
-  assert.match(board, /mineFogCovered/);
+  assert.match(board, /clipPath="url\(#deep-water-clip\)"/);
+  assert.match(board, /DEEP_WATER/);
   assert.match(board, /recommended !== "none"/);
   assert.doesNotMatch(board, /absolute inset-0 z-10/);
   assert.doesNotMatch(board, /You do not draw a track/);

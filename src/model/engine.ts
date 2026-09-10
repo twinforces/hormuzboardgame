@@ -13,12 +13,14 @@ import {
   bandOf,
   radiusNm,
 } from "./balance.ts";
-import { COPY, SCENARIO_KIT } from "./copy.ts";
+import { COPY, SCENARIO_KIT, idleChargeLine, iranSeedLine, usSweepLine } from "./copy.ts";
+import { clearedNm2, grazeUsdM, rollShot, shotChance, type ShotKind } from "./combat.ts";
 import {
   captainsBalk,
   emptyBooks,
   hullsLeft,
   idleThisWeek,
+  netUsdM,
   postIdle,
   postVoyage,
   voyageFreightUsdM,
@@ -37,6 +39,7 @@ import type {
   Phase,
   ScenarioId,
   TankerDoor,
+  TurnReport,
 } from "./types.ts";
 import { PHASE_ORDER } from "./types.ts";
 
@@ -94,6 +97,7 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
     crewSour: false,
     buyPolicy: false,
     lastLoss: null,
+    lastReport: null,
     lastKillChance: 0,
     lastDetonatedMineId: null,
     lastDoor: null,
@@ -128,6 +132,7 @@ export type Engine = {
 export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "reopen-lane"): Engine {
   let state = tickPrice(createState(seed, scenario));
   let rng = mulberry32(seed);
+  let pendingShot: ShotKind = "none";
 
   function snapshot(): GameState {
     return state;
@@ -190,13 +195,14 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     });
     const punched = hot.length;
     const navyPulled = s.navyPulled + punched;
-    const line = `Week ${s.turn}: US rents ${punched} hole${punched === 1 ? "" : "s"}. Navy punched ${navyPulled} this sitting.`;
+    const nm2 = clearedNm2(mines.filter((m) => hot.some((c) => c.id === m.id)));
+    const line = usSweepLine({ turn: s.turn, layers: punched, nm2 });
     return { ...s, phase: "usOrders", mines, navyPulled, lastUsLine: line, log: [...s.log, line] };
   }
 
-  function applyIranOrders(s: GameState): GameState {
+  function applyIranOrders(s: GameState, shot: ShotKind = "none"): GameState {
     if (s.iranPool.mines <= 0) {
-      const line = `Week ${s.turn}: Iran surge. Mine pool empty. Boats still in sheds.`;
+      const line = iranSeedLine({ turn: s.turn, laid: 0, shot });
       return { ...s, phase: "iranOrders", lastIranLine: line, log: [...s.log, line] };
     }
     const spot = LAY_SPOTS[(s.turn - 1) % LAY_SPOTS.length]!;
@@ -208,7 +214,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       laidTurn: s.turn,
       hole: null,
     };
-    const line = `Week ${s.turn}: Iran lays ${id}. Pay does not sweep it.`;
+    const line = iranSeedLine({ turn: s.turn, laid: 1, shot });
     return {
       ...s,
       phase: "iranOrders",
@@ -238,7 +244,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       case "usOrders":
         return applyUsOrders({ ...s, phase });
       case "iranOrders":
-        return applyIranOrders({ ...s, phase });
+        return applyIranOrders({ ...s, phase }, pendingShot);
       case "tankerOrders":
         return { ...s, phase };
       case "resolve":
@@ -279,7 +285,53 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       const nxt = nextPhase(cur.phase);
       cur = applyPhase({ ...cur, phase: nxt }, nxt);
     }
+    if (cur.phase === "tankerOrders" || cur.phase === "matchOver") {
+      cur = tickPrice(cur);
+    }
     return cur;
+  }
+
+  function doorRisk(s: GameState) {
+    const sweep = omaniPath();
+    const mineO = combinedKillChance(sweep, s.mines, s.draftClass, sweep).chance;
+    const mineI = combinedKillChance(iranPath(), s.mines, s.draftClass, sweep).chance;
+    return {
+      omaniMinePct: Math.round(mineO * 100),
+      iranMinePct: Math.round(mineI * 100),
+      omaniShotPct: Math.round(
+        shotChance({ door: "omani", waitingHulls: s.waitingHulls, paid: false }) * 100,
+      ),
+      iranShotPct: Math.round(
+        shotChance({ door: "iran", waitingHulls: s.waitingHulls, paid: true }) * 100,
+      ),
+    };
+  }
+
+  function attachReport(
+    s: GameState,
+    opts: {
+      kind: TurnReport["kind"];
+      door: TankerDoor;
+      netDeltaUsdM: number;
+      freightUsdM: number;
+      bonusUsdM: number;
+      tollUsdM: number;
+      damageUsdM: number;
+      idleUsdM: number;
+      minesBought: number;
+      cause: TurnReport["cause"];
+      paid: boolean;
+    },
+  ): GameState {
+    const report: TurnReport = {
+      id: `${s.seed}-t${s.turn}-${opts.kind}-${s.books.hullsSent}-${s.books.idleUsdM}`,
+      turn: s.turn,
+      ...opts,
+      usLine: s.lastUsLine,
+      iranLine: s.lastIranLine,
+      ...doorRisk(s),
+    };
+    return { ...s, lastReport: report };
   }
 
   function runResolve(
@@ -288,10 +340,16 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     door: TankerDoor,
     paid: boolean,
   ): GameState {
-    const { chance, clips } = combinedKillChance(path, s.mines, s.draftClass);
-    const roll = rng();
-    const hit = chance > 0 && roll < chance;
-    const hitClip = hit
+    const { chance, clips } = combinedKillChance(path, s.mines, s.draftClass, omaniPath());
+    const mineHit = chance > 0 && rng() < chance;
+    const shotP = shotChance({ door, waitingHulls: s.waitingHulls, paid });
+    let shot: ShotKind = "none";
+    if (!mineHit) shot = rollShot(rng, shotP);
+    pendingShot = shot;
+    const hullDead = mineHit || shot === "kill";
+    const graze = shot === "graze";
+    const damage = graze ? grazeUsdM(s.price) : 0;
+    const hitClip = mineHit
       ? clips.filter((c) => c.chance > 0).sort((a, b) => b.chance - a.chance)[0]
       : null;
     let insurance = s.insurance;
@@ -304,31 +362,38 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     const nm = Math.round(polylineLengthNm(path));
     const doorWord = door === "iran" ? "Iran door" : "Omani door";
     const crewRate = s.crewBonusUsdM;
-    const freight = hit ? 0 : voyageFreightUsdM(s.price);
-    const bonus = hit ? 0 : voyageBonusUsdM(s.price);
+    const freight = hullDead ? 0 : voyageFreightUsdM(s.price);
+    const bonus = hullDead ? 0 : voyageBonusUsdM(s.price);
     const insured = s.buyPolicy && s.insurance === "open";
     const premium = insured ? voyagePremiumUsdM(s.price, s.insurance) : 0;
     const toll = paid ? COMPANY.tollUsdM : 0;
-    const recover = hit && insured ? COMPANY.hullUsdM : 0;
+    const recover = hullDead && insured ? COMPANY.hullUsdM : 0;
     const books = postVoyage(s.books, {
-      live: !hit,
+      live: !hullDead,
       freightUsdM: freight,
       bonusUsdM: bonus,
-      crewUsdM: hit ? 0 : crewRate,
+      crewUsdM: hullDead ? 0 : crewRate,
       tollUsdM: toll,
       premiumUsdM: premium,
       recoverUsdM: recover,
+      damageUsdM: damage,
+      omaniSent: door === "omani" ? 1 : 0,
+      iranSent: door === "iran" ? 1 : 0,
+      minesBought: paid ? 1 : 0,
     });
-    const crewBonusUsdM = hit ? COMPANY.crewBonusUsdM : s.crewBonusUsdM;
-    const crewSour = hit ? true : s.crewSour;
-    if (hit) {
+    const crewBonusUsdM = hullDead ? COMPANY.crewBonusUsdM : s.crewBonusUsdM;
+    const crewSour = hullDead ? true : s.crewSour;
+    if (hullDead) {
       tankerAlive = false;
       hullFactor = 0;
       lastDetonatedMineId = hitClip?.id ?? null;
       insurance = "collapsed";
+      const how = mineHit
+        ? `Mine kill ${(chance * 100).toFixed(0)}%. Boom.`
+        : `Shot kill. Rare.`;
       log = [
         ...log,
-        `Week ${s.turn}: ${doorWord}, ${nm} nm. Mine kill ${(chance * 100).toFixed(0)}%. Boom. ${COPY.dead}`,
+        `Week ${s.turn}: ${doorWord}, ${nm} nm. ${how} ${COPY.dead}`,
         COPY.cargoNotYours,
         COPY.crewBonusNow,
       ];
@@ -341,9 +406,15 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     } else {
       tankerExited = true;
       exits += 1;
+      const shotBit =
+        shot === "miss"
+          ? " Shot missed."
+          : graze
+            ? ` Light damage $${damage}M.`
+            : "";
       log = [
         ...log,
-        `Week ${s.turn}: ${doorWord}, ${nm} nm. Mine kill ${(chance * 100).toFixed(0)}%. ${COPY.lived}`,
+        `Week ${s.turn}: ${doorWord}, ${nm} nm. Mine ${(chance * 100).toFixed(0)}%. Shot ${(shotP * 100).toFixed(0)}%. ${COPY.lived}${shotBit}`,
       ];
     }
     if (paid) {
@@ -356,12 +427,12 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
           boats: s.iranPool.boats + 1,
         }
       : s.iranPool;
-    const lastLoss = hit
+    const lastLoss = hullDead
       ? {
           id: `${s.seed}-t${s.turn}-lost${books.hullsLost}`,
           turn: s.turn,
           door: door === "iran" ? ("iran" as const) : ("omani" as const),
-          killPct: Math.round(chance * 100),
+          killPct: Math.round((mineHit ? chance : shotP) * 100),
           mineId: lastDetonatedMineId,
           paid,
           insured,
@@ -372,6 +443,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
           familyUsdM: COMPANY.familyUsdM,
           cargoUsdM: COMPANY.cargoTraderUsdM,
           crewBonusUsdM: COMPANY.crewBonusUsdM,
+          cause: mineHit ? ("mine" as const) : ("shot" as const),
         }
       : s.lastLoss;
     return {
@@ -450,8 +522,11 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     }
 
     if (action.type === "tanker-wait") {
+      pendingShot = "none";
       const idle = idleThisWeek(state.scenario, state.books);
-      const line = `Week ${state.turn}: ${COPY.waited} Idle ${idle > 0 ? `$${idle}M.` : ""}`.trim();
+      const leftover = hullsLeft(state.scenario, state.books);
+      const before = netUsdM(state.books);
+      const line = `Week ${state.turn}: ${COPY.waited} ${idleChargeLine(leftover)}`.trim();
       let s: GameState = {
         ...state,
         waitingHulls: state.waitingHulls + 1,
@@ -466,25 +541,65 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
         phase: "resolve",
       };
       state = finishTurn(s);
+      pendingShot = "none";
+      state = attachReport(state, {
+        kind: "wait",
+        door: "wait",
+        netDeltaUsdM: netUsdM(state.books) - before,
+        freightUsdM: 0,
+        bonusUsdM: 0,
+        tollUsdM: 0,
+        damageUsdM: 0,
+        idleUsdM: idle,
+        minesBought: 0,
+        cause: "none",
+        paid: false,
+      });
       return { ok: true, state };
     }
 
-    if (action.type === "tanker-omani") {
-      state = finishTurn(runResolve(state, omaniPath(), "omani", false));
+    if (action.type === "tanker-omani" || action.type === "tanker-toll" || action.type === "tanker-run") {
+      if (action.type === "tanker-run" && action.path.length < 2) {
+        return { ok: false, reason: "Need two fixes to run.", state };
+      }
+      const paid = action.type === "tanker-toll";
+      const path = action.type === "tanker-omani"
+        ? omaniPath()
+        : action.type === "tanker-toll"
+          ? iranPath()
+          : action.path;
+      const door: TankerDoor = action.type === "tanker-toll" ? "iran" : "omani";
+      const before = netUsdM(state.books);
+      const lost0 = state.books.hullsLost;
+      const dmg0 = state.books.damageUsdM;
+      const fr0 = state.books.freightUsdM;
+      const bo0 = state.books.bonusUsdM;
+      const to0 = state.books.tollUsdM;
+      state = finishTurn(runResolve(state, path, door, paid));
+      const lost = state.books.hullsLost > lost0;
+      const grazed = state.books.damageUsdM > dmg0;
+      const kind: TurnReport["kind"] = lost ? "lost" : grazed ? "graze" : "live";
+      const cause: TurnReport["cause"] = lost
+        ? (state.lastLoss?.cause ?? "mine")
+        : "none";
+      pendingShot = "none";
+      state = attachReport(state, {
+        kind,
+        door,
+        netDeltaUsdM: netUsdM(state.books) - before,
+        freightUsdM: state.books.freightUsdM - fr0,
+        bonusUsdM: state.books.bonusUsdM - bo0,
+        tollUsdM: state.books.tollUsdM - to0,
+        damageUsdM: state.books.damageUsdM - dmg0,
+        idleUsdM: 0,
+        minesBought: paid ? 1 : 0,
+        cause,
+        paid,
+      });
       return { ok: true, state };
     }
 
-    if (action.type === "tanker-toll") {
-      state = finishTurn(runResolve(state, iranPath(), "iran", true));
-      return { ok: true, state };
-    }
-
-    if (action.path.length < 2) {
-      return { ok: false, reason: "Need two fixes to run.", state };
-    }
-
-    state = finishTurn(runResolve(state, action.path, "omani", false));
-    return { ok: true, state };
+    return { ok: false, reason: "Unknown action.", state };
   }
 
   return { state: snapshot, dispatch, debug };

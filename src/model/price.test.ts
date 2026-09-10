@@ -34,6 +34,7 @@ test("insurance collapse and mine fog raise P; exits cut it", () => {
   assert.ok(collapsed > open);
   const flowed = sumPrice(priceComponents({ ...s, exits: 3 }));
   assert.ok(flowed < open);
+  assert.equal(PRICE.exitRelief, 16);
 });
 
 test("band edges match the teaching table", () => {
@@ -49,4 +50,23 @@ test("a long sit cannot print oil above the 2026 peak", () => {
   for (let i = 0; i < 8; i++) eng.dispatch({ type: "tanker-wait" });
   assert.ok(eng.state().price <= PRICE.max);
   assert.equal(PRICE.max, 126);
+});
+
+test("a live exit still cuts P after the meter hits the peak", () => {
+  const eng = createEngine(3, "reopen-lane");
+  for (let i = 0; i < 3; i++) eng.dispatch({ type: "tanker-wait" });
+  const peaked = eng.state().price;
+  assert.equal(peaked, PRICE.max);
+  eng.dispatch({
+    type: "tanker-run",
+    path: [
+      { xNm: 40, yNm: 8 },
+      { xNm: 80, yNm: 8 },
+    ],
+  });
+  assert.equal(eng.state().books.hullsLive, 1);
+  assert.ok(
+    eng.state().price < peaked,
+    `flow should bite the cap ${peaked} -> ${eng.state().price}`,
+  );
 });

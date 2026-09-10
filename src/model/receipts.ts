@@ -495,7 +495,7 @@ export const RECEIPTS: Receipt[] = [
     url: "https://www.onassis.org/people/aristotle-onassis",
     ingest: "partial",
     annotation:
-      "Partial, page read 2026-09-09. Onassis is the archetype of the independent tanker tycoon: own the hulls, charter the voyages, Olympic funnel. He is not the player. Olympic Shipping and Management still trades on the order of 15 tankers. Greece, Inc. is a fictional house with five VLCCs this sitting. Do not put Onassis on the board.",
+      "Partial, page read 2026-09-09. Onassis is the archetype of the independent tanker tycoon: own the hulls, charter the voyages, Olympic funnel. He is not the player. Olympic Shipping and Management still trades on the order of 15 tankers. Greece, Inc. is a fictional house with twelve VLCCs on Reopen the lane. Do not put Onassis on the board.",
     beats: ["company-books"],
   },
   {
@@ -531,7 +531,31 @@ export const RECEIPTS: Receipt[] = [
     url: "https://www.ajot.com/news/vintage-tonnage-captures-the-freight-premium",
     ingest: "partial",
     annotation:
-      "Partial, page read 2026-09-10. TotalEnergies: a two-million-barrel VLCC through Hormuz and back costs about $20 million extra, roughly $10 per barrel. That is a charterer bid, not the owner eating 2 mb times Brent. COMPANY.traderBonusByBand.high is 18, next to that $10/bbl print. Panic 30 is desperation, not the cargo. Freight stays the taxi. Do not retune from a $760k/day TCE print without splitting bonus from hull TCE.",
+      "Partial, page read 2026-09-10. TotalEnergies: a two-million-barrel VLCC through Hormuz and back costs about $20 million extra, roughly $10 per barrel. That is a charterer bid, not the owner eating 2 mb times Brent. COMPANY.traderBonusByBand.high is 18, next to that $10/bbl print. Panic 20 is desperation, not the cargo. Freight stays the taxi. MEG-China TCE near $760k/day is the voyage payday, already in freight plus bonus. Do not also charge it as idle.",
+    beats: ["company-books"],
+  },
+  {
+    id: "og360-vlcc-oman-china-2026",
+    kind: "market",
+    title: "The Iran war has turned VLCCs into $650,000-a-day assets",
+    authors: "Julianne Geiger, Oilprice.com / Oil & Gas 360",
+    date: "2026-08-28",
+    url: "https://www.oilandgas360.com/the-iran-war-has-turned-vlccs-into-650000-a-day-assets/",
+    ingest: "partial",
+    annotation:
+      "Partial, page read 2026-09-10. MEG-China earnings about $647k/day. That is a sailing hull, already booked as freight plus bonus. Oman to China, outside the strait, about $220k/day. Idle is that outside week, not the Hormuz TCE twice. COMPANY.idleUsdMPerHull is 2 (~$286k/day teaching round). Do not retune idle to $4M. That was 75 percent of MEG-China and double-counted the voyage.",
+    beats: ["company-books"],
+  },
+  {
+    id: "lloyds-vlcc-td3c-2026-09",
+    kind: "market",
+    title: "VLCC market hits historic high in latest phase of Hormuz crisis",
+    authors: "Lloyd's List",
+    date: "2026-09-08",
+    url: "https://www.lloydslist.com/LL1158394/VLCC-market-hits-historic-high-in-latest-phase-of-Hormuz-crisis",
+    ingest: "partial",
+    annotation:
+      "Partial, page read 2026-09-10. MEG-China TD3C $759,969/day on 8 Sep 2026. Oman-China VLCC index $358,201/day. The $760k print is why freight plus bonus get fat when P is panic. Idle uses the GOO outside option, not this number. A $4M idle week was ~$571k/day, almost the Hormuz day rate again.",
     beats: ["company-books"],
   },
 ];

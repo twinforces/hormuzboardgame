@@ -5,17 +5,19 @@ import { createSession, inputPhase } from "./session.ts";
 
 test("wait does not send a hull; a door posts the books", () => {
   const s = createSession(1, "reopen-lane");
+  assert.match(s.labels().idleWhy, /12 leftover × \$2M = \$24M/);
   s.wait();
   assert.equal(s.state().books.hullsSent, 0);
-  assert.equal(s.labels().booksNet, "-$20M");
-  assert.match(s.labels().booksIdle, /\$20M/);
-  assert.equal(s.labels().booksLeft, "5");
+  assert.equal(s.labels().booksNet, "-$24M");
+  assert.match(s.labels().booksIdle, /\$24M/);
+  assert.equal(s.labels().booksLeft, "12");
   assert.equal(s.labels().houseName, "Greece, Inc.");
   s.omani();
   assert.equal(s.state().books.hullsSent, 1);
   assert.ok(s.state().books.hullsLive + s.state().books.hullsLost === 1);
   assert.notEqual(s.labels().booksNet, "$0M");
-  assert.equal(s.labels().booksLeft, "4");
+  assert.equal(s.labels().booksLeft, "11");
+  assert.match(s.labels().idleWhy, /11 leftover × \$2M = \$22M/);
 });
 
 test("Pay warning string is present on the session labels", () => {
@@ -57,23 +59,24 @@ test("conflicting briefs disagree and STEEL copy says years", () => {
   assert.doesNotMatch(l.hint, /draw a track/i);
 });
 
-test("week one the till is plus-EV so accountants take Iran, not the mined TSS", () => {
+test("week one the CEO waits the ribbon and never pays", () => {
   const s = createSession(1, "reopen-lane");
   const start = s.labels();
-  assert.equal(start.omaniKill, "100%");
-  assert.equal(start.recommended, "iran");
-  assert.match(start.boardAct, /Iran/);
+  assert.equal(start.omaniKill, "66%");
+  assert.equal(start.recommended, "wait");
+  assert.match(start.boardAct, /Wait/);
   assert.match(start.iranEv, /\+/);
   assert.match(start.omaniEv, /-/);
-  s.wait();
-  const after = s.labels();
-  assert.notEqual(after.omaniKill, "100%");
-  assert.ok(after.omaniPct < 90, `displayed Omani ${after.omaniKill}`);
-  assert.notEqual(after.recommended, "wait");
-  assert.match(after.boardAct, /Expected \+/);
-  assert.ok(after.recommended === "omani" || after.recommended === "iran");
-  assert.match(after.usAct, /hole/i);
-  assert.match(after.iranAct, /lays/i);
+  let waits = 0;
+  while (s.labels().recommended === "wait" && waits < 8) {
+    s.wait();
+    waits += 1;
+  }
+  assert.ok(waits >= 1, "CEO sits at least one week");
+  assert.equal(s.labels().recommended, "omani");
+  assert.match(s.labels().boardAct, /do not pay/i);
+  assert.match(s.labels().usAct, /minelayer|Sweepers|escorts/i);
+  assert.match(s.labels().iranAct, /seeded/i);
 });
 
 test("tanker labels show Navy punches and fog blobs, not Iran magazine", () => {
@@ -83,15 +86,15 @@ test("tanker labels show Navy punches and fog blobs, not Iran magazine", () => {
   assert.equal(start.fogBlobs, "4");
   assert.equal(start.holesOpen, "0");
   assert.notEqual(start.fogBlobs, String(s.state().iranPool.mines));
-  assert.match(start.scenarioBlurb, /Five hulls/);
-  assert.match(start.lastBeat, /Accountants/);
+  assert.match(start.scenarioBlurb, /Twelve hulls/);
+  assert.match(start.lastBeat, /CEO/);
   s.wait();
   const after = s.labels();
   assert.ok(Number(after.navyPunched) > 0);
   assert.equal(after.fogBlobs, String(s.state().mines.length));
   assert.ok(Number(after.holesOpen) > 0);
   assert.notEqual(after.fogBlobs, String(s.state().iranPool.mines));
-  assert.match(after.lastBeat, /hole/i);
+  assert.match(after.lastBeat, /minelayer|Sweepers|seeded/i);
 });
 
 test("subscribe fires on a command so the View does not need a bump", () => {
@@ -161,7 +164,7 @@ test("failed command still notifies and keeps the error on the snapshot", () => 
 test("while canAct the VM always names a live move", () => {
   const s = createSession(1, "reopen-lane");
   let moves = 0;
-  while (s.labels().canAct && moves < 24) {
+  while (s.labels().canAct && moves < 48) {
     const l = s.labels();
     assert.notEqual(l.recommended, "none", `turn ${s.state().turn} had no live move`);
     assert.notEqual(l.boardAct, COPY.boardActNone);
@@ -176,24 +179,24 @@ test("while canAct the VM always names a live move", () => {
   assert.equal(s.labels().recommended, "none");
 });
 
-test("actRecommended takes the plus-EV till on night one", () => {
+test("actRecommended waits night one, then never takes the till", () => {
   const s = createSession(1, "reopen-lane");
-  assert.equal(s.labels().recommended, "iran");
+  assert.equal(s.labels().recommended, "wait");
   const first = s.actRecommended();
   assert.equal(first.ok, true);
-  assert.equal(s.state().lastDoor, "iran");
+  assert.equal(s.state().lastDoor, "wait");
 });
 
 test("boardAct names the gold move without lecturing about tracks", () => {
   const s = createSession(1, "reopen-lane");
   const start = s.labels();
   assert.equal(start.canAct, true);
-  assert.match(start.boardAct, /Iran/);
+  assert.match(start.boardAct, /Wait/);
   assert.doesNotMatch(start.hint, /draw a track/i);
   s.wait();
   const after = s.labels();
   assert.equal(after.canAct, true);
-  assert.match(after.boardAct, /Expected \+/);
+  assert.match(after.boardAct, /Wait|Omani/);
   const transit = createSession(1, "one-transit");
   transit.omani();
   assert.equal(transit.labels().canAct, false);
@@ -202,7 +205,7 @@ test("boardAct names the gold move without lecturing about tracks", () => {
 
 test("after a kill the gold chip is balk-wait, not a dead door", () => {
   const s = createSession(1, "reopen-lane");
-  assert.equal(s.labels().omaniKill, "100%");
+  assert.equal(s.labels().omaniKill, "66%");
   const boom = s.omani();
   assert.equal(boom.ok, true);
   assert.equal(s.state().books.hullsLost, 1);
@@ -223,9 +226,9 @@ test("after a kill the gold chip is balk-wait, not a dead door", () => {
   assert.equal(s.labels().doorsOpen, true);
 });
 
-test("week one Iran is plus-EV because the till is unmined", () => {
+test("week one Iran is plus-EV and the CEO still waits", () => {
   const s = createSession(1, "reopen-lane");
-  assert.equal(s.labels().recommended, "iran");
+  assert.equal(s.labels().recommended, "wait");
   assert.match(s.labels().iranEv, /\+/);
 });
 

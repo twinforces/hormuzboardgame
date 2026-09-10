@@ -6,7 +6,7 @@
  * Crew bonus sticks after blood.
  */
 
-import { COMPANY, bandOf } from "./balance.ts";
+import { ATTACK, CEO, COMPANY, bandOf } from "./balance.ts";
 import type {
   CompanyBooks,
   GameState,
@@ -28,6 +28,10 @@ export function emptyBooks(): CompanyBooks {
     premiumUsdM: 0,
     recoverUsdM: 0,
     idleUsdM: 0,
+    damageUsdM: 0,
+    omaniSent: 0,
+    iranSent: 0,
+    minesBought: 0,
   };
 }
 
@@ -72,7 +76,7 @@ export function captainsBalk(s: Pick<GameState, "crewSour">): boolean {
   return s.crewSour;
 }
 
-/** Expected value of sending a hull tonight. Crew only hits a live exit. Toll is paid either way. */
+/** Expected value of sending a hull tonight. Crew only hits a live exit. Toll is paid either way. Shot is boats, not the mine. */
 export function expectedVoyageUsdM(opts: {
   kill: number;
   payUsdM: number;
@@ -80,15 +84,23 @@ export function expectedVoyageUsdM(opts: {
   insured: boolean;
   premiumUsdM: number;
   tollUsdM?: number;
+  shot?: number;
+  grazeUsdM?: number;
 }): number {
-  const k = Math.min(1, Math.max(0, opts.kill));
-  const live = (1 - k) * (opts.payUsdM - opts.crewUsdM);
+  const mine = Math.min(1, Math.max(0, opts.kill));
+  const shot = Math.min(1, Math.max(0, opts.shot ?? 0));
+  const shotKill = shot * ATTACK.killWeight;
+  const deadP = 1 - (1 - mine) * (1 - shotKill);
+  const grazeP = (1 - mine) * shot * ATTACK.grazeWeight;
+  const liveP = 1 - deadP;
+  const live = liveP * (opts.payUsdM - opts.crewUsdM);
+  const graze = grazeP * (opts.grazeUsdM ?? 0);
   const dead = opts.insured
-    ? k * COMPANY.familyUsdM
-    : k * (COMPANY.hullUsdM + COMPANY.familyUsdM);
+    ? deadP * COMPANY.familyUsdM
+    : deadP * (COMPANY.hullUsdM + COMPANY.familyUsdM);
   const prem = opts.insured ? opts.premiumUsdM : 0;
   const toll = opts.tollUsdM ?? 0;
-  return live - dead - prem - toll;
+  return live - graze - dead - prem - toll;
 }
 
 export type AccountantDoor = "wait" | "omani" | "iran";
@@ -113,17 +125,26 @@ export function accountantPick(opts: {
   premiumUsdM: number;
   tollUsdM: number;
   idleUsdM: number;
+  omaniShot?: number;
+  iranShot?: number;
+  grazeUsdM?: number;
 }): AccountantPick {
   const shared = {
     payUsdM: opts.payUsdM,
     crewUsdM: opts.crewUsdM,
     insured: opts.insured,
     premiumUsdM: opts.premiumUsdM,
+    grazeUsdM: opts.grazeUsdM ?? 0,
   };
-  const omaniEv = expectedVoyageUsdM({ ...shared, kill: opts.omaniKill });
+  const omaniEv = expectedVoyageUsdM({
+    ...shared,
+    kill: opts.omaniKill,
+    shot: opts.omaniShot ?? 0,
+  });
   const iranEv = expectedVoyageUsdM({
     ...shared,
     kill: opts.iranKill,
+    shot: opts.iranShot ?? 0,
     tollUsdM: opts.tollUsdM,
   });
   const best = Math.max(omaniEv, iranEv);
@@ -132,6 +153,24 @@ export function accountantPick(opts: {
   }
   if (iranEv > omaniEv) return { door: "iran", omaniEv, iranEv };
   return { door: "omani", omaniEv, iranEv };
+}
+
+/**
+ * CEO pick. Accountants still count EV. This one never pays.
+ * Wait until Omani mine and shot are both under the bar, then Oman.
+ */
+export function ceoPick(opts: {
+  balk: boolean;
+  omaniKill: number;
+  omaniShot: number;
+  waitingHulls: number;
+}): AccountantDoor {
+  if (opts.balk) return "wait";
+  const mineOk = opts.omaniKill <= CEO.maxMine;
+  const shotOk = opts.omaniShot <= CEO.maxShot;
+  const tired = opts.waitingHulls >= CEO.maxWaitWeeks;
+  if ((mineOk && shotOk) || tired) return "omani";
+  return "wait";
 }
 
 export function netUsdM(b: CompanyBooks): number {
@@ -144,7 +183,8 @@ export function netUsdM(b: CompanyBooks): number {
     b.crewUsdM -
     b.tollUsdM -
     b.premiumUsdM -
-    b.idleUsdM
+    b.idleUsdM -
+    b.damageUsdM
   );
 }
 
@@ -156,6 +196,10 @@ export type VoyagePost = {
   tollUsdM?: number;
   premiumUsdM?: number;
   recoverUsdM?: number;
+  damageUsdM?: number;
+  omaniSent?: number;
+  iranSent?: number;
+  minesBought?: number;
 };
 
 export function postVoyage(b: CompanyBooks, v: VoyagePost): CompanyBooks {
@@ -171,6 +215,10 @@ export function postVoyage(b: CompanyBooks, v: VoyagePost): CompanyBooks {
       crewUsdM: b.crewUsdM + (v.crewUsdM ?? 0),
       tollUsdM,
       premiumUsdM,
+      damageUsdM: b.damageUsdM + (v.damageUsdM ?? 0),
+      omaniSent: b.omaniSent + (v.omaniSent ?? 0),
+      iranSent: b.iranSent + (v.iranSent ?? 0),
+      minesBought: b.minesBought + (v.minesBought ?? 0),
     };
   }
   return {
@@ -182,5 +230,8 @@ export function postVoyage(b: CompanyBooks, v: VoyagePost): CompanyBooks {
     recoverUsdM: b.recoverUsdM + (v.recoverUsdM ?? 0),
     tollUsdM,
     premiumUsdM,
+    omaniSent: b.omaniSent + (v.omaniSent ?? 0),
+    iranSent: b.iranSent + (v.iranSent ?? 0),
+    minesBought: b.minesBought + (v.minesBought ?? 0),
   };
 }

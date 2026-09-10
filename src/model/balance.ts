@@ -45,6 +45,11 @@ export const MINE = {
   } satisfies Record<DraftClass, number>,
   /** Path within this of a TSS polyline counts as "in the lane" for insurance. */
   tssBandNm: 3,
+  /**
+   * Paint mines, punch holes, count remaining black. Overlaps are union.
+   * Sample is nm per cell. Smaller is slower and closer to the picture.
+   */
+  fieldSampleNm: 0.35,
 } as const;
 
 export const PRICE = {
@@ -63,7 +68,11 @@ export const PRICE = {
   insuranceCollapsed: 18,
   waitingHull: 1.6,
   killSpike: 12,
-  exitRelief: 5,
+  /**
+   * One live VLCC out of the strait. A week's fog growth is ~11. Flow
+   * has to beat that or the ticker never falls when the lane works.
+   */
+  exitRelief: 16,
   contractsRelief: 3,
 } as const;
 
@@ -215,8 +224,53 @@ export const LAY_SPOTS: LonLat[] = [
 
 export const CLEARANCE = {
   holeFactor: 1,
-  expiresInTurns: 1,
+  /** Two weeks so a second wait can finish the leftover devices. */
+  expiresInTurns: 2,
   maxHolesPerWait: 3,
+  /**
+   * Sweep ribbon width. TSS usable water is about 6 nm. Not the till.
+   * Green holes clip to DEEP_WATER, not the whole disk.
+   */
+  sweepBandNm: 6,
+} as const;
+
+/**
+ * Deep water the Navy actually sweeps: Omani TSS and the JMIC southern
+ * corridor. North of ~26.52N is Qeshm-Larak shallows. Holes do not bleach it.
+ */
+export const DEEP_WATER: LonLat[] = [
+  { lat: 25.45, lon: 56.90 },
+  { lat: 26.15, lon: 56.78 },
+  { lat: 26.40, lon: 56.68 },
+  { lat: 26.52, lon: 56.55 },
+  { lat: 26.52, lon: 56.28 },
+  { lat: 26.38, lon: 56.08 },
+  { lat: 26.10, lon: 55.90 },
+  { lat: 25.55, lon: 55.88 },
+  { lat: 25.40, lon: 56.15 },
+  { lat: 25.40, lon: 56.55 },
+];
+
+/**
+ * Shot is boats and TELs, not the mine. Pay is a promise they will not
+ * shoot. Escort cuts the shot, not the mine. A VLCC usually eats a
+ * graze. Kill from a shot is rare.
+ */
+export const ATTACK = {
+  omaniShot: 0.32,
+  iranPaid: 0.06,
+  iranNaked: 0.22,
+  escortCoverPerWait: 0.35,
+  escortCoverMax: 0.7,
+  missWeight: 0.62,
+  grazeWeight: 0.33,
+  killWeight: 0.05,
+  grazeUsdMByBand: {
+    cheap: 2,
+    tolerable: 3,
+    high: 5,
+    panic: 7,
+  },
 } as const;
 
 export const PLACES: Array<LonLat & { id: string; label: string }> = [
@@ -285,10 +339,15 @@ export const COMPANY = {
   /** IRGC VLCC floor. Bloomberg / Maritime Executive: about $1/bbl, $2M. */
   tollUsdM: 2,
   /**
-   * Demurrage plus crew on the beach, per leftover hull, per week.
-   * Sitting is not free. Five idle VLCCs hurt more than one.
+   * Week you parked a leftover hull that could have been on Oman-China.
+   * Not cash opex (~$10k/day, Moore 2024). Not MEG-China TCE (~$760k/day,
+   * Lloyd's TD3C 8 Sep 2026). That TCE already sits in freight plus bonus
+   * when a hull actually sails. Oil & Gas 360: Oman-China ~$220k/day.
+   * Lloyd's GOO peak ~$358k. Teaching round $2M/week (~$286k/day).
+   * Twelve leftover hulls still scale. You only send one a week. The other
+   * eleven could have left the queue.
    */
-  idleUsdMPerHull: 4,
+  idleUsdMPerHull: 2,
   /**
    * Additional war-risk as percent of hull, turned into millions.
    * Cheap ~1.5% ($2M). Panic ~10% ($13M). Collapsed: cannot buy.
@@ -300,10 +359,21 @@ export const COMPANY = {
     panic: 13,
   },
   fleet: {
-    "reopen-lane": 5,
+    "reopen-lane": 12,
     "one-transit": 1,
     overplay: 5,
   },
+} as const;
+
+/**
+ * The owner, not the accountants. Never fund the next mine.
+ * Wait until Omani mine and shot are both quiet, then sail Oman.
+ * maxWaitWeeks is the charterer scream, not a third door.
+ */
+export const CEO = {
+  maxMine: 0.15,
+  maxShot: 0.12,
+  maxWaitWeeks: 6,
 } as const;
 
 /**

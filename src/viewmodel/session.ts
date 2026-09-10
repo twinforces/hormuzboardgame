@@ -6,9 +6,10 @@
  */
 
 import { bandOf, COMPANY } from "../model/balance.ts";
-import { COPY, BAND_LABEL, SCENARIO_KIT, iranBrief, usBrief } from "../model/copy.ts";
+import { COPY, BAND_LABEL, SCENARIO_KIT, idleChargeLine, iranBrief, usBrief } from "../model/copy.ts";
 import {
   accountantPick,
+  ceoPick,
   captainsBalk,
   hullsLeft,
   idleThisWeek,
@@ -24,6 +25,7 @@ import {
   type DispatchResult,
   type Engine,
 } from "../model/engine.ts";
+import { grazeUsdM, shotChance } from "../model/combat.ts";
 import { combinedKillChance } from "../model/geo.ts";
 import type { DebugSnapshot, GameState, ScenarioId } from "../model/types.ts";
 
@@ -41,6 +43,8 @@ export type SessionLabels = {
   hint: string;
   omaniKill: string;
   iranKill: string;
+  omaniShot: string;
+  iranShot: string;
   omaniPct: number;
   iranPct: number;
   omaniEv: string;
@@ -73,6 +77,8 @@ export type SessionLabels = {
   booksPremium: string;
   booksRecover: string;
   booksIdle: string;
+  booksDamage: string;
+  idleWhy: string;
   houseName: string;
   balk: boolean;
   doorsOpen: boolean;
@@ -121,8 +127,19 @@ export type MapSession = {
 
 function computeLabels(engine: Engine): SessionLabels {
   const s = engine.state();
-  const omani = combinedKillChance(omaniPath(), s.mines, s.draftClass).chance;
-  const iran = combinedKillChance(iranPath(), s.mines, s.draftClass).chance;
+  const sweep = omaniPath();
+  const omani = combinedKillChance(sweep, s.mines, s.draftClass, sweep).chance;
+  const iran = combinedKillChance(iranPath(), s.mines, s.draftClass, sweep).chance;
+  const omaniShotP = shotChance({
+    door: "omani",
+    waitingHulls: s.waitingHulls,
+    paid: false,
+  });
+  const iranShotP = shotChance({
+    door: "iran",
+    waitingHulls: s.waitingHulls,
+    paid: true,
+  });
   const holes = s.mines.filter((m) => m.hole).length;
   const omaniPct = pct(omani);
   const iranPct = pct(iran);
@@ -140,6 +157,15 @@ function computeLabels(engine: Engine): SessionLabels {
     premiumUsdM: premium,
     tollUsdM: COMPANY.tollUsdM,
     idleUsdM: idleThisWeek(s.scenario, s.books),
+    omaniShot: omaniShotP,
+    iranShot: iranShotP,
+    grazeUsdM: grazeUsdM(s.price),
+  });
+  const ceo = ceoPick({
+    balk,
+    omaniKill: omani,
+    omaniShot: omaniShotP,
+    waitingHulls: s.waitingHulls,
   });
   const brief = {
     turn: s.turn,
@@ -154,7 +180,7 @@ function computeLabels(engine: Engine): SessionLabels {
   const band = bandOf(s.price);
   const acting = s.phase === "tankerOrders";
   const left = hullsLeft(s.scenario, s.books);
-  const recommended: RecommendedDoor = !acting ? "none" : pick.door;
+  const recommended: RecommendedDoor = !acting ? "none" : ceo;
   const kit = SCENARIO_KIT[s.scenario];
   const resolveLine = [...s.log].reverse().find((line) => line.includes("Mine kill"));
   const lastBeat = !s.lastDoor
@@ -166,11 +192,11 @@ function computeLabels(engine: Engine): SessionLabels {
     recommended === "wait"
       ? balk
         ? COPY.boardActBalk
-        : COPY.accountantSit
+        : COPY.ceoWait
       : recommended === "omani"
-        ? `Omani. Expected ${evUsd(pick.omaniEv)}.`
+        ? COPY.ceoOmani
         : recommended === "iran"
-          ? `Iran. Expected ${evUsd(pick.iranEv)}.`
+          ? COPY.boardActIran
           : COPY.boardActNone;
   const quote = voyagePayUsdM(s.price);
   const policyOpen = policyAvailable(s.insurance);
@@ -187,6 +213,8 @@ function computeLabels(engine: Engine): SessionLabels {
     hint: s.phase === "matchOver" ? COPY.matchOver : balk ? COPY.balk : COPY.doorHint,
     omaniKill: `${omaniPct}%`,
     iranKill: `${iranPct}%`,
+    omaniShot: `${pct(omaniShotP)}%`,
+    iranShot: `${pct(iranShotP)}%`,
     omaniPct,
     iranPct,
     omaniEv: evUsd(pick.omaniEv),
@@ -219,6 +247,8 @@ function computeLabels(engine: Engine): SessionLabels {
     booksPremium: usdM(s.books.premiumUsdM),
     booksRecover: usdM(s.books.recoverUsdM),
     booksIdle: usdM(s.books.idleUsdM),
+    booksDamage: usdM(s.books.damageUsdM),
+    idleWhy: idleChargeLine(left),
     houseName: COPY.houseName,
     balk,
     doorsOpen: acting && !balk && left > 0,

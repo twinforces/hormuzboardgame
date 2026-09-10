@@ -32,15 +32,15 @@ export function priceComponents(state: Pick<
 }
 
 export function sumPrice(parts: PriceComponents): number {
-  const raw =
+  const pressure =
     parts.baseline +
     parts.mines +
     parts.insurance +
     parts.waiting +
-    parts.flow +
     parts.kill +
     parts.contracts;
-  return Math.round(Math.max(PRICE.min, Math.min(PRICE.max, raw)));
+  const capped = Math.min(PRICE.max, Math.max(PRICE.min, pressure));
+  return Math.round(Math.max(PRICE.min, Math.min(PRICE.max, capped + parts.flow)));
 }
 
 export function tickPrice(state: GameState): GameState {

@@ -1,5 +1,54 @@
 # CHANGELOG
 
+## 2026-09-10 - Tanker CEO waits the ribbon. Never pay.
+
+- **What:** Gold chip is `ceoPick`. Wait while Omani mine > 15% or shot > 12%. Then Oman. Never Iran. After 6 waits, sail anyway. Accountants still show EV.
+- **Why:** User: wait until risk is low, never give Iranians money, fuck the accountants, that is why they are not the CEO.
+- **How:** `CEO` in balance.ts. `ceoPick` in company.ts. Session recommended uses CEO. ADR-016.
+- **Hash:** pending.
+
+## 2026-09-10 - Live exits cut oil. Green sweeps clip to deep water.
+
+- **What:** A hull that leaves the strait drops P (exitRelief 16 beats a week's fog). Price reticks after expand so the meter matches the map. Green holes clip to DEEP_WATER (Omani TSS / JMIC). Red fog can still sit on the till.
+- **Why:** User: tankers leaving should lower oil. USN should only sweep deep water.
+- **How:** PRICE.exitRelief 16. tickPrice at tankerOrders. DEEP_WATER polygon + clipPath. inSweepZone.
+- **Hash:** pending.
+
+## 2026-09-10 - Drift reaches the till. Sweeps stay on the Omani ribbon.
+
+- **What:** Navy holes only erase the Omani ribbon. Fog that grows onto Qeshm-Larak counts on the Iran door. Copy: pay does not sweep, mines drift. Week-1 Oman is the mined fraction of the lane (~66%), not a stacked 100%.
+- **Why:** User: red covering the Iran route with 0% mine kill. Mines suck. They drift.
+- **How:** `paintFogField(path, mines, draft, sweepPath)`. Lane sample. Holes gated by sweep ribbon.
+- **Hash:** pending.
+
+## 2026-09-10 - Twelve hulls, toll buys mines, traders paid you
+
+- **What:** Reopen the lane is 12 hulls. Scorecard and SUCCESS name trader bonus and "You spent $XM in tolls, buying Iran N mines." USN-only sitting: you waited the Navy. Iran-only: mines stayed someone else's problem.
+- **Why:** User: sitting over too quick. Result must make the toll-for-mines deal and the invented-but-taught trader bonus loud.
+- **How:** COMPANY.fleet.reopen-lane 12. books.minesBought / iranSent / omaniSent. scoreLines + outcomeLines.
+- **Hash:** pending.
+
+## 2026-09-10 - Mine % is remaining fog, not stacked circles
+
+- **What:** Door mine kill is remaining black / painted field. Paint mine disks, punch Navy holes, overlaps are union. Navy still picks leftover devices by path clip.
+- **Why:** User: overlapping circles make the math hard. Draw mines black, erase sweeps white, count the remaining red.
+- **How:** `paintFogField` raster in nm. No canvas. Model cannot import DOM.
+- **Hash:** pending.
+
+## 2026-09-10 - Shot, graze, outcome dialog, leftover mines, cropped chart
+
+- **What:** Door risk splits mine vs shot. Pay cuts shooting. Escort cuts shooting. A VLCC usually grazes. Wait/door opens an in-your-face outcome. Sweeps no longer zero leftover red. Chart JPEG is the visible 2016x1220 crop plus a loading overlay.
+- **Why:** User: week 2 both doors 0%, red in the US zone with 0% Oman, clicks dead, buried turn text, hole/punch metaphor, tankers are tough, Navy escorts, Iran cannot promise the mine.
+- **How:** Own-hole clip. `expiresInTurns` 2. `ATTACK` + `combat.ts`. `TurnReport` + OutcomeDialog. Cropped `hormuz-sentinel.jpg`.
+- **Hash:** pending.
+
+## 2026-09-10 - Idle is Oman-China, not Hormuz TCE twice
+
+- **What:** Idle $4M a hull a week dropped to $2M. Books note names Oman-China. Receipts lock $220k/day outside vs $760k MEG-China.
+- **Why:** User: idle seems high, justify. $4M was 75 percent of the Hormuz day rate on hulls that did not sail.
+- **How:** `idleUsdMPerHull` 2. ADR-020. og360 and Lloyd's receipts.
+- **Hash:** pending.
+
 ## 2026-09-10 - Compact + hygiene
 
 - **What:** RECENTGOALS cut to four live bets. README status is playable, not Architect stub. Hashes stamped 9771380. Pushed to twinforces/hormuzboardgame.

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, fogTip, iranBrief, lossLines, scoreLines, usBrief } from "./copy.ts";
+import { COPY, SCENARIO_KIT, fogTip, idleChargeLine, iranBrief, iranSeedLine, lossLines, outcomeLines, scoreLines, usBrief, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -13,10 +13,10 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.doesNotMatch(COPY.fujairah, /Suez replacing/i);
   assert.match(COPY.fujairah, /Red Sea/);
   assert.match(COPY.roleLock, /Greece, Inc/);
-  assert.match(COPY.roleLock, /Accountants pick/);
+  assert.match(COPY.roleLock, /CEO waits/);
   assert.match(COPY.roleLock, /captains still balk/i);
-  assert.equal(COPY.accountantSit, "Sit. Expected is negative.");
-  assert.equal(COPY.boardActWait, COPY.accountantSit);
+  assert.equal(COPY.ceoWait, "Wait. Mine and shot are still hot.");
+  assert.equal(COPY.boardActWait, COPY.ceoWait);
   assert.match(COPY.waitHint, /Sit a night/);
   assert.match(COPY.sittingTitle, /sitting/i);
   assert.doesNotMatch(COPY.roleLock, /Onassis/i);
@@ -28,10 +28,14 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.balk, /Captains refuse/);
   assert.match(COPY.cargoNotYours, /trader ate \$150M/);
   assert.match(COPY.booksNote, /trader bonus/i);
-  assert.match(COPY.boardActSit, /Sit/);
+  assert.match(COPY.booksNote, /Oman-China/);
+  assert.match(COPY.booksNote, /\$2M/);
+  assert.match(COPY.boardActSit, /Wait/);
   assert.match(COPY.policyBuy, /war-risk/i);
   assert.match(COPY.lossMine, /mine kill/i);
   assert.match(COPY.killHintIran, /till/);
+  assert.match(COPY.killHintIran, /promise they will not shoot/);
+  assert.match(COPY.killHintIran, /drift/);
   assert.match(COPY.killHintIran, /TSS/);
   assert.match(COPY.orientation, /North is Iran/);
   assert.match(COPY.photoCredit, /Sentinel-2/);
@@ -41,13 +45,13 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.doesNotMatch(COPY.doorHint, /plot/i);
   assert.doesNotMatch(COPY.doorHint, /draw a track/i);
   assert.doesNotMatch(COPY.lastBeatIdle, /draw a track/i);
-  assert.equal(COPY.boardActWait, COPY.accountantSit);
+  assert.equal(COPY.boardActWait, COPY.ceoWait);
   assert.match(COPY.waitHint, /Sit a night/);
   assert.match(COPY.navyNote, /Green/);
   assert.match(COPY.navyNote, /Red does not sit inside green/);
   assert.match(COPY.scenarioHelp, /Weeks/);
-  assert.match(COPY.scenarioReopen, /Five hulls/);
-  assert.match(COPY.scenarioOverplay, /three holes/);
+  assert.match(COPY.scenarioReopen, /Twelve hulls/);
+  assert.match(COPY.scenarioOverplay, /three patches/);
   assert.equal(SCENARIO_KIT.overplay.label, "Packed TSS");
   assert.match(COPY.booksIdle, /Idle/);
   assert.match(COPY.scoreTitle, /Out of hulls/);
@@ -109,6 +113,7 @@ test("loss dialog copy names mine kill, toll, and the policy split", () => {
     familyUsdM: 12,
     cargoUsdM: 150,
     crewBonusUsdM: 2,
+    cause: "mine" as const,
   });
   const paid = lossLines({
     id: "t2",
@@ -125,6 +130,7 @@ test("loss dialog copy names mine kill, toll, and the policy split", () => {
     familyUsdM: 12,
     cargoUsdM: 150,
     crewBonusUsdM: 2,
+    cause: "mine" as const,
   });
   for (const line of [...naked, ...paid]) {
     assert.doesNotMatch(line, /\u2014/);
@@ -136,7 +142,7 @@ test("loss dialog copy names mine kill, toll, and the policy split", () => {
   assert.ok(paid.some((l) => /Toll \$2M/.test(l)));
 });
 
-test("scorecard names idle, live, lost, and net", () => {
+test("scorecard names idle, live, lost, bonus, toll mines, and net", () => {
   const lines = scoreLines({
     weeks: 6,
     live: 4,
@@ -144,15 +150,97 @@ test("scorecard names idle, live, lost, and net", () => {
     freightUsdM: 80,
     bonusUsdM: 40,
     idleUsdM: 20,
-    tollUsdM: 2,
+    tollUsdM: 6,
+    minesBought: 3,
+    omaniSent: 0,
+    iranSent: 5,
     netUsdM: 147,
     price: 126,
   });
   assert.ok(lines.some((l) => /Week 6/.test(l)));
   assert.ok(lines.some((l) => /Live 4/.test(l)));
   assert.ok(lines.some((l) => /Idle \$20M/.test(l)));
+  assert.ok(lines.some((l) => /Traders paid you a bonus of \$40M/.test(l)));
+  assert.ok(lines.some((l) => /\$6M in tolls, buying Iran 3 mines/.test(l)));
+  assert.ok(lines.some((l) => /someone else's problem/.test(l)));
   assert.ok(lines.some((l) => /Net \$147M/.test(l)));
   assert.ok(lines.some((l) => /\$126/.test(l)));
+  const nice = scoreLines({
+    weeks: 8,
+    live: 12,
+    lost: 0,
+    freightUsdM: 200,
+    bonusUsdM: 80,
+    idleUsdM: 40,
+    tollUsdM: 0,
+    minesBought: 0,
+    omaniSent: 12,
+    iranSent: 0,
+    netUsdM: 204,
+    price: 110,
+  });
+  assert.ok(nice.some((l) => /did not buy their next mine/.test(l)));
+  assert.ok(nice.some((l) => /waited the Navy/.test(l)));
+});
+
+test("idle charge names leftover hulls times the rate", () => {
+  assert.equal(idleChargeLine(5, 2), "5 leftover × $2M = $10M this week.");
+  assert.equal(idleChargeLine(1, 2), "1 leftover × $2M = $2M this week.");
+  assert.equal(idleChargeLine(0, 2), "No leftover hulls.");
+});
+
+test("navy lines sink minelayers. Iran seeds. Pay does not sweep.", () => {
+  assert.match(usSweepLine({ turn: 2, layers: 3, nm2: 48 }), /sank 3 minelayers/);
+  assert.match(usSweepLine({ turn: 2, layers: 3, nm2: 48 }), /48 nm/);
+  assert.match(iranSeedLine({ turn: 2, laid: 1, shot: "miss" }), /seeded 1 mine/);
+  assert.match(iranSeedLine({ turn: 2, laid: 1, shot: "miss" }), /missed/);
+  assert.match(iranSeedLine({ turn: 2, laid: 1, shot: "none" }), /mines drift/);
+  const live = outcomeLines({
+    id: "r1",
+    turn: 3,
+    kind: "live",
+    door: "omani",
+    netDeltaUsdM: 18,
+    freightUsdM: 15,
+    bonusUsdM: 8,
+    tollUsdM: 0,
+    damageUsdM: 0,
+    idleUsdM: 0,
+    minesBought: 0,
+    usLine: "US Navy sank 2 minelayers.",
+    iranLine: "Iran seeded 1 mine in the TSS.",
+    omaniMinePct: 18,
+    iranMinePct: 0,
+    omaniShotPct: 10,
+    iranShotPct: 6,
+    cause: "none",
+    paid: false,
+  });
+  assert.ok(live.some((l) => /made \$18M net/.test(l)));
+  assert.ok(live.some((l) => /Traders paid you a bonus of \$8M/.test(l)));
+  assert.ok(live.some((l) => /Omani mine risk is now 18%/.test(l)));
+  const paid = outcomeLines({
+    id: "r2",
+    turn: 4,
+    kind: "live",
+    door: "iran",
+    netDeltaUsdM: 12,
+    freightUsdM: 15,
+    bonusUsdM: 0,
+    tollUsdM: 2,
+    damageUsdM: 0,
+    idleUsdM: 0,
+    minesBought: 1,
+    usLine: "US Navy sank 1 minelayer.",
+    iranLine: "Iran seeded 1 mine in the TSS.",
+    omaniMinePct: 22,
+    iranMinePct: 0,
+    omaniShotPct: 10,
+    iranShotPct: 6,
+    cause: "none",
+    paid: true,
+  });
+  assert.ok(paid.some((l) => /\$2M in tolls, buying Iran 1 mine/.test(l)));
 });
 
 

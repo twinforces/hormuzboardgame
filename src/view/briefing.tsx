@@ -13,8 +13,8 @@ const LESSONS = [
   "Invite a carrier into the two-mile lane and you volunteered the next mole.",
   "Mines drift. Their uncertainty blob grows every turn.",
   "One mine kill ends the lane's paper. A voyage policy you bought still pays that hull. Then you go naked.",
-  "Paying Iran funds the next wave and does not sweep mines. The percent on a door is mine kill, not a missile volley.",
-  "Wait is not a skip. US rents a hole. Iran lays. Sitting still is a turn.",
+  "Paying Iran funds the next wave and does not sweep. Mines drift. The percent on a door is mine kill, not a missile volley.",
+  "Wait is not a skip. US sinks minelayers. Iran seeds the TSS. Sitting still is a turn.",
   "Greed is a fat trader bonus when oil is high. After blood, captains can still say no.",
   "High price is itself a factory. China and Russia are the quiet factory.",
   "Pipelines take years. Contracts take a week. The market prices the week.",
@@ -38,7 +38,7 @@ const ADRs = [
   ["015", "Navy Decoded full ASR is blocked here. Paste or walk captions in chunks."],
   ["016", "Owner clicks the US ribbon near Oman or the Iran track by Larak. Wait spends both factions."],
   ["017", "Player runs a VLCC house. Books: freight, hull writeoff, families."],
-  ["018", "Greece, Inc. Five hulls. Freight follows P. Captains balk after blood. Oil is the trader's."],
+  ["018", "Greece, Inc. Twelve hulls. Freight follows P. Captains balk after blood. Oil is the trader's."],
   ["019", "War-risk checkbox before a door. Tolls on the books. Loss dialog names mine kill."],
 ];
 
@@ -55,7 +55,7 @@ export function BriefingPage() {
         <p className="mt-3 max-w-3xl text-muted">
           Sentinel-2 crop of the pinch, dummy mine circles that grow, two
           tanker doors (Omani ribbon or Iran toll), and a seeded price meter
-          on the map. You run Greece, Inc. this slice. Five hulls. Freight
+          on the map. You run Greece, Inc. this slice. Twelve hulls. Freight
           follows the price. A lost hull is the ship plus the families.
           Captains balk after blood. Oil is not yours. Wait makes US punch
           holes and Iran lay. Veto the math, not the chrome.

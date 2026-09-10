@@ -82,6 +82,10 @@ export type CompanyBooks = {
   premiumUsdM: number;
   recoverUsdM: number;
   idleUsdM: number;
+  damageUsdM: number;
+  omaniSent: number;
+  iranSent: number;
+  minesBought: number;
 };
 
 /** Why this hull died. View renders it. Model owns the numbers. */
@@ -100,6 +104,30 @@ export type LossReport = {
   familyUsdM: number;
   cargoUsdM: number;
   crewBonusUsdM: number;
+  cause: "mine" | "shot";
+};
+
+/** In-your-face result of Wait or a door. Model owns the numbers. */
+export type TurnReport = {
+  id: string;
+  turn: number;
+  kind: "wait" | "live" | "graze" | "lost";
+  door: TankerDoor;
+  netDeltaUsdM: number;
+  freightUsdM: number;
+  bonusUsdM: number;
+  tollUsdM: number;
+  damageUsdM: number;
+  idleUsdM: number;
+  minesBought: number;
+  usLine: string;
+  iranLine: string;
+  omaniMinePct: number;
+  iranMinePct: number;
+  omaniShotPct: number;
+  iranShotPct: number;
+  cause: "none" | "mine" | "shot";
+  paid: boolean;
 };
 
 export type Industry = {
@@ -141,6 +169,7 @@ export type GameState = {
   crewSour: boolean;
   buyPolicy: boolean;
   lastLoss: LossReport | null;
+  lastReport: TurnReport | null;
   lastKillChance: number;
   lastDetonatedMineId: string | null;
   lastDoor: TankerDoor | null;

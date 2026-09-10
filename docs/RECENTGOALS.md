@@ -1,37 +1,21 @@
 # RECENTGOALS
 
-## Active
+Shipped sitting work on [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboardgame). Auth off. DB off.
 
-### Scorecard, idle, Packed TSS, oil cap
-- **What:** Out of hulls scorecard + replay. Idle cost. $126 oil cap. Packed TSS punches 3 holes a week.
-- **Why:** Wait printed lottery oil. UI froze with no score. Overplay never cleared. No urgency.
-- **How:** ScoreDialog. `idleUsdMPerHull` $4. `PRICE.max` 126. `maxHolesPerWait` 3.
-- **Hash:** 9771380
+## Now
 
-### Iran did not mine the till
-- **What:** TSS is mined. Qeshm-Larak is clear on purpose. Week one accountants take Iran.
-- **Why:** They purposely did not lay between Qeshm and Larak. North door should be tempting.
-- **How:** TSS-only field and lays. Iran path hugs the north coast.
-- **Hash:** 9771380
-
-### Sweep eats red, weeks not a clock
-- **What:** Red fog does not sit inside green. Clock is week count, no cap.
-- **Why:** A punched hole should eat that blob. Sit as long as you pay idle.
-- **How:** evenodd + `mineFogCovered`. `maxTurns` 0.
-- **Hash:** 9771380
-
-### Accountants pick the door
-- **What:** EV across both doors, including idle. Owner board is books + this sitting. No fuse pane.
-- **Why:** Greece, Inc. accountants. Do not care about US/Iran talk.
-- **How:** `accountantPick`. Go if best EV beats idle.
-- **Hash:** 9771380
+Tanker is the CEO script: wait until mine and shot are quiet, then Oman, never pay. Accountants still print EV. Live exits cut oil. Green sweeps clip to deep water.
 
 ## Next
-1. Iran lay/surge + US industry/pits as real hotseat verbs (today they auto-fire on Wait).
-2. Bribes (mines still apply), secret pipeline, fuses, AI, after-action checklist.
-3. Avenger class in-theater status stays open research.
 
-## Done this session
-- Playable Greece, Inc. sitting: multi-hull, greed, balk, war-risk, idle, scorecard, replay.
-- Iran till unmined. Packed TSS. Oil capped at 2026 peak $126.
-- Architect bootstrap, receipts, Sentinel-2 board, MVVM.
+1. Mine warfare slice. US: sweep / sense / escort / hold. Iran: lay TSS / surge / hold. See `docs/MINE-WARFARE.md` and ADR-017.
+2. Default human seat is US. Tanker stays CEO. Iran is a tendency script.
+3. Factories, bribes, secret pipeline, fuses after clearance teaches.
+
+## Don't
+
+- Do not lecture brands. Independent is not a size word.
+- Do not let wait print lottery oil. Peak is $126.
+- Do not mine the till. Pay is a wave, not a sweep.
+- Do not ask the user to run commands or open localhost.
+- Do not let accountants pick the door.

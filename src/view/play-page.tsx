@@ -4,7 +4,7 @@ import { netUsdM } from "@/model/company.ts";
 import type { DebugSnapshot, ScenarioId } from "@/model/types.ts";
 import { useSession } from "./use-session.ts";
 import { MapBoard } from "./map-board.tsx";
-import { LossDialog } from "./loss-dialog.tsx";
+import { OutcomeDialog } from "./outcome-dialog.tsx";
 import { ScoreDialog } from "./score-dialog.tsx";
 import { cn } from "@/lib/cn.ts";
 
@@ -29,7 +29,7 @@ export function PlayPage() {
   const acted = useRef(false);
   const { session, state, labels, error } = useSession(seed, scenario);
   const [debug, setDebug] = useState(false);
-  const [lossSeen, setLossSeen] = useState<string | null>(null);
+  const [reportSeen, setReportSeen] = useState<string | null>(null);
   const [scoreOpen, setScoreOpen] = useState(false);
   const d = session.debug();
 
@@ -50,7 +50,7 @@ export function PlayPage() {
 
   function replay() {
     markAct();
-    setLossSeen(null);
+    setReportSeen(null);
     setScoreOpen(false);
     session.reset(seed, scenario);
   }
@@ -58,7 +58,7 @@ export function PlayPage() {
   function fresh() {
     const next = (seed % 9999) + 1;
     window.localStorage.setItem("hormuz.seed", String(next));
-    setLossSeen(null);
+    setReportSeen(null);
     setScoreOpen(false);
     setSeed(next);
   }
@@ -87,6 +87,8 @@ export function PlayPage() {
           boardAct={labels.boardAct}
           omaniKill={labels.omaniKill}
           iranKill={labels.iranKill}
+          omaniShot={labels.omaniShot}
+          iranShot={labels.iranShot}
           onWait={() => {
             markAct();
             session.wait();
@@ -118,21 +120,22 @@ export function PlayPage() {
 
             <div className="mt-4 rounded-md border border-accent/40 bg-bg px-3 py-2">
               <p className="font-mono text-2xs uppercase tracking-widest text-accent">
-                {COPY.accountant}
+                {COPY.ceo}
               </p>
               <dl className="mt-2 grid grid-cols-2 gap-2 font-mono text-xs">
                 <Stat
-                  k={`Omani ${labels.omaniKill}`}
-                  v={labels.omaniEv}
+                  k={`Omani ${labels.omaniKill} mine`}
+                  v={`${labels.omaniShot} shot · ${labels.omaniEv}`}
                   hot={labels.omaniEv.startsWith("-")}
                 />
                 <Stat
-                  k={`Iran ${labels.iranKill}`}
-                  v={labels.iranEv}
+                  k={`Iran ${labels.iranKill} mine`}
+                  v={`${labels.iranShot} shot · ${labels.iranEv}`}
                   hot={labels.iranEv.startsWith("-")}
                 />
               </dl>
               <p className="mt-2 font-mono text-xs text-fg">{labels.boardAct}</p>
+              <p className="mt-1 font-mono text-2xs text-muted">{COPY.accountantNote}</p>
             </div>
 
             <label
@@ -178,7 +181,7 @@ export function PlayPage() {
               >
                 {COPY.runOmani}
                 <span className="mt-0.5 block font-mono text-2xs font-normal opacity-80">
-                  {labels.omaniKill} {COPY.mineKill} · {labels.omaniEv}
+                  {labels.omaniKill} {COPY.mineKill} · {labels.omaniShot} {COPY.shotKill} · {labels.omaniEv}
                 </span>
               </button>
               <button
@@ -198,7 +201,7 @@ export function PlayPage() {
               >
                 {COPY.runToll}
                 <span className="mt-0.5 block font-mono text-2xs font-normal text-muted">
-                  {labels.iranKill} {COPY.mineKill} · {labels.iranEv} · {COPY.payWarning}
+                  {labels.iranKill} {COPY.mineKill} · {labels.iranShot} {COPY.shotKill} · {labels.iranEv}
                 </span>
               </button>
               <button
@@ -217,7 +220,7 @@ export function PlayPage() {
               >
                 {COPY.wait}
                 <span className="mt-0.5 block font-mono text-2xs font-normal opacity-80">
-                  {COPY.waitHint}
+                  {labels.idleWhy}
                 </span>
               </button>
             </div>
@@ -244,7 +247,9 @@ export function PlayPage() {
                 <Stat k={COPY.booksPremium} v={labels.booksPremium} hot={state.books.premiumUsdM > 0} />
                 <Stat k={COPY.booksRecover} v={labels.booksRecover} />
                 <Stat k={COPY.booksIdle} v={labels.booksIdle} hot={state.books.idleUsdM > 0} />
+                <Stat k={COPY.booksDamage} v={labels.booksDamage} hot={state.books.damageUsdM > 0} />
               </dl>
+              <p className="mt-2 font-mono text-2xs text-muted">{labels.idleWhy}</p>
               <p
                 className={cn(
                   "mt-2 font-mono text-sm tabular-nums",
@@ -315,10 +320,10 @@ export function PlayPage() {
 
       <Log lines={state.log} />
 
-      <LossDialog
-        loss={state.lastLoss && state.lastLoss.id !== lossSeen ? state.lastLoss : null}
+      <OutcomeDialog
+        report={state.lastReport && state.lastReport.id !== reportSeen ? state.lastReport : null}
         onClose={() => {
-          if (state.lastLoss) setLossSeen(state.lastLoss.id);
+          if (state.lastReport) setReportSeen(state.lastReport.id);
         }}
       />
 
@@ -326,7 +331,7 @@ export function PlayPage() {
         open={
           scoreOpen &&
           state.phase === "matchOver" &&
-          !(state.lastLoss && state.lastLoss.id !== lossSeen)
+          !(state.lastReport && state.lastReport.id !== reportSeen)
         }
         score={{
           weeks: state.turn,
@@ -336,6 +341,9 @@ export function PlayPage() {
           bonusUsdM: state.books.bonusUsdM,
           idleUsdM: state.books.idleUsdM,
           tollUsdM: state.books.tollUsdM,
+          minesBought: state.books.minesBought,
+          omaniSent: state.books.omaniSent,
+          iranSent: state.books.iranSent,
           netUsdM: netUsdM(state.books),
           price: state.price,
         }}

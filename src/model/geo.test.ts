@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   COUNTRY_LABELS,
+  DEEP_WATER,
   IRANIAN_INBOUND,
   MAP,
   MINE,
@@ -13,10 +14,13 @@ import {
 import {
   combinedKillChance,
   distNm,
+  inDeepWater,
+  killChanceForCircle,
   lonLatToNm,
   mineFogCovered,
   mineHoles,
   nmToLonLat,
+  paintFogField,
   polylineCircleClipNm,
   polylineLengthNm,
   pickMine,
@@ -73,9 +77,11 @@ test("clip: a path through a circle uses the balance table", () => {
   const r = radiusNm(0);
   const clip = polylineCircleClipNm([a, b], through.center, r);
   assert.ok(Math.abs(clip - 2 * r) < 1e-6, `clip ${clip} vs diameter ${2 * r}`);
-  const { chance } = combinedKillChance([a, b], [through], "vlcc");
+  const one = killChanceForCircle([a, b], through, "vlcc", []);
   const expected = Math.min(1, clip * killPerNm(0) * MINE.draftFactor.vlcc);
-  assert.ok(Math.abs(chance - expected) < 1e-9);
+  assert.ok(Math.abs(one.chance - expected) < 1e-9);
+  const { chance } = combinedKillChance([a, b], [through], "vlcc");
+  assert.ok(chance > 0.15, `unswept field on the lane is red, got ${chance}`);
 });
 
 test("clip: radius-1 / 2 / 3 use the table, not a single fudge", () => {
@@ -88,7 +94,7 @@ test("clip: radius-1 / 2 / 3 use the table, not a single fudge", () => {
       laidTurn: 1,
       hole: null,
     };
-    return combinedKillChance([a, b], [mine], "vlcc").chance;
+    return killChanceForCircle([a, b], mine, "vlcc", []).chance;
   });
   assert.ok(chances[0]! > chances[1]!, "tighter circle is deadlier per nm of path");
   assert.ok(chances[1]! > chances[2]!);
@@ -171,4 +177,83 @@ test("a red blob sitting inside another mine's hole is gone", () => {
   const { chance, clips } = combinedKillChance([a, b], [sweep, nested], "vlcc");
   assert.equal(clips.find((c) => c.id === "nested")?.clipNm, 0);
   assert.equal(chance, 0);
+});
+
+test("an unswept mine still counts after a neighbor is swept", () => {
+  const swept: MineCircle = {
+    id: "swept",
+    center: { xNm: 5, yNm: 0 },
+    radiusSteps: 2,
+    laidTurn: 1,
+    hole: { radiusNm: radiusNm(2), expiresTurn: 4 },
+  };
+  const leftover: MineCircle = {
+    id: "leftover",
+    center: { xNm: 12, yNm: 0 },
+    radiusSteps: 2,
+    laidTurn: 1,
+    hole: null,
+  };
+  const { chance, clips } = combinedKillChance(
+    [a, { xNm: 20, yNm: 0 }],
+    [swept, leftover],
+    "vlcc",
+  );
+  assert.equal(clips.find((c) => c.id === "swept")?.chance, 0);
+  assert.ok((clips.find((c) => c.id === "leftover")?.chance ?? 0) > 0);
+  assert.ok(chance > 0, `leftover must keep risk, got ${chance}`);
+});
+
+test("a TSS sweep does not erase fog that drifted onto the till", () => {
+  const tss: MineCircle = {
+    id: "tss",
+    center: { xNm: 10, yNm: 0 },
+    radiusSteps: 3,
+    laidTurn: 1,
+    hole: { radiusNm: radiusNm(3), expiresTurn: 8 },
+  };
+  const omani = [a, { xNm: 20, yNm: 0 }];
+  const till = [
+    { xNm: 0, yNm: 8 },
+    { xNm: 20, yNm: 8 },
+  ];
+  const swept = paintFogField(omani, [tss], "vlcc", omani);
+  const north = paintFogField(till, [tss], "vlcc", omani);
+  assert.ok(swept.chance < 0.1, `omani swept ${swept.chance}`);
+  assert.ok(
+    north.chance > 0.15,
+    `till still fog ${north.chance} b${north.black} w${north.white}`,
+  );
+});
+
+test("overlapping mines are union. Sweep one of two equal disks, about half remains.", () => {
+  const left: MineCircle = {
+    id: "left",
+    center: { xNm: 4, yNm: 0 },
+    radiusSteps: 0,
+    laidTurn: 1,
+    hole: { radiusNm: radiusNm(0), expiresTurn: 4 },
+  };
+  const right: MineCircle = {
+    id: "right",
+    center: { xNm: 16, yNm: 0 },
+    radiusSteps: 0,
+    laidTurn: 1,
+    hole: null,
+  };
+  const path = [a, { xNm: 20, yNm: 0 }];
+  const paint = paintFogField(path, [left, right], "vlcc");
+  const frac = paint.black / (paint.black + paint.white);
+  assert.ok(paint.white > 0, "hole paints white");
+  assert.ok(paint.black > 0, "leftover paints black");
+  assert.ok(frac > 0.35 && frac < 0.65, `union remaining ${frac}`);
+  assert.ok(paint.chance > 0, `lane fraction ${paint.chance}`);
+});
+
+test("deep water is the Omani TSS, not Qeshm-Larak", () => {
+  assert.ok(DEEP_WATER.length >= 6);
+  assert.ok(inDeepWater(lonLatToNm({ lat: 26.42, lon: 56.5 })), "TSS in");
+  assert.ok(inDeepWater(lonLatToNm({ lat: 26.10, lon: 56.35 })), "JMIC in");
+  assert.equal(inDeepWater(lonLatToNm({ lat: 26.82, lon: 56.31 })), false, "till out");
+  assert.equal(inDeepWater(lonLatToNm({ lat: 26.72, lon: 56.55 })), false, "Larak out");
 });

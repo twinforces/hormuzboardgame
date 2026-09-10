@@ -4,6 +4,7 @@ import { COMPANY } from "./balance.ts";
 import {
   accountantPick,
   captainsBalk,
+  ceoPick,
   emptyBooks,
   expectedVoyageUsdM,
   fleetSize,
@@ -180,11 +181,11 @@ test("naked 70 percent mine kill is a bad bet even with panic bonus", () => {
   assert.ok(ev < 0, `naked 70% should sit, ev ${ev}`);
 });
 
-test("reopen has five hulls and captains balk until you wait after blood", () => {
-  assert.equal(fleetSize("reopen-lane"), 5);
+test("reopen has twelve hulls and captains balk until you wait after blood", () => {
+  assert.equal(fleetSize("reopen-lane"), 12);
   assert.equal(fleetSize("one-transit"), 1);
   const lost = postVoyage(emptyBooks(), { live: false });
-  assert.equal(hullsLeft("reopen-lane", lost), 4);
+  assert.equal(hullsLeft("reopen-lane", lost), 11);
   assert.equal(captainsBalk({ crewSour: true }), true);
   assert.equal(captainsBalk({ crewSour: false }), false);
 });
@@ -208,7 +209,7 @@ test("a slightly negative door still beats paying idle to sit", () => {
 
 test("idle this week scales with leftover hulls and hits net", () => {
   assert.equal(idleThisWeek("one-transit", emptyBooks()), COMPANY.idleUsdMPerHull);
-  assert.equal(idleThisWeek("reopen-lane", emptyBooks()), COMPANY.idleUsdMPerHull * 5);
+  assert.equal(idleThisWeek("reopen-lane", emptyBooks()), COMPANY.idleUsdMPerHull * 12);
   const b = postIdle(emptyBooks(), 20);
   assert.equal(b.idleUsdM, 20);
   assert.equal(netUsdM(b), -20);
@@ -224,4 +225,35 @@ test("hull cost is a cited VLCC newbuild", () => {
   assert.ok(COMPANY.familyUsdM > 0);
   assert.ok(COMPANY.freightUsdM > 0);
   assert.ok(COMPANY.hullUsdM > COMPANY.freightUsdM * 5);
+});
+
+test("idle is the Oman-China week, not MEG-China TCE twice", () => {
+  assert.equal(COMPANY.idleUsdMPerHull, 2);
+  assert.ok(
+    COMPANY.idleUsdMPerHull < COMPANY.freightByBand.panic,
+    "idle per hull is smaller than a panic taxi. Hormuz TCE is the voyage.",
+  );
+});
+
+test("CEO waits the hot ribbon, never pays, and sails Oman when both risks are quiet", () => {
+  assert.equal(
+    ceoPick({ balk: false, omaniKill: 0.66, omaniShot: 0.32, waitingHulls: 0 }),
+    "wait",
+  );
+  assert.equal(
+    ceoPick({ balk: false, omaniKill: 0.1, omaniShot: 0.1, waitingHulls: 2 }),
+    "omani",
+  );
+  assert.equal(
+    ceoPick({ balk: false, omaniKill: 0.4, omaniShot: 0.05, waitingHulls: 3 }),
+    "wait",
+  );
+  assert.equal(
+    ceoPick({ balk: true, omaniKill: 0.05, omaniShot: 0.05, waitingHulls: 2 }),
+    "wait",
+  );
+  assert.equal(
+    ceoPick({ balk: false, omaniKill: 0.5, omaniShot: 0.4, waitingHulls: 6 }),
+    "omani",
+  );
 });

@@ -61,13 +61,14 @@ test("wait forces US holes so Omani risk is not stuck at 100%", () => {
     eng.state().draftClass,
   ).chance;
   assert.ok(next < start, `omani kill should drop ${start} -> ${next}`);
+  assert.ok(next > 0.05, `leftover mines must keep risk, got ${next}`);
   assert.ok(
     Math.round(next * 100) < 90,
     `displayed percent must leave 100, got ${Math.round(next * 100)}`,
   );
   assert.ok(eng.state().mines.length > 4, "Iran lays on the wait");
-  assert.match(eng.state().lastUsLine, /hole/i);
-  assert.match(eng.state().lastIranLine, /lays/i);
+  assert.match(eng.state().lastUsLine, /minelayer|Sweepers|escorts/i);
+  assert.match(eng.state().lastIranLine, /seeded/i);
 });
 
 test("Iran left the Qeshm-Larak till unmined so the north door is tempting", () => {
@@ -101,8 +102,44 @@ test("wait books idle on leftover hulls", () => {
   const eng = createEngine(1, "reopen-lane");
   assert.equal(eng.state().books.idleUsdM, 0);
   eng.dispatch({ type: "tanker-wait" });
-  assert.equal(eng.state().books.idleUsdM, COMPANY.idleUsdMPerHull * 5);
-  assert.ok(eng.state().log.some((line) => /Idle/.test(line)));
+  assert.equal(eng.state().books.idleUsdM, COMPANY.idleUsdMPerHull * 12);
+  assert.ok(eng.state().log.some((line) => /12 leftover × \$2M = \$24M/.test(line)));
+});
+
+test("a live toll voyage buys Iran one mine", () => {
+  const eng = createEngine(3, "one-transit");
+  eng.dispatch({ type: "tanker-toll" });
+  assert.equal(eng.state().books.minesBought, 1);
+  assert.equal(eng.state().books.iranSent, 1);
+  assert.equal(eng.state().books.omaniSent, 0);
+  assert.equal(eng.state().books.tollUsdM, COMPANY.tollUsdM);
+});
+
+test("two waits accumulate sweeps so Oman is a real bet, not 0% with red leftover", () => {
+  const eng = createEngine(1, "reopen-lane");
+  const start = combinedKillChance(omaniPath(), eng.state().mines, eng.state().draftClass).chance;
+  eng.dispatch({ type: "tanker-wait" });
+  eng.dispatch({ type: "tanker-wait" });
+  const next = combinedKillChance(omaniPath(), eng.state().mines, eng.state().draftClass).chance;
+  assert.ok(next < start * 0.5, `two waits should cut mine risk ${start} -> ${next}`);
+  assert.ok(next > 0, `unswept red still counts, got ${next}`);
+  assert.ok(eng.state().lastReport, "wait needs an in-your-face report");
+  assert.equal(eng.state().lastReport?.kind, "wait");
+  assert.match(eng.state().lastUsLine, /sank|escorts/i);
+});
+
+test("fog drift reaches the Iran till and a TSS hole does not zero it", () => {
+  const eng = createEngine(1, "reopen-lane");
+  const sweep = omaniPath();
+  for (let i = 0; i < 4; i++) eng.dispatch({ type: "tanker-wait" });
+  const iran = combinedKillChance(
+    iranPath(),
+    eng.state().mines,
+    eng.state().draftClass,
+    sweep,
+  ).chance;
+  assert.ok(eng.state().mines.some((m) => m.hole), "Navy swept the ribbon");
+  assert.ok(iran > 0.05, `drift should dirty the till, got ${iran}`);
 });
 
 test("Navy punches at most three holes a week, even on Packed TSS", () => {
@@ -123,7 +160,7 @@ test("scenario kits change hulls and fog, not a clock", () => {
   assert.equal(reopen.state().mines.length, 4);
   assert.equal(one.state().mines.length, 3);
   assert.ok(over.state().mines.length > reopen.state().mines.length);
-  assert.match(reopen.state().log[0] ?? "", /Five hulls/);
+  assert.match(reopen.state().log[0] ?? "", /Twelve hulls/);
   assert.match(one.state().log[0] ?? "", /One hull/);
   one.dispatch({ type: "tanker-wait" });
   assert.equal(one.state().phase, "tankerOrders");
@@ -163,7 +200,7 @@ test("one-boom-kills-insurance: a path through the dummy field collapses it", ()
   const eng = createEngine(1, "reopen-lane");
   const r = eng.dispatch({ type: "tanker-run", path: throughMines() });
   assert.equal(r.ok, true);
-  assert.equal(eng.debug().lastKillChance, 1);
+  assert.ok(eng.debug().lastKillChance > 0.5);
   assert.equal(eng.state().insurance, "collapsed");
   assert.ok(eng.state().contracts.value >= 3);
   assert.ok(eng.state().price > 82);
@@ -230,7 +267,15 @@ test("price rises with mine fog and a kill, falls with exits", () => {
   const start = safe.state().price;
   safe.dispatch({ type: "tanker-run", path: missSouth() });
   const afterExit = safe.state().price;
-  assert.ok(afterExit < start, "a live exit relieves P");
+  assert.ok(afterExit < start, `a live exit relieves P ${start} -> ${afterExit}`);
+
+  const parked = createEngine(3, "reopen-lane");
+  parked.dispatch({ type: "tanker-wait" });
+  const waited = parked.state().price;
+  parked.dispatch({ type: "tanker-run", path: missSouth() });
+  const flowed = parked.state().price;
+  assert.ok(waited > start, `a sit raises P ${start} -> ${waited}`);
+  assert.ok(flowed < waited, `leaving after a sit cuts P ${waited} -> ${flowed}`);
 
   const dead = createEngine(1, "reopen-lane");
   dead.dispatch({ type: "tanker-run", path: throughMines() });
