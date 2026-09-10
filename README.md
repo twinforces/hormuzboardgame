@@ -28,7 +28,9 @@ Receipts (annotated bibliography) live in [`src/model/receipts.ts`](src/model/re
 
 ## Status
 
-Architect mode. Contracts, ADRs, receipts catalog, and briefing UI are in. The playable sim is the next Implementer slice: tanker path vs expanding dummy circles, with unit tests, before factions.
+Playable Greece, Inc. sitting. You are a VLCC house. Accountants pick the fattest plus-EV door. Wait books idle. Out of hulls opens a scorecard with replay. Oil on this meter cannot print past the 2026 peak ($126).
+
+Auth off. Database off. localStorage for last scenario and debug.
 
 Design docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/ADR.md`](docs/ADR.md), [`docs/MASTER-DESIGN.md`](docs/MASTER-DESIGN.md).
 
