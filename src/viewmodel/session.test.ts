@@ -295,5 +295,9 @@ test("mine-warfare session is US seat: sweep and strike, tanker doors stay shut"
   const hole = s.labels().spiderHoles[0]!;
   const kill = s.usStrike("spider-hole", hole.id);
   assert.equal(kill.ok, true);
-  assert.equal(s.labels().spiderHoles.length, 0);
+  assert.equal(
+    s.labels().spiderHoles.some((h) => h.id === hole.id),
+    false,
+    "the hole you struck is gone. A new one can still light if traffic bled.",
+  );
 });

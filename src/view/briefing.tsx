@@ -40,7 +40,7 @@ const ADRs = [
   ["017", "Player runs a VLCC house. Books: freight, hull writeoff, families."],
   ["018", "Greece, Inc. Twelve hulls. Freight follows P. Captains balk after blood. Oil is the trader's."],
   ["019", "War-risk checkbox before a door. Tolls on the books. Loss dialog names mine kill."],
-  ["020", "Mine warfare is a second board. Iran tab strikes. Strait tab shows traffic."],
+  ["020", "Anti-Mine Warfare is the US sitting. Strikes tab inland. Strait tab shows traffic. Iran as Mine Warfare comes later."],
 ];
 
 export function BriefingPage() {

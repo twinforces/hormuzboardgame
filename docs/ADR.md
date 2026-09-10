@@ -161,6 +161,15 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Decision:** Standing Iran nodes are six nouns: mine factory, drone factory, mine warehouse, drone warehouse, radar, port. Spider holes are revealed, not a seventh lesson on the board. Radar multiplies drone shot only (`ATTACK.radarBlind`). Boats and mine fog ignore it. A ship hit is (1) a port strike on pierside hulls or (2) a tanker graze or shot-kill. That reveal shows the stash integers. The hole is the week's US verb. Leave it alive into the next resolve and the stash dumps extra TSS mines plus a Gulf drone tick (`PRICE.gulfDrone`).
 - **Why:** One "factory" button taught the wrong industrial map. Radar as a mine sweeper taught the wrong physics. Spider holes are the whack-a-mole that starts when a hull gets hit, not a labeled pit on day one.
 - **Rejected:** One shared plant. Radar shrinking fog circles. Numbering Factory / Warehouse / Radar / Port / Hole on the board.
+- **Superseded in part:** ADR-022. A mine kill also reveals. The hole is blood in the water, not a launch cell.
+
+## ADR-022. US sitting is Anti-Mine Warfare. A lost hull lights a spider hole.
+
+- **Status:** accepted
+- **Context:** User: US is Anti-Mine Warfare, Iran (later) is Mine Warfare. A ship was lost and no spider hole showed. The prior rule hid the hole on a mine kill because mines drift.
+- **Decision:** Sitting label is Anti-Mine Warfare. Scenario id stays `mine-warfare`. Any traffic hull that dies or grazes reveals a spider hole, mine or shot. Port strike still reveals. One live hole at a time.
+- **Why:** The player asked for a mole after a hull got hit. A mine kill is still a hit. Hiding the hole taught a physics footnote and looked like a bug.
+- **Rejected:** A second picker named Mine Warfare before Iran is a human seat.
 
 ## Open questions
 

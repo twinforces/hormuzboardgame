@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-10 - Anti-Mine Warfare. A lost hull lights a spider hole.
+
+- **What:** US sitting label is Anti-Mine Warfare. A traffic hull that dies or grazes reveals a spider hole, including a mine kill. Iran as Mine Warfare is later.
+- **Why:** User: US is Anti-Mine Warfare, Iran is Mine Warfare. A ship was lost and no hole showed.
+- **How:** `SCENARIO_KIT` label. `shipHit` on any loss or graze. Spent pits recycle. ADR-022.
+
 ## 2026-09-10 - Circles on the Iran map. Continue row. US oil scale.
 
 - **What:** Strike chips no longer sit on the photo. Each node is a clickable circle with an emoji and dark text on a cream chip. Continue is Go to strikes / Go to strait side by side. A live spider hole highlights strikes. An empty board highlights the strait. US traffic needs ten live hulls to match one tanker-house exit. A ship hit still spikes the same.

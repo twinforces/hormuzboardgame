@@ -103,7 +103,7 @@ export const COPY = {
   scenarioOne: "One hull. Idle still ticks. Send it when expected is fat.",
   scenarioOverplay: "Five hulls. Packed ribbon. Navy sweeps three patches a week. Red remains.",
   scenarioMine:
-    "You are US. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Click a circle or sweep the ribbon.",
+    "You are US. Anti-mine warfare. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Click a circle or sweep the ribbon.",
   scenarioAsk: "Which sitting?",
   tabIran: "Strikes",
   tabStrait: "Strait",
@@ -118,7 +118,7 @@ export const COPY = {
   nodeDown: "Down",
   warHint: "Click a circle to strike, or sweep the ribbon. Traffic moves after you act.",
   warLock:
-    "You are US. One hundred hulls. Ten companies. Some count EV. Some wait for a sweep. Once the till is the hotter mine field, they flip.",
+    "You are US, anti-mine warfare. One hundred hulls. Ten companies. Some count EV. Some wait for a sweep. Once the till is the hotter mine field, they flip.",
   trafficBooks: "Traffic",
   trafficNote: "One hundred traffic hulls, ten companies. You do not own them. Tolls still buy mines.",
   trafficWait: "Traffic sat.",
@@ -179,7 +179,7 @@ export const SCENARIO_KIT: Record<
   "reopen-lane": { label: "Reopen the lane", blurb: COPY.scenarioReopen },
   "one-transit": { label: "One transit", blurb: COPY.scenarioOne },
   overplay: { label: "Packed TSS", blurb: COPY.scenarioOverplay },
-  "mine-warfare": { label: "Mine warfare", blurb: COPY.scenarioMine },
+  "mine-warfare": { label: "Anti-Mine Warfare", blurb: COPY.scenarioMine },
 };
 
 /** Twelve leftover hulls times $2M is $24M. Not a flat $2M sit. */

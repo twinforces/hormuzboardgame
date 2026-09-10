@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Mine warfare sitting is on the board. Circles with emojis. Dark labels. Continue row highlights the spider hole or the empty board. US oil flow is ten hulls to one tanker-house exit. A ship hit still spikes the same.
+US sitting is Anti-Mine Warfare. A lost or grazed hull lights a spider hole, mine or shot. Circles with emojis. Continue row highlights the hole. Iran as Mine Warfare is later.
 
 ## Next
 
@@ -21,4 +21,4 @@ Mine warfare sitting is on the board. Circles with emojis. Dark labels. Continue
 - Do not let accountants pick the door.
 - Do not print Mine factory, Drone factory, Warehouse, Radar, Port as a numbered plan.
 - Do not let radar shrink mine circles.
-- Do not reveal spider holes on a mine kill.
+- Do not add an Iran Mine Warfare picker until Iran is a human seat.

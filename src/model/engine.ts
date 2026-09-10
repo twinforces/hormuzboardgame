@@ -234,9 +234,9 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
   function revealSpider(s: GameState): GameState {
     if (humanSeat(s.scenario) !== "us") return s;
     if (s.spiderHoles.some((h) => h.alive)) return s;
-    const used = new Set(s.spiderHoles.map((h) => h.pit));
-    const pit = SPIDER.pits.findIndex((_, i) => !used.has(i));
-    if (pit < 0) return s;
+    // Cycle coastal cells. Four pits is a map, not a sitting cap.
+    // One live hole at a time is the cap (ADR-022).
+    const pit = s.spiderHoles.length % SPIDER.pits.length;
     const loc = SPIDER.pits[pit]!;
     const hole: SpiderHole = {
       id: `pit-${s.turn}-${pit}`,
@@ -253,7 +253,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       mines: hole.mines,
       drones: hole.drones,
     });
-    const alreadyNamed = s.lastUsLine.includes("spider hole");
+    const alreadyNamed = s.lastUsLine.includes("spider hole showed");
     return {
       ...s,
       spiderHoles: [...s.spiderHoles, hole],
@@ -741,7 +741,8 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       if (cur.books.hullsLost > lost0) {
         wave.lost += 1;
         lastCause = cur.lastLoss?.cause ?? "mine";
-        if (lastCause === "shot") shipHit = true;
+        // ADR-022: a mine kill is still a hit. The hole is blood in the water, not a launch cell.
+        shipHit = true;
       } else {
         wave.live += 1;
         if (cur.books.damageUsdM > dmg0) shipHit = true;

@@ -1,6 +1,6 @@
-# Mine warfare sitting
+# Anti-Mine Warfare sitting
 
-Why this exists: the strait sitting is tanker-vs-circles. Mine warfare is a **different board**. You are US or Iran. Traffic is scripted. You do not steer Greece, Inc.
+Why this exists: the strait sitting is tanker-vs-circles. Anti-Mine Warfare is a **different board**. You are US. Iran as Mine Warfare is later. Traffic is scripted. You do not steer Greece, Inc.
 
 ## Two boards, not one zoom
 
@@ -60,7 +60,7 @@ Warehouse before radar because leftover stores still sail if the plant is dead a
 
 ## Spider holes
 
-A ship hit reveals one coastal cell: pierside strike, or a tanker that took a drone/boat graze or rare shot-kill. The tooltip is the stash (mines, drones). Strike it this week. That eats the US verb. Leave it for next week's resolve and the stash dumps extra TSS mines plus a drone raid on another Gulf state. Fear, not occupation. Radar does not stop the mine dump. A mine kill does not reveal a hole. Mines drift. There is no launch cell to geolocate.
+A ship hit reveals one coastal cell: pierside strike, or a tanker that took a graze, a shot-kill, or a mine. Blood in the water is the cue. The tooltip is the stash (mines, drones). Strike it this week. That eats the US verb. Leave it for next week's resolve and the stash dumps extra TSS mines plus a drone raid on another Gulf state. Fear, not occupation. Radar does not stop the mine dump. Coastal cells recycle. One live hole at a time.
 
 
 ## Magazines (v1 bars)
@@ -87,5 +87,5 @@ No physics sim. A strike on a factory cuts that refill rate only. A strike on a 
 - Do not put Khojir on the Hormuz photo by lying about lat/lon.
 - Do not fill STEEL.
 - Do not let radar shrink mine circles.
-- Do not reveal spider holes on a mine kill.
+- Do not add an Iran Mine Warfare picker until Iran is a human seat.
 
