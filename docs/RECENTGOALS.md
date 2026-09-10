@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-US sitting is Anti-Mine Warfare. A lost or grazed hull lights a spider hole, mine or shot. Circles with emojis. Continue row highlights the hole. Iran as Mine Warfare is later.
+US sitting is Anti-Mine Warfare (`57d4003`). A lost or grazed hull lights a spider hole, mine or shot. Circles with emojis. Continue row highlights the hole. Iran as Mine Warfare is later.
 
 ## Next
 

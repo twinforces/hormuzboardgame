@@ -5,6 +5,7 @@
 - **What:** US sitting label is Anti-Mine Warfare. A traffic hull that dies or grazes reveals a spider hole, including a mine kill. Iran as Mine Warfare is later.
 - **Why:** User: US is Anti-Mine Warfare, Iran is Mine Warfare. A ship was lost and no hole showed.
 - **How:** `SCENARIO_KIT` label. `shipHit` on any loss or graze. Spent pits recycle. ADR-022.
+- **Hash:** `57d4003`.
 
 ## 2026-09-10 - Circles on the Iran map. Continue row. US oil scale.
 
