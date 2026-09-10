@@ -1,0 +1,1542 @@
+# nd-IwLVah12j6A.txt
+# title: 7 Nights, 300 Targets: How the US Navy Cracked Open Hormuz
+# channel: Navy Decoded
+# url: https://www.youtube.com/watch?v=IwLVah12j6A
+# retrieved: 2026-09-09
+# path: paste-html (YouTube transcript panel dump)
+# complete: unique-cycle-only
+# last-timestamp unique cycle: 1:40:23
+# dump-length: 11:12:29 looping
+# notes: User pasted YouTube HTML transcript panel, 4.9 MB, 5096 segments.
+#   The panel is NOT an 11-hour unique watch. It loops the same ~1h40m
+#   compilation six times. Unique body kept here. Repeats discarded.
+#   Cycle map:
+#     0:00-14:25  shadow-boarding / Wen Yao (already full as nd-x5kiAuGmlss)
+#     14:25-32:59 spotting / Triton-Global Hawk picket (new flavor)
+#     33:02-46:xx escort-trap / 90 percent / do not enter (already full)
+#     47:36-1:04  A-10 Warthog vs FAC swarm (new)
+#     1:06-1:21   Greater Tunb / BLU-138 bunker buster (new)
+#     1:22-1:40   visibility-bolt (already full as nd-Rwd1D6pA1nY)
+#   ASR: Thran=Tehran, Wartthog=Warthog, Greater Tum=Greater Tunb,
+#   BAM's D=BAMS-D, Macron=Makran, EEGI=Aegis, Seah Hawk=Seahawk,
+#   uncrrewed=uncrewed, sighteline=sightline.
+#   Honest conflict: 120 Iranian warships here vs 17 pierside vs 50/60 vs 100-plus.
+#   Do not retune from 120 hulls, A-10 $19k/hr, 1,500 FAC, or BLU-138.
+#   Do not treat the 11-hour loop as extra evidence.
+
+0:00
+A flight of Yankee Venoms lifted off the deck of USS Boxer. Viper gunships riding shotgun above them flew out toward a
+0:07
+super tanker running at full speed and hung in the air directly over her deck.
+0:12
+Marines went down the ropes. A few minutes later, the ship belonged to them. Her name was Wen Yao, a link in
+0:19
+the shadow fleet Thran uses to move oil around the sanctions that are supposed to strangle it. And she had just been taken alive.
+0:27
+Notice what did not happen. No missile was fired. No round was put through the hull. Inside that ship sat 300,000 tons
+0:35
+of Iranian fuel oil. One warhead. And the whole Gulf of Oman becomes a slick of burning crude. Yet the ship was
+0:43
+seized intact. The oil still aboard, the crew still aboard, the papers still aboard. The Navy did not destroy her. It
+0:51
+took her. It sounds like a routine inspection. It was nothing of the kind.
+0:55
+You could not shoot this ship. You could not let her go. And right up to the last minute, you could not even prove whose ship she was. She changed her name and
+1:04
+swapped her flag in the middle of the chase. Untangling all of that without losing her took the Marines a matter of
+1:11
+minutes. This is Navy decoded. The headline you already have. What we are after is the method underneath it. So,
+1:18
+we are going to walk through how the Marines boarded a moving ghost ship loaded with fuel that they were forbidden to sink. And by the end, you
+1:26
+will see the odd fragility hiding inside a ship that was supposed to be untouchable.
+1:32
+Start with what this ship actually is, because that is where the whole problem comes from.
+1:40
+By mid July, after a spring and summer of escalation, the United States had a full naval blockade sitting across the straight of Hormuz, the quote steel wall
+1:49
+in force since the 14th, Iran was shut out of the legal oil market. For central command, that turned the job into something harder than simply stopping
+1:58
+ships because the ships were not all alike. And what you did to one could be exactly wrong for the next. A country under sanctions does not sell its oil
+2:06
+with warships. It sells it with disguise. That is what a shadow fleet is. Merchant vessels that look legitimate on paper, but are run to
+2:14
+vanish from the tracking systems the West relies on. Around two dozen Iran linked tankers were working the waters near Hormuz, and most of them were
+2:22
+empty. Decoys run through the straight to soak up surveillance so no one could tell which hull actually mattered. Wen Yao was the one that mattered. Now hold
+2:30
+the problem the way central command held it because every familiar answer was already ruled out. Shooting her was out.
+2:37
+A few days earlier the Navy had put a Hellfire missile into an empty shadow tanker Belma and wrecked her engine clean because an empty hull has nothing
+2:45
+to lose. But Wen Yao carried 300,000 tons of fuel oil. Drive a warhead into that and you do not seize anything. You
+2:53
+get an environmental catastrophe, a burning crew, and the destruction of the very cargo you were trying to keep from Tyrron. Her cargo was her armor. And
+3:01
+yet, she could not be waved through either. Every run by a ship this size means 2 million barrels delivered, tens of millions of dollars feeding the
+3:09
+Revolutionary Guard. And letting her pass would prove the disguise works and open the lane for the two dozen behind her. Ordering her to stop was no better.
+3:17
+She was ignoring the radio and a fully loaded super tanker does not come about because a warship told her to. So cross off the missile, cross off letting her
+3:25
+go. Cross off the radio. One option is left standing and it is not a clever one. Put people on her deck because nothing else works from here on. This is
+3:34
+the Marine story and it opens on a problem they had to solve before anyone was even allowed to touch her. Nobody was sure whose ship she was.
+3:47
+Under the law of the sea, a ship flying a national flag is treated as a floating piece of that nation's territory. Fire on a vessel flying the flag of San
+3:55
+Marino, and you may have just handed a third country a reason for war. So before anyone lays a hand on a ship, the United States has to establish one
+4:04
+thing. Whose ship is this? And Wen Yao was engineered so that no one could pin that down. On the run, she kept changing
+4:12
+her broadcast identity. First she was Lanjing. Then the signal read Ajin, then Azin. She flew the flag of San Marino, a
+4:20
+landlocked country with no coastline at all. A red flag so obvious it was almost an insult. She spoofed her position.
+4:28
+This was not really a ship. It was a floating identity that put on a new mask every few hours. And here the disguise backfired because nobody could say for
+4:36
+certain whose ship she was, the Navy could not just call her Iranian and open fire. Central Command had to treat this as a flag verification boarding, which
+4:44
+meant the only way to settle the question was to put a marine on that deck, open her papers, and read them for himself. Iran's own camouflage handed
+4:52
+the whole problem straight to the boarding force. Then came the last card.
+4:56
+As the helicopters closed in, the crew suddenly hauled down the San Marino flag and ran up the flag of the Islamic Republic of Iran. It was a final gamble.
+5:05
+I am Iranian territory now. Touch me and it is war between nations. At the exact moment the mask came off and the ship confessed who she was, the Marines were
+5:14
+already over her head. The disguise had bought her everything right up until it didn't. So, the method chose itself.
+5:20
+Board her. The trouble is that boarding a super tanker doing full speed is its own hard problem. And it happens the United States had a force sitting right there built for exactly this.
+5:33
+This was never a job for a Coast Guard cutter. The water was thick with threats, anti-ship missiles, one-way attack drones, the Revolutionary Guard's
+5:41
+fast attack boats. So, the mission went to the Boxer Amphibious Ready Group and the 11th Marine Expeditionary Unit, a
+5:48
+Marine air ground task force that is self-contained, carries the firepower of a small brigade, and floats on station
+5:56
+ready. At the center of it sits USS Boxer, a Wasp class amphibious assault ship. A warship the size of a small
+6:04
+aircraft carrier with a fulllength flight deck up top and a floodable well deck in her belly. She is the reason this force can operate on its own. an
+6:12
+airfield, a barracks, and a command post welded into one hull. When Wen Yao was picked out for boarding, it was Boxer that the plan was built around, and
+6:21
+Boxer the helicopters would launch from and come home to. The Marines who would step on to Wen Yao came from Battalion Landing Team 35, the ground element of
+6:30
+the MEU. Their trade is VBSS, visit, board, search, and seizure. And they drill it constantly. Live fire on a
+6:39
+pitching deck, close quarter shooting in the dark. rope work, the whole grammar of taking a ship away from the people on it. Carrying them were the Yankee Venoms
+6:48
+of the MEU's own aviation squadron, Marine Medium Tiltrotor 163 Reinforced, the utility helicopter built to drop a
+6:56
+squad exactly where it needs to be with Viper Gunships riding escort overhead.
+7:01
+None of this was thrown together on the day. Every aircraft, every rifle belonged to one self-contained task force that had trained for precisely this.
+7:12
+So, how do you get onto her? Not up the side. Climb a super tanker from a boat and you are asking for trouble. A hook ladder against a sheer steel wall that
+7:20
+can stand 90 ft out of the water. A crew above you cutting the line or turning a fire hose down on your head. And every second of the climb spent slow and
+7:29
+exposed with the element of surprise long gone. The side of the ship is the one direction she can actually defend.
+7:35
+So, they came from the one direction she could not defend. Straight down out of the sky. That is vertical envelopment.
+7:41
+You skip the sides entirely and drop onto the top. The same high steel wall that makes her impossible to climb gives you an enormous flat main deck to land
+7:50
+on. The venoms lifted off Boxer's flight deck, crossed the open water to the tanker, and came into a hover over her deck and her bridge with Boxer holding
+7:58
+back over the horizon as the command post running the whole thing. And the Marines went down the ropes onto a ship still making full speed. Fast roping,
+8:07
+the standard way to board a vessel, 30 seconds or so from rope to boots. And she could do nothing about it. A loaded super tanker needs better than a nautical mile just to change heading.
+8:16
+She cannot dodge a helicopter. So to the men above her, she sat there almost still. The Viper stayed up the whole time, guns ready for any shoulder-fired
+8:25
+missile the guard might have waiting nearby. From the first sound of rotors to the first boot on steel was a handful of seconds. The crew barely had time to
+8:32
+register what was happening before there were Marines on the deck. Physically, the hard part was over. Except getting aboard was never the dangerous part.
+8:40
+That was the minute after. There were now armed Marines standing on a ship full of fuel with a crew somewhere below them who could still try to wreck her.
+8:48
+And that is where the job actually started.
+8:52
+Now the boots are on the steel. And here is what the Marines could not see. A super tanker's main deck runs the better
+8:58
+part of a,000 ft. A long field of pipe work, tank hatches, and blind corners with a superructure and an engine plant
+9:07
+buried deep at the stern. And somewhere in it, or below it, is a crew whose intentions no one knows. Are they
+9:15
+unarmed merchant sailors who will raise their hands? Is there a security detail waiting behind a hatch? Is anyone already at the bridge or already
+9:24
+climbing down into the hull? The force that came out of the sky knows the ship's shape from a diagram. It does not
+9:31
+know what is alive inside her. Every door is a question, and the answers are being decided in real time by people the
+9:38
+Marines cannot yet see. That uncertainty is why they do not try to hold the whole ship. They drive for two points and
+9:46
+nothing else. One team moves for the bridge, the ship steering, because whoever holds it decides where 300,000
+9:53
+tons goes, and until it is taken, she can still run for Iranian waters. But it is the second point that turns the clock
+10:01
+into a threat. Deep in the hull is the engine room, and with it, the sea valves, the sea the Kingston
+10:08
+valves that open below the water line. A crew that has decided it would rather sink than be captured needs only to reach those valves and throw them open.
+10:16
+And the whole ship, cargo and papers and all, starts down toward the bottom of the Gulf of Oman. Scuttling is one of
+10:24
+the oldest tricks at sea, and the Marines coming through the upper decks have no way of knowing whether someone is already down there, already turning a
+10:31
+valve, while they clear a passageway one blind corner at a time. So, the whole thing is run in the dark.
+10:40
+Both teams push inward at once toward the bridge and toward the engine spaces through a ship whose layout they have studied and whose crew they have never
+10:47
+met. Every closed hatch a place someone could be waiting. This is why speed matters so much. Not for show, but
+10:55
+because every second they are still moving is a second a hand could be down in the engine room reaching for a valve.
+11:01
+Get the engine room and the ship can no longer be sunk from within. Get the bridge and gather up the crew and she stops fighting back at all.
+11:09
+What is left is the thing they came for.
+11:12
+The ship, her cargo, and her people. All still in one piece, and all now in American hands. That is the whole
+11:19
+difference from Belma. A hole you can question is worth far more than one you have put on the bottom. Only now could anyone answer the question the whole
+11:27
+operation had started with. Whose ship is this? The Marines pulled the registration papers and held them up against the trail of broadcast names and the flag that had just gone up the mast.
+11:38
+The two did not match, and the mismatch was the answer. An Iranian ship wearing someone else's paperwork. Then one last
+11:45
+thing to settle. The reason this hull was worth boarding out of two dozen. Was she carrying or was she a decoy? They
+11:53
+checked the tanks full. 300,000 tons of Iranian fuel oil. A real link in the network. And now there was a marine standing on her deck who could say so.
+12:03
+And that is why she was taken alive instead of sunk. A ship on the seabed tells you nothing. A captured one opens her logs. Her communications with the management shop in Dubai that ran her.
+12:13
+The manifest and the fingerprints of shipto- ship transfers. Every page a thread back into the network behind her.
+12:21
+Stopping this one cargo was never the point. Getting the ship to give up the others was give the shadow fleet its due first.
+12:32
+This is a clever system. Spoofed signals. flag hopping, decoy holes. It had beaten the first blockade, slipping dozens of ships through the ring. It was
+12:40
+built by people who understood precisely the weaknesses of the force sent to watch them. This was not stupidity being punished. But every one of those
+12:49
+defenses, the smeared identity, the sheer size, the full tanks, was built against the attack she expected, a missile or a satellite watching from far
+12:57
+off. She had no answer at all for a squad standing on her own deck reading her papers. And that is really the whole story. America did not reach for a
+13:06
+bigger weapon. It stopped playing the game the ship was built to win and switched to one she had never been designed to survive. A boarding and then
+13:13
+a search. You could see the same thinking across the whole of the 16th of July. The blockade handled three ships that day and each got treated
+13:21
+differently. Wen Yao boarded and kept because she was worth too much to burn.
+13:25
+Belma empty simply put down. Three more turned back over the radio without anyone laying a hand on them. The tool matched the ship in front of it, which
+13:34
+is what an enforcement operation looks like once it has grown up. Taking Wao settled nothing larger. Of course, she is one link and the network behind her
+13:42
+is still out there, but it showed the link could be reached and boarded and read, which brings us back to where we started.
+13:52
+So, USS Boxer and the Marines never really defeated Wen Yao. They just changed the way they came at her. Every easy answer was gone. She was too loaded
+14:00
+to shoot, too valuable to wave through, too slippery to name from a distance.
+14:05
+And that left one road. Work out who she was, come down on her from above, take the wheel and the engine before her crew could sink her, and then read her rather
+14:13
+than wreck her. Everything that made her safe from a missile is exactly what left her open to men coming out of the sky.
+14:19
+It was never about a heavier weapon. It was about coming at the ship from the one angle she was not built to defend.
+14:25
+And here is the part the whole operation quietly leaned on. None of it started until someone had already found her.
+14:31
+Picked this one hull out of two dozen that looked just like her. Half of them empty and running as decoys to waste exactly that effort. The boarding was
+14:38
+the easy half. The hard half is finding a ship that spends every hour of every day trying not to be found. And that is a completely different kind of work. No
+14:47
+boots or ropes, just sensors and patience and a watch wide enough to catch something that does not want to be caught. That is where we go now. Not how
+14:55
+the Navy takes a hidden ship, but how it spots one in the first place. And the strange, sleepless machines it now leaves out on a stretch of water it does
+15:03
+not trust. Because none of what the Marines did counts for anything until something has been seen. And seeing it is the real problem. And it does not
+15:11
+only matter in this Gulf. To watch how the Navy actually solves it, we leave these waters entirely and pick up a sea on the far side of the world that it trusts even less.
+15:22
+Somewhere in the dark water off the coast of Cuba tonight, a low gray shape is moving against the swell, driven by nothing but wind. Nobody is aboard it. A tall, stiff wing leans into the breeze.
+15:34
+And above it, a single lens turns slowly through the black, sweeping the horizon and never once closing. It arrived weeks
+15:43
+ago. It will still be here weeks from now. And every vessel that crosses this water, lit or dark, loud or silent,
+15:50
+passes in front of that lens without ever knowing it is there. Hold that picture. We are coming back to it.
+15:58
+Because 90 mi off the coast of Florida sits Cuba. And lately, the American press has carried a claim about that island that it has quietly stocked up on
+16:06
+hundreds of one-way attack drones. Sit with what that would mean. Against a billiondoll warship comes something a few thousand dollars can build.
+16:16
+Answering to no one that cannot be reasoned with, warned off, or bought, and does not care that it will not survive the trip. Ending is the entire
+16:25
+plan. And it never comes alone. A weapon like that turns a calm horizon into a question you can never fully close.
+16:34
+Havana calls the whole report an invention, an accusation dressed up as intelligence. We are not going to tell you who is right because we honestly
+16:42
+cannot. And by the end of this, that may not even be the question that matters.
+16:46
+Because a navy does not get to wait and find out. It has to be ready for everything at once. The threat that is real and the threat that is only a
+16:55
+rumor. The one it can name and the one it has never seen. Whether any of it ever actually comes or not, that is the real problem. And it is brutally hard.
+17:05
+How do you guard a stretch of dangerous water against a threat that may not even exist, that could come from any bearing on any night for months on end without
+17:14
+ever once looking away? The answer the United States Navy reached for is not a warship. It is that gray shape from the
+17:22
+opening, the one still out there in the dark watching. It is called the sail drone Voyager, and it is the strangest machine the Navy has ever trusted with a
+17:31
+dangerous sea. A robot that carries no weapon at all.
+17:35
+and with it the whole silent net the Navy's fourth fleet has strung across the Caribbean.
+17:42
+Start with why this is hard at all.
+17:44
+Because the difficulty is not really about the threat. It is about the size of the map. The Caribbean is enormous.
+17:51
+Well over a million square miles of open water threaded with shipping lanes and choke points right on the doorstep of the United States. Across all of it
+17:59
+moves traffic that has every reason to stay quiet. Some smuggling, some sanctioned cargo running silent. And some of it may not be on the surface at
+18:06
+all. A shape moving slow and deep beneath the swell. The kind of thing that has spent a century learning how to not be there. From a watchstander's
+18:14
+chair, they all begin the same way as a contact that does not want to be a contact. Now, separate this from the Hollywood version of the story. The hard
+18:21
+part was never the shooting. Give the Navy a target, a real bearing, a real range, a confirmed identity, and ending the threat is almost the easy step. The hard part is everything before that.
+18:31
+finding the one contact that matters inside all that water before it reaches the shore. And this is where the geography stops being a backdrop and
+18:38
+becomes the actual enemy. Any fleet has a finite number of holes and each one can only watch the patch of ocean it is sitting in. Spread even a strong force
+18:46
+across a million square miles and at any moment the overwhelming majority of that sea has no one looking at it at all. Not because anyone failed, but because the map is simply bigger than the force.
+18:56
+Every unwatched square mile is an open door. Draw the sensor coverage of an entire fleet on a chart of the Caribbean, and the shaded circles barely stain the blue. A scatter of small
+19:05
+patches inside an ocean of white. That white is where every threat, real or rumored, is designed to live. It is not a weapon. It fires nothing and threatens
+19:13
+no one on its own. It is simply the water no one is looking at. And it is the largest thing on the map by far. You cannot outshoot a blank space. You can
+19:21
+only shrink it, cover more of that white for far longer than a fleet of crude ships ever could, which is a problem no warship can solve. But a different kind of machine might.
+19:35
+That machine is the Voyager, and everything else in the story is built on top of it. It is a strange looking thing. A narrow hull about 33 feet long
+19:45
+riding low in the water with a rigid wing standing roughly 21 ft above the deck where a sail would be. That wing is
+19:52
+not decoration. It is the engine. The Voyager moves on wind alone, tacking across the sea at a walking pace of
+19:59
+about 5 knots. While solar panels along the deck feed the only thing aboard that actually needs power, the sensors. There
+20:06
+is no engine to fuel and nothing aboard to run dry. And because it spends almost nothing to keep moving, it can stay out on the water for close to 100 days at a
+20:16
+time before anyone has to think about it again. 5 knots sounds slow, and it is, but slow is the point. The Voyager was
+20:23
+never built to chase anything. It is built to see and to stay. To sit in a piece of ocean and simply refuse to leave. Speed would burn the energy that decides how long it can hold its post.
+20:34
+In this fight, the marathon is what wins. So, what does it see with a high-powered radar sweeping thousands of square miles a day? Infrared cameras on
+20:43
+a steerable mount that see straight through fog and darkness when a human lookout would see nothing at all. A receiver tuned to the automatic
+20:51
+identification signals that honest ships broadcast to announce themselves. And below all that, a quieter set of instruments measuring the water itself,
+20:59
+temperature, salinity, the acoustic structure of the sea. Hold on to that last one. It looks like a footnote right now. It is going to matter enormously in a few minutes.
+21:10
+But a single sensor is only as good as what it does with what it sees. And this is where the real engineering hides. A fleet of these machines generates an
+21:19
+ocean of data, terabytes a day, far more than any room full of sailors could ever watch in real time. Throw all of it up a satellite link and you have not solved
+21:27
+the problem. You have just moved the traffic jam. So sail drone put the intelligence on the boat. The cameras and radar run their own onboard AI,
+21:35
+sorting contacts right there at the edge. A fishing twler here, a fast boat behaving strangely there, and throwing away almost everything. Only the handful
+21:44
+worth a second look gets sent home with a precise position attached. The machine does not drown its own operators. It hands them a short list, and the list
+21:52
+works. During an operation called Windward Stack, 10 of these voyagers were turned loose on the Caribbean for a year and a half. And the numbers that
+21:59
+came back were hard to argue with. More than 130,000 nautical miles sailed, 2,700 cumulative days on mission.
+22:08
+116,000 separate contacts detected, 43 a day for every single boat. And of those, 98,000 were running without broadcasting
+22:17
+any identification signal at all. 98,000 things actively trying not to be seen.
+22:22
+Seen anyway. That number is the whole argument in one line because being invisible was the entire plan. And it is not only smugglers that number caught.
+22:31
+In the summer of 2024, that same net of wind powered robots quietly shadowed three Russian warships as they moved through the waters near Cuba, tracking
+22:40
+major surface combatants of arrival power with machines that cost a rounding error by comparison. This is not a science project. It is a working picket line, and it is already on the water.
+22:51
+But for all of that, the Voyager has one hard limit, and it is a limit written by physics, not by budget. Its radar sits about 20 ft off the surface and from 20
+23:00
+ft up the horizon is close. A sensor can only see as far as the curve of the Earth allows and low down that curve
+23:07
+arrives fast. The Voyager owns the water around it. To own the water beyond it, the Navy has to lift the eye off the sea.
+23:16
+This is where a simple piece of geometry takes over and it is worth doing the math out loud because it explains the whole shape of the air campaign. The
+23:24
+distance to the horizon grows with the square root of your height. A radar on a 20ft mast reaches barely a dozen nautical miles before the planet itself
+23:33
+curves out of reach. Raise that same radar up to 50,000 ft and the horizon does not creep out a little. It leaps
+23:41
+out past 270 nautical miles in every direction at once. You did not build a better sensor. You just stopped letting
+23:49
+the curve of the Earth hide things from it. So, the Navy took the same instinct behind the Voyager, a patient eye that never blinks, and flew it into the
+23:57
+stratosphere. The machine that does this is the MQ4C Triton, a long-winged, high alitude drone that cruises above 50,000
+24:05
+ft for a full day at a stretch. Sensors on task roughly 80% of the time, it is a loft. From up there, it looks down. Its
+24:13
+radar and cameras cutting through cloud to sweep enormous stretches of sea in a single pass, reaching the low, distant
+24:20
+contacts the Voyager's horizon could never touch. Think of a watchman on a beach. He sees to the edge of the water and no farther. Put that same watchman
+24:28
+on a mountain and the edge runs to the sky. Except here, the mountain flies and it never has to land.
+24:37
+And the Navy learned how dangerous this game is the hard way. In June of 2019, over the straight of Hormuz, Iran fired a surfaceto-air missile and brought down
+24:46
+one of these highaltitude drones, a BAM's D Global Hawk, the direct predecessor of the Triton. A machine flying that high feels untouchable,
+24:54
+right up until it is reminded that a capable adversary can reach it. So, the fleet does not fly the Triton over hostile ground and dare anyone to shoot.
+25:03
+It flies it at the edge of international airspace and lets the sensor do the crossing, reaching its radar over a coastline without ever putting the
+25:10
+airframe above it. Respect the reach of the other side and you design around it.
+25:15
+But altitude buys you one thing only. It tells you a contact is there. It does not tell you what it is. And a screen full of anonymous dots is not readiness.
+25:24
+It is anxiety. A hundred unknowns you know nothing about. So the last piece of this net is not another watcher sitting back and looking. It is the machine that
+25:32
+flies straight up to the dot and asks it its name.
+25:37
+The Voyager and the Triton are both detectors. They are extraordinary at answering where and almost silent on
+25:45
+who. Closing that gap is a different kind of work and it takes a different kind of aircraft. When one of those unknown contacts looks wrong enough to
+25:53
+matter, a P8A Poseidon goes out to meet it. This is the Navy's long range maritime patrol aircraft. And in this
+26:00
+net, it plays the interrogator, the drone, and the Triton point, and the Poseidon flies to the coordinates for the answer. Its radar paints a
+26:08
+highresolution image of the target from miles out. Not just that a vessel is there, but the length of the hall, the shape of the deck, the fittings that
+26:16
+separate a working trwler from something wearing a twler's disguise. The anonymous dot stops being anonymous. It gets a name, a class, an intent, and it
+26:25
+can chase a contact the rest of the net cannot even see, the silent one. the shape moving deep beneath the swell. The Poseidon can put sensors into the water
+26:33
+and listen for what runs below it, reaching into the one layer of the ocean the Voyagers cameras and the Triton's radar will never touch. That is a hunt
+26:41
+with a physics all its own, and it is a story for another day. What matters here is the role. In a net built to watch the surface, the Poseidon is the single member that can also look under it.
+26:53
+And here is where that quiet footnote from earlier comes back with interest.
+26:57
+Remember the Voyager measuring the water, temperature, salinity, the acoustic structure of the sea? That was never oceanography for its own sake.
+27:05
+Sound bends and channels through the ocean according to exactly those properties. And a listening sensor works only as well as the crew understands the
+27:13
+water it drops into. The windpowered robot drifting along doing what looked like idle science has been quietly charting the very water the Poseidon has
+27:21
+to hunt through. The Voyager was never just watching. It was drawing the map that makes the hunter's ears accurate. Which leaves the biggest problem of all.
+27:29
+By now, the Navy has a robot on the surface, a drone in the stratosphere, and a patrol plane over the contact.
+27:35
+Each seeing a different slice of the same ocean through a different sensor.
+27:38
+On their own, that is three separate rumors. The machine that turns them into one certainty is the E2D Hawkeye, whose job is to be the mind that holds the
+27:47
+whole picture. Through aworked data link, it fuses what each of the others sees into a single shared view. The whole force reads at once. So the blind
+27:55
+spot of one sensor is exactly where another is looking clearly. A dozen witnesses who cannot talk to each other give you a dozen rumors. Wire them into
+28:03
+one room, finishing each other's sentences, and it stops being a rumor.
+28:07
+It becomes a case. And this is not a one-time experiment being run at small scale. The picket that started with 10 voyagers has already grown toward 20. An
+28:15
+expanding net of patient machines feeding a picture that no longer has a seam in it for anything to slip through.
+28:25
+So step back from the machines, the surface robot, the high drone, the patrol plane, the aircraft that ties them together, and stop counting them
+28:33
+because the sum is the only part that matters. Layered on top of one another, they stop being four sensors and become a single condition, a stretch of
+28:42
+dangerous water that is simply never unwatched. from the seabed to the sky with no gap in time and no anonymous dot
+28:49
+left on the board. Now ask what that condition actually does to a threat because this is the real lesson and it is bigger than any one machine. Every
+28:58
+cheap dangerous thing on that sea shares one secret and it is not the explosive.
+29:04
+It is the surprise. These weapons are frightening for one reason only. They are meant to appear where no one was looking. In the moment no one was
+29:11
+watching. That is the entire economy of the thing. A threat that costs almost nothing gets to menace a billion-dollar asset purely because it arrives
+29:20
+unannounced. Take that away and what remains is a slow, fragile object moving toward a defender who has tracked it since it left the shore. The stopping
+29:29
+was never the hard part. A threat you see coming from far enough out is a problem the fleet already knows how to solve. The same threat arriving out of
+29:36
+nowhere in the last mile is one no weapon can reach in time. The net does not replace the shooters. It gives them the one thing that makes their shot
+29:44
+possible, warning. And in doing so, it deletes the single advantage that made the cheap weapon worth building at all.
+29:53
+And this reframes the strangest machine in the whole story. Go back to the Voyager, the little robot with no gun drifting at a walking pace, looking for
+30:01
+all the world like the most passive thing in the fleet. It is the opposite.
+30:05
+That machine cannot be provoked into a mistake, cannot be worn down, cannot be frightened off station, cannot be bribed to look away. It just watches and forces
+30:14
+every threat on that sea to reveal itself before it can spring. The most powerful thing in this net is the one member that never fires a shot. So, come
+30:23
+back to the question we handed you at the very start. Are the drones real? We are still not going to answer that. And now we can tell you why we do not have
+30:30
+to. Readiness does not wait for certainty. The Navy did not build this net because those drones are real. It built it so that the answer would not
+30:38
+change what happens next. Real or rumored, seen or unseen, launched or never launched at all. The threat runs
+30:45
+into the exact same wall. A sea that is already being watched every hour from the seabed to the sky. That is the whole
+30:52
+meaning of being ready. You stop needing to know what is coming.
+30:59
+We started with a hard question. How do you guard a sea against a threat you have never seen? You have now watched the answer get built one piece at a
+31:07
+time. And notice what the answer was not. It was not a bigger gun or a faster missile or a wall of destroyers. It was something quieter and far stranger than
+31:15
+any weapon in the inventory. A way to make a stretch of dangerous water impossible to cross without being seen.
+31:22
+The Navy did not win this by shooting harder. It won it by making sure no corner of that sea ever went dark. So go back to that dark water off Cuba and to
+31:30
+the thing moving through it on nothing but wind. The one we asked you to hold in mind at the start. It carries no weapon and it never needed one. Chasing
+31:38
+you, stopping you, firing on you. All of that belongs to other machines. Its entire job is to refuse to look away.
+31:46
+And that it turns out is the whole game.
+31:48
+So maybe those drones out there are real. Maybe they never were. The Navy built its answer to hold either way because readiness was never about
+31:56
+knowing what is coming. It was about making sure that whatever comes, it arrives somewhere the lights never went out. A machine that never sleeps. An eye
+32:04
+that never lands. A sea that no longer looks away. Which leaves exactly one question, and we will hand this one to you as well. Out on a sea that has
+32:13
+stopped keeping secrets, how much is a surprise even worth anymore?
+32:18
+But none of this, not the boarding you saw, not this watching net, existed at the start. To see how the Navy earned the right to walk onto a ship in that
+32:26
+straight, we have to rewind to the days when it could not send anything in at all. When the most powerful fleet on Earth sat outside a sea it had already
+32:34
+won and still would not enter. Operation Epic Fury. We destroyed over 50 Iranian warships. We erased their coastal radar
+32:43
+chains. We collapsed their air defense network from two oceans simultaneously.
+32:48
+Two carrier strike groups hold two choke points surrounding the Islamic Republic.
+32:52
+Hormuz and Bob Elmandeb. A third is crossing the Atlantic as we speak. The tightest naval siege since the Second World War and it is still tightening.
+33:02
+And yet there is one thing the United States Navy has not done. We have not escorted a single oil tanker through the Strait of Hormuz. Sit with that for a
+33:11
+moment. The most powerful naval force in the history of human civilization. 11 carrier strike groups, 300 warships, the
+33:19
+EEG's combat system, Tomahawk cruise missiles, fifth generation stealth fighters, and we will not send a convoy through a waterway 21 nautical miles
+33:28
+wide. More than 100 super tankers sit anchored outside the straight right now.
+33:32
+Engines cold, crews waiting. The price of Brent crude has climbed from $70 a barrel to north of 100. War risk
+33:40
+insurance premiums are running a4 million per transit. The global economy is hemorrhaging and the navy that just shattered the Iranian military is
+33:48
+sitting in open water watching. Why? Not because we lack the firepower, not because we lack the will. Because the straight of Hormuz is not a test of strength. It is a test of mathematics.
+33:59
+And the mathematics say very clearly, "Do not enter." Subscribe to Navy Decoded because the people who serve deserve an audience that understands the
+34:07
+mission. Type proud in the comments. To understand the math, you first have to understand the map and the trap that was built inside it.
+34:19
+Unfold the map. Look at the straight of Hormuz.
+34:22
+21 nautical miles at the narrowest point. That sounds wide. It is not because commercial shipping does not use
+34:30
+21 nautical miles. Commercial shipping uses the traffic separation scheme. Two designated lanes, each two nautical
+34:37
+miles wide, separated by a two nautical mile buffer zone. 6 nautical miles of usable corridor total. Now, put a ship
+34:46
+in that corridor. A very large crude carrier, a super tanker, stretches over,00 ft from bow to stern. Beam 200 ft. Draft 72 ft below the water line.
+34:59
+You are not sailing a vessel through an ocean. You are threading a building through a hallway. And the hallway has walls on both sides. One of them belongs
+35:07
+to Iran. This hallway carries 20% of the world's crude oil, 20 million barrels per day. It also carries nearly 20% of
+35:15
+global liqufied natural gas and a third of global fertilizer trade. Block this hallway and you do not just disrupt an oil market, you disrupt the supply chains that keep civilization running.
+35:26
+Hormuz is not an oil choke point. Hormuz is a civilizational choke point and right now it is closed.
+35:35
+Over a 100 tankers sit anchored outside the straight. The Islamic Revolutionary Guard Corps announced the closure and promised to engage any vessel that
+35:42
+attempts transit. Brent crude has surged past $100 a barrel. War risk insurance premiums have spiked to a4 million per
+35:50
+voyage. Costs so extreme that most shipping companies have simply stopped trying. The straight is not blocked by a chain across the water. It is blocked by
+35:58
+math. The math of risk exceeds the math of profit. commerce stops itself. So the obvious question, we just destroy the
+36:06
+Iranian Navy. We have EEGs, destroyers, carrier airwings, tomahawk missiles. Why not simply escort the tankers through?
+36:14
+Because the people asking that question have not studied the map carefully enough, and they have not studied the enemy carefully enough. Here is what
+36:21
+most analysts underestimate. Iran did not build this defense blindly. For 40 years, they dissected every American naval operation in these waters.
+36:30
+Operation Earnest Will in 1987, Operation Praying Mantis in 1988, decades of fifth fleet presence in
+36:37
+Bahrain, Operation Prosperity Guardian just last year. They watched, they learned, and they reverse engineered a layered defense specifically designed to
+36:46
+exploit the one variable we cannot change, the geometry of this straight.
+36:50
+The corridor is narrow, the water is confined, and Iran turned every disadvantage of that geography into a weapon. The trap has three layers. Each
+36:59
+one exploits a different dimension, and together they create a problem that no amount of firepower can brute force through.
+37:09
+10 days of sustained air and naval strikes have shattered most of that architecture. Over 50 Iranian warships destroyed or rendered combat
+37:17
+ineffective. Roughly 300 missile launchers eliminated. [music] 200 air defense systems gone dark. The surface fleet no longer exists as a coherent
+37:26
+fighting force. And yet the strait is still closed. Because the question is not how much we destroyed. The question is how much survived. And in the
+37:34
+mathematics of escort where one weapon striking one tanker erases all the victories before it. The answer is [music] brutal. 90% destruction is not enough. Escort requires 100% certainty.
+37:46
+And the gap between 90 and 100 is where this equation breaks. Look at what is left. This is the layer that air power cannot solve because the damage is
+37:54
+already done. Iran began laying mines before the first bombs fell. United States intelligence confirms dozens are already in the water. Contact mines,
+38:02
+mored mines, bottom influence mines scattered across the shipping lanes.
+38:06
+Iran possesses an inventory estimated between 2,000 and 6,000 weapons. We destroyed 16 mine laying vessels and
+38:13
+struck storage facilities. That slowed the rate of new mines entering the water. It did not remove the mines already there. You cannot bomb a mine
+38:21
+out of the water. You must find it in murky current-driven water along 360 square nautical miles of seabed.
+38:28
+Classify it and neutralize it one at a time. The Avenger class mine countermeasures fleet has been almost entirely decommissioned. [music] Four
+38:36
+ships remain. Forward deployed in Japan 4,000 nautical miles away. Experts estimate fully clearing the straight could take several months. Remember the math from 1988. The USS Samuel B.
+38:47
+Roberts struck a single Iranian contact mine during Operation Earnest Will. Cost of the mine, $1,500. It blew a hole the
+38:55
+size of a car through the hull, broke the keel, flooded two compartments with 2,000 long tons of seawater. Repair
+39:01
+cost, $89.5 million. A weapon cheaper than a used motorcycle nearly sank a warship. Now imagine that mine under a
+39:09
+super tanker carrying 2 million barrels of crude oil. The math gets worse. Mines hold the floor and the floor cannot be cleared by firepower alone. That is layer 1. Now look up.
+39:21
+We destroyed roughly 90% of Iran's missile launch capability. 300 launchers eliminated. [music] That is an extraordinary achievement. The kind of
+39:30
+suppression campaign that would end most conventional conflicts. But Hormuz is not a conventional conflict. It is a
+39:37
+corridor. And in a corridor, one surviving launcher is enough. Iran's coastline along the strait is the Zagros mountain range dropping into the sea.
+39:46
+Ridgelines, valleys, caves, tunnels. For 40 years, the IRGC prepositioned mobile transporter erector launchers throughout
+39:54
+this terrain. A teal can hide inside a tunnel, drive to a pre-erveyed firing point, launch, and relocate in minutes.
+40:02
+We eliminated the ones we could find.
+40:04
+The question is whether we found them all. Consider what one surviving launcher can do. A nor cruise missile flies at 5 to 7 ft above the water line
+40:13
+in terminal phase, accelerating past the speed of sound. A Khali Fars ballistic missile descends from above the atmosphere at more than Mach 3. From the
+40:22
+Iranian coast to the shipping lane, flight time compresses to seconds. A super tanker has no defensive systems,
+40:29
+no chaff, no eee, 1100 ft of undefended steel. One missile, one hit. Two million
+40:36
+barrels of crude oil burning in the narrowest shipping lane on Earth. We eliminated 90%, but escort runs on
+40:43
+certainty, not percentages. The 10% we did not destroy includes the launchers we could not find. Hidden in mountains, moved at night. One surviving launcher,
+40:53
+one missile. [music] That is all the equation needs. No guaranteed safety, no clear corridor. That is layer two.
+41:00
+Missiles own the ceiling or what remains of it. But the trap has one more dimension.
+41:07
+The Iranian surface fleet is functionally destroyed. Both Mooj class frigots gone. The Alvanc Sabalan gone.
+41:15
+The Macron forward base ship inoperable.
+41:18
+The drone carrier Shahed Beri struck and believed sunk. Over 50 vessels eliminated. The conventional navy no
+41:26
+longer exists as an organized fighting force. But the IRGC Navy was never a conventional navy. Its core capability was always the fast attack craft. Small
+41:35
+boats under 50 ft capable of 50 knots armed with short-range missiles and torpedoes launched from fishing harbors and island coes that number in the
+41:43
+hundreds along the straight. These boats are difficult to detect from the air and nearly impossible to eliminate comprehensively from standoff range.
+41:50
+Analysts estimate the IRGC retains the majority of its small boat fleet. 80 to 90% of vessels that were never designed to be found by carrierbased aircraft.
+41:59
+They are too small, too dispersed, too numerous. Behind the fast boats, over 20 god Dear class submarines, small
+42:07
+enough to hide in shallow coastal waters, quiet enough to evade passive sonar, armed with torpedoes, and capable of laying additional mines. We destroyed
+42:15
+one. The rest dispersed into coes and harbors along the straight before the first strikes landed. And alongside them, explosive unmanned surface
+42:23
+vessels, kamicazi drone boats that have already struck at least two tankers since the straight closed. They do not need to survive. They need to arrive.
+42:31
+The swarm is diminished. [music] It is not gone. And in a six nautical mile corridor, even a diminished swarm poses a threat that no escort commander can
+42:40
+dismiss. Stack what remains. Mines below, months from being cleared.
+42:45
+Surviving launchers above, impossible to certify at zero. Remnant fastboats and drones on the flanks. The trap is
+42:52
+degraded, but most is not all. We destroyed 90%. The remaining 10% is enough to make escort a bet no engineer would take.
+43:04
+Now I can hear the objection. We have two carrier strike groups in theater. A third on the way. Thousands of sorties
+43:11
+flown. Over 3,000 targets hit. Why not just finish the job and escort the tankers through? Because the three remaining problems do not respond to
+43:20
+more bombs. The mines are already on the seafloor. You cannot bomb them out. You must sweep them with ships we do not have in theater through a process that
+43:28
+takes months. The mobile launchers hide in mountain terrain that has been fortified for decades. And no commander can guarantee that zero teals survived.
+43:36
+And the cost of being wrong is catastrophic. One mine under an Arley Burke means $2 billion in damage and a war that just doubled in scope. One
+43:45
+missile into a tanker means 2 million barrels of crude oil burning in the world's most critical shipping lane. The expected cost of failure outweighs the
+43:53
+expected gain of success. An engineer does not take that bet. So what is the strategy? Here is where the geometry flips. And this is the insight that most
+44:01
+commentary misses. We do not need to enter We never did.
+44:08
+Look at the map again. USS Abraham Lincoln, Carrier Strike Group 3, holds position in the Gulf of Oman, east of the straight. The Lincoln does not need
+44:16
+to push through the choke point. From its current position, its airwing controls the eastern approach. Nothing enters or exits the Persian Gulf without passing through the Lincoln's
+44:25
+surveillance and strike envelope. Now consider what that means for Iran. The mines that close the straight to tankers also closed it to Iranian exports. Iran
+44:33
+exports roughly 1.4 million barrels of oil per day and nearly all of it must pass through Hormuz to reach any paying customer. The strait is sealed from both
+44:42
+sides. Commercial tankers will not enter because of mines and residual missile threat. Iranian tankers cannot exit because of carrier strike groups and
+44:50
+complete air supremacy. Iran built a trap to keep us out. The trap worked, but the trap is not one directional. The same mines, the same missiles, the same
+44:59
+geometry that prevents American escort also prevents Iranian commerce. Iran is suffocating inside its own fortress.
+45:06
+Revenue collapsing. Fuel reserves finite. [music] The ability to sustain military operations without export income measured in weeks, [music] not months.
+45:15
+The carriers do not need to enter the hallway. The carriers sit at the door and wait. Time is on our side. Every day the straight stays closed. Iran bleeds
+45:24
+economically while our carrier strike groups rotate fresh supplies from logistics chains that span two oceans.
+45:30
+We have the endurance of nuclear propulsion and global supply networks.
+45:33
+Iran has the endurance of a sanctioned economy with its only export corridor sealed shut by its own hand. That is not a stalemate. That is a siege. and the besieged party locked itself inside.
+45:48
+If this breakdown changed how you see the Navy, if you now look at a map and see math instead of borders, subscribe to Navy Decoded and share this with
+45:56
+someone who respects the service. So, why does the most powerful Navy on Earth refuse to escort tankers through a 21
+46:03
+nautical mile straight? Because Hormuz is not a test of strength. It is a test of mathematics.
+46:12
+And every engineer in this audience already knows, you do not solve an equation by running headirst into the
+46:18
+wall. You walk around it. Iran spent 40 years building a trap at the front door. We hit it with everything we had.
+46:26
+Destroyed 90%. And the remaining 10% is still enough to close the corridor.
+46:31
+Because in a six nautical mileway, 10% is not a rounding error. 10% is a burning super tanker. But here is what
+46:40
+Iran miscalculated. The trap was designed for a navy that needed to enter the strait. We do not. In our previous breakdown, we showed you how carrier
+46:48
+strike groups positioned at Hormuz, Babel Mandeb, and Suez created a geometric siege around the Islamic Republic. Now you understand the final
+46:57
+piece of that geometry. Lincoln holds position east of Hormuz, not because it cannot enter, [music] but because it does not need to. The door is locked
+47:07
+from the outside, and Iran cannot ship a single barrel of oil through the door it sealed shut with its own minds. Iran
+47:14
+laid a $1,500 trap at the front door. We did not open the front door. We locked it from the outside. And now the trap
+47:23
+imprisons the trapper. That is not firepower. That is geometry. That is patience. That is engineering.
+47:36
+120 warships. That is how many Iranian vessels the United States Navy has destroyed or disabled since February
+47:42
+28th. Two carrier strike groups, eight Eegis destroyers, $40 billion of naval firepower deployed across two oceans.
+47:51
+And the result, the Straight of Hormuz is still closed. 95% of commercial shipping has vanished. 3,200 vessels,
+48:00
+including 250 oil tankers, sit anchored in the Gulf, going nowhere. We did not lose a single ship. We did not lose a
+48:09
+single engagement. We eliminated the entire Iranian submarine fleet, every Solommani class corvette, every drone
+48:16
+carrier, every major surface combatant Thyran ever built. And yet, the shipping lane stays shut. The oil stays stuck.
+48:24
+The world economy bleeds $40 billion dollar a week. Why? Because the most powerful Navy in human history had to
+48:32
+pick up the phone and call the Air Force. Specifically, they needed an aircraft the Air Force had been begging Congress to let them retire. A
+48:40
+50-year-old airplane designed in the 1970s to kill Soviet tanks on the planes of Europe. An airplane that top Pentagon
+48:47
+officials called obsolete, redundant, and unfit for modern warfare. right up until the moment they needed it more than anything else in the inventory.
+48:56
+Subscribe to Navy Decoded. We do not celebrate weapons. We calculate whether they work. And this equation is one of the most counterintuitive we have ever
+49:04
+run. Type proud if the Warthog earned it. To understand why a carrier airwing cannot solve a problem that a Cold War
+49:12
+relic solves in its first sorty, we first need to understand the problem.
+49:19
+The straight of Hormuz is 21 nautical miles wide at its narrowest point, but that number is misleading. The actual
+49:27
+shipping lane, the corridor where tankers must pass, is 6 nautical miles, 2 mi inbound, 2 mi outbound, and a 2-m
+49:35
+buffer between them. That is the entire playable space. Everything else is Iranian territorial water. Now, consider
+49:44
+the adversary inside that space. The Islamic Revolutionary Guard Corps Navy operates more than 1,500 fast attack craft. Not warships, speedboats.
+49:54
+Fiberglass and composite hulls, most under 15 tons. The slowest ones run at 50 knots. The fastest exceeds 70. And
+50:03
+Iran claims some of its newest designs can break 100. These are not targets a radar was designed to track. They are small, low to the water, and they move
+50:12
+faster than most pleasure boats in Miami. Each one costs somewhere between 50,000 and half a million dollars. And
+50:19
+each one carries an anti-ship missile, the Nazer 1, with a 35 km range and a terminal speed of Mach 0.9. That is
+50:27
+enough to mission kill a frigot. Their doctrine is simple. Swarm 30 to 50 boats attack simultaneously from every direction. Overwhelm the sensors.
+50:37
+Saturate the defenses. force the destroyer to choose which boat to shoot, knowing that every missile it fires costs more than every boat it aims at.
+50:47
+And that is the real problem. Let us look at the math. An SM6 interceptor costs $5.3 million. Firing it at a
+50:56
+$50,000 speedboat is a 100 to1 cost ratio in Iran's favor. A harpoon cost 1.5 million and was designed to track
+51:04
+cruiserized targets, not composite skiffs doing 70 knots between container ships. The Mark 45 5-in gun fires 16 to
+51:13
+20 rounds per minute, respectable against one target, hopeless against 50.
+51:17
+The Failank CIWS empties its magazine in 20 seconds and takes 4 minutes to reload. And the FA18E Super Hornet, the
+51:25
+carrier's primary strike aircraft, costs $30,000 per flight hour, flies too fast to visually distinguish an IRGC boat
+51:33
+from a fishing twler among 3200 civilian vessels, and its onstation time at combat loadout is a fraction of what this mission demands. The Navy does have
+51:42
+one tool designed for this kind of fight, the MH60R Seah Hawk helicopter.
+51:47
+It carries Hellfire missiles and a cabin-mounted machine gun. It can patrol, identify, and engage small surface targets. But the Seah Hawk was
+51:55
+built primarily for anti-ubmarine warfare, not for hunting 50 fast boats at once. It carries four to eight hellfires per sordi, depending on
+52:04
+configuration, has limited loiter time compared to a fixedwing aircraft, and it is vulnerable to the same 12.7 mm and
+52:11
+14.5 mm gunfire that saturates Hormuz without the 12,200lb titanium cocoon that keeps an A-10 pilot alive. The
+52:20
+seahawk is a scalpel. The swarm problem needs a chainsaw. So the missiles are too expensive, the guns are too slow, the jets are too fast, and the
+52:29
+helicopter is too small. That is not a list of bad weapons. That is a pattern.
+52:33
+And the pattern points to something deeper. Every weapon in the carrier strike group's arsenal is designed for blue water, open ocean, high-v value
+52:41
+targets, long range, expensive munitions matched to expensive threats. The Straight of Hormuz is brown water, a
+52:48
+six-mile corridor filled with cheap, fast, numerous targets hiding among thousands of civilian ships. The Navy brought a surgical laser to a knife
+52:56
+fight, and the knife fight needed a shotgun. The ironic part, the shotgun already existed. The Pentagon just wanted to throw it away.
+53:08
+The A10 Thunderbolt 2, the Wartthog, is built around a gun, literally. The GA AU8A Avenger was designed first. The
+53:17
+airplane was designed around it. That sevenbarrel Gatling cannon fires 30mm depleted uranium rounds at 3,900
+53:25
+per minute, 65 rounds per second. The aircraft carries,50 rounds in a drum the size of a Volkswagen Beetle. [music] At
+53:34
+a 2se secondond burst, the standard engagement, the pilot puts roughly 130 rounds downrange. Cost per round about $137 for the armor-piercing DU variant.
+53:46
+Let us do the math that changes everything.
+53:49
+70 rounds into a fiberglass fastboat equals under $10,000.
+53:54
+The same kill with an SM6 costs 5.3 million. That is a 500 to1 cost
+54:02
+advantage. Not a marginal improvement, a categorical shift in the economics of engagement. But the gun is only part of
+54:09
+the equation. The A-10 carries 16,000 lbs of ordinance across 11 hard points.
+54:16
+For medium-range targets, a pay cap at 12 nautical miles, the pilot fires an AGM65 Maverick, an infrared guided missile that costs between 150 and $170,000.
+54:28
+Still 30 times cheaper than an SM6. For fast boats mixed with drones, the A-10 carries APKWS,
+54:36
+a laser guidance kit bolted onto a standard Hydra70 rocket. Cost per shot, about $35,000.
+54:44
+Precision guidance at the price of a mid-range sedan. Now, consider the physics that make those weapons possible at Hormuz. The A10's maximum speed is
+54:54
+Mach 0.75, roughly 420 mph. But when it drops to low altitude and begins its patrol
+55:01
+loops, it flies around 300 knots. And this is an advantage, not a limitation.
+55:09
+When an FA18E crosses the shipping lane at 500 plus knots, every target on the surface stays in the pilot's field of
+55:16
+view for less than 2 seconds. [music] At that speed, distinguishing an IRGC pay from a Kuwaiti fishing dow among 3,200
+55:24
+civilian vessels is essentially impossible. The A-10 at 300 knots gives the pilot two to three times longer to
+55:31
+identify, confirm, and engage. The pilot does not rely on sensor readouts in a heads down display. The pilot looks out
+55:39
+the canopy, sees the rocket launchers bolted to the gunnel, sees the military paint, pulls the trigger. Compare that
+55:45
+to the Navy's MH60R Sea Hawk, the tool we discussed earlier. The Seahawk cruises at around 140 knots and carries
+55:52
+four to eight hellfires. It can identify and engage, but it covers less than half the ground the A-10 covers in the same time. Carries a tenth of the weapons and
+56:02
+must return to the ship after 90 minutes. An A10 at 300 knots with 1150 cannon rounds, six Mavericks, and
+56:09
+external fuel tanks does not replace the Seahawk. It operates in a category the Seahawk was never built to enter. That
+56:16
+is what Liter means in engineering terms. The A-10 stays on station for approximately 1 hour and 50 minutes on internal fuel with 600-gal external
+56:26
+tanks that extends to 2 and 1/2 hours over the straight, flying racetrack patterns, scanning, waiting, selecting.
+56:32
+The aircraft does not burn through its fuel, racing to and from a carrier 200 m away. It stays in the kill zone
+56:39
+persistently, and the wings explain why it does this so efficiently. The A-10 uses straight
+56:46
+wings, not the swept wings of the FA18 or F-35. Swept wings reduce drag at high mock numbers, but increase it at low speeds. The A-10 never needs high mock.
+56:57
+At 300 knots, straight wings generate lift more efficiently, burn less fuel, and deliver a tighter turn radius. That last point matters enormously. With the
+57:06
+shipping lane only 6 nautical miles wide, the A10 can bank, reverse, and re-enter its patrol loop without ever leaving the engagement corridor. The
+57:14
+straight wing also creates a more stable gun platform. Less oscillation at low speed means the GA AU8 puts rounds exactly where the pilot aims during a
+57:23
+strafing run. One more thing about that gun, the recoil force of the GA AU8 at full rate is approximately 45 kons,
+57:31
+10,000 lb of force. Each of the A10's two TF34 engines produces about 40 kons of thrust. In a two-cond burst, the gun
+57:40
+generates nearly as much backward force as one engine generates forward. The airplane physically decelerates during firing. That is not a design flaw. It is
+57:49
+a measure of how much kinetic energy the weapon delivers. Each 30 mm DU penetrator leaves the barrel at over
+57:55
+1,000 m/s, carrying roughly 267 kg of energy, enough to penetrate 69 mm of
+58:02
+rolled homogeneous armor. A fiberglass fastboat has zero armor. This is not a fair fight. It is not designed to be.
+58:12
+And the A-10 will [music] take the hits that come back. The pilot sits inside a 12,200lb titanium bathtub, the only aircraft in the American inventory that
+58:20
+encases its cockpit in armor designed to withstand 23mm armor-piercing rounds and 57 mm fragmentation. In Desert Storm,
+58:29
+Colonel Bobby Efferson brought home an A-10 with 378 holes in the airframe. In Iraq in 2003, Captain Kim Campbell of
+58:37
+the 75th Expeditionary Fighter Squadron lost all hydraulic control over Baghdad, both primary and backup lines severed,
+58:44
+and flew her A-10 home using manual reversion, a system of cranks and cables that bypasses every electronic and hydraulic control surface. She landed
+58:52
+safely. The Distinguished Flying Cross followed. That survivability is not academic at Hormuz. The IRGC's coastal
+59:00
+imp placements fire 12.7 millimeter and 14.5 millimeter machine guns. An FA18 avoids that threat by flying high and
+59:08
+loses target identification. The A10 flies low, absorbs the hits, and keeps shooting because that is what it was built to do. [music] But one airplane,
+59:17
+no matter how tough, cannot hold a six mile corridor alone. But the A-10 does not operate alone.
+59:27
+What is happening above the straight of Hormuz right now is something the American military has never done before in combat. Three branches of the armed
+59:36
+forces operating simultaneously over a single six-mile naval corridor, each covering the gap the others cannot
+59:43
+[music] fill. Layer one is the A-10 Air Force. It flies racetrack patterns at 3,000 ft, hunting fast boats and coastal
+59:52
+missile positions. The GAU8 and APKWS handle close-range threats. The Maverick handles targets at 12 nautical miles.
+1:00:01
+The A-10 cost $19,000 per flight hour.
+1:00:05
+Layer 2 is the AH64 Apache Army attack helicopters operating from expeditionary sea bases floating forward operating
+1:00:14
+bases for Army Aviation. This is a concept first tested operationally in 2020 aboard the USS Lewis B. puller and
+1:00:22
+now deployed at scale. Army attack helicopters staging from a Navy platform to fight a naval battle. Each Apache
+1:00:30
+carries up to 16 Hellfire missiles at 70 to $200,000 each and a 30mm M230 chain
+1:00:38
+gun. The same caliber as the Warthogs, but chain driven rather than Gatling.
+1:00:43
+Highly effective against unarmored boats. They fly at 200 ft below the A-10, picking off the targets that slip through. Layer three is the Navy itself.
+1:00:53
+EegeS destroyers and latoral combat ships maintaining the air defense umbrella and surface patrol. The destroyers keep their SM6 inventory for
+1:01:01
+the threats that actually justify the cost. Anti-hship ballistic missiles, cruise missiles flying at Mach 3. Odin
+1:01:09
+and Helios directed energy systems handle drones. The LCS deploys its own drone swarms and mine clearing systems.
+1:01:17
+Here is the convergence equation. Before combined arms, the Navy engaged fast boats with SM6 interceptors, $5.3
+1:01:26
+million per shot against $50,000 targets, draining 90 to 96 VLS cells on each destroyer, many of which are
+1:01:35
+already committed to tomahawks, SM2s, and ESSM quad packs. After combined arms, the A10 handles the fast boats for
+1:01:43
+$10,000 per engagement. The Apache handles the close-in threats for 70,000, and the Navy preserves its missile inventory for the Mach 3 threats that
+1:01:52
+nothing else can stop. The VLS cells last 10 times longer. [music] The math flips. Iran's strategic miscalculation was assuming the Navy would fight alone.
+1:02:03
+Their swarm doctrine was designed to drain VLS cells, 1,500 fastboats, against 96 vertical launch tubes. The
+1:02:10
+arithmetic was intentional. The IRGC studied the 2002 Millennium Challenge war game where a retired Marine
+1:02:18
+Lieutenant General used swarmboats to sink 16 American warships in the opening phase and forced the Pentagon to restart
+1:02:24
+the exercise. Iran built an entire naval strategy around that simulation, but they built it for a scenario where the
+1:02:31
+Navy answers alone. They did not account for the Air Force flying at 3,000 ft with a gun that fires 65 rounds per
+1:02:39
+second or the Army flying at 200 ft with laserg guided missiles launched from a ship. The equation changes when the
+1:02:46
+variables change. So, the question that started this video deserves its answer.
+1:02:55
+If this breakdown changed how you see naval warfare, subscribe to Navy Decoded and drop wartthog in the comments if you think the A-10 earned its place in this
+1:03:03
+fight. So, why did the most powerful Navy in human history need to call the Air Force? Not because the Navy is weak.
+1:03:10
+The Navy was engineered for blue water, open ocean, capital ships, precision weapons measured in hundreds of nautical miles. The straight of Hormuz is
+1:03:19
+brownwater, a six-mile shipping lane, 1,500 composite speedboats, cheap weapons requiring cheap answers. A good
+1:03:27
+engineer does not use a wrench to hammer a nail. A good engineer selects the right tool. The irony is that the right tool was an airplane the Air Force
+1:03:35
+wanted to discard. $19,000 per flight hour versus 30,000. $10,000 per kill
+1:03:42
+versus 5.3 million. the answer to a problem worth billions of dollars in stranded oil. A 50-year-old aircraft
+1:03:49
+flying 300 knots with a gun that weighs more than a Volkswagen Beetle. But the A-10 will retire. Congress currently
+1:03:56
+forbids the Air Force from reducing the fleet below 103 aircraft through September 2026, but the transition plan
+1:04:03
+for 2027 through 2029 remains open. The question is not whether to keep the Wartthog forever. The question is this.
+1:04:10
+When the A-10 leaves, what fills the gap? loitering drones with 30 millimeter cannons. The MQ9 Reaper adapted for
+1:04:18
+maritime interdiction. Or does the Navy finally build its own brownwater weapon, an aircraft designed not for the deep ocean, but for the narrow, contested
+1:04:26
+corridors where wars are actually fought? We do not worship the machine.
+1:04:30
+We worship the equation. And the equation says the right tool wins, not the expensive one.
+1:04:37
+But finding a threat is only ever half the problem. Sooner or later, something you have found has to be dealt with. And some targets are built so that finding
+1:04:45
+them was never the hard part. So come back to the Straight of Hormuz, to a single fortified island that could break an entire fleet by itself, and watch
+1:04:53
+what it actually takes to take one apart.
+1:04:57
+Flying a strike over a fortified coast in daylight is a good way to lose aircraft. The launchers see you coming and they have all the time in the world
+1:05:04
+to aim. So when American aircraft did exactly that over greater tunnel, crossing a missile ararmed island in the
+1:05:11
+open in plain view of every radar on it, the fortress should have torn into them.
+1:05:17
+It barely fired back. For an island built to threaten every ship in the straight, that silence is the strange part. And the air strikes are not what
+1:05:25
+caused it. Because this was one of the hardest targets in the entire Gulf.
+1:05:29
+Fortified over decades, positioned to reach any ship threating the Straight of Hormuz, it gave Iran a hand on the choke point the whole region's trade has to
+1:05:38
+squeeze through. And it had been built for a single purpose, to be impossible for one attacker to take. Come at it by sea and its missiles destroy you. Come
+1:05:46
+at it by air and its defenses shoot you down. The United States did not answer that with overwhelming firepower. It answered with coordination. Two branches
+1:05:55
+of its military, the Navy and the Air Force, came at the island as one machine. Each bringing a capability the other did not folded into a single plan
+1:06:04
+and time down to the minute. The island never got a clean look at the force that beat it.
+1:06:10
+What the Navy and the Air Force pulled off over Greater Tund is one of the finest pieces of joint choreography this war has produced. two services flying
+1:06:18
+and sailing to the same clock, each covering the other so completely that the island never landed a blow on either. We are going to take that
+1:06:26
+partnership apart step by step and show you exactly how it was done. Stay to the end and you will stop asking which branch won the fight. You will start
+1:06:34
+asking how they stopped being two branches at all. So, let us begin with the trap itself. Why this one island could defeat either service on its own.
+1:06:47
+Start with why this rock is worth so much. Greater Tum is barely 2 miles across, but geography hands it a value
+1:06:54
+out of all proportion to its size. It sits at the western gate of the straight of Hormuz, right where the shipping lanes bend through the narrowest water
+1:07:02
+in the Gulf. Whatever weapons you place on that island can range straight across the passage every ship in the region has to thread. Control this speck of land,
+1:07:11
+and you hold a hand over one of the most important waterways on Earth. Iran understood exactly what it had. So over the years, it did something patient and
+1:07:20
+clever. It turned the island itself into a weapon. Strategists have a name for what Greater Tum became, an unsinkable
+1:07:28
+aircraft carrier. A warship can be sunk or driven off when its fuel runs low. An island can do neither. It simply sits
+1:07:36
+there, permanent, and its solid stone can be hollowed out into something no ship's hull ever could. And that is what the Revolutionary Guard built into it.
+1:07:44
+Early warning radar on the high ground to watch the whole straight. Anti-hship missiles to reach out across the water.
+1:07:50
+Fast attack boats to swarm anything that came close. Layer by layer, they turned a barren rock into a coastal fortress designed to see everything moving
+1:07:59
+through the straight and to strike it and crucially to survive being struck back. How they made it survivable is the part that decides everything that
+1:08:08
+follows. The result is a target built deliberately to punish anyone who attacks it in the obvious way. And that is where the real problem begins.
+1:08:17
+Because greater Tum was not simply fortified. It was fortified against each kind of attacker in a different way. To understand how the navy and the air
+1:08:24
+force took it, you first have to see the trap from both sides.
+1:08:32
+What Iran built on greater Tum has a name in military doctrine. Anti-access area denial A2 ad strip away the jargon
+1:08:42
+and the idea is simple and old. You do not try to defeat a stronger enemy in one clash. You build a series of overlapping threats around a piece of
+1:08:50
+terrain so that the closer he comes, the more of them he has to survive at once until the cost of arriving is higher
+1:08:57
+than the prize is worth. It is not a wall. It is a gauntlet. And every ring is there to protect the one behind it.
+1:09:04
+Walk it from the outside in and you see the rings stack. The outermost is sight.
+1:09:09
+The early warning radar stations on the island's high ground, sweeping tens of miles of sea and sky, built to catch a force while it is still far out and pass
+1:09:17
+that track to the shooters. This is the tier that lets every other weapon fire on time. Blind it and the fortress is swinging in the dark. Inside that sits
+1:09:26
+the anti-access layer, the long range anti-hship missiles meant to reach out and threaten major warships before they can ever close the distance. Closer
+1:09:35
+still is the area denial layer, the short-range threats waiting for anything that slips through. The swarms of fast attack boats that dart out to harass and
+1:09:43
+overwhelm a target up close. And laced through all of it are the air defenses, watching the sky above every other layer. Each ring guards the gaps in the
+1:09:52
+next. Knock out one and the others still have it.
+1:09:57
+And one more thing makes this gauntlet far harder to break than a row of guns in the open. Almost none of it can be reached with a normal strike. The
+1:10:04
+radars, the launchers, the boats, the revolutionary guards sank them into reinforced bunkers and tunnels bored deep into the island's granite core
+1:10:12
+behind blast doors that open only in the seconds it takes to fire and then seal shut again. On the surface, Greater Tum can look nearly empty. The weapons live
+1:10:21
+inside the mountain, and the mountain is the armor. A strike that merely scorches the hillside accomplishes nothing. The whole system rides it out underground
+1:10:29
+and resumes fire once the strike has passed. Now you can see why this island beats a single service. It was engineered to come at it with the
+1:10:36
+surface fleet, and the anti-access layer is aimed directly at you. Anti-hship missiles that fly low and fast, skimming the waves so tightly a ship's radar
+1:10:45
+cannot separate them from the sea until warning time has collapsed to seconds.
+1:10:50
+Come at it with aircraft instead, and the air defense layer is waiting. And the weapon needed to reach the island's buried core is heavy and specialized,
+1:10:57
+carried by aircraft that must fly slow and straight over the target, exactly the profile those defenses were built to catch. A one-service attack does not
+1:11:06
+just fight the island. It walks the entire gauntlet alone with no one to strip away the layer aimed at it. That is the puzzle Iran set. And the answer
+1:11:15
+was not a better weapon. It was to stop walking the gauntlet from one direction and to peel it apart layer by layer with two services each taking down the ring
+1:11:23
+that would have stopped the other. That is the operation. Let us walk it.
+1:11:29
+Before a single heavy weapon was ever over the target, the Navy attacked the layer everything else depended on the island's ability to see. In doctrine,
+1:11:38
+this is the opening move of any strike on a defended coast. Suppression of enemy air defenses. S A D. And here the
+1:11:45
+fleet ran it not with bombs but with the electromagnetic spectrum. This is the specialty of an aircraft like the EA18G
+1:11:52
+Growler, the Navy's carrierbased electronic attack jet built for exactly this opening act. General Dan Kaine, the
+1:11:59
+nation's top military officer, has described the shape of it. Coordinated space and cyber operations run alongside electronic attack that leave an
+1:12:07
+adversary, in his words, disrupted, disoriented, and confused. Translate that into what happens on the island.
+1:12:14
+Electronic attack floods the early warning radars with jamming until a real contact disappears into a wall of false noise. Cyber effects reach into the
+1:12:23
+command network that stitches the separate radars and launchers into one picture and cut the threads. What is left is an A2 AD system with all its
+1:12:31
+weapons intact and no shared picture to aim them. Every launcher suddenly fighting alone, half blind, unsure what
+1:12:38
+is real. A missile battery that cannot be told where the target is cannot fire on it. The fleet took the island's eyes before it ever touched its weapons.
+1:12:48
+Then the Navy raised the shield. And this is the piece that turns two services into one weapon. The instant the strike begins, Iran answers,
+1:12:56
+throwing anti-hship missiles at the fleet and at the aircraft working the island. The counter is integrated air and missile defense built around the EE
+1:13:04
+JIS destroyers. and EEGIS no longer fights blind to the horizon. Through cooperative engagement capability, a destroyer can fire on a sekming missile
+1:13:13
+its own radar cannot even see yet because an E2D Hawkeye or an F-35 up high is tracking that missile and passing the firing solution down the
+1:13:21
+data link. One platform sees, another shoots. The ship launches an interceptor, a standard missile such as the SM6, reaching out on someone else's
+1:13:30
+track at a threat still hidden below the curve of the Earth from its own mast.
+1:13:34
+That web of shared fire is thrown not just over the destroyers, but over the whole strike, so the air arm can work the island while the incoming reply is
+1:13:42
+intercepted far out before it reaches anything. And the same network that shields the force also aims it. Stealth fighters like the F-35 work here less as
+1:13:51
+bombers than as sensors, sweeping the island, separating real launchers from decoys and fusing what every platform sees into a single track picture the
+1:14:00
+whole force shares at once. The carrier's own strike aircraft add their weight to the waves going in. And the destroyers hold tomahawk cruise missiles
+1:14:07
+in their launch cells, long range fire that can knock out the exposed pieces of the system, the radar masts and antennas and surface structures from over the
+1:14:15
+horizon without exposing a pilot. What the fleet cannot do is dig a warhead into hardened rock. A cruise missile shatters what stands in the open, not
+1:14:24
+what is sealed inside a mountain. By the time the decisive blow is ready to fall, the Navy has blinded the island's sensors, meshed a defensive screen over
+1:14:31
+the strike, and stripped away every layer it can reach, leaving only the one it cannot. That last layer is the weapons buried in the stone. And it is the air forces to take.
+1:14:43
+Now comes the part only the air force could do. Recall the problem the fortress posed from the start. Its weapons live under many feet of solid
+1:14:51
+stone, and ordinary ordinance cannot get to them. A blast on the surface spends its energy outward into open air, and the chambers underneath never feel it.
+1:15:01
+This is the layer no amount of surface fire can defeat. Defeating it is a matter of turning the weapon into a penetrator. A bunker buster does not rely on its warhead to do the digging.
+1:15:12
+It relies on mass and velocity. A dense hardened steel casing dropped from altitude arrives moving fast enough that
+1:15:19
+its own kinetic energy, thousands of pounds of it concentrated on a narrow nose, drives the body straight through rock and reinforced concrete before
+1:15:28
+anything detonates at all. And that is the second half of the design. The warhead does not go off on contact. A delayed fuse holds the explosion until the body has already bored deep inside.
+1:15:39
+So the blast is confined by the surrounding rock and collapses the chamber from within instead of venting harmlessly into the open air above. That
+1:15:48
+is why this class of weapon is heavy and why the Air Force's strike aircraft carry it. The platforms built to lift that kind of load to a defended target
+1:15:56
+and place it within feet of an aim point. Now the Pentagon has not published which weapon actually fell on Greater Tumb. Officially all we have is
+1:16:05
+precision munitions. But if we reason it through from the target, one weapon fits better than any other in the inventory, and it is worth naming as our best
+1:16:13
+estimate. The GBU72, the advanced 5K penetrator. This is a 5,000lb class bomb the Air Force fielded
+1:16:21
+specifically to beat hardened, deeply buried targets like this one. At its heart is a BLU 138 warhead. A single
+1:16:29
+dense penetrator body weighing better than 4,000 pounds on its own, mated to a satelliteg guided JD dam kit that steers
+1:16:36
+it onto an aim point within feet. It is meant to be released from high altitude, trading height for the velocity that does the digging, and its designers have
+1:16:45
+said it reaches and defeats buried targets far more effectively than the older GBU28 it was built to replace. And
+1:16:52
+it is not a paper weapon. Reporting from earlier in this same campaign describes these new 5,000lb penetrators being used
+1:17:00
+against Iranian anti-ship missile sites, which is exactly what Greater Tumb was.
+1:17:05
+We cannot confirm it was the GBU72 over the island that morning, but if you were choosing a weapon to reach launchers buried in granite behind blast doors, this is the one you would reach for.
+1:17:18
+But look at what had to be true before those aircraft could fly in and do it.
+1:17:21
+They came in slow lines, weighed down with ordinance, holding steady over the target to place each weapon exactly the
+1:17:28
+least agile, most exposed profile in the entire air campaign. A single live missile battery on that island could have turned the delivery run into a
+1:17:37
+disaster. The only reason it did not is that the launchers were already blind and the sky above them was already roofed by the fleet. The Air Force
+1:17:45
+brought the one blow that could crack the island open. The Navy is the reason that blow could be delivered at all. And notice the timing because it carries a
+1:17:52
+message. All of this was done in broad daylight. Penetrating strikes on fortified targets are classically flown at night, hiding the attackers in
+1:18:01
+darkness. Choosing to do this one in full morning light, straight over an island built to stop exactly this kind of attack is a way of saying the enemy's
+1:18:09
+defenses have already been so thoroughly beaten down, blinded by the navy, mapped by its sensors, held off by its shield
+1:18:17
+that there is no longer any need to hide. The daylight was not bravado. It was proof the sequence had already worked. So the 90 minutes of strikes
+1:18:25
+that opened this story were never one branch's victory. They were the final step of a handoff. The Air Force delivering the one blow the Navy had
+1:18:33
+spent the hours before it making survivable.
+1:18:40
+So step back from that morning and stop sorting it into a Navy part and an Air Force part because the whole point is that it cannot be split. Ask what
+1:18:48
+actually took Greater Tumb and watch every single branch answer fall short. It was not the bunker busters alone.
+1:18:56
+Flown in over live air defenses. They would have paid a price no one wanted to pay. It was not the Navy alone. A destroyer was never the tool meant to
+1:19:04
+dig a warhead into the core of that rock. It was not even the blinding alone. A deaf island is still an island.
+1:19:11
+Its launchers still there. Each capability was decisive in its place and only in its place. What took the island
+1:19:19
+was the order they moved in. The eyes closed before the strike flew. The shield raised before the enemy could
+1:19:26
+answer. The deep blow delivered only into a target already softened and already blind. Change that order and the
+1:19:34
+same forces produce a costly failure instead of a victory. And that is the thing worth carrying out of this. Iran had built the perfect trap for any one
+1:19:42
+branch of a military. Come by sea and the missiles get you. Come by air and the launchers get you. The trap only had
+1:19:50
+one flaw. And it was not a flaw in the hardware. It was that it assumed the attacker would come as one thing. What arrived instead was two arms of the same
+1:19:58
+force moving as a single organism. The Navy reaching out to blind and to shield. The Air Force flying into the
+1:20:05
+space that opened to land the blow. both of them reading the same picture off the same network in the same minutes. The launchers never got a clean look at any
+1:20:14
+of it. Which points at the real lesson, and it is bigger than this island. The hardest thing to build in modern war is not a better missile or a heavier bomb.
+1:20:22
+Plenty of nations have those. The hardest thing to build is the seamfree handoff. to put a cyber operator, an
+1:20:29
+EEGI crew, a carrier pilot, and a bomber crew onto one clock and have each one's move arrive exactly when the next one
+1:20:37
+needs it. Iran had the cheaper hardware and the geography of a fortress. What it could not manufacture and could not counter was two services fighting as one
+1:20:46
+hand. That is what was really on display over Greater Tumb, not the firepower of either branch. The fact that you could no longer tell where one ended and the other began.
+1:21:00
+Go back to that fortress island sitting silent through 90 minutes of strikes it was built to shrug off. It did not fall to a bigger weapon. It fell to a
+1:21:09
+sequence. The Navy reached across the water and knocked out its sensors. The Navy raised a shield over the sky so its answer never landed. And only then did
+1:21:17
+the Air Force fly in the one blow heavy enough to reach the tunnels in the rock.
+1:21:22
+Each service walked straight into the exact trap Iran had set for it. and walked through because the other service had already sprung it from the far side.
+1:21:30
+The island was designed to beat a fleet or to beat an air force. It was never designed to beat the two of them moving as one thing. That is what a joint
+1:21:38
+operation is, stripped to the bone. Iran built an island no single service could take. So, the United States stopped
+1:21:45
+sending one. The Navy blinded it. The Air Force broke it. And by the end, you could not draw the line where one service's fight stopped and the others
+1:21:53
+began. That is the thing worth remembering the next time a headline reduces a strike like this to a single branch and a single weapon. The bomb
+1:22:01
+that reached the tunnels was only ever the last link in a chain. And the real weapon was the chain itself.
+1:22:08
+Breaking that island did not open the straight. It only unlocked it. Because a straight was never held by the guns on
+1:22:15
+its shore. It is held by whoever can see across it. And on the night the door finally swung open, a single darkened ship slipped out to prove exactly that.
+1:22:26
+On the 12th of July, three boats with no one aboard crossed the last stretch of water to the Iranian naval base at Bandar Abbas and did not slow down. No
+1:22:35
+crew, no pilot steering them from a screen. They ran themselves straight onto a docked Iranian submarine and deadly.
+1:22:45
+It was the first time in its history the United States Navy had ever sent a sea drone in to attack. And it was not a stunt for the cameras because a few
+1:22:53
+hours later in the same dark water, a thousand ft super tanker slipped its mooring with every light killed and its
+1:23:00
+transponder silent and walked straight out of the straight of Hormuz, the most watched sea on Earth without a shot
+1:23:08
+fired at it. It never made that run alone. Two American carriers were working the dark somewhere over the horizon, and the tanker was moving under
+1:23:16
+their cover the whole way, though it never saw them and never had to. Those two things are the same story. The drone
+1:23:24
+boats went in first to break down the coast that hunts tankers.
+1:23:28
+The tanker behind them left through the gap they opened. One machine spent itself clearing the threat. The other simply vanished through the hole it
+1:23:36
+left. And that is the part worth stopping on. Iran owns that coast. It owns the mines, the missiles, the boats.
+1:23:44
+Yet, Sententcom can stand up and say flatly that Iran does not control the Straight of Hormuz and be right. Not
+1:23:51
+because the Navy brought a bigger gun, because it took away the one thing every weapon on that coast depends on, the ability to see.
+1:24:01
+This is Navy decoded, and that is the claim we are going to test tonight. Stay to the end and you will see how a waterway can belong to Iran on every map
+1:24:10
+and still not be Iran's to close. So, let us start with the oldest rule there is about a straight.
+1:24:20
+For as long as anyone has fought over a narrow sea, control has meant one simple thing. If you could see a ship, you
+1:24:27
+could stop it. Put guns on the shore, put mines in the water, put eyes on the cliffs, and anything that passed in front of those eyes was yours to take.
+1:24:36
+Sight came first. The shooting was the easy part. That was the contract, and it held for centuries. The straight of Hormuz is where that contract gets
+1:24:44
+tested because the geography does the enemy's work for him. At its narrowest, the straight is only about 21 nautical miles across, and the lane a super
+1:24:53
+tanker is actually allowed to use is a channel just two nautical miles wide. A super tanker has to thread that slot at a crawl on a course everyone already
+1:25:02
+knows, with the Iranian coast looming close enough that the mountains fill the horizon. And Iran has spent decades turning that coast into a killing ground. Radar on the high ground.
+1:25:12
+Anti-hship missiles ranged onto the channel. Fast attack boats holding in the coes. Mines seated across the seabed. Every ship that enters is
+1:25:20
+already tracked, already ranged, already inside the envelope before it clears the first bend. Whoever controls that slot has a hand on the throat of every ship
+1:25:29
+inside it. In early 2026, Iran reached for that throat. When the war with the United States and Israel broke open, the
+1:25:36
+Revolutionary Guard declared the straight closed to American and Allied shipping, seeded the water with mines, and began firing on anything that tried
+1:25:44
+to run it. Merchant traffic collapsed almost overnight. Within days, transits through the straight had fallen by roughly 90%, leaving hundreds of ships
+1:25:52
+and their crews stranded inside the Gulf with nowhere safe to go. And Washington answered the old way.
+1:26:00
+It called it Project Freedom, an open flag waving escort. Warships riding beside the merchant ships in plain daylight, exactly the way it had always
+1:26:08
+been done, and it barely lasted a day before it was shelved. The reasons were partly political, but the shape of the problem was simpler than any of them. A
+1:26:16
+convoy that announces itself hands the enemy the one thing it needs most, a firing solution.
+1:26:22
+You do not have to find a ship that is telling you where it is. Being seen had been the entire point once. In the tanker war of 1987, a visible escort was
+1:26:31
+a visible threat, and the threat was enough to keep the enemy at arms length.
+1:26:35
+That logic no longer holds. Against missiles, drones, and small boats that can be steered by a live sensor feed, announcing yourself does not deter the
+1:26:43
+enemy. It aims him. So, the Navy stopped announcing. The transit that finally worked ran on the exact opposite instinct. Every light out, every signal
+1:26:52
+killed, a doctrine turned 180°. The old contract had just been used against the fleet that wrote it. So, the fleet
+1:26:59
+stopped honoring it. Now, the mines are a genuine problem, and they get solved with genuine work. We will come to how because it took the Navy's mine hunting
+1:27:07
+ships grinding away at that water to open a lane at all. But clearing a path through the mines only gets a ship to the starting line. It does not decide
+1:27:15
+the race. What decides the race is a mistake buried inside a single word. The word is control. We assume that owning
+1:27:22
+the water is the same as seeing what crosses it. It is not. A straight is not controlled by whoever holds the sea beneath it. It is controlled by whoever
+1:27:30
+holds the sighteline across it. Iran still owns the water. The coast has not moved an inch. But the sighteline is the one thing physics let the Navy take
+1:27:39
+away. So that is exactly what the operation attacked. Not the water, the seeing. It did it three ways.
+1:27:50
+Start with a tanker because the first move is to erase it from every spectrum a human on the Iranian coast can search.
+1:27:57
+Think of a lighthouse. Its entire job is to be seen. That is what a lighthouse is. Now imagine ordering that lighthouse
+1:28:04
+to go completely dark, every lamp out, every window blacked, the radio room silent, and then steer it through a reef
+1:28:12
+by memory alone. Except here the lighthouse is 1,000 ft of fully loaded steel and the reef is a shipping lane
+1:28:19
+two nautical miles wide with mines somewhere in it. That is the discipline.
+1:28:24
+The ships get underway around 1:00 in the morning when the human eye and the coastal watch post are weakest. Every light stays off for the entire 6 to 7
+1:28:32
+hour run. The automatic identification system, the beacon that in peace time continuously tells the world a ship's name, heading, and exact position, gets
+1:28:41
+switched off, so the vessel erases itself from the public map. The radio goes quiet, so no signal intercept station ashore can pin a transmission to a hull.
+1:28:52
+And this is the trade at the heart of it. The ship strips away every signal that keeps it safe in peace time. the lights the law requires, the beacon that
+1:29:00
+lets other ships avoid it, the radio that answers a distress call. In exchange, it buys back the only thing that matters inside a war zone. It stops
+1:29:08
+being a target anyone can find. It coordinates instead through an encrypted channel with the Navy's fifth fleet, whispering its position every 30 minutes
+1:29:16
+and going dark again between. But this only closes one set of eyes, and any engineer sees which one immediately.
+1:29:23
+Going dark defeats the human eye on the cliff. the night vision watch post, the signal intercept station listening for a transmission. What it does not defeat is
+1:29:31
+radar. A super tanker is one of the largest radar reflectors a human being has ever put to see. You can cut every lamp on that hull and it will still
+1:29:39
+light up a radar screen like a struck match. So blacking out the ship was never going to be enough on its own. It handles the eyes that see light and hear
+1:29:47
+signals. It does nothing about the eyes that see in radio waves and those belong to the coast. So the radar becomes the next problem to solve. And there are
+1:29:55
+only two ways to beat it. You take the radar away from the enemy or you put something between the radar and the ship. The operation did both. That is
+1:30:03
+what the next two moves are. And neither of them is aimed at the tanker at all.
+1:30:09
+So the second move is to blind the coast. And the machine that does the blinding is a pair of nuclearpowered airfields sitting off the coast flying
+1:30:17
+in the dark. The USS Abraham Lincoln and the USS George HW Bush ran flight operations around the clock through the
+1:30:24
+whole fight for the straight day and night without pause. One of them holding station for many months on end to do it.
+1:30:31
+Between them, they kept stealth fighters, radar planes, and electronic attack jets in the air over the Gulf the entire time. The point is not the
+1:30:40
+roster. [snorts] The point is that everything on those decks is built to work when no one can see. And this is where the whole story lives in a single
+1:30:48
+detail because those aircraft launch and land in the same darkness the tanker is hiding in. But watch what the darkness
+1:30:55
+means to each side. A pilot coming home to that carrier in total darkness cannot see the ship at all. He does not need
+1:31:03
+to. Radar brings him in from miles out and an encrypted landing system flies him down onto a moving deck he never lays eyes on until his hook catches the
+1:31:12
+wire. His eyes were replaced by sensors that do not care whether the sun is up.
+1:31:16
+So the darkness is not an obstacle to him. It is just the room he works in.
+1:31:22
+Now put the watch on the Iranian shore into that same dark. And the whole war shows up in the gap. He has his own eyes
+1:31:29
+and whatever radar survived the last strike. A picture that is human, intermittent, and forever being knocked offline. The pilot traded his eyes for
+1:31:38
+an instrument. The coast has only the eyes it was born with, and those do not reach across a blacked out sea. One night, two kinds of sight.
+1:31:50
+And because that carrier can see in the dark, it can fly off it and take the enemy's sight away.
+1:31:57
+When Iran fired on ships running the southern route, the answer came fast and heavy. Dozens of targets struck across the Iranian coast in a single stretch.
+1:32:05
+radar sites, missile batteries, fast attack boats destroyed at their own peers. And every time Iran raised a new radar out of the rubble, it came down
+1:32:14
+again. A second time, a third, before it could finish a single sweep. Overhead, Growler jets jammed the coastal air
+1:32:22
+defense network, smearing the range finding that a shore missile needs to aim. This was not a battle for the straight. It was a battle for the right
+1:32:30
+to see across it. But a carrier can only strike what its aircraft can reach. And Iran's most dangerous assets sit where
+1:32:36
+aircraft are least welcome. Tucked deep inside a defended harbor, ringed by shore missiles built to swat down
+1:32:43
+anything that flies in. That is the box the Corsair strike opened. Sending a piloted jet or a crude boat into that
+1:32:50
+ring means putting a human life inside the enemy's best defended ground. A drone with no one aboard changes the arithmetic. It is cheap. It is
+1:32:59
+expendable. And the Navy can push it straight into the place the air defenses are thickest and simply spend it. And a naval base is not just any target. It is
+1:33:08
+where the coast's whole picture is run from. The peers and the patrol craft that go out to hunt a tanker by eye once the radar has been knocked down. The
+1:33:17
+carrier blinds the coast from above. The drone boat reaches in and takes out the room the coast does its seeing from, which is the real reason that strike mattered and why it opened this video.
+1:33:28
+It was never about the headline of a first. It cleared the very stretch of coast a blacked out tanker was about to run past. The escort that never rides
+1:33:36
+beside the ship because it goes in ahead of the transit and does not come back.
+1:33:41
+That brings us to the piece of geometry that decides who wins that fight.
+1:33:47
+Because sight is not just about who has the better sensor. It is about who stands where. And the physics of a coastline decides who can see whom.
+1:33:56
+There are two ways through the straight.
+1:33:58
+A northern corridor hugging Iran's own coast under Thrron's guns and a southern corridor about 12 nautical miles wide pressed tight against the coast of Oman.
+1:34:07
+That choice is not about distance.
+1:34:09
+Oman's waters are the one stretch of the straight outside Thrron's direct reach.
+1:34:13
+Harder for Iran to mine, harder to saturate with fast attack boats, though never truly safe. Iran still reached across that line and struck ships
+1:34:22
+running the southern route. and more than one tanker turned back in the night after the ones ahead of it were hit. The southern corridor lowers the odds
+1:34:29
+against you. It does not zero them. And running close along the Omani cliffs does one more thing. The land itself blocks the radar. A tanker tucked
+1:34:38
+against the rock disappears into the terrain behind it. And a coastal radar trying to pick it out is fighting its own reflections. But hard to mine is not
+1:34:46
+the same as clear. Iran seeded that water and the mines had to come out before a single loaded tanker could run it. Slow, unglamorous work done by the
+1:34:55
+Navy's mine hunters out of Bahrain, pushing unmanned boats and helicopters ahead of the crude ship to find and kill the mines without a sailor ever going
+1:35:04
+near them. It is a physical threat with a physical answer. And once the lane is open, the fight moves off the water and back into the only question that ever really mattered. Who can see across it?
+1:35:17
+This is the physics at the center of everything. A radar on the shore can only see as far as its own horizon, and terrain in the way steals even that. But
+1:35:25
+put the sensor up high, a Hawkeye radar plane, or a surveillance drone flying above 50,000 ft. A quarter billion dollar machine that never fires a shot
+1:35:34
+and only ever watches, and you push that horizon out for hundreds of miles. From up there, you look down onto the low, hidden targets the shore radar can never
+1:35:43
+reach. And you hand that picture to a destroyer's missiles, so the warship never has to switch on its own radar and give away where it is. High ground has
+1:35:51
+always owned the sighteline. The Navy simply moved its high ground into the sky. And Iran understood exactly what was being taken because it fought back
+1:36:00
+on the very same battlefield, the Seeing. This was never a one-sided fight. Its clearest move was aimed straight at the tanker's own eyes. It
+1:36:08
+flooded the straight with false satellite signals, spoofing until ships watched their own position leap across the map, sliding miles inland on the
+1:36:16
+display while they sat still in the water. In a channel two nautical miles wide, losing your position is not an inconvenience. It is a collision waiting
+1:36:24
+to happen. So, the crews were forced backward in time. They shut off the digital navigation they no longer trusted and went back to the oldest tools on the bridge, the magnetic
+1:36:33
+compass. dead reckoning by hand, bearings drawn in pencil on a paper chart. The satellite age folded itself
+1:36:40
+back into an age of rulers and dividers because in that straight the sight line was under attack from both directions at once. So the choice of the southern
+1:36:48
+corridor, the aircraft overhead, the sensor pushed up into the sky, none of it was about guarding the ship. It was about controlling who is allowed to see
+1:36:56
+what at every range. see far from above, deny the enemy his picture below, and slip the ship through the blind spot
+1:37:03
+that opens up. One continuous chain, and every link is about vision.
+1:37:12
+So, step back and ask the question the whole thing was built to answer. Iran has the geography, it has the mines, it has the missiles, and it has the coast.
+1:37:20
+So, how can Sentcom stand up and say plainly that Iran does not control the strait? Because the separate pieces were never really separate. They are one equation written over and over.
+1:37:30
+Controlling a straight was never about owning the water. It is about owning the distance between the moment you detect a ship and the moment you can fire on it.
+1:37:38
+Shrink that distance to zero and you rule the straight. Stretch it toward infinity and you own nothing. That is the whole operation in one line. It
+1:37:45
+stretched Iran's detection distance out past the point where the math still works. And a weapon that cannot find its target is not a weapon anymore. It is a guess fired into probable emptiness.
+1:37:55
+Even the drone strike at Bander Abbas fits the same equation. Three cheap boats spent to shorten Iran's reach by a few more miles of coast. One more slice
+1:38:03
+taken off the distance at which it can still see. Every mine, every missile, every boat still exists. Not one of them was taken away. They were simply cut off
+1:38:11
+from the one thing that made them lethal, a target they could actually see. A blockade that cannot see well enough to aim is barely a blockade at all. It is a coastline full of weapons
+1:38:19
+and a sea too dark to point them at, which turns the tanker's disappearing act into something larger than survival.
+1:38:25
+Go back to that thousand ft ship going dark at 1:00 in the morning. It looks like hiding a ship afraid trying to sneak past. It is not. That vanishing is
+1:38:33
+not the tanker protecting itself. It is the United States reaching into Iran's hands and taking the straight back. The ship does not go invisible to escape the
+1:38:40
+blockade. It goes invisible to prove there isn't one. Its silence is the sovereignty claim. Every dark hall that slips through is sentcom's sentence made
+1:38:48
+physical. Iran does not control the straight because control was never the water. It was the sighteline across it.
+1:38:57
+So come back to 1 in the morning to that thousand ft of loaded tanker. Every light out, sliding into the black.
+1:39:05
+Somewhere ahead of it that night, a handful of uncrrewed boats had already spent themselves against the coast, clearing the hunters out of the water so
+1:39:13
+this moment could happen quietly. Now the tanker reaches open water on the far side exactly the way it left, silent,
+1:39:21
+unlit, and on no screen that was hunting for it. Overhead, a fighter settles onto a deck it cannot see, guided down by
+1:39:30
+sensors that never needed the sun. And a coastline full of Iranian mines and missiles and boats watches a dark sea
+1:39:37
+and finds nothing on it to shoot. The water is Iran's. The mines are Iran's.
+1:39:43
+The sighteline is not. Control was never about who owned the sea. It was about who could see across it. And that was
+1:39:51
+the one thing physics let the Navy take away. One narrow corridor, one dark hull, one equation, no eyes, no control.
+1:40:01
+A blockade in the end is just a machine for seeing and a machine can be taken apart. You find the single bolt holding
+1:40:08
+it together and you watch what happens the moment it is pulled. That is the work we do here at Navy Decoded. So the
+1:40:16
+next time a headline tells you a waterway is closed, you will already know which question to ask. Not who holds the water, but who holds the sight
+1:40:23
+line above it. Stay with us and we will keep pulling the bolt.

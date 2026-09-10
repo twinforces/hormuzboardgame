@@ -1,0 +1,781 @@
+# nr-2rZym_InYEU.txt
+# title: Why the US Navy Found 46 Mines Hidden Under a Fishing Boat at Hormuz
+# channel: Navy Response (@NavyResponse)
+# url: https://www.youtube.com/watch?v=2rZym_InYEU
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: 33:08
+# notes: NOT Navy Decoded. Catalog originally filed this URL in the ND cluster by title.
+#   Host line is "Navy Response". Signature is "we calculate whether they work" / "we worship the equation".
+#   ASR artifacts kept verbatim.
+#   DAO / Dow / Djow / dowo = dhow
+#   Bondar Linga / Bandar Lenay = Bandar Lengeh
+#   Bandar Abas = Bandar Abbas
+#   Keshum = Qeshm
+#   anti-hship = anti-ship
+#   C82 = C-802
+#   hole-mounted / hole = hull-mounted
+#   anti-ubmarine = anti-submarine
+#   hydrooil = hydrofoil
+#   Seagra / Seadragon = Sea Dragon
+#   mind sweeping = mine sweeping
+#   2 m wide, 14 m long = 2 nm wide, 14 nm long (ASR)
+#   67th complete = 6/7 complete or already complete
+#   Nighthawk = Knighthawk / MH-60S
+#   MK 40 captor = likely destructor charge flavor, do not retune
+#   Conflicts with Navy Decoded cluster, do not merge numbers:
+#     EM52 warhead 300 kg here vs 308 lb in nd-2NNZ2u2WDD0
+#     EM52 unit cost $15,000 here vs $1,500 M-08/Sadat in ND
+#     Avenger class as primary MCM in theater here vs ND "almost decommissioned, four in Japan"
+#     17 million b/d here vs 20 million b/d in ND
+#     350 m / less-than-2-mile deep water channel here vs 2 nm TSS lanes in ND
+
+The EM52 mine costs approximately $15,000 to manufacture. The destroyer assigned to stop it costs 1.8 billion.
+0:10
+10 seconds
+That is a ratio of 120,000 to1 in Iran's favor. And on the night of April 7th,
+0:17
+17 seconds
+2026, three men in a wooden fishing boat were winning that equation. [music] Six nights running. This is not a story
+0:26
+26 seconds
+about a dramatic naval engagement. There were no missiles fired, no radar locks, no carrier strike groups maneuvering at
+0:33
+33 seconds
+flank speed. This is a story about a destroyer officer [music] staring at a boat riding 4 in too low in the water
+0:41
+41 seconds
+and what that 4 in almost cost. We showed you last week how the IRGC structured its Hormuz blockade. We
+0:50
+50 seconds
+walked you through [music] the defensive belt Iran built around the straight, the layered anti-hship missile batteries, the fastboat swarms, the shore-based
+0:58
+58 seconds
+[music] radar grid. We showed you the geometry of the problem, 21 nautical miles at its narrowest, a choke point
+1:06
+1 minute, 6 seconds
+that handles 20% of the world's oil supply. What we did not show you was what was already on the bottom. I'm your
+1:15
+1 minute, 15 seconds
+host at Navy [music] Response. We don't celebrate weapons. we calculate whether they work. Let us look at the mine. The
+1:23
+1 minute, 23 seconds
+EM52 is not [music] a new weapon. Iran has been manufacturing variants of it since the late 1980s when the pressure
+1:31
+1 minute, 31 seconds
+mine and the Silkworm missile were the twin pillars of IRGC naval strategy. But the version recovered from the DAO on
+1:39
+1 minute, 39 seconds
+April 7th was not a museum piece. The EM52 is a rocket propelled bottom mine.
+1:46
+1 minute, 46 seconds
+That distinction [music] matters more than almost any other technical detail in this story. Most naval mines are passive. They sit on the seafloor and
+1:55
+1 minute, 55 seconds
+wait. A ship passes close enough. The magnetic or acoustic or pressure signature triggers the fuse and the mine
+2:03
+2 minutes, 3 seconds
+detonates. The effective radius is fixed. The geometry is static. The EM52
+2:10
+2 minutes, 10 seconds
+is not passive. When a ship passes within its detection envelope, roughly 30 m, the mine does not detonate in
+2:18
+2 minutes, 18 seconds
+place. It fires a rocket propelled warhead upward through the water column into the hull of the vessel above it.
+2:26
+2 minutes, 26 seconds
+The detonation occurs not at the mine's resting depth, but at contact with [music] the target. The shaped charge is
+2:34
+2 minutes, 34 seconds
+directed. The structural damage is not random. In 1988, the USS Samuel B.
+2:41
+2 minutes, 41 seconds
+Roberts, a guided missile frigot, struck a contact mine in the Persian Gulf. The explosion tore a 15 ft hole in her hull,
+2:50
+2 minutes, 50 seconds
+flooded three compartments, and nearly sank her. The mine that nearly sank her was an older, simpler design. The EM52 is the lesson Iran drew from 1988.
+3:03
+3 minutes, 3 seconds
+A single EM52 warhead carries a 300 kg high explosive charge. The hull of a
+3:10
+3 minutes, 10 seconds
+standard commercial super tanker is not designed to absorb a shaped charge detonating from directly below at close
+3:17
+3 minutes, 17 seconds
+range. The structural analysis is not complicated. The straight of Hormuz moves on average 17 million barrels of
+3:26
+3 minutes, 26 seconds
+oil per day. [music] A single tanker disabled in the deep water channel, roughly 350 m wide,
+3:32
+3 minutes, 32 seconds
+constrained on both sides by shallows, does not just damage itself, it closes the channel. Every vessel behind it
+3:40
+3 minutes, 40 seconds
+stops. [music] The insurance market for Persian Gulf transits prices this scenario at 8 figures per voyage. Iran
+3:48
+3 minutes, 48 seconds
+does not need to destroy the US Navy to close Hormuz. It needs to make the cost of transiting Hormuz higher than the
+3:56
+3 minutes, 56 seconds
+cost of going around it. The mine does that math for them. The standard approach starts to break down here. The
+4:04
+4 minutes, 4 seconds
+US Navy's primary mine countermeasures platform in 2026 is the Avenger class mine countermeasures ship MCM1 through MCM14.
+4:15
+4 minutes, 15 seconds
+These vessels carry the ASQ32 [music] sonar, the A/QS20
+4:23
+4 minutes, 23 seconds
+mine hunting sonar system, [music] and MH53E Sea Dragon helicopters equipped with the Mark [music] 105 hydrooil mine sweeping
+4:33
+4 minutes, 33 seconds
+sled. They are designed for exactly this problem. But the Avenger class is not built for operating inside a contested
+4:40
+4 minutes, 40 seconds
+straight. While three dozen IRGC fast boats and a functional shore-based anti-hship missile grid are watching
+4:47
+4 minutes, 47 seconds
+every move they make. Avenger class ships transit at 8 to 13 knots. They carry no armor. Their electronic warfare
+4:56
+4 minutes, 56 seconds
+suite is minimal in a permissive environment, a harbor, a cleared sealane after [music] a conflict ends. They are
+5:04
+5 minutes, 4 seconds
+extraordinarily effective. In the straight of Hormuz in April 2026, with the IRGC's coastal defense batteries
+5:13
+5 minutes, 13 seconds
+active on Abu Musa Island, sending an Avenger into the deep water channel would be an invitation for Iran to
+5:20
+5 minutes, 20 seconds
+demonstrate what their C82 anti-ship missiles do to a vessel with no countermeasures. The mine countermeasure
+5:27
+5 minutes, 27 seconds
+ship cannot do its job while the mines are being actively defended. There is a second problem that is harder to solve
+5:34
+5 minutes, 34 seconds
+than the first. The EM52 is a bottom mine. It sits on the seafloor 35 to 50 m
+5:43
+5 minutes, 43 seconds
+below the surface [music] in the Hormuz deep water channel. The sonar systems on Arley Burke [music] class destroyers.
+5:51
+5 minutes, 51 seconds
+The SQS53C hole-mounted sonar are optimized for anti-ubmarine warfare. They are
+5:59
+5 minutes, 59 seconds
+extraordinarily capable against moving submarines. A bottom mine sitting motionless in 40 m of water constructed
+6:07
+6 minutes, 7 seconds
+from low metallic composite materials is an entirely different signature problem.
+6:13
+6 minutes, 13 seconds
+The Navy knew this. What it did not know as of April 6th was how many mines had already been laid or precisely where.
+6:22
+6 minutes, 22 seconds
+That is not a failure of intelligence alone. It is a failure of geometry.
+6:29
+6 minutes, 29 seconds
+The straight is 21 nautical miles wide at its narrowest point. The navigable lane for deepdraft commercial vessels is
+6:37
+6 minutes, 37 seconds
+less than 2 mi across. Sidescan sonar surveys of that channel require time, slow passes at specific depths, and the absence of IRGC interference.
+6:49
+6 minutes, 49 seconds
+None of those conditions existed in early April 2026. The mines were already in the water.
+6:56
+6 minutes, 56 seconds
+Every [music] day that passed was another six nights of Dao transits from Bondar Linga. Run the attrition math and
+7:04
+7 minutes, 4 seconds
+the answer before April 7th was not encouraging. I spent time going through the afteraction assessments of the April 7th intercept [music] and one detail
+7:12
+7 minutes, 12 seconds
+kept nagging me. The detection method that broke this open was not electronic, not algorithmic and not classified. It
+7:22
+7 minutes, 22 seconds
+was a deck officer on USS Stockdale looking at a wooden boat and thinking that sits [music] wrong. The Stockdale
+7:30
+7 minutes, 30 seconds
+is a flight 2 Arley Burke class guided missile destroyer [music] hull number DDG106.
+7:38
+7 minutes, 38 seconds
+She was commissioned in 2009. [music] Displaces 9,600 tons full load. And on the night of April 7th, she was on
+7:46
+7 minutes, 46 seconds
+picket duty at the western mouth of the straight, [music] approximately 11 nautical miles southwest of the Keshum Island shoreline. Her mission was
+7:55
+7 minutes, 55 seconds
+interdiction, screening commercial traffic being turned back under the Navy's temporary exclusion zone, monitoring IRGC naval activity, [music]
+8:03
+8 minutes, 3 seconds
+and maintaining the sensor picture for the corridor. At 2217 local time, the Stockdale's bridge watch stander logged
+8:11
+8 minutes, 11 seconds
+a visual contact on a Dowbearing 047° at approximately 1,800 m. The DAO was
+8:18
+8 minutes, 18 seconds
+running without AIS, not unusual for small fishing vessels in the straight. It was making approximately four knots.
+8:26
+8 minutes, 26 seconds
+Its navigation lights were on. What was not standard was its water line. An empty or lightly loaded wooden dow of
+8:34
+8 minutes, 34 seconds
+the type common in Bandar Lenay traffic sits with roughly 60 cm of freeboard.
+8:39
+8 minutes, 39 seconds
+The gap between the water line and the deck edge. This vessel had approximately 35 cm. That difference is not visible at
+8:48
+8 minutes, 48 seconds
+1,800 m with the naked eye. But the Stockdale's bridge team was running night vision optics and the angle of
+8:55
+8 minutes, 55 seconds
+reflected light off the water line was wrong. The watch stander called it in. The Stockdale went to general quarters.
+9:03
+9 minutes, 3 seconds
+The boarding that followed rewrote the mine threat picture for the entire Hormuz corridor.
+9:09
+9 minutes, 9 seconds
+VBSS team Bravo visit board. Search and seizure. Launched from Stockdale at 2239
+9:17
+9 minutes, 17 seconds
+in two Mark 6 patrol boats. The approach was standard. One boat holds off at cover distance. One closes for boarding.
+9:26
+9 minutes, 26 seconds
+The DAO's crew, three men, did not resist. By the time the boarding team was on deck, the mission was already
+9:33
+9 minutes, 33 seconds
+67th complete. [music] The mine rail system was under the deck planking.
+9:38
+9 minutes, 38 seconds
+According to the afteraction technical assessment, the rail had been custom fabricated from 50 mm steel square section tubing welded directly to the
+9:48
+9 minutes, 48 seconds
+keel frames at three points. It ran the full length of the hole, [music] approximately 7 m. Eight mines were
+9:56
+9 minutes, 56 seconds
+seated in two rows of four, [music] held in place by friction clamps that could be released by a single operator pulling a lanyard. The mines would slide off the stern rail and sync to the bottom.
+10:07
+10 minutes, 7 seconds
+Precisely controlled by depth and GPS position, no fire control computer, no electronic trigger grid, no remote
+10:15
+10 minutes, 15 seconds
+activation system. The three IRGC operators identified as members of the IRGC Navy's mine warfare division based
+10:24
+10 minutes, 24 seconds
+on documents recovered aboard had been executing this manually six nights running using a handheld depth sounder
+10:32
+10 minutes, 32 seconds
+and a GPS receiver to position the drops along the navigable channel. [music] the oldest mine warfare tactic in the
+10:40
+10 minutes, 40 seconds
+Persian Gulf, executed with hand tools against [music] the most sophisticated naval force in the world. And here is
+10:48
+10 minutes, 48 seconds
+the detail that makes [music] this extraordinary. The custom rail was not a field modification. It had been welded into the hull at a boatyard undercover.
+10:58
+10 minutes, 58 seconds
+The DAO had been purpose-built for this mission. Purchased converted at a facility near Bandar Abbas and crewed specifically to [music] operate as a
+11:06
+11 minutes, 6 seconds
+covert mine layer inside the exclusion zone while appearing to be a fishing vessel making its normal passage. It had completed [music]
+11:14
+11 minutes, 14 seconds
+six transits before the Stockdale stopped it. Subscribed to Navy response because what almost closed Hormuz wasn't
+11:22
+11 minutes, 22 seconds
+a hypersonic missile. It was a 30-year-old weapon and a fishing boat sitting 4 in [music] too low in the water. The boarding itself took 11
+11:31
+11 minutes, 31 seconds
+minutes. The forensic assessment took 4 hours, but the math of what had been discovered was genuinely alarming. The
+11:39
+11 minutes, 39 seconds
+Stockdale's VBSS team had recovered eight mines. The three operators admitted under NCIS questioning aboard
+11:49
+11 minutes, 49 seconds
+USS Baton where they were transferred by helicopter at 0130 that they had been making nightly transits since April 1st.
+11:57
+11 minutes, 57 seconds
+Eight mines per transit. Six transits completed before interdiction. A minimum of 48 mines already [music] laid. The
+12:06
+12 minutes, 6 seconds
+actual number was likely variable. Mine placement in a tidal channel from a rolling wooden deck at night is not a
+12:14
+12 minutes, 14 seconds
+precise science. Some mines may have been placed in overlapping positions. Some may have shifted post deployment.
+12:21
+12 minutes, 21 seconds
+But the intelligence picture that consolidated over the following 72 hours based on GPS tracks recovered from the
+12:29
+12 minutes, 29 seconds
+DAO's navigation device cross referenced against acoustic bottom data from Stockdale's towed array suggested
+12:36
+12 minutes, 36 seconds
+between 40 and 60 EM52s had been seated along approximately 14 nautical miles of the deep water channel. That is a mine
+12:45
+12 minutes, 45 seconds
+density of 3 to four weapons per nautical mile of navigable lane. For comparison, during Operation Praying
+12:53
+12 minutes, 53 seconds
+Mantis in 1988, the US Navy classified a minefield of 10 to 15 mines per square nautical mile as requiring a full MCM
+13:02
+13 minutes, 2 seconds
+sweep before any naval transit. [music] The Hormuz deep water channel is not a square. It is a lane constrained on both
+13:10
+13 minutes, 10 seconds
+sides where every ship and convoy must pass through the same corridor. The geometry makes the density worse than
+13:17
+13 minutes, 17 seconds
+the raw number suggests. and then Stockdale's intelligence officer pulled the AIS records. The reconstruction
+13:25
+13 minutes, 25 seconds
+assembled via liaison request to the UK Maritime Trade Operations Center in Dubai showed that in the 6 days between
+13:32
+13 minutes, 32 seconds
+April 1st and April 6th, [music] 43 commercial vessels had transited the Deep Water Channel eastbound or westbound. [music] The Hormuz exclusion
+13:41
+13 minutes, 41 seconds
+zone had not been fully enforced until April 5th. Before that date, traffic had slowed [music] but not stopped. 43
+13:50
+13 minutes, 50 seconds
+transits across a seated minefield. None of them had detonated a mine. There are two explanations for this and they are
+13:59
+13 minutes, 59 seconds
+not mutually exclusive. The first is that manual placement done at night from a rolling dow without precision
+14:06
+14 minutes, 6 seconds
+positioning equipment had produced [music] gaps in the pattern. The second is that the EM52's combination fuse
+14:14
+14 minutes, 14 seconds
+includes a discriminator. It is calibrated to respond [music] to the acoustic and pressure signature of vessels above a certain displacement
+14:22
+14 minutes, 22 seconds
+threshold, specifically to avoid false triggers [music] from small craft that might reveal the minefield's position
+14:29
+14 minutes, 29 seconds
+prematurely. The discriminator protects the minefield. A super tanker displacing 300,000 metric tons fully laden triggers
+14:37
+14 minutes, 37 seconds
+the discriminator. A 180 foot fishing vessel does not. 43 ships had transited
+14:44
+14 minutes, 44 seconds
+a live minefield because the minefield had been designed to wait for larger prey. The prey it was waiting for was
+14:52
+14 minutes, 52 seconds
+the escorted tanker convoy the US Navy had been planning to run through Hormuz scheduled to begin April 14th.
+15:00
+15 minutes
+Type Hormuz in the comments if you understand what that means for every MCM decision that follow. What strikes us
+15:08
+15 minutes, 8 seconds
+about the design of this campaign is the strategic clarity embedded in the mine placement pattern. Iran did not scatter
+15:16
+15 minutes, 16 seconds
+these weapons randomly. The GPS [music] tracks recovered from the DAO show deliberate targeting. Mines were clustered at the two points within the
+15:24
+15 minutes, 24 seconds
+deep water channel where the 30 m depth contour narrows most significantly, forcing deep draft vessels into the
+15:31
+15 minutes, 31 seconds
+tightest possible lateral band. A super tanker at those two choke points has roughly 400 m of maneuvering room on
+15:39
+15 minutes, 39 seconds
+each side. That is a targeting grid, not a scattered minefield. Iran had either obtained intelligence on the US Navy's
+15:48
+15 minutes, 48 seconds
+convoy rooting plan or correctly predicted it from known channel geometry and built the mine pattern around [music] the positions where the convoy
+15:57
+15 minutes, 57 seconds
+would have the least ability to maneuver when a detonation occurred. This is not coincidence. [music] It is engineering.
+16:05
+16 minutes, 5 seconds
+And here is the take that will probably generate push back. The decision to begin convoy operations on April 14th
+16:13
+16 minutes, 13 seconds
+before completing a full MCM sweep of the Deep [music] Water Channel was a strategic error the Navy has not fully acknowledged publicly. The intelligence
+16:22
+16 minutes, 22 seconds
+picture as of April 6th showed the [music] strait was contested. Mine threat indicators had been assessed as
+16:28
+16 minutes, 28 seconds
+probable, not confirmed, but probable since late March based on IRGC logistics
+16:35
+16 minutes, 35 seconds
+movements out of Bandar Abas flagged by NSA collection. [music] The convoy timeline was driven by diplomatic pressure and global fuel supply calculations, not by the MCM timeline.
+16:48
+16 minutes, 48 seconds
+[music]
+16:49
+16 minutes, 49 seconds
+The Stockdale's discovery on April 7th forced the delay that planning should have filled in. Without that boarding, the first escorted tanker would have entered a live minefield 7 days later.
+17:01
+17 minutes, 1 second
+The 11-day mine countermeasures operation began April 8th and concluded April 19th. The operational architecture
+17:10
+17 minutes, 10 seconds
+combined three elements that had not been used in coordination in the Persian Gulf since Operation Ernest will in 1987.
+17:19
+17 minutes, 19 seconds
+The first was the MH53E Seagra from USS Baton. The same helicopter platform whose primary mission is heavy lift assault support.
+17:30
+17 minutes, 30 seconds
+Fitted with the Mark 105 hydrooil mind sweeping sled, it toes an electromagnetic influence sweep at a
+17:37
+17 minutes, 37 seconds
+precise depth above the bottom, triggering influence mines without putting a surface hull in harm's way.
+17:44
+17 minutes, 44 seconds
+Towing speed 80 knots. Lane width swept per pass. Approximately 160 m. Run the
+17:53
+17 minutes, 53 seconds
+math on the deep water channel. 2 m wide, 14 m long. At [music] 160 m per
+18:00
+18 minutes
+pass, you need roughly 200 passes to cover the length. At 80 knots, each pass takes approximately 10 minutes. Total
+18:09
+18 minutes, 9 seconds
+sweep time, ignoring repositioning, 33 hours of continuous flight. The Sea Dragon cannot [music] fly 33 continuous
+18:18
+18 minutes, 18 seconds
+hours. It flies four to 5 hours per sort rest, [music] refuel, inspect the sled.
+18:26
+18 minutes, 26 seconds
+Two sea dragons alternating on rotation, averaging 16 hours of operational sweep time per day across the 11-day
+18:34
+18 minutes, 34 seconds
+operation. That is the math that explains 11 days. But the Seadragon electromagnetic sweep only addresses
+18:41
+18 minutes, 41 seconds
+mines with electromagnetic or acoustic fuses. The EM52 uses a combination fuse.
+18:49
+18 minutes, 49 seconds
+Acoustic pressure [music] and proximity. The proximity component is the problem.
+18:54
+18 minutes, 54 seconds
+A towed sled at 80 knots does not replicate the pressure signature of a 300,000 ton super tanker moving at 8
+19:02
+19 minutes, 2 seconds
+knots. The same discriminator that protected the minefield from commercial traffic also partially protects it from sweep [music] systems that do not match
+19:12
+19 minutes, 12 seconds
+the target profile. This is where the second element mattered.
+19:17
+19 minutes, 17 seconds
+The MK18 mod two kingfish UUV is not a dramatic looking piece of equipment. It
+19:24
+19 minutes, 24 seconds
+is a yellow torpedo-shaped device 2.1 m long, 54 kg, [music] controlled from the surface via acoustic data link. It
+19:33
+19 minutes, 33 seconds
+carries side scan sonar and a forward-looking optical camera. Its function is not mine clearance. It is
+19:41
+19 minutes, 41 seconds
+mine identification. It maps the bottom, finds the mines, pins each one's location to within 2 m via GPS uplink,
+19:50
+19 minutes, 50 seconds
+and surfaces for recovery. The Navy had two Kingfish systems aboard USS Devastator. [music] An Avenger class MCM
+19:59
+19 minutes, 59 seconds
+ship repositioned to the eastern edge of the exclusion zone. outside the effective range of the Abu Musa coastal defense batteries. What makes the
+20:07
+20 minutes, 7 seconds
+Kingfish critical to this equation? It operates below the surface at 30 to 40 m depth, [music] completely invisible to
+20:15
+20 minutes, 15 seconds
+IRGC radar and visual surveillance. Iran could [music] not watch it work. Iran could not vector fast boats against it.
+20:24
+20 minutes, 24 seconds
+The kingfish [music] found 31 EM52s over 5 days of survey operations, pinning each to within 2 m on the bottom chart.
+20:33
+20 minutes, 33 seconds
+31 confirmed. Against an original estimate of [music] 40 to 60. The discrepancy was not purely an
+20:41
+20 minutes, 41 seconds
+intelligence failure. Some mines had been placed outside their operational depth range, below the threshold where the EM52's fuse would [music] arm due to water pressure differential.
+20:52
+20 minutes, 52 seconds
+Some had impacted sandy bottom soft enough to tip the mine's orientation past the arming angle during sinking.
+20:58
+20 minutes, 58 seconds
+The weapon was capable. The delivery system, a man pulling a lanyard on a rolling wooden deck at night, was not.
+21:06
+21 minutes, 6 seconds
+That is the cost asymmetry running in the other direction. The imprecision of a $15,000 manual delivery system
+21:14
+21 minutes, 14 seconds
+degraded the effectiveness of a weapon designed with engineering precision. And that imprecision was what made the sweep
+21:22
+21 minutes, 22 seconds
+completable in 11 days. On day four [music] of the sweep, the operation nearly went wrong in the other
+21:29
+21 minutes, 29 seconds
+direction. The MH53E [music] was working through the northern section of the channel. The final approach lane for
+21:36
+21 minutes, 36 seconds
+westbound tanker traffic exiting the straight when its electromagnetic sweep triggered an anomaly the crew could not
+21:43
+21 minutes, 43 seconds
+classify. The sonar return profile matched an EM52.
+21:49
+21 minutes, 49 seconds
+The depth reading did not. The object was at 8 m, not 35. At 8 m, a detonating
+21:56
+21 minutes, 56 seconds
+EM52 [music] warhead does not damage a super tanker. At 8 m below the surface, 300 kg of shaped charge directed upward
+22:06
+22 minutes, 6 seconds
+into a loaded VLCC produces a catastrophic flooding event. The vessel does not slow and limp to [music] port.
+22:15
+22 minutes, 15 seconds
+It loses structural integrity in minutes. The Sea Dragon crew reported the anomaly immediately. Devastator
+22:22
+22 minutes, 22 seconds
+repositioned. A Kingfish survey was tasked to the coordinates. What the Kingfish found was not a mine. [music]
+22:29
+22 minutes, 29 seconds
+It was an anchor chain from a fishing vessel cut loose during the chaotic evacuation of commercial traffic from the exclusion [music] zone in late
+22:37
+22 minutes, 37 seconds
+March. It had snagged on a coral outcropping and was generating the acoustic return that mimicked an armed mine sitting shallow. The team had a
+22:46
+22 minutes, 46 seconds
+choice. Clear it as a false positive and continue [music] or hold the sweep until confirmed. They held. The Kingfish
+22:55
+22 minutes, 55 seconds
+confirmation took 9 hours. 9 hours of suspended sweep [music] operations. Two MH53E
+23:03
+23 minutes, 3 seconds
+sorties redirected to holding patterns [music] and a recalibration of the discrimination algorithm to filter the specific signature of the coral chain combination.
+23:13
+23 minutes, 13 seconds
+9 hours caused by an anchor chain in the wrong place. That is what friction looks like in mine countermeasures. Not a
+23:21
+23 minutes, 21 seconds
+[music] catastrophe, a delay. Multiply that kind of delay across 11 days and you understand why every single day of
+23:29
+23 minutes, 29 seconds
+the MCM timeline was non-reoverable once it slipped. The third element of the operation was the one that had to remain
+23:36
+23 minutes, 36 seconds
+invisible. The A/ AQS20A mine hunting sonar towed behind an MH60S
+23:44
+23 minutes, 44 seconds
+Nighthawk helicopter performs a function the Kingfish cannot. It classifies mines by type while moving, generating a
+23:52
+23 minutes, 52 seconds
+continuous sonar picture of the bottom without the slow survey passes of an UUV. The AQS20A can cover 8 nautical
+24:01
+24 minutes, 1 second
+miles of lane per hour of flight. The Nighthawk conducting AQS2A sweeps in the southern section was
+24:09
+24 minutes, 9 seconds
+operating from USS Baton repositioned to a station 30 nautical miles west of the straight entrance outside the effective
+24:17
+24 minutes, 17 seconds
+range of shore-based [music] IRGC anti-aircraft systems. The helicopter's operational radius covered the entire
+24:24
+24 minutes, 24 seconds
+western approach to the deepwater channel. Iran could see baton on radar.
+24:30
+24 minutes, 30 seconds
+Iran could track the helicopter launches. What Iran could not determine was what the helicopter was doing at 40
+24:36
+24 minutes, 36 seconds
+knots and 200 f feet altitude, dragging a sonar body 100 ft below the surface.
+24:42
+24 minutes, 42 seconds
+The AQS20A confirmed 14 additional mines in the southern section, bringing the total confirmed count to 45 EM52s
+24:52
+24 minutes, 52 seconds
+and flagged three areas where bottom composition was soft enough that the Kingfish survey may have missed partially buried weapons. Those sections
+25:01
+25 minutes, 1 second
+required second pass coverage. They got it. Put yourself in the position of the MCM commander coordinating all three
+25:08
+25 minutes, 8 seconds
+systems across an 11-day operation at night [music] inside a contested straight with IRGC fast boats making
+25:16
+25 minutes, 16 seconds
+intelligence collection runs along the edge of the exclusion zone [music] every 18 hours. The pressure is not primarily tactical.
+25:25
+25 minutes, 25 seconds
+It is [music] logistical.
+25:27
+25 minutes, 27 seconds
+You have one MCM ship, two UUVs, [music] helicopter crews that have been flying 6-hour sorties for 11 consecutive days,
+25:36
+25 minutes, 36 seconds
+and an EOD dive team that has been working two shifts in 35 m water. The question is not whether the tools work.
+25:45
+25 minutes, 45 seconds
+The question is whether the machinery behind those tools can sustain the pace the tanker convoy timeline demands.
+25:52
+25 minutes, 52 seconds
+On day 11, April 19th, Stockdale's intelligence officer prepared the final mine threat assessment [music] for the corridor. 46 mines confirmed and mapped.
+26:02
+26 minutes, 2 seconds
+31 neutralized by MK 40 captor mine disposal charges placed by EOD divers operating from Stockdale's rigid
+26:11
+26 minutes, 11 seconds
+inflatable boats. 15 neutralized by the second MH 53E electromagnetic sweep.
+26:18
+26 minutes, 18 seconds
+During the final operational window, the deep water channel was declared provisionally clear [music] at 1847
+26:24
+26 minutes, 24 seconds
+local time. Provisionally, that word [music] carries specific technical weight in mine countermeasures
+26:31
+26 minutes, 31 seconds
+doctrine. It means [music] based on available survey data, the probability of an undetected mine in the swept lane
+26:39
+26 minutes, 39 seconds
+falls below the operational threshold for transit. It does not mean zero. The US Navy's operational threshold for mine
+26:47
+26 minutes, 47 seconds
+countermeasures [music] is a residual mine probability below 5%.
+26:52
+26 minutes, 52 seconds
+In a channel where 46 mines were confirmed, a 95% confidence sweep means mathematically that 2.3 mines may remain undetected somewhere in the 14-mi lane.
+27:05
+27 minutes, 5 seconds
+The first escorted tanker transit ran on April 21st. three VLCC's and an LPG
+27:12
+27 minutes, 12 seconds
+carrier escorted by Stockdale and USS Jason Dunham transiting the deep water channel at 8 knots with EOD divers in
+27:21
+27 minutes, 21 seconds
+the water ahead of the formation and an MH53E conducting a final electromagnetic sweep
+27:29
+27 minutes, 29 seconds
+directly above the convoy [music] lane as it moved. No detonations.
+27:34
+27 minutes, 34 seconds
+Transit time through the mine section 47 minutes. For 47 minutes, the most strategically important waterway on
+27:42
+27 minutes, 42 seconds
+Earth operated under a probabilistic statement. There is a 95% chance you are
+27:48
+27 minutes, 48 seconds
+safe. The math left a 5% margin. The ships transited anyway. That is not recklessness.
+27:57
+27 minutes, 57 seconds
+That is the operational calculus of a contested straight. a global supply chain dependent on every day of delay
+28:04
+28 minutes, 4 seconds
+and a diplomatic timeline that had already slipped by 7 days. What do you think? Was running the April 21st convoy
+28:12
+28 minutes, 12 seconds
+before a 100% sweep was achievable the right call, or did the Navy accept too much risk against too much pressure?
+28:20
+28 minutes, 20 seconds
+Tell us in the comments what the headlines never covered about this operation. Iran did not design this
+28:27
+28 minutes, 27 seconds
+campaign to win a naval battle. The three IRGC operators aboard that DAO
+28:34
+28 minutes, 34 seconds
+were not trying to sink the stock. They were [music] trying to make the straight of Hormuz operationally expensive to run
+28:41
+28 minutes, 41 seconds
+up the cost of every tanker transit until insurers, shipping companies, and oil buyers made the economic calculation
+28:50
+28 minutes, 50 seconds
+to reroute around the Persian Gulf entirely. A mine that costs $15,000.
+28:57
+28 minutes, 57 seconds
+an MCM operation [music] that cost approximately $47 million over 11 days
+29:04
+29 minutes, 4 seconds
+in helicopter flight hours, ordinance, EOD deployments, sensor system wear, fuel, logistics, [music] and
+29:12
+29 minutes, 12 seconds
+intelligence support. Every mine Iran managed to lay had a leverage ratio of more than 3,000 to1. We showed you the
+29:20
+29 minutes, 20 seconds
+cost of symmetry of the IRGC fastboat problem. The speedboat versus the [music] SM6 interceptor, the 100 to1
+29:29
+29 minutes, 29 seconds
+ratio. The mine warfare equation is worse. Significantly worse. Iran does not need to defeat the US Navy at mine
+29:38
+29 minutes, 38 seconds
+counter measures. It needs [music] to force the Navy to execute mine counter measures repeatedly under fire inside a
+29:46
+29 minutes, 46 seconds
+contested straight on a timeline where every [music] day of delay has measurable economic consequences whether
+29:52
+29 minutes, 52 seconds
+or not a single mine detonates. The DAW was not a failure of Iranian strategy.
+29:58
+29 minutes, 58 seconds
+It was a proof of concept. One detail that stuck with me from the afteraction record is this. The three IRGC [music]
+30:07
+30 minutes, 7 seconds
+operators never tried to run. When the Stockdale's patrol boats approached, the Djow maintained its heading. The crew
+30:15
+30 minutes, 15 seconds
+stood on deck. The mine rail was covered. Their plan evidently was to accept a boarding inspection because a
+30:23
+30 minutes, 23 seconds
+wooden fishing boat in the straight at night running without AIS was a routine enough site that a visual inspection of the deck might not produce anything
+30:32
+30 minutes, 32 seconds
+actionable. What broke that calculation was [music] 4 in of water line. Not a sensor system, not a satellite, not a
+30:40
+30 minutes, 40 seconds
+classified intelligence feed, a watch stander on a destroyer who knew what a loaded fishing boat was supposed to look
+30:47
+30 minutes, 47 seconds
+like. Will the MCM technology gap the inability to conduct full mine countermeasures inside a contested
+30:55
+30 minutes, 55 seconds
+straight without accepting unacceptable surface risk? force a fundamental rethink of how the Navy protects high
+31:02
+31 minutes, 2 seconds
+volume shipping lanes. Comment yes if you think the doctrine needs to change.
+31:08
+31 minutes, 8 seconds
+The three IRGC operators were transferred to US custody on April 8th.
+31:14
+31 minutes, 14 seconds
+Under the laws of naval warfare, they were designated as unlawful combatants, IRGC Navy personnel operating in
+31:23
+31 minutes, 23 seconds
+civilian disguise inside a declared maritime exclusion zone. Their legal status as of this recording remains formally unresolved.
+31:32
+31 minutes, 32 seconds
+The Stockdale returned to Picket Station on the morning of April 9th. Six additional Dows were intercepted over the following 10 days. [music]
+31:41
+31 minutes, 41 seconds
+Three were carrying mines. Three were empty. Whether decoys, fishing vessels whose operators had heard about the
+31:48
+31 minutes, 48 seconds
+boarding and jettisoned their cargo before contact or Dows whose crews had lost confidence in the operation is not
+31:56
+31 minutes, 56 seconds
+established. The mine laying campaign did not stop. It adapted. Smaller mines, shallower placements, different delivery
+32:04
+32 minutes, 4 seconds
+timing. The equation changed when the variables changed. But the Stockdale had changed one variable that could not be
+32:12
+32 minutes, 12 seconds
+changed back. Iran's covert mining campaign [music] was no longer covert.
+32:17
+32 minutes, 17 seconds
+Every wooden dowo riding low in the water at the western mouth of the straight of Hormuz is now a tactical question before it is a fishing vessel.
+32:26
+32 minutes, 26 seconds
+That is what three sailors in two patrol boats at 2217 on April 7th cost Iran's strategic mining campaign. The mine that almost won the equation cost $15,000.
+32:39
+32 minutes, 39 seconds
+The boarding that stopped it cost one night of fuel and a set of night vision optics. Subscribe to [music] Navy
+32:46
+32 minutes, 46 seconds
+response because the most important decision in the Hormuz mine war was made by a watch standard who noticed a boat
+32:53
+32 minutes, 53 seconds
+sitting 4 in [music] too low in the water. We don't worship the machine. We worship the equation.
+33:00
+33 minutes
+Next week, we're going to look at what the NCIS interrogation of those three IRGC operators produced and why what
+33:08
+33 minutes, 8 seconds
+they told investigators on the night of April 8th was not about 46 mines. It was about the ones they had not yet laid.

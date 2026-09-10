@@ -1,0 +1,490 @@
+# wv-gq0OyP638J8.txt
+# title: Why Iran's Entire Mine Strategy Fails Against One US Ship Nobody Talks About
+# channel: WarVision
+# url: https://www.youtube.com/watch?v=gq0OyP638J8
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: 19:24 plus YouTube leftover "Sync to video time"
+# notes: NOT Navy Decoded. Catalog originally filed this URL in the ND cluster by title.
+#   Host/script says "Subscribe to Navy Decoded" and "this is Navy decoded" but the
+#   YouTube channel is WarVision. User correction 2026-09-09. ASR kept verbatim.
+#   Murweight = moored
+#   Bridgetton / Bridgeten = Bridgeton
+#   Sodaf O2 / Saddaf O2 = Sadat-02
+#   Arley Burke $21 billion = Arleigh Burke ~$2.1 billion (ASR)
+#   steel hole / wood hole = steel hull / wood hull
+#   ke to mast = keel to mast
+#   degossing / deosing / dagos = degaussing
+#   Isada Fchini ID36 SS6V = Isotta Fraschini ID36 SS6V
+#   Prairie Masker
+#   Rathon = Raytheon
+#   ANSQ32V3 / SQQ32 = AN/SQQ-32(V)3
+#   ANQS 24A = AN/AQS-24A
+#   MarkV Mod Zero = SLQ-48 / mine neutralization vehicle flavor, do not retune
+#   ANS SLQ38 / ANU SLQ38 = AN/SLQ-37/38 flavor
+#   data marker boys = data marker buoys
+#   A10 breakdown = prior WarVision video, not a sim lever
+#   Kohairfast = fast attack
+#   Car Island = Kharg Island
+#   tripley = Tripoli
+#   Displacement 1,212 tons then 1,312 tons in the same watch. Do not pick one.
+#   Honest conflicts with Navy Decoded cluster, do not merge:
+#     11 Avenger-class still in inventory, Pioneer MCM-9 and Chief MCM-14 in
+#     Bahrain now. ND LCS watch plus official reporting: last four Avengers
+#     withdrawn from Bahrain Sep 2025, LCS took the mission.
+#     $15k-$60k Sadat here vs $1,500 M-08 in ND don't-sweep vs $15k EM52 in
+#     Navy Response.
+#   EM52 308 lb / 260 ft/s matches nd-2NNZ2u2WDD0.
+#   Do not retune from 200 m lane, 5-7 kn, $28,000 disposal, $277M hull,
+#   5,000-6,000 inventory, or Pioneer/Chief in Bahrain.
+
+On the floor of the Persian Gulf, resting in 60 ft of water, sits a steel cylinder the size of a compact refrigerator. It does not move. It does
+0:07
+7 seconds
+not broadcast. It produces no heat signature, no radar returned, no acoustic emission of its own. It simply waits. Inside that cylinder, three
+0:16
+16 seconds
+sensors run on a continuous loop. A magnetometer scanning for the distortion in Earth's magnetic field that a steel hole creates. A hydrophone listening for
+0:24
+24 seconds
+the low frequency rumble of propeller cavitation. a pressure transducer measuring the displacement wave pushed through the water column by a passing
+0:32
+32 seconds
+ship. When all three signatures align, the mine classifies the target. Large vessel, valuable, the fuse fires. Iran
+0:38
+38 seconds
+paid between $15,000 and $60,000 for this weapon, depending on the variant.
+0:44
+44 seconds
+They have an estimated $5,000 to $6,000 of them. Now, a ship enters the minefield. The magnetometer scans. No
+0:51
+51 seconds
+magnetic field, nothing. The hydrophone listens. No propeller cavitation.
+0:56
+56 seconds
+Silence. The pressure transducer measures the passing wave. Nothing. The wave is below threshold. The mine sits there. It does not fire. It will never
+1:04
+1 minute, 4 seconds
+fire because the ship it was engineered to destroy was deliberately engineered to not exist. That ship is the USS Avenger. And Iran's entire mine strategy
+1:13
+1 minute, 13 seconds
+has exactly one fatal flaw. It was designed to kill every ship in every navy on Earth except this one.
+1:20
+1 minute, 20 seconds
+In October 1987, a Kuwaiti tanker named the Bridgetton struck an Iranian Murweight contact mine in the Persian Gulf. The mine cost approximately 1,500.
+1:30
+1 minute, 30 seconds
+The whole breach measured 6 ft wide by 15 ft long. The repair bill exceeded 5 million. The tanker was carrying 41382
+1:39
+1 minute, 39 seconds
+barrels of crude oil. That is the cheap end of Iran's inventory. The Sodaf O2, Iran's domestically manufactured influence mine, is the successor to that
+1:47
+1 minute, 47 seconds
+weapon. Three sensors, programmable detonation threshold, and a design principle so simple that no engineer in 1942 would have found it surprising. The
+1:56
+1 minute, 56 seconds
+technology is not advanced. It does not need to be. One Saddaf O2 costs between $15,000 and $60,000 depending on sensor
+2:05
+2 minutes, 5 seconds
+configuration. One Arley Burke class destroyer costs $21 billion. A cost exchange ratio of 1 to between 35,000
+2:13
+2 minutes, 13 seconds
+and 140,000 depending on which variant Iran chooses to put in the water. But the influence mine is not Iran's most
+2:20
+2 minutes, 20 seconds
+dangerous weapon in the straight. The EM52 rocket propelled rising mine, which we covered in a previous breakdown, launches a 308lb warhead upward through
+2:29
+2 minutes, 29 seconds
+the water column at 260 ft per second on a solid fuel rocket motor. You cannot outrun it. You cannot armor against a weapon that attacks from directly beneath the keel at rocket velocity.
+2:40
+2 minutes, 40 seconds
+Iran's mine inventory operates across three kill mechanisms. Contact detonation, influence detonation, and kinetic rising detonation. Three
+2:47
+2 minutes, 47 seconds
+different physics, three different counters required. A minefield containing all three variants in random sequence is not a battlefield obstacle.
+2:56
+2 minutes, 56 seconds
+It is a probability equation and the probability compounds every nautical mile a ship advances except for one ship. Subscribe to Navy Decoded. We do
+3:05
+3 minutes, 5 seconds
+not sail into minefields. We explain why one ship already did and the mines never knew it was there. The United States Navy operates 11 mine countermeasure
+3:13
+3 minutes, 13 seconds
+vessels of the Avenger class. The lead ship USS Avenger whole designation MCM1 was commissioned on September 12th, 1987, the same year the Bridgeten was
+3:22
+3 minutes, 22 seconds
+mined. Every military analyst covering the straight of Hormuz discusses carriers, carrier strike groups, F-35s, Tomahawk volleys, Eegis systems, VLS
+3:30
+3 minutes, 30 seconds
+cell counts. Nobody discusses the Avenger class. In most news coverage of the current crisis, the MCM ships are not mentioned at all. There is a reason for that. The carriers and destroyers
+3:39
+3 minutes, 39 seconds
+are the weapons that win wars. The Avenger class is the weapon that makes wars possible to fight. And the distinction between those two functions
+3:47
+3 minutes, 47 seconds
+is exactly where Iran's mind strategy collapses entirely. But to understand why, we need to understand the weapon Iran built its strategy around. And then
+3:55
+3 minutes, 55 seconds
+understand why the Avenger was designed from ke to mast to be invisible to it.
+4:00
+4 minutes
+Because this is not a story about a ship that sweeps mines. It is a story about a ship that influence mines cannot find.
+4:07
+4 minutes, 7 seconds
+Iran's influence mine strategy is built on a kill chain with three links. Sever any one of them and the mine does not fire. The first link is magnetic. Every
+4:17
+4 minutes, 17 seconds
+steelhold warship generates a magnetic anomaly. The ship's hull concentrates the Earth's magnetic field lines the way an iron rod concentrates flux. A
+4:25
+4 minutes, 25 seconds
+magnetometer on the seafloor can detect a destroyer sized steel vessel from up to 50 ft in lateral distance. The signature is unique, persistent, or
+4:34
+4 minutes, 34 seconds
+impossible to disguise on a conventional warship without extraordinary measures.
+4:38
+4 minutes, 38 seconds
+This is why traditional mine countermeasure ships were built from wood. A wood hole generates no magnetic anomaly. The mine's magnetometer scans the water column and finds nothing to classify. The second link is acoustic.
+4:49
+4 minutes, 49 seconds
+Propeller cavitation is the acoustic signature of a ship under power. As a propeller blade rotates, it creates low pressure regions where water briefly
+4:57
+4 minutes, 57 seconds
+vaporizes and then collapses. Each collapse generates a broadband acoustic pulse. Multiply that pulse across four blades rotating at 80 to 200 revolutions
+5:05
+5 minutes, 5 seconds
+per minute. And the result is a distinctive low frequency rumble that carries for miles in the water column.
+5:11
+5 minutes, 11 seconds
+Iran's influence mines filter this signature by frequency. They are programmed to respond to the cavitation profile of large commercial vessels and warships, not fishing boats or small
+5:20
+5 minutes, 20 seconds
+craft. The acoustic trigger is tuned to high value targets. The third link is pressure. Any object moving through water displaces that water. A 250,000
+5:29
+5 minutes, 29 seconds
+ton super tanker at 12 knots pushes a pressure wave through the water column that an influence mine can detect from more than 150 ft directly below the
+5:36
+5 minutes, 36 seconds
+hull. The wave is not sound. It is a physical compression of the fluid medium. The pressure sensor measures the magnitude of that displacement and compares it against a programmed
+5:45
+5 minutes, 45 seconds
+threshold. Below threshold, no detonation. Above threshold, all three sensors in alignment, the mine fires.
+5:52
+5 minutes, 52 seconds
+This three sensor architecture is Iran's great strength and Iran's great vulnerability. The strength, the three sensor requirement prevents accidental
+5:59
+5 minutes, 59 seconds
+detonation by fishing craft or small patrol boats. Iran can lay influence mines in a shipping corridor and they will wait for the right target, a
+6:07
+6 minutes, 7 seconds
+tanker, a frigot, a carrier without detonating on low value contact. The vulnerability. If a vessel can suppress or eliminate all three signatures
+6:15
+6 minutes, 15 seconds
+simultaneously, the mine's three sensor kill chain is broken at every link at once. The mine becomes a very expensive piece of metal sitting on the seafloor,
+6:23
+6 minutes, 23 seconds
+accomplishing nothing. No navy on Earth has engineered that suppression across all three signatures simultaneously except one. The USS Avenger MCM1
+6:32
+6 minutes, 32 seconds
+measures 224 ft from boat to stern and displaces 1,212 tons at full load. By naval standards, it is a small ship. Its
+6:40
+6 minutes, 40 seconds
+crew of 8 84 sailors operates it at maximum speeds of 13 five knots with a standard sweep speed of 5 to 8 knots inside a minefield. On paper, nothing
+6:49
+6 minutes, 49 seconds
+about those numbers is remarkable. What is remarkable is everything below the waterline. The Avengers Hull is constructed from 4in thick Douglas fur
+6:56
+6 minutes, 56 seconds
+and Alaskan yellow cedar planking laminated and fiberglass sheathed on the exterior. It is the first US Navy vessel built with a wooden hull in more than 50
+7:05
+7 minutes, 5 seconds
+years when it was commissioned. The superructure is glass reinforced plastic. The decking is non-ferris throughout. The fittings, the hardware,
+7:12
+7 minutes, 12 seconds
+the fixtures, bronze, stainless steel, aluminum, fiberglass. The ship was designed around one principle. Present no magnetic signature to any mine on the
+7:20
+7 minutes, 20 seconds
+seafloor. But the wood hull is only the beginning. Throughout the ship, a system of degossing coils, copper windings embedded in the whole structure and
+7:28
+7 minutes, 28 seconds
+powered by the ship's electrical system generates a counter field that cancels whatever residual magnetic signature the ship's equipment would otherwise produce. The coils are calibrated
+7:37
+7 minutes, 37 seconds
+periodically in specialized deosing facilities where engineers measure the ship's magnetic profile with precision magnetometers and adjust the coil
+7:44
+7 minutes, 44 seconds
+current until the anomaly is reduced to effectively zero. The mine's magnetometer scans. It finds nothing.
+7:51
+7 minutes, 51 seconds
+Link one of the killchain severed. Now the acoustic link. The Avengers two main diesel engines, Isada Fchini ID36 SS6V
+7:59
+7 minutes, 59 seconds
+diesels, each producing 600 horsepower, are mounted on Prairie Masker vibration isolation systems. Each engine rests on
+8:07
+8 minutes, 7 seconds
+a series of engineered isolator mounts that prevent the engine's rotational vibration from transmitting into the whole structure and from there into the water column. The ship's twin
+8:14
+8 minutes, 14 seconds
+controllable pitch propellers are specifically designed to rotate at low RPM and high pitch angle, reducing cavitation at operational sweep speeds at 5 to seven knots inside a minefield.
+8:24
+8 minutes, 24 seconds
+The propellers produce produce a cavitation signature orders of magnitude below the acoustic threshold of any influence mine programmed to target
+8:31
+8 minutes, 31 seconds
+full-size warships. The mine's hydrophone listens. It hears nothing classifiable. Link two of the killchain
+8:38
+8 minutes, 38 seconds
+severed. Now, the pressure link. A 1,312 ton vessel moving at 6 knots through water generates a pressure wave. The
+8:45
+8 minutes, 45 seconds
+physics cannot be entirely eliminated, but the pressure signature of the Avenger at sweep speed is dramatically below the detection threshold of mines calibrated for tankers and major
+8:53
+8 minutes, 53 seconds
+combatants. A super tanker at 12 knots displaces water with a force measurable at 150 ft depth. The Avenger at 6 knots
+9:01
+9 minutes, 1 second
+displaces water measurably at roughly 20 to 30 ft depth. The mine's pressure sensor is set to a threshold it will never reach. Link three of the kill
+9:08
+9 minutes, 8 seconds
+chain severed. All three links broken simultaneously by design. Iran spent billions of dollars and decades of engineering developing a mine inventory
+9:17
+9 minutes, 17 seconds
+built around three sensor triggers. And the United States Navy built a 224 ft wooden ship that trips none of them. But
+9:24
+9 minutes, 24 seconds
+the Avenger is not just a ship the mines cannot see. It is also a ship specifically equipped to find and destroy those mines before any other
+9:31
+9 minutes, 31 seconds
+vessel enters the corridor. The ANSQ32V3 mine hunting sonar built by Rathon is the Avengers primary detection system.
+9:40
+9 minutes, 40 seconds
+Mounted in a retractable gondola beneath the hull, the SQ32 operates in three modes. Active sonar transmits a pulse
+9:47
+9 minutes, 47 seconds
+and processes the return to build a three-dimensional acoustic map of the seafloor within a 200 meter corridor.
+9:53
+9 minutes, 53 seconds
+Classification algorithms distinguish mind-shaped objects from rocks, coral, and debris by shape analysis and acoustic reflectivity profiling. The
+10:01
+10 minutes, 1 second
+system has been upgraded continuously since the original Avenger Commissioning and now processes returns in near real time. For mines buried in silt or
+10:09
+10 minutes, 9 seconds
+partially obscured, the ANQS 24A towed mine hunting sonar, a torpedo-shaped body towed on a cable at depths down to
+10:17
+10 minutes, 17 seconds
+100 ft provides sidescan sonar imagery of the seafloor at a resolution sufficient to classify objects as small as 6 in in diameter. Once a mine is
+10:25
+10 minutes, 25 seconds
+located and classified, the Avenger has three kill options. The MarkV Mod Zero wireg guided mine disposal vehicle, a 12
+10:33
+10 minutes, 33 seconds
+75in diameter remotely operated torpedo body carries a shaped charge to the mine, positions it against the casing on fiber optic video guidance and
+10:41
+10 minutes, 41 seconds
+detonates. One mine destroyed. The vehicle is expendable. Cost per disposal approximately $28,000. against influence
+10:48
+10 minutes, 48 seconds
+minds specifically. The ANS SLQ38 acoustic and magnetic mind sweeping system, a towed cable assembly generating a programmed magnetic field
+10:57
+10 minutes, 57 seconds
+and an acoustic projector broadcasting a simulated ship signature can be deployed to lure influence mines into detonating against a target that does not exist.
+11:05
+11 minutes, 5 seconds
+The mine fires its warhead into empty water. The mine is gone. The Avenger sails on. For cleared corridors, the Avenger drops data marker boys at
+11:14
+11 minutes, 14 seconds
+precise GPS coordinates, building a verified safe lane chart that subsequent traffic can follow. Every ship that transits behind the Avenger does so on a chart signed by its sonar operators.
+11:24
+11 minutes, 24 seconds
+This is not a mind sweeper in the World War II sense. A vessel dragging wire cables hoping to snag mine tethers. The Avenger class is a precision mine
+11:31
+11 minutes, 31 seconds
+hunting system with a non-magnetic hull as its first line of defense and three independent detection and neutralization systems as its operational toolkit. At
+11:40
+11 minutes, 40 seconds
+this point, most coverage of mine countermeasure operations would show you footage of the Avenger class and call it a sophisticated mine hunting system.
+11:47
+11 minutes, 47 seconds
+Impressive capability. Moving on. But this is Navy decoded. And the real question is not what the Avenger can do.
+11:55
+11 minutes, 55 seconds
+The real question is why Iran's entire mine strategy, 5,000 to 6,000 mines, decades of procurement, the largest mine
+12:03
+12 minutes, 3 seconds
+inventory in the Middle East, collapses against this one class of vessel in a way that no other threat in the Iranian arsenal collapses against any single
+12:10
+12 minutes, 10 seconds
+American platform. The answer involves three systemic failures in Iran's mind doctrine that most analysts have never examined together. And understanding
+12:18
+12 minutes, 18 seconds
+those three failures explains not just how the avenger defeats the mind threat, but why Iran cannot fix the problem even
+12:24
+12 minutes, 24 seconds
+if it sees it coming. Failure one, Iran built a weapon that defeats itself.
+12:29
+12 minutes, 29 seconds
+Iran's influence mind doctrine requires target discrimination. The three sensor kill chain exists specifically to prevent accidental detonation on low-v
+12:37
+12 minutes, 37 seconds
+value targets. Iran does not want its mines triggering on fishing boats, dows, or small patrol craft. It wants them to wait for tankers, frigots, and carriers.
+12:46
+12 minutes, 46 seconds
+That target discrimination is precisely what the Avenger exploits. By presenting no magnetic anomaly, no classifiable acoustic signature, and no pressure wave
+12:54
+12 minutes, 54 seconds
+above threshold, the Avenger does not register as a valid target. To the mine's logic circuit, the Avenger is a small, slow, non-ferris vessel,
+13:03
+13 minutes, 3 seconds
+acoustically and magnetically indistinguishable from background noise.
+13:06
+13 minutes, 6 seconds
+The mine waits for a real ship. The Avenger clears the corridor. The real ships follow behind on a verified safe chart. Iran built sophisticated target
+13:14
+13 minutes, 14 seconds
+discrimination into its mines to make them more effective against the US Navy.
+13:18
+13 minutes, 18 seconds
+That sophistication is exactly what makes them blind to the US Navy's countermeasure vessels. The mind that was smart enough to wait for the right target, cannot recognize the one ship
+13:26
+13 minutes, 26 seconds
+designed to clear it. Failure two, Iran has no counter to a ship it cannot threaten with the weapon it laid. Iran's fast attack craft swarm doctrine, which
+13:35
+13 minutes, 35 seconds
+we covered in our A10 breakdown, is designed to drain VLS cells and overwhelm Aegis radars with simultaneous multiaxis threats. The IRGC Navy
+13:44
+13 minutes, 44 seconds
+operates more than500 fast attack craft specifically for this engagement, but fast attack craft cannot operate in their own minefield. Iran cannot send
+13:52
+13 minutes, 52 seconds
+speedboats to chase down the Avenger in a corridor seated with influence mines.
+13:56
+13 minutes, 56 seconds
+The speedboats have steel holes. They generate magnetic signatures. The mines in the corridor do not recognize IRGC registration numbers. They fire on
+14:05
+14 minutes, 5 seconds
+whatever crosses the threshold, including Iranian craft. The Avenger operates in a space that Iran has made inaccessible to its own surface fleet.
+14:13
+14 minutes, 13 seconds
+Iran's naval advantage, numbers, speed, swarming tactics is neutralized in the exact geography where the Avenger works.
+14:20
+14 minutes, 20 seconds
+And the Avenger works precisely in the geography Iran mined most heavily.
+14:24
+14 minutes, 24 seconds
+Iran's mine strategy closed the straight to Iran's own conventional countermeasures against the one vessel that needs to be stopped. Failure three,
+14:31
+14 minutes, 31 seconds
+Iran built a one-time weapon against a reusable process. Iran's mines fire once, one mine, one detonation, one
+14:38
+14 minutes, 38 seconds
+expenditure of $15,000 to $60,000 of weapons inventory. After detonation, that mine is gone. The Avengers
+14:46
+14 minutes, 46 seconds
+detection and neutralization systems are reusable. The ANSQ32 sonar generates the same data on the 500th sweep as on the first. The MarkV disposal vehicles are
+14:55
+14 minutes, 55 seconds
+expendable but cheap. $28,000 each, roughly half the cost of the cheapest mine they destroy. The ANU SLQ38
+15:02
+15 minutes, 2 seconds
+sweeping system is towed and retrieved repeatedly, luring mines into self-detonation at a cost of fuel and operating hours. The math here is the inverse of every other weapons exchange
+15:11
+15 minutes, 11 seconds
+at Hormuz. Every other Iranian threat, nor anti-hship missiles, Kohairfast attack craft, Shahab 3 ballistic missiles can be replaced. Iran
+15:20
+15 minutes, 20 seconds
+manufactures them domestically. The drone factories, as we reported in a previous breakdown, were struck in Operation Epic Fury. But before those
+15:27
+15 minutes, 27 seconds
+strikes, Iran's production capacity was continuous. Mines are different. Once a mine fires, it is gone. Once a mine is located and neutralized by the Avengers
+15:35
+15 minutes, 35 seconds
+disposal vehicles, it is gone. And Iran's mine production facilities, the sites on Car Island and the manufacturing complexes inland are now
+15:43
+15 minutes, 43 seconds
+ash. The mines on the seafloor of the strait are the last mines Iran will ever have. The Avenger does not need to be fast. It does not need to be heavily
+15:50
+15 minutes, 50 seconds
+armed. It needs to be patient, systematic, and indestructible by the weapon it is hunting. It is all three.
+15:56
+15 minutes, 56 seconds
+As of now, USS Pioneer, MCM9, and USS Chief, MCM14 are the two Avenger class vessels
+16:03
+16 minutes, 3 seconds
+currently forward deployed to the fifth fleet area of operations out of Naval Support Activity Bahrain. Both ships have been conducting mine countermeasure
+16:11
+16 minutes, 11 seconds
+operations in coordination with coalition partners since the straight closure began. They do not appear on the front page of any newspaper. They have
+16:18
+16 minutes, 18 seconds
+not been named in any White House briefing. The carrier strike groups get the headlines. The Avenger class gets the work. When the three conditions we have covered in previous breakdowns
+16:27
+16 minutes, 27 seconds
+converge, the mine production faucet shut, the tripley carrier group protective bubble in position, and Iran's economic hemorrhage reaching maximum leverage. The Avenger class will
+16:36
+16 minutes, 36 seconds
+begin systematic corridor clearance operations inside the straight. Two ships, 11 total in the class, each capable of clearing a verified lane 200
+16:43
+16 minutes, 43 seconds
+meters wide at speeds of 5 to 7 knots, charting safe passage for the 50 tankers currently anchored outside the straight carrying combined cargo worth
+16:51
+16 minutes, 51 seconds
+approximately $12 billion. They will do it without presenting a magnetic field to a single mine, without generating a cavitation signature any acoustic sensor
+17:00
+17 minutes
+can classify, without pushing a pressure wave above any trigger threshold. The mines Iran spent decades acquiring and billions of dollars stockpiling will sit
+17:08
+17 minutes, 8 seconds
+on the seafloor scanning for a ship that has already passed overhead and is already two nautical miles ahead, laying the next data marker buoy on a GPS grid,
+17:16
+17 minutes, 16 seconds
+marking the corridor clear. The equation that Iran designed for maximum asymmetry runs in exactly the wrong direction when the Avenger [clears throat] class is in
+17:24
+17 minutes, 24 seconds
+the water. A $60,000 mine, a $277 million ship that the mine cannot see. A cost exchange ratio of$1 to $4,600.
+17:34
+17 minutes, 34 seconds
+But this time in America's favor. On the floor of the Persian Gulf, the influence mine still sits. The magnetometer still
+17:41
+17 minutes, 41 seconds
+scans. The hydrophone still listens. The pressure transducer still measures. A ship passes overhead. 224 feet long,
+17:49
+17 minutes, 49 seconds
+1,312 tons, moving at six knots through 60 feet of water on a non-ferris hull over dagos copper coils. Its diesels
+17:56
+17 minutes, 56 seconds
+sitting on vibration isolators, its propellers turning at 40 RPM in high pitch configuration, producing a pressure wave. The mine's sensors
+18:04
+18 minutes, 4 seconds
+register as background sea state. The magnetometer scans, no anomaly. The hydrophone listens. No cavitation. The pressure transducer measures below
+18:13
+18 minutes, 13 seconds
+threshold. The mind does not fire. 70 meters behind the ship, a MarkV disposal vehicle drops from its launcher on a fiber optic tether and descends toward a
+18:21
+18 minutes, 21 seconds
+target coordinate, the SQQ32 mapped 2 minutes ago. The operator in the combat information center watches the video feed. The mine comes into frame. The
+18:29
+18 minutes, 29 seconds
+operator presses a button. The shaped charge detonates. The mine's casing fails. The warhead is destroyed in place. One mine gone. Iran's mine
+18:37
+18 minutes, 37 seconds
+production facilities are ash. There are no replacements. The Avenger advances 200 meters and the process begins again.
+18:43
+18 minutes, 43 seconds
+Every other vessel in every other navy on Earth enters a minefield and confronts an equation weighted against it. More mines than sweepers, cheaper weapon than the hull it destroys. The
+18:52
+18 minutes, 52 seconds
+oldest weapon in maritime warfare against the most expensive assets afloat. The Avenger class enters a minefield and changes the variable that breaks the equation. Not by being
+19:00
+19 minutes
+faster, not by being more heavily armed, not by being cheaper. Though at $277 million, it costs less than 1/8 of the
+19:08
+19 minutes, 8 seconds
+destroyer it is protecting. by being invisible. Iran spent 40 years and billions of dollars building a weapon that cannot see the one ship designed to
+19:16
+19 minutes, 16 seconds
+destroy it. And the ship was built in 1987 from wood. Naval mines are the cheapest, most patient, most psychologically effective weapon in
+19:24
+19 minutes, 24 seconds
+maritime warfare. But every mine is blind to something. The Avenger was designed to be that something. And every mine it clears is one Iran will never
+Sync to video time

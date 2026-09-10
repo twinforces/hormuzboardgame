@@ -1,0 +1,345 @@
+/**
+ * Every tunable lives here. If you feel an urge to put a magic number in
+ * engine.ts, you are in the wrong file.
+ *
+ * Price P is a teaching index in USD/bbl flavor. It is not a live EIA tick.
+ * Historical markers sit beside the formula so a critic can see what "high"
+ * meant in 2008, 2022, and the 2026 Hormuz war without the tests fetching
+ * the internet.
+ */
+
+import type { DraftClass, PriceBand } from "./types.ts";
+
+/** Sentinel-2 cloudless mosaic. Same equirectangular crop as the retired Blue Marble plate. */
+export const MAP = {
+  imageSrc: "/maps/hormuz-sentinel.jpg",
+  credit:
+    "Sentinel-2 cloudless 2024 by EOX. Contains modified Copernicus Sentinel data. CC BY 4.0.",
+  widthPx: 2016,
+  heightPx: 1800,
+  westLon: 54.6,
+  eastLon: 57.4,
+  southLat: 25.0,
+  northLat: 27.5,
+  meanLatDeg: 26.25,
+} as const;
+
+export const NM_PER_DEG_LAT = 60;
+export const NM_PER_DEG_LON =
+  60 * Math.cos((MAP.meanLatDeg * Math.PI) / 180);
+
+export const MINE = {
+  /** Tight circle just after a lay. */
+  baseRadiusNm: 2,
+  /** One discrete expansion step per expandMines. */
+  stepRadiusNm: 2.5,
+  /**
+   * Kill density per nm of path inside the circle, by radiusSteps.
+   * Tight circle = you are near the device. Fat circle = fog, thinner density.
+   */
+  killPerNm: [0.22, 0.12, 0.07, 0.045, 0.03, 0.02, 0.014, 0.01],
+  draftFactor: {
+    vlcc: 1,
+    suezmax: 0.85,
+    handy: 0.6,
+  } satisfies Record<DraftClass, number>,
+  /** Path within this of a TSS polyline counts as "in the lane" for insurance. */
+  tssBandNm: 3,
+} as const;
+
+export const PRICE = {
+  /** 2024-ish Brent teaching zero. Not today's ticker. */
+  baseline: 82,
+  min: 40,
+  max: 126,
+  bands: {
+    cheap: { max: 85, label: "CHEAP" },
+    tolerable: { max: 110, label: "TOLERABLE" },
+    high: { max: 125, label: "HIGH" },
+    panic: { max: 999, label: "PANIC" },
+  },
+  /** Closed or heavily mined lane. 2026 war took ~72 to 126 at the peak. */
+  perMineStep: 2.2,
+  insuranceCollapsed: 18,
+  waitingHull: 1.6,
+  killSpike: 12,
+  exitRelief: 5,
+  contractsRelief: 3,
+} as const;
+
+export function bandOf(price: number): PriceBand {
+  if (price < PRICE.bands.cheap.max) return "cheap";
+  if (price < PRICE.bands.tolerable.max) return "tolerable";
+  if (price < PRICE.bands.high.max) return "high";
+  return "panic";
+}
+
+export function radiusNm(radiusSteps: number): number {
+  return MINE.baseRadiusNm + Math.max(0, radiusSteps) * MINE.stepRadiusNm;
+}
+
+/**
+ * Tanker intel on a fog blob. One lay is one estimated device.
+ * The circle is location fog, not Iran's magazine.
+ */
+export function fogEstimate(m: {
+  radiusSteps: number;
+  hole: null | { radiusNm: number };
+}): { est: number; fogNm: number; holeNm: number | null } {
+  return {
+    est: 1,
+    fogNm: Math.round(radiusNm(m.radiusSteps)),
+    holeNm: m.hole ? Math.round(m.hole.radiusNm) : null,
+  };
+}
+
+export function killPerNm(radiusSteps: number): number {
+  const table = MINE.killPerNm;
+  const i = Math.max(0, Math.min(table.length - 1, radiusSteps));
+  return table[i] ?? table[table.length - 1]!;
+}
+
+/**
+ * Historical Brent markers the ticker can point at.
+ * These are citations, not inputs. The sim never reads them at runtime
+ * to set P. That is the whole point of a seeded teaching index.
+ */
+export const HISTORY = [
+  {
+    year: 2008,
+    label: "Demand spike",
+    brentUsd: 147,
+    note: "Pre-shale peak. Panic band analog.",
+    receiptId: "eia-chokepoint",
+  },
+  {
+    year: 2020,
+    label: "COVID crash",
+    brentUsd: 20,
+    note: "Demand destruction. Not a chokepoint close.",
+    receiptId: "eia-chokepoint",
+  },
+  {
+    year: 2022,
+    label: "Ukraine",
+    brentUsd: 120,
+    note: "Sanction shock. High band, not Hormuz.",
+    receiptId: "eia-chokepoint",
+  },
+  {
+    year: 2024,
+    label: "Quiet baseline",
+    brentUsd: 80,
+    note: "Teaching zero. Sim P starts next to this.",
+    receiptId: "eia-chokepoint",
+  },
+  {
+    year: 2026,
+    label: "Eve of war",
+    brentUsd: 72,
+    note: "NYT: $100 on 9 Sep is about 40 percent above the eve-of-war print.",
+    receiptId: "nyt-brent-2026-09",
+  },
+  {
+    year: 2026,
+    label: "30 Apr peak",
+    brentUsd: 126,
+    note: "Reuters: Brent 126.41. Panic-band analog for a mined lane.",
+    receiptId: "reuters-brent-2026-09",
+  },
+  {
+    year: 2026,
+    label: "June reopen talk",
+    brentUsd: 72,
+    note: "CNN: deal talk dumped the tape. Contracts move P. Steel does not.",
+    receiptId: "nyt-brent-2026-09",
+  },
+  {
+    year: 2026,
+    label: "9 Sep print",
+    brentUsd: 100,
+    note: "The live market that day. This sim does not subscribe to it.",
+    receiptId: "nyt-brent-2026-09",
+  },
+] as const;
+
+export type LonLat = { lon: number; lat: number };
+
+/**
+ * JMIC Advisory 011-26 (27 Jun 2026) southern corridor waypoints.
+ * This is the Omani-side rented lane after the IMO TSS got too hot.
+ * It is not a surveyed chart. Overlay only.
+ */
+export const JMIC_INBOUND: LonLat[] = [
+  { lat: 25.6083, lon: 56.439 },
+  { lat: 25.9958, lon: 56.5775 },
+  { lat: 26.3537, lon: 56.5808 },
+  { lat: 26.386225, lon: 56.569875 },
+  { lat: 26.407687, lon: 56.548928 },
+  { lat: 26.427703, lon: 56.485472 },
+  { lat: 26.4144, lon: 56.3558 },
+  { lat: 26.326, lon: 56.2224 },
+  { lat: 26.0543, lon: 55.9924 },
+];
+
+export const JMIC_OUTBOUND: LonLat[] = [
+  { lat: 26.0455, lon: 56.0124 },
+  { lat: 26.3191, lon: 56.2367 },
+  { lat: 26.404333, lon: 56.359233 },
+  { lat: 26.41655, lon: 56.4968 },
+  { lat: 26.403533, lon: 56.540833 },
+  { lat: 26.3495, lon: 56.5612 },
+  { lat: 26.0, lon: 56.55 },
+];
+
+/**
+ * North door. IRGC checkpoint water between Qeshm and Larak.
+ * Iran did not mine this till. The field is the TSS.
+ */
+export const IRANIAN_INBOUND: LonLat[] = [
+  { lat: 25.90, lon: 56.95 },
+  { lat: 26.45, lon: 56.78 },
+  { lat: 26.72, lon: 56.55 },
+  { lat: 26.82, lon: 56.40 },
+  { lat: 26.82, lon: 56.31 },
+  { lat: 26.76, lon: 56.18 },
+  { lat: 26.58, lon: 55.85 },
+];
+
+/** Extra lays stay in the TSS. Never the Qeshm-Larak till. */
+export const LAY_SPOTS: LonLat[] = [
+  { lat: 26.38, lon: 56.52 },
+  { lat: 26.33, lon: 56.4 },
+  { lat: 26.28, lon: 56.25 },
+];
+
+export const CLEARANCE = {
+  holeFactor: 1,
+  expiresInTurns: 1,
+  maxHolesPerWait: 3,
+} as const;
+
+export const PLACES: Array<LonLat & { id: string; label: string }> = [
+  { id: "bandar-abbas", lat: 27.183, lon: 56.267, label: "Bandar Abbas" },
+  { id: "qeshm", lat: 26.82, lon: 55.95, label: "Qeshm" },
+  { id: "hormuz", lat: 27.067, lon: 56.47, label: "Hormuz I." },
+  { id: "larak", lat: 26.853, lon: 56.356, label: "Larak" },
+  { id: "greater-tunb", lat: 26.264, lon: 55.305, label: "Greater Tunb" },
+  { id: "abu-musa", lat: 25.879, lon: 55.023, label: "Abu Musa" },
+  { id: "khasab", lat: 26.164, lon: 56.247, label: "Khasab" },
+  { id: "musandam", lat: 26.22, lon: 56.4, label: "Musandam" },
+  { id: "fujairah", lat: 25.123, lon: 56.326, label: "Fujairah" },
+];
+
+/** Chart labels. Water names sit in the wet parts of the crop so the pinch reads. */
+export const WATER_LABELS: Array<LonLat & { id: string; label: string }> = [
+  { id: "persian-gulf", lat: 26.48, lon: 55.28, label: "PERSIAN GULF" },
+  { id: "strait", lat: 26.56, lon: 56.42, label: "STRAIT OF HORMUZ" },
+  { id: "gulf-oman", lat: 25.38, lon: 56.98, label: "GULF OF OMAN" },
+];
+
+export const COUNTRY_LABELS: Array<LonLat & { id: string; label: string }> = [
+  { id: "iran", lat: 27.28, lon: 55.72, label: "IRAN" },
+  { id: "uae", lat: 25.38, lon: 55.48, label: "UAE" },
+  { id: "oman", lat: 25.95, lon: 56.38, label: "OMAN" },
+];
+
+export const MATCH = {
+  defaultSeed: 1,
+  maxTurns: 12,
+  defaultDraft: "vlcc" as DraftClass,
+};
+
+/**
+ * Greece, Inc. Hull sticker is a 2026 newbuild teaching number. Freight
+ * follows the price band, not a flat TCE. Family line is a lump claim.
+ * Crew bonus is danger money after blood, not a payroll table. Cargo is
+ * the trader's and does not sit on these books. Toll is the IRGC VLCC
+ * floor. War-risk premium follows heat while paper is open. After a boom,
+ * underwriters walk.
+ */
+export const COMPANY = {
+  hullUsdM: 129,
+  freightUsdM: 15,
+  freightByBand: {
+    cheap: 8,
+    tolerable: 15,
+    high: 22,
+    panic: 28,
+  },
+  /**
+   * Charterer "get the barrels out" bid. Not the oil. Scales with P
+   * because 2 mb is worth more to the trader when Brent is fat.
+   * High ~$9/bbl (TotalEnergies Hormuz extra). Panic is desperation.
+   */
+  traderBonusByBand: {
+    cheap: 0,
+    tolerable: 8,
+    high: 18,
+    panic: 20,
+  },
+  familyUsdM: 12,
+  crew: 22,
+  crewBonusUsdM: 2,
+  cargoTraderUsdM: 150,
+  /** IRGC VLCC floor. Bloomberg / Maritime Executive: about $1/bbl, $2M. */
+  tollUsdM: 2,
+  /**
+   * Demurrage plus crew on the beach, per leftover hull, per week.
+   * Sitting is not free. Five idle VLCCs hurt more than one.
+   */
+  idleUsdMPerHull: 4,
+  /**
+   * Additional war-risk as percent of hull, turned into millions.
+   * Cheap ~1.5% ($2M). Panic ~10% ($13M). Collapsed: cannot buy.
+   */
+  premiumByBand: {
+    cheap: 2,
+    tolerable: 6,
+    high: 10,
+    panic: 13,
+  },
+  fleet: {
+    "reopen-lane": 5,
+    "one-transit": 1,
+    overplay: 5,
+  },
+} as const;
+
+/**
+ * Architect locks, 2026-09-09. These close ingest conflicts without
+ * averaging transcripts. The sim uses one number per knob, cited here.
+ * 1.4 vs 1.6 mb/d is the same faucet. Destroyer stickers and mine prices
+ * are families (year, flight, weapon), not contradictions. Hull-count
+ * flavor that said "120 warships" is speedboats. 17 is the pierside
+ * warship slice at match start.
+ */
+export const FORCE = {
+  /** Bandar Abbas slice. Real warships at the pier when the match starts. */
+  warshipsPiersideStart: 17,
+  /** Speedboats on the water. Resolves the 120-hull flavor. */
+  facOnWater: 120,
+  /** Shed inventory. A hull without the missile is a fishing boat. */
+  facSheds: 1500,
+  /** Iranian export through the door it sealed. 1.4 and 1.6 round to this. */
+  exportMbd: 1.5,
+} as const;
+
+export const COST_FAMILY = {
+  /** Contact mine, Samuel B. Roberts class. */
+  mineM08Usd: 1500,
+  /** Rocket-rising EM52 class. */
+  mineEm52Usd: 15_000,
+  /** Influence mine band. */
+  mineInfluenceUsd: { min: 15_000, max: 60_000 },
+  /**
+   * Arleigh Burke sticker is a family by flight and year, not one number.
+   * $1.8B, $2.1B, $2.5B can all be true.
+   */
+  destroyerUsdBn: { low: 1.8, high: 2.5 },
+} as const;
+
+export const OPEN_RESEARCH = {
+  avenger:
+    "Open. Navy Decoded LCS says last four left Bahrain Sep 2025. WarVision and Navy Response still put Pioneer and Chief in theater. Clearance stays rented either way.",
+} as const;

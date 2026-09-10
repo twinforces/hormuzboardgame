@@ -1,0 +1,548 @@
+# nd-esV3xvbjmbw.txt
+# title: Why the US Navy Chose Its Most Broken Ship for the Hardest Mission
+# channel: Navy Decoded
+# url: https://www.youtube.com/watch?v=esV3xvbjmbw
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: (YouTube panel, closer present)
+# notes: User pasted YouTube Show transcript. Teaching closer is present
+#   (imperfect machines in the right position). ASR artifacts kept verbatim.
+#   triaran = trimaran
+#   Latoral = Littoral
+#   Mike Gilde = Mike Gilday
+#   EEJI / EEGI = Aegis
+#   Sentcom / sententcom / ScentCom = CENTCOM
+#   Gadier = Ghadir
+#   Nasser 1 = Nasr-1
+#   seated / mored = seeded / moored
+#   metaentric = metacentric
+#   Lucas = low-cost unmanned combat attack system (channel's name)
+#   Canbor = Canberra LCS-30
+#   ANAQS20 / ANAES1 / ANASQ235 = AN/AQS-20, ALMDS, AMNS
+#   Connor = Konarak
+#   Shahed Begari / Begi = Shahid Bagheri
+#   Iris Macron hall 441 = IRIS Makran
+#   Honest conflicts, do not merge:
+#     100+ Iranian hulls here vs 17 pierside in time-on-target vs 50/60 in
+#     factories / escort-trap.
+#     Avenger last four withdrawn Bahrain Sep 2025 matches nd-2NNZ2u2WDD0
+#     and conflicts with Navy Response Devastator-in-theater.
+#   Do not retune from $35,000 Lucas, $5M SM-6, $1,500 mines, 11,000 sq ft,
+#   40 knots, or four Avengers withdrawn.
+
+The Persian Gulf. Operation Epic Fury.
+Somewhere off the Iranian coastline, a
+triaran warship is cutting through the
+water at 40 knots. On its flight deck, a
+rocket booster ignites. A small
+Delta-wing aircraft punches into the
+sky, 8ft wingspan, 10 ft long, carrying
+a warhead that costs less than a pickup
+truck. Then a second one launches, then
+a third. Within minutes, an entire swarm
+is airborne, heading straight into
+Iran's air defense network. This moment,
+the first time the United States Navy
+deployed a cheap, expendable attack
+drone in actual combat, happened from
+the deck of a ship that our own Navy
+tried to throw away. The Latoral combat
+ship, LCS. The program the media called
+Pentagon's floating garbage. The Freedom
+class variant built around a propulsion
+system that channels two diesel engines
+and two gas turbines through a single
+combining gearbox. The torque loads
+exceeded what the gear teeth could
+sustain. They ground themselves into
+metal dust while the ship was underway.
+USS Milwaukee LCS5 lost propulsion on
+her maiden voyage one month after
+delivery. USS Detroit LCS7 dead in the
+water towed back to port. The chief of
+naval operations, Admiral Mike Gilde,
+called the combining gear problem the
+most challenging engineering problem
+that we have seen on any class of ship
+since I have been in the Navy. The
+Independence class variant had a
+different disease. A triaran hull built
+entirely from aluminum. Three hulls
+joined by a wide connecting deck.
+Aluminum saves weight. Weight saves
+speed, but aluminum fatigues under the
+relentless cyclic stress of ocean waves.
+Structural cracks propagated through
+high load junctions. a warship whose
+skin was tearing itself apart. The Navy
+decommissioned some of these ships
+before they reached half their design
+service life. Ships that never grew old
+enough to fight. And yet, right now, in
+the opening hours of the largest naval
+campaign since Iraq 2003, while our 13
+billion dollar super carriers sit safely
+in deep water, while our EEJI's
+destroyers hold the outer perimeter, it
+is this ship, the broken one, that is
+inside the cage, executing the mission
+that no other platform in our fleet can
+touch. Why? Why would Sentcom hand a
+warfing role to a platform with cracking
+holes and self-destructing gear boxes?
+The answer does not live inside the
+ship. It lives on the map. And if you
+want to understand the engineering
+behind that decision instead of the
+headlines, subscribe to Navy Decoded. We
+do not celebrate weapons here. We
+calculate whether they work. To see why,
+we have to look at the geometry of the
+cage that Iran built.
+The equation that locks supercarriers out of the Persian Gulf
+Look at the straight of Hormuz. 21
+nautical miles at its narrowest point.
+But the usable shipping lanes compressed
+to four nautical miles, two in each
+direction. 20% of the world's crude oil
+passes through that keyhole every day.
+Now, look at what Iran has built around
+it. This is not a defensive position.
+This is a three-dimensional kill zone.
+Beneath the surface, thousands of naval
+mines, contact mines, bottom influence
+mines, and EM52 rocket propelled mines
+that sit on the seafloor and launch
+upward into a hole. Behind those mines,
+Gadier class submarines, over 20
+hulls, lurk in the acoustic clutter of
+the shallows carrying torpedoes and
+additional mines. On the surface, over
+1,500 IRGC fast attack craft and armed
+small boats, small fiberglass hulls
+capable of 50 knots, many carrying a
+Nasser 1 anti-ship missile. They do not
+engage in formation, they swarm. Their
+doctrine is saturation. Enough mass to
+overwhelm the computational capacity of
+any defense system. From the air, drone
+swarms fill radar scopes with hundreds
+of low-speed clutter signals, bleeding
+processing cycles from interceptor
+systems. And behind that electronic
+noise, IRGC ballistic missiles descend
+at Mach 3, the real payload hidden
+behind the cheap decoys. Do not
+underestimate what this system
+represents. This is not random
+aggression. This is a precisely
+engineered anti-access architecture
+designed to exploit one physical
+constraint. The time it takes our EEGI
+combat system to detect, classify,
+authorize, and fire is longer than the
+flight time of the weapon trying to
+reach us at close range. That constraint
+locks our super carriers out. 100,000
+long tons of displacement, 5,000
+sailors, $15 million per day in
+operating costs. We do not push that
+into a bathtub where the enemy has had
+40 years to rig every square mile. We
+covered this geometry in a previous
+video. Our carriers sit outside in deep
+water holding the choke points from a
+distance.
+But distance creates a problem. Sentcom
+needs two things solved simultaneously
+and both require a platform inside the
+cage. The first problem is offensive. To
+break Iran's air defense network, we
+need a forward node close to the Iranian
+coastline, a launch platform that throws
+cheap attack drones into the radar net,
+saturates the interceptor grid, and
+opens a corridor for the tomahawks
+screaming in from the destroyers behind.
+That platform needs four things. A small
+radar and thermal footprint that does
+not attract ballistic missiles. Speed
+above 40 knots to stay ahead of
+targeting solutions. A deck large enough
+and stable enough to launch drones. And
+a displacement small enough that it can
+operate in the shallow coastal waters
+where deeper draft warships cannot
+follow. The second problem is defensive.
+The strait is seated with Iranian mines.
+Before a single oil tanker can transit
+safely, someone has to find those mines
+and destroy them without sending sailors
+into the minefield. The Avenger class
+mine sweepers that performed this
+mission in the Gulf have been
+decommissioned. The last four withdrawn
+from Bahrain in September 2025. The
+replacement must carry unmanned mine
+hunting systems, robots that go where
+humans should not. Run the variables.
+Super carrier too large, too expensive,
+too many of our people at risk.
+Destroyer not designed for mine counter
+measures and every VLS cell is too
+valuable to risk inside the kill zone.
+Cruiser, same problem. submarine cannot
+launch drones from a submerged platform.
+One ship solves both equations. The ship
+the Navy wanted to throw away.
+Cracked hulls and failed modules — why the defects became features
+But before we see what this ship did in
+combat, we have to understand why it
+even survived long enough to fight.
+Because the answer is buried inside the
+very defects that should have ended it.
+Start with the Independence class. The
+triaran design that cracked. three
+narrow hulls connected by a wide
+aluminum deck structure. The cracks were
+real metal fatigue at high stress
+joints, a material weakness that the
+Navy spent years and millions trying to
+fix. But look at what the triaran
+geometry also produced. Three hulls
+spread apart create a metaentric height,
+the distance between the center of
+gravity and the center of buoyancy,
+significantly larger than a conventional
+monohull. In naval architecture,
+metacentric height determines how
+violently a ship rolls. Think of the
+difference between standing in a canoe
+and standing on a catamaran. The wider
+the stance between the hulls, the harder
+it is to tip. Higher metacentric height
+means the ship resists rolling. It stays
+flat. That is irrelevant for a
+traditional warship firing guns or
+launching missiles. But for a platform
+that needs to launch drones from its
+deck in open ocean swells, it is
+everything. A triaran deck is a stable
+table in a moving sea. Now consider the
+other failure. The LCS was designed
+around swappable mission modules,
+anti-ubmarine warfare, surface warfare,
+mine countermeasures that could be
+loaded and unloaded in port. The
+modularity concept failed. The modules
+were late, overbudget, and
+underperforming. The Navy abandoned the
+plug-and-play vision. But when you strip
+the failed modules out, what remains? A
+massive empty flight deck. over 11,000
+square feet of unobstructed surface area
+on the Independence class, roughly the
+footprint of three tennis courts. That
+empty deck was not designed to be a
+feature. It was left behind by failure.
+And failure sometimes leaves behind
+exactly what you need. Open
+architecture. The Navy stopped trying to
+make LCS perfect. Instead, they made it
+a modular node. Bolt a rocket assisted
+drone launcher onto the deck. No
+structural modification required. The
+ship does not need to be good at
+everything. It needs to float, move
+fast, and open its deck to whatever
+system the mission demands. The triaran
+with the failed modules became the most
+flexible launch platform in the fleet. A
+stable deck, 11,000 square ft of empty
+space, 40 plus knots. Now the question
+becomes, what do you put on that deck
+that changes the war?
+In December 2025, USS Santa Barbara
+LCS32 was operating in the Arabian Gulf.
+From her flight deck, a rocket booster
+ignited. A small delta-wing aircraft
+climbed into the sky. 10 ft long, 8ft
+wingspan. That was the first shipboard
+launch of Lucas, the lowcost unmanned
+combat attack system. The first time the
+United States Navy fired a one-way
+attack drone from a warship at sea. Two
+months later, that weapon went to war.
+Lucas is an engineering paradox. Its
+airframe is reverse engineered from
+Iran's own Shahed 136, one of the most
+effective one-way attack drones in
+modern warfare. American engineers at
+Spectre Works in Arizona studied what
+made it effective. The Delta- wing
+aerodynamics, the lowcost manufacturing,
+the operational range, kept the physics
+that worked and rebuilt everything else.
+Then they flew it back to the country
+that designed it. But what separates
+Lucas from a copy is not cosmetics. It
+is three engineering upgrades that
+turned a crude weapon into a precision
+system. Start with propulsion. The
+original Shahed runs a crude
+four-cylinder knockoff that broadcasts
+its acoustic signature across the water.
+You can hear it coming. Spectre Works
+replaced it with a DA215 two-stroke
+engine, 215 cm, 20 horsepower, fitted
+with electronic fuel injection. The
+DA215 operates at a fraction of that
+noise. Lucas does not arrive silently,
+but it arrives quietly enough that radar
+detection, not sound, becomes the
+primary warning. Then there is the
+guidance. The original Shahed follows
+pre-programmed GPS coordinates, fire and
+forget. Lucas does not. It maintains a
+continuous uplink through the Starlink
+low Earth orbit satellite constellation.
+That connection solves the radar horizon
+problem, the physical limit where the
+curvature of the Earth blocks line of
+sight targeting. Through Starlink, a
+command center can redirect Lucas
+against moving targets beyond the
+horizon. Human in the loop. The trigger
+requires a person. The precision
+requires a satellite. And finally, the
+capability that no Shahed has ever
+demonstrated, autonomous coordination.
+Lucas carries swarming algorithms that
+allow drones in a formation to talk to
+each other, sharing trajectory data,
+allocating targets, coordinating
+approach vectors. A single Lucas is a
+nuisance. 20 Lucas arriving from
+multiple azimuths is a computational
+crisis for any air defense system. Now
+run the economics. Each Lucas costs
+$35,000.
+An SM6 interceptor to shoot it down
+costs nearly $5 million. Iran spent 40
+years building a toll booth that charges
+$5 million per car. Lucas drives a
+$35,000 motorcycle right through the
+barrier. The cost trap that Iran
+designed to drain American interceptors
+now works in reverse. When epic fury
+commenced, Lucas drones launched from
+LCS flight decks and struck IRGC command
+and control nodes. They hit early
+warning radar installations. They struck
+missile and drone launch sites. They hit
+military airfields. Admiral Brad Cooper,
+the sententcom commander, called Lucas
+indispensable, not useful, not helpful,
+indispensable.
+The $35,000 drones cleared the path and
+behind them, Arley Burke destroyers
+opened their VLS cells. Tomahawk cruise
+missiles, $2 million each, carrying
+precision guidance and heavy warheads,
+flew through the corridors that Lucas
+had just opened. The expendable drone
+does not kill the hardened target. It
+blinds the air defense that protects the
+hardened target. The $2 million Tomahawk
+finishes the job. For the first time in
+history, the United States Navy
+synchronized expendable attack drones
+with strategic cruise missiles inside a
+single kill chain in actual combat.
+While Lucas tore corridors through
+Iran's air defense, a second mission was
+unfolding in the waters of the strait
+itself. USS Canbor LCS30 had arrived at
+Naval Support Activity Bahrain in May
+2025, the first Independence class LCS
+to deploy with the full mine
+countermeasures mission package. USS
+Tulsa LCS 16 and USS Santa Barbara
+followed three LCS platforms, each
+carrying a suite of unmanned systems
+designed to find and destroy mines
+without placing a single sailor in the
+minefield.
+The MCM package operates on a simple
+principle that required decades of
+engineering to execute. The ship stays
+outside the threat zone. The robots go
+in. The common unmanned surface vehicle
+CUSV is a remotec controlled boat that
+towes the ANAQS20 mine hunting sonar
+through suspected mine zones. The sonar
+paints the seafloor identifying objects
+by shape, density, and magnetic
+signature. The human operator sits on
+the LCS miles away, watching the data
+feed. From the flight deck, MH60S
+Seahawk helicopters carry two additional
+systems. The ANAES1
+airborne laser mine detection system,
+ALMDS, scans the water column with a
+blue green laser, detecting floating and
+near surface mored mines that sonar
+cannot reach from below. Once a mine is
+located, the ANASQ235
+airborne mine neutralization system
+deploys an expendable unmanned
+underwater vehicle, a small robot that
+swims to the mine and destroys it. Three
+layers of detection, three unmanned
+systems, zero sailors in the water. The
+Avenger class mine sweepers that
+previously performed this mission
+required their crews to operate directly
+inside the minefield. LCS eliminated
+that variable. The first combat
+deployment of this unmanned MCM
+architecture happened in the waters of
+the Persian Gulf during Epic Fury.
+Two missions converge: drone swarms meet robot minesweepers
+Two missions, same class of ship,
+running simultaneously on the same map.
+One is tearing holes in Iran's air
+defense. The other is clearing mines
+from the straight. Neither mission was
+possible 12 months ago. Now watch them
+converge. On the offensive side, LCS
+platforms cut through the Gulf at over
+40 knots, constantly shifting position,
+denying Iran's coastal defense batteries
+a stable targeting solution. From those
+moving decks, Lucas swarms launched into
+Iranian airspace. Dozens of $35,000
+drones flooding the radar scopes of IRGC
+air defense. Every interceptor fired at
+a Lucas is an interceptor that will not
+be available when the real threat
+arrives. And while Iran's defense grid
+is saturated, burning through its finite
+magazine on expendable targets, the
+destroyers behind the LCS open their
+vertical launch cells. Cheap mass kicked
+the door open. Tomahawks flew through
+the gap. On the defensive side, other
+LCS platforms deploy unmanned surface
+vehicles and helicopter-born systems
+into the minded waters of the strait.
+Sonar mapping the seafloor, lasers
+scanning the water column, robot
+swimmers destroying what they find. The
+corridor that Iran seated with $1,500
+mines is being cleared by machines. No
+crew in the water, no mine sweeper
+inside the threat zone.
+The results wrote themselves across the
+surface of the Persian Gulf. Iris
+Jamaran, a Mooj class frigot, one of
+Iran's most capable surface combatants,
+was struck and sunk at Connor Naval
+Base. Sentcom released satellite imagery
+confirming the hull partially submerged
+at the pier. Iris Bayondor and Iris
+Nagdi, both corvettes, shared the same
+fate at the same base. Three warships
+destroyed without leaving port at Bander
+Abbas. Iris Shahed Begari, a commercial
+cargo vessel that the IRGC had converted
+into a makeshift drone carrier with an
+angled flight deck, was structurally
+destroyed at her birth. Iris Macron,
+hall number 441, a converted oil tanker
+serving as a mobile forward base,
+heavily damaged at anchor. But here is
+the detail that rewrites the story. Look
+at what we just destroyed at Bander
+Abbas. The Shahed Begi. Iran spent years
+converting a cargo ship into a pocket
+drone carrier, welding an angled flight
+deck onto a freighter hull. That was
+their answer to drone warfare at sea. It
+never sailed into combat. It was broken
+at the pier where it was born. Now look
+at what just launched the drones that
+helped destroy it. A 3,000 ton ship with
+cracking aluminum skin that our own
+Congress called a waste of money. Iran
+built a drone carrier from scratch and
+lost it. We took a ship everyone wanted
+to scrap and turned it into a drone
+carrier that worked. That is not irony.
+That is engineering. Over the course of
+Epic Fury, more than 100 Iranian naval
+vessels were destroyed. The surface
+fleet that was supposed to swarm and
+overwhelm us in the shallow waters of
+the Gulf ceased to exist as a coherent
+fighting force.
+The philosophy of the imperfect machine
+Now you have the data. Go back to the
+question we started with. And this time
+you already know the answer. Why the
+worst ship? Why LCS?
+Because the equation did not ask for the
+best ship. It asked for the right ship.
+Small enough to enter the cage, fast
+enough to survive inside it, a deck wide
+enough and stable enough to launch
+drones, cheap enough that losing one
+does not our fleet. Run those
+four variables against every hull we
+own. Only one answer comes back. And
+that answer did more than the equation
+required. It launched the first combat
+drone strike from a warship. It deployed
+the first unmanned mine countermeasures
+architecture in a live minefield. It
+operated inside a kill zone that our
+super carriers could not enter. And it
+survived because 40 knots speed and a
+3,000 ton displacement do not generate
+the targeting signature that attracts
+ballistic missiles. The engineers did
+not fix the cracked hull. They did not
+repair the failed modules. They ran the
+equation again and the failures became
+the features. The empty deck that
+modularity left behind became a drone
+launchpad. The triaran hull that cracked
+under ocean stress provided the
+stability that rocket assisted launch
+demands. The low cost that Congress
+complained about became the acceptable
+risk that let ScentCom push LCS into the
+teeth of Iran's defenses. If you now see
+equations instead of failure, subscribe
+to Navy Decoded and share this with
+someone who still believes a warship has
+to be perfect to be lethal. The LCS
+proved a principle that will define the
+next generation of naval warfare. You do
+not need one platform that does
+everything. You need many platforms that
+each do one thing, connected by a
+network that multiplies their effect.
+Distributed lethality is no longer a
+PowerPoint briefing. It is a doctrine
+tested in combat, validated by a ship
+that was never supposed to see one. The
+future does not belong to perfect
+machines. It belongs to imperfect
+machines in the right position, running
+the right equation, operated by crews
+who understand that engineering does not
+require elegance. It requires math. LCS
+was never a good ship. It was the right
+variable and the equation worked.

@@ -1,0 +1,513 @@
+# nd-Rwd1D6pA1nY.txt
+# title: How the US Navy Rushed a New Weapon In to Crack Open Hormuz
+# channel: Navy Decoded
+# url: https://www.youtube.com/watch?v=Rwd1D6pA1nY
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: (YouTube panel, closer present)
+# notes: User pasted YouTube Show transcript. One clause after "docked Iranian submarine"
+#   looks cut (`and deadly`). Teaching closer is present (who holds the sight line).
+#   ASR artifacts kept verbatim.
+#   Sentcom = CENTCOM
+#   seated = seeded
+#   sighteline / sight line = sightline
+#   Thrron = Tehran
+#   Bander Abbas = Bandar Abbas
+#   uncrrewed = uncrewed
+#   dark hall = dark hull
+#   peers = piers
+#   crude ship = crewed ship
+#   peace time = peacetime
+#   Do not retune from July 12, 90% transit drop, 6-7 hour run, or 30-minute whisper.
+
+On the 12th of July, three boats with no
+one aboard crossed the last stretch of
+water to the Iranian naval base at
+Bandar Abbas and did not slow down. No
+crew, no pilot steering them from a
+screen. They ran themselves straight
+onto a docked Iranian submarine
+and deadly. It was the first time in its
+history the United States Navy had ever
+sent a sea drone in to attack. And it
+was not a stunt for the cameras because
+a few hours later in the same dark
+water, a thousand foot super tanker
+slipped its mooring with every light
+killed and its transponder silent and
+walked straight out of the straight of
+Hormuz. The most watched sea on Earth
+without a shot fired at it. It never
+made that run alone. Two American
+carriers were working the dark somewhere
+over the horizon and the tanker was
+moving under their cover the whole way,
+though it never saw them and never had
+to. Those two things are the same story.
+The drone boats went in first to break
+down the coast that hunts tankers.
+The tanker behind them left through the
+gap they opened. One machine spent
+itself clearing the threat. The other
+simply vanished through the hole it
+left. And that is the part worth
+stopping on. Iran owns that coast. It
+owns the mines, the missiles, the boats.
+Yet, Sentcom can stand up and say flatly
+that Iran does not control the Strait of
+Hormuz and be right. Not because the
+Navy brought a bigger gun, because it
+took away the one thing every weapon on
+that coast depends on, the ability to
+see.
+This is Navy decoded, and that is the
+claim we are going to test tonight. Stay
+to the end, and you will see how a
+waterway can belong to Iran on every
+map. and still not be Iran's to close.
+So, let us start with the oldest rule
+there is about a straight.
+The oldest rule about a strait: if you can see it, you can stop it
+For as long as anyone has fought over a
+narrow sea, control has meant one simple
+thing. If you could see a ship, you
+could stop it. Put guns on the shore,
+put mines in the water, put eyes on the
+cliffs, and anything that passed in
+front of those eyes was yours to take.
+Sight came first. The shooting was the
+easy part. That was the contract and it
+held for centuries. The straight of
+Hormuz is where that contract gets
+tested because the geography does the
+enemy's work for him. At its narrowest,
+the straight is only about 21 nautical
+miles across. And the lane a super
+tanker is actually allowed to use is a
+channel just two nautical miles wide. A
+super tanker has to thread that slot at
+a crawl on a course everyone already
+knows with the Iranian coast looming
+close enough that the mountains fill the
+horizon. And Iran has spent decades
+turning that coast into a killing
+ground. Radar on the high ground,
+anti-ship missiles ranged onto the
+channel, fast attack boats holding in
+the coes, mines seated across the
+seabed. Every ship that enters is
+already tracked, already ranged, already
+inside the envelope before it clears the
+first bend. Whoever controls that slot
+has a hand on the throat of every ship
+inside it. In early 2026, Iran reached
+for that throat. When the war with the
+United States and Israel broke open, the
+Revolutionary Guard declared the strait
+closed to American and Allied shipping,
+seated the water with mines, and began
+firing on anything that tried to run it.
+Merchant traffic collapsed almost
+overnight. Within days, transits through
+the straight had fallen by roughly 90%,
+leaving hundreds of ships and their
+crews stranded inside the Gulf with
+nowhere safe to go. And Washington
+answered the old way.
+It called it Project Freedom, an open
+flag waving escort. Warships riding
+beside the merchant ships in plain
+daylight, exactly the way it had always
+been done. And it barely lasted a day
+before it was shelved. The reasons were
+partly political, but the shape of the
+problem was simpler than any of them. A
+convoy that announces itself hands the
+enemy the one thing it needs most, a
+firing solution.
+You do not have to find a ship that is
+telling you where it is. Being seen had
+been the entire point once. In the
+tanker war of 1987, a visible escort was
+a visible threat, and the threat was
+enough to keep the enemy at arms length.
+That logic no longer holds. Against
+missiles, drones, and small boats that
+can be steered by a live sensor feed,
+announcing yourself does not deter the
+enemy. It aims him. So, the Navy stopped
+announcing. The transit that finally
+worked ran on the exact opposite
+instinct. Every light out, every signal
+killed, a doctrine turned 180°. The old
+contract had just been used against the
+fleet that wrote it. So, the fleet
+stopped honoring it. Now, the mines are
+a genuine problem, and they get solved
+with genuine work. We will come to how
+because it took the Navy's mine hunting
+ships grinding away at that water to
+open a lane at all. But clearing a path
+through the mines only gets a ship to
+the starting line. It does not decide
+the race. What decides the race is a
+mistake buried inside a single word. The
+word is control. We assume that owning
+the water is the same as seeing what
+crosses it. It is not. A straight is not
+controlled by whoever holds the sea
+beneath it. It is controlled by whoever
+holds the sighteline across it. Iran
+still owns the water. The coast has not
+moved an inch. But the sight line is the
+one thing physics let the Navy take
+away. So that is exactly what the
+operation attacked. Not the water, the
+seeing. It did it three ways.
+Making a thousand-foot ship vanish at one in the morning
+Start with a tanker because the first
+move is to erase it from every spectrum
+a human on the Iranian coast can search.
+Think of a lighthouse. Its entire job is
+to be seen. That is what a lighthouse
+is. Now imagine ordering that lighthouse
+to go completely dark. Every lamp out,
+every window blacked, the radio room
+silent, and then steer it through a reef
+by memory alone. Except here the
+lighthouse is 1,000 ft of fully loaded
+steel. And the reef is a shipping lane
+two nautical miles wide with mines
+somewhere in it. That is the discipline.
+The ships get underway around 1 in the
+morning when the human eye and the
+coastal watch post are weakest. Every
+light stays off for the entire 6 to 7
+hour run. The automatic identification
+system, the beacon that in peace time
+continuously tells the world a ship's
+name, heading, and exact position gets
+switched off. So the vessel erases
+itself from the public map. The radio
+goes quiet, so no signal intercept
+station ashore can pin a transmission to
+a hull.
+And this is the trade at the heart of
+it. The ship strips away every signal
+that keeps it safe in peace time. The
+lights the law requires the beacon that
+lets other ships avoid it. The radio
+that answers a distress call. In
+exchange, it buys back the only thing
+that matters inside a war zone. It stops
+being a target anyone can find. It
+coordinates instead through an encrypted
+channel with the Navy's fifth fleet.
+whispering its position every 30 minutes
+and going dark again between. But this
+only closes one set of eyes and any
+engineer sees which one immediately.
+Going dark defeats the human eye on the
+cliff, the night vision watch, the
+signal intercept station listening for a
+transmission. What it does not defeat is
+radar. A super tanker is one of the
+largest radar reflectors a human being
+has ever put to see. You can cut every
+lamp on that hull and it will still
+light up a radar screen like a struck
+match. So blacking out the ship was
+never going to be enough on its own. It
+handles the eyes that see light and hear
+signals. It does nothing about the eyes
+that see in radio waves and those belong
+to the coast. So the radar becomes the
+next problem to solve and there are only
+two ways to beat it. You take the radar
+away from the enemy or you put something
+between the radar and the ship. The
+operation did both. That is what the
+next two moves are and neither of them
+is aimed at the tanker at all.
+Blinding the coast from a deck no one can even see
+So the second move is to blind the
+coast. And the machine that does the
+blinding is a pair of nuclearpowered
+airfields sitting off the coast flying
+in the dark. The USS Abraham Lincoln and
+the USS George HW Bush ran flight
+operations around the clock through the
+whole fight for the straight day and
+night without pause. One of them holding
+station for many months on end to do it.
+Between them, they kept stealth
+fighters, radar planes, and electronic
+attack jets in the air over the Gulf the
+entire time. The point is not the
+roster. The point is that everything on
+those decks is built to work when no one
+can see. And this is where the whole
+story lives in a single detail because
+those aircraft launch and land in the
+same darkness the tanker is hiding in.
+But watch what the darkness means to
+each side. A pilot coming home to that
+carrier in total darkness cannot see the
+ship at all. He does not need to. Radar
+brings him in from miles out and an
+encrypted landing system flies him down
+onto a moving deck he never lays eyes on
+until his hook catches the wire. His
+eyes were replaced by sensors that do
+not care whether the sun is up. So the
+darkness is not an obstacle to him. It
+is just the room he works in. Now put
+the watch on the Iranian shore into that
+same dark and the whole war shows up in
+the gap. He has his own eyes and
+whatever radar survived the last strike.
+A picture that is human, intermittent,
+and forever being knocked offline. The
+pilot traded his eyes for an instrument.
+The coast has only the eyes it was born
+with, and those do not reach across a
+blacked out sea. One night, two kinds of
+sight.
+And because that carrier can see in the
+dark, it can fly off it and take the
+enemy's sight away.
+When Iran fired on ships running the
+southern route, the answer came fast and
+heavy. Dozens of targets struck across
+the Iranian coast in a single stretch.
+Radar sites, missile batteries, fast
+attack boats destroyed at their own
+peers. And every time Iran raised a new
+radar out of the rubble, it came down
+again. a second time, a third, before it
+could finish a single sweep. Overhead,
+Growler jets jammed the coastal air
+defense network, smearing the range
+finding that a shore missile needs to
+aim. This was not a battle for the
+straight. It was a battle for the right
+to see across it. But a carrier can only
+strike what its aircraft can reach. And
+Iran's most dangerous assets sit where
+aircraft are least welcome. tucked deep
+inside a defended harbor, ringed by
+shore missiles built to swat down
+anything that flies in. That is the box
+the Corsair Strike opened. Sending a
+piloted jet or a crude boat into that
+ring means putting a human life inside
+the enemy's best defended ground. A
+drone with no one aboard changes the
+arithmetic. It is cheap. It is
+expendable. And the Navy can push it
+straight into the place the air defenses
+are thickest and simply spend it. And a
+naval base is not just any target. It is
+where the coast's whole picture is run
+from. The peers and the patrol craft
+that go out to hunt a tanker by eye once
+the radar has been knocked down. The
+carrier blinds the coast from above. The
+drone boat reaches in and takes out the
+room the coast does its seeing from,
+which is the real reason that strike
+mattered and why it opened this video.
+It was never about the headline of a
+first. It cleared the very stretch of
+coast a blacked out tanker was about to
+run past. The escort that never rides
+beside the ship because it goes in ahead
+of the transit and does not come back.
+That brings us to the piece of geometry
+that decides who wins that fight.
+The geometry of Oman: who gets to see whom
+Because sight is not just about who has
+the better sensor. It is about who
+stands where. And the physics of a
+coastline decides who can see whom.
+There are two ways through the straight.
+A northern corridor hugging Iran's own
+coast under Thrron's guns and a southern
+corridor about 12 nautical miles wide
+pressed tight against the coast of Oman.
+That choice is not about distance.
+Oman's waters are the one stretch of the
+straight outside Thrron's direct reach.
+Harder for Iran to mine, harder to
+saturate with fast attack boats, though
+never truly safe. Iran still reached
+across that line and struck ships
+running the southern route. and more
+than one tanker turned back in the night
+after the ones ahead of it were hit. The
+southern corridor lowers the odds
+against you. It does not zero them. And
+running close along the Omani cliffs
+does one more thing. The land itself
+blocks the radar. A tanker tucked
+against the rock disappears into the
+terrain behind it. And a coastal radar
+trying to pick it out is fighting its
+own reflections. But hard to mine is not
+the same as clear. Iran seated that
+water and the mines had to come out
+before a single loaded tanker could run
+it. Slow, unglamorous work done by the
+Navy's mine hunters out of Bahrain,
+pushing unmanned boats and helicopters
+ahead of the crude ship to find and kill
+the mines without a sailor ever going
+near them. It is a physical threat with
+a physical answer. And once the lane is
+open, the fight moves off the water and
+back into the only question that ever
+really mattered. Who can see across it?
+This is the physics at the center of
+everything. A radar on the shore can
+only see as far as its own horizon. And
+terrain in the way steals even that. But
+put the sensor up high. A Hawkeye radar
+plane or a surveillance drone flying
+above 50,000 ft. A quarter billion
+dollar machine that never fires a shot
+and only ever watches. And you push that
+horizon out for hundreds of miles. From
+up there, you look down onto the low
+hidden targets the shore radar can never
+reach. and you hand that picture to a
+destroyer's missiles so the warship
+never has to switch on its own radar and
+give away where it is. High ground has
+always owned the sighteline. The Navy
+simply moved its high ground into the
+sky. And Iran understood exactly what
+was being taken because it fought back
+on the very same battlefield, the
+Seeing. This was never a one-sided
+fight. Its clearest move was aimed
+straight at the tanker's own eyes. It
+flooded the straight with false
+satellite signals, spoofing until ships
+watched their own position leap across
+the map, sliding miles inland on the
+display while they sat still in the
+water. In a channel two nautical miles
+wide, losing your position is not an
+inconvenience. It is a collision waiting
+to happen. So, the crews were forced
+backward in time. They shut off the
+digital navigation they no longer
+trusted and went back to the oldest
+tools on the bridge, the magnetic
+compass. dead reckoning by hand,
+bearings drawn in pencil on a paper
+chart. The satellite age folded itself
+back into an age of rulers and dividers
+because in that straight, the sighteline
+was under attack from both directions at
+once. So, the choice of the southern
+corridor, the aircraft overhead, the
+sensor pushed up into the sky, none of
+it was about guarding the ship. It was
+about controlling who is allowed to see
+what at every range. see far from above,
+deny the enemy his picture below, and
+slip the ship through the blind spot
+that opens up. One continuous chain, and
+every link is about vision.
+Why a blockade that cannot see is barely a blockade at all
+So, step back and ask the question, the
+whole thing was built to answer. Iran
+has the geography, it has the mines, it
+has the missiles, and it has the coast.
+So, how can Sentcom stand up and say
+plainly that Iran does not control the
+strait? Because the separate pieces were
+never really separate. They are one
+equation written over and over.
+Controlling a straight was never about
+owning the water. It is about owning the
+distance between the moment you detect a
+ship and the moment you can fire on it. Shrink that distance to zero and you
+rule the straight. Stretch it toward
+infinity and you own nothing. That is
+the whole operation in one line. It
+stretched Iran's detection distance out
+past the point where the math still
+works. And a weapon that cannot find its
+target is not a weapon anymore. It is a
+guess fired into probable emptiness.
+Even the drone strike at Bander Abbas
+fits the same equation. Three cheap
+boats spent to shorten Iran's reach by a
+few more miles of coast. One more slice
+taken off the distance at which it can
+still see. Every mine, every missile,
+every boat still exists. Not one of them
+was taken away. They were simply cut off
+from the one thing that made them
+lethal, a target they could actually
+see. A blockade that cannot see well
+enough to aim is barely a blockade at
+all. It is a coastline full of weapons
+and a sea too dark to point them at,
+which turns the tanker's disappearing
+act into something larger than survival.
+Go back to that thousand-foot ship going
+dark at 1 in the morning. It looks like
+hiding a ship afraid trying to sneak
+past. It is not. That vanishing is not
+the tanker protecting itself. It is the
+United States reaching into Iran's hands
+and taking the straight back. The ship
+does not go invisible to escape the
+blockade. It goes invisible to prove
+there isn't one. Its silence is the
+sovereignty claim. Every dark hall that
+slips through is Sentcom's sentence made
+physical. Iran does not control the
+straight because control was never the
+water. It was the sighteline across it.
+The water is Iran's. The sight line is not.
+So come back to 1 in the morning to that
+thousand ft of loaded tanker. Every
+light out sliding into the black.
+Somewhere ahead of it that night, a
+handful of uncrrewed boats had already
+spent themselves against the coast,
+clearing the hunters out of the water so
+this moment could happen quietly. Now
+the tanker reaches open water on the far
+side exactly the way it left, silent,
+unlit, and on no screen that was hunting
+for it. Overhead, a fighter settles onto
+a deck it cannot see, guided down by
+sensors that never needed the sun. And a
+coastline full of Iranian mines and
+missiles and boats watches a dark sea
+and finds nothing on it to shoot. The
+water is Iran's. The mines are Iran's.
+The sighteline is not. Control was never
+about who owned the sea. It was about
+who could see across it. And that was
+the one thing physics let the Navy take
+away. One narrow corridor, one dark
+hull, one equation, no eyes, no control.
+A blockade in the end is just a machine
+for seeing and a machine can be taken
+apart. You find the single bolt holding
+it together and you watch what happens
+the moment it is pulled. That is the
+work we do here at Navy Decoded. So the
+next time a headline tells you a
+waterway is closed, you will already
+know which question to ask. Not who
+holds the water, but who holds the sight
+line above it. Stay with us and we will
+keep pulling the bolt.

@@ -1,0 +1,493 @@
+# nd-Vk88S6bro1o.txt
+# title: How Two US Navy Destroyers Survived a Real Swarm War at Hormuz
+# channel: Navy Decoded
+# url: https://www.youtube.com/watch?v=Vk88S6bro1o
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: (YouTube panel, closer present)
+# notes: User pasted YouTube Show transcript. Teaching closer is present
+#   (who is holding the other four layers). ASR artifacts kept verbatim.
+#   Truckton / Trxton / Truxton = USS Truxtun
+#   Arley Burke = Arleigh Burke
+#   Spy One / Spy 1 = SPY-1
+#   Eegis = Aegis
+#   Failank = Phalanx
+#   Houthy = Houthi
+#   H64 = AH-64 Apache
+#   MH60R Seah Hawk = MH-60R Seahawk
+#   Nure / Cotter = Noor / Qader
+#   Nula / NULCA = Nulka
+#   Aluade = Al Udeid
+#   Bob Elm Mandeb = Bab el-Mandeb
+#   Tyiceroga = Ticonderoga
+#   Rathon = Raytheon
+#   DDGO 2.0 = DDG Mod 2.0
+#   Jas Island = Jask
+#   Honest conflicts, do not merge:
+#     SM-6 ~$4.3M here vs nearly $5M in nd-esV3xvbjmbw.
+#     Project Freedom opening day succeeds with five layers here.
+#     Visibility-bolt says daylight escort lasted barely a day.
+#     Complementary, not a retune: day one worked because 15,000 people
+#     held four outer layers. It does not scale.
+#   Do not retune from 3 illuminators, 6-7 boats, zero US hulls hit,
+#   15,000 people, or May 4.
+
+Cruise missiles from the Iranian
+coastline, drones from inland launchers,
+fast attack boats doing 50 knots from
+hidden coes all at once. Inside a
+straight 21 nautical miles wide, where
+the Iranian shore sits 10 nautical miles
+from the shipping lane and a sea
+skimming missile launched from that
+shore reaches the ship in seconds, not
+minutes. That is what Iran threw at two
+American destroyers on May 4th, [music]
+the opening day of Project Freedom. The
+first contested naval convoy through the
+straight of Hormuz in nearly four
+decades. Zero American ships hit. Six to
+seven Iranian boats destroyed. Every
+missile intercepted or jammed. Every
+channel covered the result. None of them
+explained the engineering. Think about
+what the physics actually demands. One
+radar, three types of weapons. Every
+second that radar spends tracking a
+cruise missile overhead, it is blind to
+the 50 knot boat at sea level. The ship
+can guide three interceptors at once,
+and Iran did not send three. The math
+says those two ships should not have
+survived unless someone changed the
+math. Today on Navy Decoded, we show you
+exactly how two destroyers survived real
+swarm warfare inside the most dangerous
+choke point on Earth. Not the headline,
+the engineering. Subscribe because after
+this video, you will never look at a
+naval battle the same way again.
+Why the Red Sea did not prepare anyone for Hormuz
+The two destroyers were USS Mason and
+USS Truckton. Mason is a combat veteran
+attacked three times by Houthi missiles
+in one week in 2016. Deployed 263 days
+in the Red Sea in 2024, the longest
+combat deployment of any destroyer in
+that campaign. Trxton had never fired a
+weapon in combat before May 4th. Both
+are Arley Burke class flight 2A
+destroyers. Both carry the same radar,
+Spy One. To understand why the results
+seem impossible, you first need to
+understand why the Red Sea, as dangerous
+as it was, did not prepare anyone for
+this. In the Red Sea, the threat was
+one-dimensional. Houthy forces fired
+cruise missiles and drones. Both are air
+threats. Both travel through the same
+domain. An Eegis destroyer Spy 1 radar
+handles air threats by scanning the sky.
+And when the sky is the only
+battlefield, the radar concentrates its
+energy in one direction. One job, one
+radar, manageable. Even then, it was
+close. In January 2024, a Houthy missile
+penetrated every layer of defense on an
+American destroyer and was shot down
+barely one nautical mile from the hull
+by the ship's last resort close-in
+weapon system, a rapid fire gun called
+the Failank. That is roughly 6 seconds
+of flight time. 6 seconds between
+survival and a hit. And that was against
+a threat coming from a single domain.
+Now picture the straight of Hormuz, 21
+nautical miles at its narrowest point.
+The Iranian coastline sits 10 to 15
+nautical miles from the shipping lane. A
+cruise missile launched from the Iranian
+shore, flying at wave height to avoid
+radar, does not appear on a ship's radar
+screen until roughly 8 to 12 nautical
+miles away. That gives the crew 20 to 40
+seconds of warning. Not minutes,
+seconds. And the coast is not the only
+threat. Iran's IRGC Navy, not a proxy
+like the Houthis, but a professional
+military force with decades of training,
+maintains hundreds of fast attack boats
+hidden in small coes along the
+shoreline. These boats carry anti-ship
+missiles and reach speeds of 45 to 52
+knots. They can launch and close to
+engagement range in minutes. Analysts
+estimate Iran has 800 to 1,000 anti-ship
+cruise missiles concealed in coastal
+bunkers and 5 to 6,000 naval mines ready
+for deployment. The Red Sea tested
+whether Eegis could handle air threats.
+Hormuz tested whether Eegis could handle
+air threats, surface threats, and
+coastal threats. Arriving together at
+the same time in a corridor so narrow
+that the radar cannot see far enough to
+react slowly. The Red Sea taught Mason
+to box. Hormuz forced her to fight MMA.
+Mason arrived at Hormuz with more real
+combat experience than any active
+destroyer in the fleet. But the Red Sea
+only tested one system, air defense.
+Hormuz tested the systems ability to
+divide itself to fight three wars with
+one radar at the same time. And that is
+where the physics changes.
+Three illuminators. Why killing is the bottleneck, not tracking.
+Start with the destroyer's brain, the
+Spy 1 radar. Spy 1 is a passive
+electronically scanned array, PASA. Four
+fixed antenna faces, each covering 90°,
+giving the ship 360° awareness. The
+radar manages its beam energy by time
+sharing, switching between searching for
+new targets, tracking confirmed ones,
+and guiding interceptor missiles
+thousands of times per second. It can
+track over a 100 targets simultaneously.
+But tracking is not the bottleneck.
+killing is here is the bottleneck. When
+Mason fires an SM2, roughly $2 million
+per round, the ship must keep an
+illuminator locked on the target for the
+final seconds of the intercept. The
+illuminator is a focused radar beam that
+the missile rides to the target. No
+beam, no hit. And an Arley Burke carries
+only three illuminators. Three. That
+means no matter how many threats the
+radar tracks, 100, 200, only three can
+be killed simultaneously in those final
+seconds. There is a more expensive
+option.
+The SM6 missile, roughly $4.3 million
+per round, more than double the SM2,
+carries its own radar seeker. It does
+not need the ship's illuminator. It
+finds the target on its own. That frees
+up an illuminator slot for another
+missile. But every SM6 fired is $4
+million gone from a magazine that cannot
+be reloaded at sea. In the Red Sea, this
+[music] system worked. The radar focused
+entirely on air search, one job. The
+illuminators handled threats as they
+arrived. The math held because the
+threats came from a single domain. In
+Hormuz, if the radar also had to track
+50 fast boats on the surface, every
+second of beam time spent on a surface
+contact would be a second stolen from
+air defense. The update rate on each air
+target would drop. The engagement
+windows would shrink. Missiles could
+slip through. Project Freedom's answer
+was elegant. Do not ask the radar to
+track boats. Give the surface fight to
+someone else. Keep the radar on the sky
+and only the sky. Run the bandwidth. Spy
+1 manages a 100 air tracks while guiding
+three missiles simultaneously. Add 50
+surface contacts and the math breaks.
+The solution? Do not add them.
+Helicopters took the surface fight. The radar never saw a boat.
+If the radar is not watching the boats,
+who is? On May 4th, the answer came from
+above the water, but not from the ship's
+radar. It came from helicopters. A H64
+Apache attack helicopters, US Army
+assets deployed from regional bases in
+the Gulf. and MH60R Seahawk maritime
+helicopters were sent over the straight
+during the transit. The Apaches are Army
+aircraft, not Navy. A destroyer does not
+carry them. They flew from land bases in
+the region, part of the 15,000 strong
+force Sentcom assembled specifically for
+Project Freedom. Each helicopter carries
+its own sensors, forward-looking
+infrared cameras, targeting systems,
+fire control radar. None of these
+systems draw from the destroyer's spy
+one. The helicopter sees independently.
+It thinks independently. It kills
+independently. On May 4th, Iranian fast
+attack boats swarmed toward the convoy.
+Apaches met them with hellfire missiles
+and 30mm cannon fire. Seahawks engaged
+with hellfires and heavy machine guns.
+Six to seven boats were destroyed,
+confirmed by Sentcom. Not by the
+destroyer's weapon systems, not by the
+radar, not by missiles from the vertical
+launch cells, by helicopters with their
+own eyes and their own weapons.
+This is the detail that changes the
+entire picture. Every fast boat
+destroyed by a helicopter was a target
+the spy 1 never had to see. Every boat
+eliminated by an Apache freed beam time,
+radar energy that went back to tracking
+the cruise missiles and drones that
+actually threatened the ship. The
+helicopters did not just kill fast
+boats, they liberated the radar. This is
+not a new tactic. On April 18th, 1988,
+during Operation Praying Mantis, the
+last time the United States Navy fought
+Iran in open combat, American Cobra
+attack helicopters destroyed Iranian
+fast attack boats in the same waters. 38
+years later, same straight, same tactic,
+different generation of weapons, same
+physics.
+Growlers made missiles miss. No interceptor spent.
+Now address the third layer. Even with
+the radar holding the sky and the
+helicopters holding the water, there is
+still a problem. If Iran fires more
+cruise missiles than the ship can
+intercept simultaneously, more than
+three at once in the final phase, some
+will get through. The illuminator
+bottleneck is real. Three illuminators,
+three missiles at a time. The answer is
+to reduce the number of missiles that
+need to be physically destroyed. This is
+where electronic warfare enters. The
+EA18G Growler is a specialized
+electronic attack aircraft built on the
+FA18F Super Hornet airframe. It carries
+jamming pods, harm anti-radiation
+missiles that home in on enemy radar
+emitters, and AIM120 air-to-air missiles
+for self-defense, a full spectrum
+electronic warfare platform, not just a
+jammer. The Growlers supporting Project
+Freedom belong to VAQ 140, the Patriots,
+part of carrier airwing 7 aboard USS
+George HW Bush operating in the Arabian
+Sea. Here's how it works. Iran's
+anti-hship cruise missiles variants like
+the Nure and the Cotter use active radar
+homing in their terminal phase. The
+missile seeker head sends out a radar
+signal, detects the reflection off the
+ship's hull, and steers toward it. A
+growler broadcast noise on the same
+frequency. The seeker receives jamming
+instead of a reflection. It loses the
+target. The missile flies into the
+ocean. No explosion, no interception. No
+interceptor missile spent. [music] The
+threat simply misses. Every missile
+jammed by a Growler is one SM2 or SM6
+that stays in the launcher. 2 to 4
+million saved. Every missile jammed is
+one illuminator that does not need to
+engage. One illuminator freed for the
+next threat. Electronic warfare does not
+destroy missiles. It wastes them. and
+wasting an enemy's missiles cost you
+nothing but electricity.
+But there is a dependency that changes
+everything about this mechanism. The
+Growler is a fixedwing aircraft. It
+requires a flight deck. A destroyer does
+not have one. The Growlers came from the
+carrier USS George HW Bush. Without the
+Bush, there are no Growlers. Without
+Growlers, there is no soft kill layer.
+Without soft kill, every single incoming
+missile must be physically destroyed by
+an interceptor. The Illuminator
+bottlenecket goes from manageable to
+overwhelming. The destroyers also carry
+their own electronic countermeasures.
+The Nula decoy, a rocket propelled
+hovering decoy launched from the ship
+that creates a radar signature larger
+than the ship itself, luring missiles
+away. Mason used NULCA successfully
+against Houthy missiles in 2016 and the
+SLQ32 shipboard electronic warfare
+system, a close-range jammer and threat
+detector that serves as the last
+electronic defense before the failank
+gun. Now combine all three mechanisms
+into the full picture. Project Freedom
+did not ask two destroyers to fight
+three wars. It split the war into five
+layers. Layer [music] one, the outermost
+ring. FA18 Super Hornets from the Bush
+Carrier Airwing and US Air Force F-16
+fighters from regional bases, Aluade and
+Qatar, Prince Sultan and Saudi Arabia
+flew combat air patrol over the
+straight, intercepting Iranian drones
+before those drones reached the
+destroyer's radar range. They reduced
+the number of air targets the radar had
+to process. Layer two, Growler
+electronic warfare aircraft jammed the
+seekers of incoming cruise missiles,
+reducing the number that needed physical
+interception. Layer three, the spy 1
+radar tracked remaining air threats and
+guided SM2 and SM6 interceptors to
+destroy them. The radar did one job,
+only one. Layer four, Apache and Seahawk
+helicopters patrolled [music] the
+surface, destroying fast attack boats
+with their own sensors and weapons,
+keeping the radar completely free of
+surface contacts. Layer five, the
+innermost ring. The failank's close-in
+weapon system, NULA decoys, and the
+SLQ32 shipboard jammer provided the
+final defense against anything that
+penetrated all four outer layers. Five
+layers, each assigned to the platform
+best designed for that specific task.
+The destroyers held the center.
+Everything else held the perimeter. That
+is not superior firepower. That is
+superior division of labor.
+The five-layer fix that cost 15,000 people
+On May 4th, the system worked. Not a
+single American vessel was struck. Six
+to seven Iranian fastboats were
+destroyed. Every cruise missile and
+drone was intercepted or jammed. Iran
+claimed through state media that a
+missile struck a US warship near Jas
+Island. Sentcom responded with a single
+word, fiction. By every tactical
+measure, Project Freedom was a success.
+Now, count the cost. 15,000 service
+members, over 100 aircraft, a carrier
+strike group led by the USS George HW
+Bush with over 60 aircraft on its flight
+deck. Army Apache helicopters flown in
+from regional bases. Growler electronic
+warfare jets from the carrier's airwing.
+Air Force F-16s from bases in Qatar and
+Saudi Arabia. Navy FA18s from the
+carrier. All of this for two destroyers
+escorting a handful of commercial ships
+across 21 nautical miles of water. Every
+SM2 fired cost roughly $2 million. Every
+SM6 cost roughly $4 million. Every
+Hellfire from an Apache cost 100 to
+$150,000.
+The five layer zone defense that made
+the transit possible required a carrier,
+a carrier airwing, land-based fighter
+squadrons, helicopter detachments, and
+the entire sententcom electronic warfare
+architecture operating simultaneously.
+That is the perfect solution. And it is
+the solution that cannot scale. Most of
+the time those 15,000 people are not
+there. In the South China Sea, the
+Taiwan Strait, the Bob Elm Mandeb,
+destroyers patrol alone. One radar,
+three illuminators, no growlers, no
+Apaches, no five layers. The same
+multi-dommain threat compressed onto a
+single hull. The Red Sea made everyone
+believe Aegis could handle it alone. But
+the Red Sea only tested one domain.
+Hormuz tested three, and the answer
+required an entire strike group.
+There is a technology solution on the
+horizon, but it does not arrive the way
+most people imagine. The Spy 6 radar, an
+active electronically scanned array with
+30 times the sensitivity of the Spy 1,
+can generate multiple independent beams
+simultaneously. Air tracks and surface
+tracks handled at the same time without
+the time sharing compromise that limits
+Spy 1. It is the radar that solves the
+bandwidth problem. But installing it
+across the fleet is not a software
+update. It is structural surgery.
+Replacing a ship's radar means cutting
+open the superructure, swapping the
+cooling systems that handle the radar's
+massive power draw, running miles of new
+cabling, and adding ballast to rebalance
+the ship's center of gravity. American
+dry docks can process roughly two to
+three ships per year at that level of
+modification. The Navy operates more
+than 60 Burke class destroyers. Run that
+math. And not every ship qualifies. The
+Navy's upgrade program, DDGO 2.0, O only
+targets flight 2 a halls with enough
+remaining service life to justify the
+investment. Older destroyers, flight 1,
+flight 2, and the entire Tyiceroga
+cruiser fleet will be decommissioned in
+the 2030s. Their holes are too worn to
+cut open. They retire with Spy 1 still
+bolted on. The full transition is
+projected to complete in the late 2030s
+or early 2040s. [music] The timeline is
+not set by how fast Rathon can build
+radar arrays. It is set by how fast
+American dry docks can cut steel. two to
+three holes at a time. Mason and Truxton
+are both flight 2A. They carry Spy One
+today. The fleet that actually sails
+into choke points like Hormuz will live
+with this bandwidth limitation for years
+to come. Solving it the way Project
+Freedom did with 15,000 people [music]
+or not solving it at all. Until those
+upgrades arrive, the choice is clear.
+either provide the full zone defense,
+carrier, growlers, helicopters,
+fighters, or accept that a destroyer
+alone in a multi-dommain environment is
+operating on the edge of its physics.
+One radar alone. Who holds the other four layers?
+That is the reality behind the headline.
+If you now see the Straight of Hormuz
+differently than you did 15 minutes ago,
+subscribe to Navy Decoded. We do not
+cover battles. We decode the physics
+behind the radar. One thing the physics
+cannot explain. Every equation in this
+video assumed the crew executes
+perfectly under fire in real time inside
+a 21-m corridor with missiles arriving
+in seconds. Mason's crew did. Trxton's
+crew did. The math made survival
+possible. The sailors made it real. The
+question is not whether Eegis can
+survive a multi-dommain swarm attack.
+May 4th answered that it can. The
+question is whether it can survive one
+alone. Remove any layer. the Growlers,
+the Apaches, the fighters, and the
+bandwidth breaks. Three illuminators
+against a barrage, one radar dividing
+itself between sky and surface. The math
+[music] stops working. Most of the time,
+those 15,000 people are not there. So
+the next time a destroyer sails into a
+choke point alone, no carrier, no
+Growlers, no Apaches, ask yourself, who
+is holding the other four layers?

@@ -1,0 +1,472 @@
+# nd-2NNZ2u2WDD0.txt
+# title: Why the US Navy Won't Use the Technology It Built to Clear Every Mine
+# channel: Navy Decoded
+# url: https://www.youtube.com/watch?v=2NNZ2u2WDD0
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: (YouTube panel, closer present)
+# notes: User pasted YouTube Show transcript. Last two tokens "All / From" look like a cut CTA.
+#   Teaching closer is present: last mine on the floor is the last mine Iran will ever have.
+#   ASR artifacts kept verbatim.
+#   Morde / Mored = moored
+#   MO8 = M-08
+#   Sedaf O2 / SATAF0 O2 = Sadat-02 / Sadaf-02
+#   frigot = frigate
+#   Arley Burke = Arleigh Burke
+#   Northre Grumin = Northrop Grumman
+#   volutric = volumetric
+#   mind-shaped = mine-shaped
+#   A/AES1 = AN/AES-1 ALMDS
+#   A/QS20C = AN/AQS-20C
+#   A/SQ235 = AN/ASQ-235 Archerfish
+#   Carg = Kharg
+#   births = berths
+#   Sentcom = CENTCOM
+#   Gadier = Ghadir
+#   LH A7 = LHA-7
+#   high-v value = high-value
+#   steel hall = steel hull
+#   Conflict with nd-ZVu88ZaIN1g: that watch said 16 minelayers sunk.
+#   This watch says 26 (16 at sea plus 10 at berths). Do not retune from either.
+
+No radar sees it. No satellite detects
+it. It emits no signal, generates no
+heat, makes no sound. It waits. Inside
+that cylinder, a hydrophone sensor
+listening for the acoustic signature of
+a propeller. When a ship, any ship,
+passes within activation range, the
+sensor classifies the signal. And in
+less than two seconds, a solid fuel
+rocket motor fires a 308lb warhead
+upward through the water column at 260
+ft per second, punching through the hull
+from directly below. That is the EM52.
+China designed it. Iran bought it. And
+right now, it sits beneath the straight
+that carries 20% of the world's crude
+oil. But the EM52 is not the only threat
+in the water. Iran maintains an
+estimated 5,000 to 6,000 naval mines,
+the largest mine inventory in the
+region. Morde mines, bottom mines,
+drifting mines, influence mines. Some
+cost less than $1,500 each, cheaper than
+a used jet ski. In 1988, exactly one MO8
+mine, the predecessor to the Sedaf O2
+that Iran now manufactures domestically,
+detonated beneath the frigot USS Samuel
+B. Roberts. The mine cost $1,500. The
+explosion ripped a hole 15 to 25 ft wide
+through the hull, broke the keel, and
+drowned two engine rooms in seawater
+before the crew could react. 10 sailors
+were wounded. Four suffered burns severe
+enough to be evacuated to a military
+hospital in Germany. It took 13 months
+and $89.5 million to rebuild the ship. A
+weapon that cost less than a jet ski
+nearly sent a warship to the bottom of
+the Persian Gulf. Now imagine that mine
+beneath a super tanker carrying 2
+million barrels of crude oil. The math
+gets considerably worse. The United
+States Navy possesses technology that no
+other Navy on Earth has. Airborne laser
+mine detection from helicopters,
+unmanned robot surface vessels hunting
+with sonar, and precision kill drones
+that destroy mines one by one. All
+operated remotely. Not a single sailor
+enters the water. So why is Hormuz still
+closed? Why are the mines still there?
+Not because the Navy cannot clear them.
+Because the Navy is solving an equation
+with three variables. And until all
+three converge, the mines stay exactly
+where they are. If that equation
+interests you, subscribe to Navy
+Decoded. We do not clear headlines, we
+clear minefields. To understand why the
+world's most advanced mine hunting
+technology sits unused while Hormuz
+bleeds the global economy, we first need
+to understand the weapon it was built to
+defeat. Because naval mines are not just
+old, they are perfect.
+Why a mine that costs less than a jet ski can close 20% of the world's oil
+Naval mines operate on a principle that
+makes them fundamentally different from
+every other weapon in modern warfare.
+They are passive. A cruise missile
+broadcast a radar return. A drone emits
+heat. A submarine generates acoustic
+noise. But a mine on the seafloor emits
+nothing. No signal, no energy. It is
+invisible to every active detection
+system a warship carries because there
+is nothing to detect. The ultimate set
+and forget weapon. And the cost
+arithmetic is devastating. One MO8
+contact mine $1,500.
+One Arley Burke class destroyer $2
+billion. A cost exchange ratio of 1 to
+1.3 million. No weapon in the history of
+warfare offers that asymmetry.
+A piece of steel with an explosive
+charge, invented during the American
+Civil War, still owns the most lopsided
+cost ratio in modern combat. Now look at
+the geography. The Straight of Hormuz is
+21 nautical miles wide, but the traffic
+separation scheme divides it into two
+navigable lanes, 2 nautical miles
+inbound, 2 nautical miles outbound,
+separated by a two nautical mile buffer,
+six nautical miles total. Iran does not
+need to mine the entire straight. Iran
+needs to mine a ribbon two nautical
+miles across. And here is the final
+variable that makes mines uniquely
+dangerous. They are an insurance weapon.
+One tanker strikes a mine, the hull
+breaches. 2 million barrels of crude oil
+burn in the shipping corridor. Lloyds of
+London revokes war risk coverage for the
+strait. Every tanker operator on Earth
+pulls their vessels. Hormuz does not
+close by military force. It closes by
+market force. The mine does not sink a
+fleet. The mine sinks an insurance
+policy. And the straight closes not by
+fire, but by fear. Fear only needs one
+example.
+Iran has deployed three types of mines
+at Hormuz. Each solves a different
+problem. Each requires a different
+solution. The first is the contact mine.
+The SATAF0 O2, Iran's copy of the Soviet
+MO8, a steel sphere packed with over a
+100 kgs of explosive tethered to an
+anchor floating just below the surface.
+When a hull touches its protruding
+horns, the fuse fires, the same weapon
+that nearly sank the USS Samuel B.
+Roberts, unchanged in 40 years. It does
+not need to change. The second is the
+bottom influence mine. It sits on the
+seafloor and detonates without contact.
+Three sensors, a magnetometer detecting
+a steel hall's magnetic field, a
+hydrophone listening for propeller
+noise, and a pressure sensor measuring
+the displacement of a passing vessel.
+Programmable to fire only when all three
+signatures match a large ship, filtering
+out small craft waiting for the high-v
+value target. Patient, selective, smart.
+The third, the EM52 we described, is the
+most dangerous. a rocket propelled
+rising mine that hunts upward at 260
+feet per second. You cannot armor
+against a weapon that attacks from
+underneath at rocket speed. And you
+cannot detect it until it fires. Contact
+mines that kill on touch, influence
+mines that kill on signature, rising
+mines that kill on rocket power, 5 to
+6,000 of them. And every navy in the
+world still clears them the old way.
+Divers in the water, fiberglass ships in
+the minefield. The United States Navy
+decided to build something different.
+Instead of sending sailors into the
+minefield, the Navy engineered four
+unmanned systems, each solving one step
+of the clearance problem, designed to
+detect, hunt, trick, and destroy mines
+without a single human being in the
+water. No other fleet has anything like
+Four machines that hunt mines without a single human in the water
+it.
+For most of naval history, mine
+clearance has been the most dangerous
+job in any fleet. Traditional mine
+sweeping requires purpose-built vessels
+with wooden or fiberglass hulls because
+a steel hull generates the same magnetic
+signature that triggers influence mines.
+Aboard those ships, explosive ordinance
+disposal divers suit up, enter the
+water, swim into a live minefield,
+locate a mine by hand or by handheld
+sonar, attach a demolition charge, swim
+away, and detonate one mine at a time in
+water they cannot see through. next to a
+weapon designed to kill whatever comes
+near it. Every major navy on Earth still
+operates this way. Japan, South Korea,
+France, the Royal Navy, divers in the
+water, fiberglass ships in the
+minefield, human beings solving the
+equation with their bodies. The United
+States Navy made a decision. Build a
+system where no sailor ever has to enter
+a minefield again. and they built four
+systems each solving one step of the
+mine clearance problem that can operate
+entirely without a human being in the
+water. The system is called ALMDS
+A/ AES1
+built by Northre Grumin and mounted in a
+pod beneath an MH60S Seahawk helicopter.
+The system fires pulses of laser light
+lidar light detection and ranging
+downward into the water. The laser
+penetrates the surface and reflects off
+objects in the near surface water
+column. A streak tube receiver captures
+the reflected photons and processes them
+into a three-dimensional map of
+everything beneath the surface,
+including mines. The computer processes
+thousands of returns per second,
+building a volutric image of the water
+as the helicopter flies, day or night,
+without hovering, without putting
+anything in the water. Think of it as a
+CT scan for a straight. The helicopter
+flies overhead and the laser maps every
+mind-shaped object in the water column
+without touching the surface. But a CT
+scan only shows you where the problem
+is. It does not fix it. And there is a
+second problem. Laser light does not
+reach the seafloor. Mored mines near the
+surface found. But bottom mines sitting
+in the mud 40 ft down, the laser cannot
+see them. For those you need a different
+tool.
+ALMDS finds mines near the surface, but
+bottom mines sitting on the seafloor
+where laser light cannot reach require
+sonar. The A/QS20C
+mine hunting sonar is towed by the
+common unmanned surface vehicle built by
+Textron. The CUSV is an unmanned boat,
+no crew, controlled by a single operator
+aboard an LCS at a safe distance. It
+enters the minefield alone, towing the
+sonar body on a cable. Sidescan mode
+paints a wide image of the seafloor.
+Forwardlook mode projects ahead. Signal
+processing algorithms distinguish mines
+from rocks and coral by shape, size, and
+acoustic reflectivity. The CUSV operates
+for 20 or more hours continuously. No
+human maintains that focus. No human
+sits inside. The LCS never enters the
+minefield.
+Finding mines is not enough. Influence
+mines, the smart ones, need to be
+tricked into detonating. The Navy's
+answer is the unmanned influence sweep
+system. The CUSV towes a magnetic sweep
+cable and an acoustic generator.
+Together, they simulate the signature of
+a super tanker displacing 300,000 tons.
+Magnetic field, propeller noise, hull
+cavitation. The influence mine on the
+seafloor detects the signal. Its three
+triggers align. The mine detonates, but
+there is no ship. nothing above it
+except a cable and a sound generator
+towed by a robot boat. The mine destroys
+itself against a target that does not
+exist. The reverse mouse trap. The robot
+lures the mine into self-destruction.
+Every influence mine that fires is one
+fewer in the water. Unlike a diver, the
+UIS sweeps the same corridor repeatedly
+without risk.
+A/SQ235
+built by RTX. deployed from the same
+MH60S Seahawk that carries the laser.
+For the mine that refuses to fire
+against a decoy, the Navy sends Archer
+Fish, a small expendable underwater
+drone lowered on a fiber optic cable. It
+carries sonar, camera, and light. The
+operator in the helicopter sees realtime
+video. The drone swims to the mine.
+Camera confirms target. The operator
+presses a button. A shaped charge
+detonates, directing explosive energy in
+a focused jet that destroys the mine.
+One mine killed. Deploy another archer
+fish. Repeat. No diver, no risk. One
+operator, one button, four systems, four
+steps. Find with laser. Scan with robot
+sonar. Detonate with acoustic decoy.
+Kill with precision drone. The entire
+mine clearance chain from detection to
+destruction can be executed without a
+single sailor in the water. No other
+Navy on Earth possesses all four
+capabilities integrated into one
+deployable package. So the technology
+works, the systems are built, the
+capability is proven. And here is where
+every other channel would end this
+video. But this is Navy Decoded. And the
+real question is not how the Navy clears
+minds. The real question is why they
+have not done it yet. The answer
+involves three variables that most
+analysts miss entirely.
+The three variables nobody is talking about — and why the Navy is waiting
+If the technology exists, if the laser
+flies, the robot scans, the decoy
+detonates, and the drone kills, then why
+are the mines still there? Why is Hormuz
+still closed? Why are 150 tankers
+anchored outside the straight
+hemorrhaging fuel costs while the
+world's most advanced mine hunting
+systems sit on the decks of ships that
+have not entered the minefield? Because
+the Navy does not solve headlines. The
+Navy solves equations. And this equation
+has three variables that must converge
+before the solution is optimal. If you
+sweep mines while Iran is still
+manufacturing and laying new ones, you
+are mopping a floor while the faucet is
+running. You clear 100, they lay 200.
+The corridor never opens. The operation
+never ends. So the Navy shut off the
+faucet first. Operation Epic Fury has
+destroyed 26 Iranian mine laying
+vessels. 16 intercepted at sea and 10
+more destroyed at their births. 90 or
+more Iranian naval vessels total have
+been destroyed or disabled. Mine storage
+facilities on Carg Island obliterated on
+March 13th. Mine production facilities
+deep inside Iran struck by the bomber
+force. Sentcom confirmed continued
+strikes against mine depots and
+manufacturing sites. The result, the
+mines currently on the seafloor of the
+Straight of Hormuz are the last mines
+Iran will ever deploy. Every mine
+cleared is one that will never be
+replaced. No new mines are being
+manufactured. No ships exist to lay
+them. No storage depots hold reserves.
+The faucet is shut. The floor is ready
+to be mopped.
+The LCS mine countermeasure ships, USS
+Tulsa, USS Santa Barbara, carry the most
+advanced mine hunting technology in the
+world. But they do not carry significant
+weapons for self-defense. An LCS in a
+minefield is focused entirely on
+sweeping. It is slow. It is predictable.
+It is vulnerable to the exact threats
+that still exist at Hormuz. Mobile
+anti-hship missile launchers hidden in
+mountain tunnels, remaining fast attack
+craft staged in coastal coes. and Gadier
+class submarines lurking in
+shallow water. Sweeping mines requires a
+protective bubble. Fighter aircraft
+overhead, destroyers screening the
+flanks, marines providing close-in
+surface defense. That bubble has a name.
+It is called the USS Tripoli LH A7
+carrying up to 20 F-35B stealth fighters
+and 2500 Marines of the 31st Marine
+Expeditionary Unit. As we explained in
+our previous breakdown, Tripoli is the
+answer to the 10% problem that carriers
+cannot solve from standoff range.
+Tripoli departed the Western Pacific and
+is currently transiting at high speed
+toward the Middle East. Estimated
+arrival, roughly 10 days. Mine clearance
+does not begin until the protective
+bubble is in position, not before.
+This is the variable most people miss.
+Hormuz is not sealed. A handful of ships
+still transit on any given day, down
+from the normal average of 77. But the
+mines do not check the nationality of
+the ship passing overhead. The same
+mines that terrorize commercial tankers
+also terrorize Iranian oil exports. Iran
+normally exports 1.4 million barrels per
+day, nearly all through Hormuz. Since
+the mines went down, Iranian crude
+loadings at Carg have collapsed. Tanker
+operators will not send vessels into a
+straight where the insurance premium
+alone exceeds the profit margin of the
+cargo. Iran built a weapon to close the
+straight to everyone else. It closed the
+straight to Iran. The mines are an
+economic siege and they are working for
+the navy without a single additional
+shot fired. Every day the mines sit on
+the seafloor. Iran hemorrhages revenue
+it will never recover. When the three
+variables converge, the faucet is shut,
+the roof is in place, and the economic
+pressure has reached maximum effect, the
+Navy will clear the straight of Hormuz
+with laser, with robot, with drone, on
+American terms, at American timing. Not
+because anyone demanded it, because the
+equation reached its optimum.
+The mine is still listening. Here's how the story ends
+If this breakdown changed how you
+understand what is happening at Hormuz,
+subscribe to Navy Decoded because here
+is how the story ends. The EM52 still
+sits on the floor of the straight of
+Hormuz. It still waits, still listens,
+still ready to fire its rocket upward at
+260 ft per second into the hull of
+whatever passes above.
+38 years ago, a $1,500 mine tore through
+the hull of the USS Samuel B. Roberts,
+broke its keel, and wounded 10 sailors.
+The Navy looked at that equation and
+made a decision. Never again. Never
+again would sailors have to solve the
+cheapest weapon in warfare with the most
+expensive asset the Navy possesses,
+human life. Instead, laser from the sky,
+robot sonar beneath the surface,
+acoustic decoys that lure mines into
+self-destruction,
+precision drones that kill with shaped
+charges. Four systems, four steps, zero
+sailors required in the water. And when?
+When the faucet is shut, and it is. When
+the roof arrives, and it is coming. When
+the equation is optimal and every day
+the mines sit there, Iran bleeds another
+1.4 million barrels it will never
+recover. Naval mines are the cheapest,
+oldest, and most dangerous weapon in
+maritime warfare. A $1,500 mine can
+close a straight through which 20% of
+the world's oil flows. But every mine
+fires only once. And when the factory
+that built it is ash, the last mine on
+the floor of Hormuz is the last mine
+Iran will ever have.
+All
+From

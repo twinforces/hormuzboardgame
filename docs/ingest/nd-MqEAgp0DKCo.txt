@@ -1,0 +1,481 @@
+# nd-MqEAgp0DKCo.txt
+# title: Why the US Navy Still Won't Escort a Single Tanker
+# channel: Navy Decoded
+# url: https://www.youtube.com/watch?v=MqEAgp0DKCo
+# retrieved: 2026-09-09
+# path: paste
+# complete: yes
+# last-timestamp: (YouTube panel, closer present)
+# notes: User pasted YouTube Show transcript after a swarm/escort URL mix-up.
+#   This is the April 7 escort-physics watch, not Mason/swarm (Vk88S6bro1o).
+#   Teaching closer is present. ASR artifacts kept verbatim.
+#   Eegis = Aegis
+#   refflged = reflagged
+#   hall = hull
+#   SAT FO2 = Sadat-02
+#   VLCC is ,00 ft = 1,000 ft
+#   Arley Burke = Arleigh Burke
+#   A Spy 1 / A Spy 6 = AN/SPY-1 / SPY-6
+#   Keshum = Qeshm
+#   Khali Fars = Khalij Fars
+#   fate 110 = Fateh-110
+#   NUR / C82 = Noor / C-802
+#   Front Altter = Front Altair
+#   Koka Courageous = Kokuka Courageous
+#   Gosh Dclass = IRGC patrol boat (2019 hull-device recovery)
+#   limpit / Olympit / Olympic mine = limpet mine
+#   ANSQS-53C / ANSQR19 TAC = AN/SQS-53C / AN/SQR-19 TACTAS
+#   Sondine Sentinel = Sonardyne Sentinel
+#   Honest conflicts, do not merge:
+#     $2.5B Aegis here vs $1.8B in Navy Response vs $2.1B (ASR 21 billion)
+#     in WarVision.
+#     20 million b/d through Hormuz is transit volume, not Iranian export
+#     (1.4 / 1.6 mb/d in other ND watches).
+#   Matches don't-sweep on Samuel B. Roberts $89.5M / 13 months / 15 ft hole
+#   and M08 predecessor. Matches design TSS 2+2+2. Matches shadow-boarding
+#   300,000-ton / 2 million barrel VLCC.
+#   Do not retune from 6 nm ribbon, 2 nm lanes, $500 limpet, or $89.5M.
+
+Right now, crude oil prices are setting
+historic records. Iran has declared the
+Straight of Hormuz closed to hostile
+shipping. And across social media,
+millions of people are asking the same
+question. Why does the United States
+Navy not simply escort the tankers
+through? The logic sounds bulletproof.
+Park a $2.5 billion Eegis destroyer next
+to each super tanker. The destroyer
+carries 96 missile cells, the most
+advanced radar on the planet, and
+sensors that can track a ballistic
+warhead in the exosphere. Problem
+solved. Tankers move. Oil flows. Crisis
+over. Here is the physics that nobody in
+that debate understands. The shipping
+lane through Hormuz is two nautical
+miles wide. The super tanker you are
+protecting weighs 300,000 tons and the
+threats are coming from three directions
+that the destroyer was never built to
+handle simultaneously. But the threat
+that should terrify you is not in the
+sky. It is already attached to the hull.
+A diver wearing a closed circuit
+rebreather. Zero bubbles, zero acoustic
+cross-section placed a magnetic charge
+against the steel plating below the
+water line. The sonar never registered
+him. The radar was never designed to
+look. $500 of explosive is now bonded to
+300,000 long tons of crude oil. If you
+think escorting is a simple geometry
+problem, this video will break that
+assumption apart. On Navy Decoded, we
+decode why the most powerful warship in
+the world becomes a liability inside a
+narrow straight. Subscribe because the
+math is about to get uncomfortable.
+USS Samuel B. Roberts: the escort that had to be rescued
+The United States Navy is not guessing
+about convoy escort at Hormuz. It has
+done this before. The operation had a
+name. The scars are still in the hall
+records. Operation Earnest Will. July
+24th, 1987 to September 26th, 1988. The
+largest American naval convoy operation
+since World War II. Kuwaiti oil tankers
+were refflged under the stars and
+stripes to justify US Navy escort
+through the Persian Gulf during the Iran
+Iraq war. American warships sailed
+alongside tankers. The mission was
+simple, get them through. On April 14th,
+1988, the frigot USS Samuel B. Roberts
+FFG-58 was escorting exactly that kind
+of convoy. The ship's radar was active,
+weapons were loaded, the crew was
+scanning for aircraft and fast boats.
+Then a mine detonated beneath the hull.
+An Iranian MO8 contact mine, the
+predecessor of the SAT FO2 that Iran
+manufactures today, ripped a 15 ft hole
+through the hull, cracked the keel, and
+flooded the engine room before the crew
+could react. 10 sailors were injured.
+The ship that was supposed to protect
+the convoy now had to be saved by the
+convoy. 13 months and $89.5 million in
+repairs followed. 4 days later, the Navy
+launched Operation Praying Mantis, the
+largest US surface engagement since
+World War II. The response was not more
+escorts. The response was direct strikes
+against Iranian naval platforms and oil
+installations. The lesson from 1988 was
+clear. You do not solve the escort
+problem by adding more escorts. You
+solve it by removing the threat. 38
+years later, the physics of this
+straight have not changed. Here is why
+Three vectors the destroyer was never built to survive
+we need to understand what we are
+protecting. A very large crude carrier
+VLCC is the backbone of global energy
+transit. It is,00 ft long, wider than a
+football field. Loaded with 2 million
+barrels of crude oil. It displaces up to
+300,000 long tons. Think about what that
+mass means for maneuverability. A loaded
+VLCC's stopping distance is measured in
+nautical miles. Its turning radius spans
+thousands of feet. At full sea speed of
+roughly 15 knots, the ship needs several
+minutes just to initiate a course
+change. And at 15 knots, a VLCC moves at
+less than half the speed of the Arley
+Burke destroyer sailing beside it. Now
+look at the hull. A VLCC is a commercial
+vessel. Its steel plating in some
+sections as thin as half an inch is
+engineered for structural integrity, not
+for combat survivability. No armor, no
+blast resistant compartmentalization.
+No damage control teams trained for
+incoming fire. One anti-ship missile
+penetrating that hull detonates inside a
+steel container filled with 2 million
+barrels of flammable hydrocarbons.
+Imagine you are escorting an 18-wheel
+fuel tanker truck through a narrow alley
+with snipers on the rooftops. You are
+driving an armored SUV alongside it. You
+can shoot the snipers, but you cannot
+physically block a bullet headed for the
+fuel tanker. You cannot make the tanker
+drive faster. You cannot make it
+smaller. You cannot make it turn. Your
+armor protects you. It does not protect
+the thing you are escorting. Before
+Operation Epic Fury, dozens of these
+super tankers transited Hormuz every
+day, carrying roughly 20 million barrels
+of crude, over a billion dollars in
+cargo value daily. That traffic has
+collapsed. The question is whether
+Escort can restore it. To answer that,
+we need to look at the geometry of the
+straight itself.
+Here is where the Arley Burke destroyer,
+the crown jewel of the surface fleet,
+begins to [music] fail. Not because of
+any flaw in its engineering, because the
+geography strips away every advantage
+the ship was designed to exploit. The
+Aegis destroyer carries the most capable
+air defense radar afloat. Older ships
+use the A Spy 1 with a detection range
+exceeding 200 nautical miles against air
+targets. The newest Flight 3 hulls carry
+the A Spy 6, an active electronically
+scanned array that pushes detection past
+300 nautical miles and tracks over 600
+targets simultaneously. Either version
+provides 360° coverage and feeds
+targeting data to SM2 and SM6
+interceptors that can engage threats at
+enormous range. But here is what most
+people do not understand about radar.
+Radar is light, not visible light,
+microwave energy, but it obeys the same
+rule. It travels in a straight line. It
+does not bend around mountains. It does
+not curve over ridge lines. If a solid
+object stands between the antenna and
+the target, the beam stops. dead. Behind
+that object is a radar shadow, a volume
+of space where nothing exists as far as
+the sensor is concerned. [snorts] On
+open water, there are no obstructions
+between the antenna and the horizon. So,
+the radar sees everything. Place that
+same antenna inside a straight line with
+mountains and every peak, every cliff
+face, every island carves a shadow into
+the radar's coverage. The sensor is not
+broken. The geometry broke its physics.
+[music]
+But open ocean gives you something that
+Hormuz does not. Distance. and distance
+is time. The straight of Hormuz at its
+narrowest measures 21 nautical miles,
+but ships do not have 21 nautical miles
+to work with. The traffic separation
+scheme confines commercial traffic to a
+corridor just 6 nautical miles wide, two
+nautical mile inbound lane, 2 nautical
+mile buffer, two nautical mile outbound
+lane. The tankers travel single file
+inside a ribbon of water narrower than
+the runways at some international
+airports.
+Now look at both sides of that ribbon.
+The Iranian coastline along the straight
+is mountainous. Sheer rock faces drop
+into the water. And Iran has positioned
+mobile transporter erector launchers
+inside tunnel complexes carved through
+the mountains particularly on Keshum
+Island which sits in the middle of the
+strait barely 5 nautical miles from the
+shipping lane. [music] The Khali Fars
+anti-hship ballistic missile, a fate 110
+derivative carrying a warhead exceeding
+1,400 lb, launches from those tunnels at
+over Mach 3. The geometry works against
+the defender. A ballistic missile does
+not fly in a straight line from launcher
+to target. It arcs upward and drops at a
+steep terminal angle. From a concealed
+launch inside a mountain tunnel to
+impact on a tanker hull 5 nautical miles
+away, the total flight time is under a
+minute. But the time that matters is not
+flight time. It is detection time.
+Terrain masking is the real weapon. The
+mountains block the destroyer's radar
+line of sight to the launcher. The A spy
+1 does not see the missile until it
+clears the ridge line. By the time it
+appears on the scope, the radar must
+classify the target, distinguishing it
+from radar clutter bouncing off canyon
+walls, islands, and dozens of commercial
+vessels crowding the straight. In open
+ocean, clutter is minimal. Inside
+Hormuz, clutter is everywhere. Even if
+the Eegis system achieves a lock
+instantaneously and fires an SM6, the
+interceptor needs 10 to 15 seconds of
+flight time to reach the engagement
+point. The margin of error is measured
+in singledigit seconds, one hesitation,
+one clutter return that delays
+classification, and the missile reaches
+the tanker before the interceptor
+reaches the missile. The NUR, Iran's
+licensebuilt copy of the Chinese C82,
+presents the same problem from a
+different angle. A subsonic cruise
+missile flying at Mach 0.9 hugging the
+wave tops in a sea skimming profile. In
+open ocean, a destroyer's radar horizon
+detects a sea skimmer at 15 to 20
+nautical miles. Inside the straight,
+with terrain reflections masking the
+approach, detection range can collapse
+to 5 to 7 nautical miles. At Mach 0.9, 5
+nautical miles is roughly 20 seconds. In
+open ocean, an Eegis destroyer owns the
+geometry. Inside Hormuz, the geometry
+owns the destroyer. But here is what no
+one in the public debate is talking
+about. While every sensor on the
+destroyer is pointed at the sky, the
+most dangerous threat is already in the
+water.
+On June 13th, 2019, in the Gulf of Oman,
+just outside the straight of Hormuz, two
+tankers, the Marshall Islands flagged
+Front Altter and the Panama flagged Koka
+Courageous were attacked. Both sustained
+hull breaches. Both caught fire. Both
+crews abandoned ship. The United States
+military released infrared video showing
+an IRGC Gosh Dclass patrol boat
+approaching the hall of the Koka
+Courageous after the initial explosion
+and personnel physically removing an
+unexloded device from the hull. The US
+assessment Iran's Islamic Revolutionary
+Guard Corps had attached limpit mines,
+magnetic explosive charges, to the
+ship's hulls below the water line. A
+limpet mine is not a sophisticated
+weapon. It is a shaped explosive charge
+with powerful magnets on one face. A
+diver or a crewman on a small boat
+places it against the steel hull below
+the water line. The magnets hold. A
+timer ticks. The diver disappears. Here
+is the physics that makes Olympit mine
+so effective underwater and so
+irrelevant to the $2.5 billion worth of
+sensors sitting on the destroyer's mast.
+Water is approximately 800 times denser
+than air and nearly incompressible. When
+an explosive charge detonates in the
+atmosphere, the blast wave radiates
+outward in all directions, losing energy
+rapidly as it expands through a
+compressible medium. But when a limpit
+mine detonates against a hull below the
+water line, the water cannot compress.
+It cannot absorb the energy by
+expanding, it transmits the shock wave
+directly into the steel plating with
+almost zero energy loss, focusing the
+full explosive force into the smallest
+possible area. The damage does not stop
+with the initial blast. The detonation
+creates a high-pressure gas bubble
+[music] surrounded by heavy
+incompressible water. The bubble
+oscillates, expanding, collapsing,
+expanding again. Each cycle hammering
+the hull with additional pressure
+pulses. If the bubble collapses
+asymmetrically near the hull, it forms a
+focused water jet. A spear of liquid
+moving fast enough to punch through
+internal bulkheads. A few dozen pounds
+of explosive beneath the water line
+inflict damage that hundreds of pounds
+in open air could not replicate. A VLCC
+hull, half an inch of commercial steel,
+has no chance against this physics.
+Now, the cost asymmetry, but not the one
+you expect. [music] The real asymmetry
+is not about price. It is about
+capability. Olympic mine costs a few
+hundred. The defense against it from a
+moving warship at sea does not exist.
+Not at any price. The Arley Burke
+carries no system designed to detect,
+track, or neutralize a combat swimmer
+approaching a hull in open water. The
+asymmetry is not expensive versus cheap.
+It is something versus nothing. The
+Arley Burke carries two sonar systems.
+The ANSQS-53C,
+a whole mounted active sonar in the bow
+dome, hunts submarines by sending pulses
+into the water and reading the returns.
+The ANSQR19
+TAC,
+a passive towed array streamed nearly a
+mile behind the ship, listens for the
+propulsion noise and cavitation of
+targets displacing hundreds or thousands
+of tons. Both systems are optimized for
+anti-ubmarine warfare. Neither is
+designed to detect an 80 kg human diver
+wearing a closedcircuit rebreather
+emitting zero bubbles drifting with the
+natural current of the straight. The
+Navy possesses diver detection sonar
+[music] systems like the Sondine
+Sentinel designed for exactly this
+threat, but they are fixed installations
+bolted to peers mounted on harbor floors
+[music] designed to protect ships at
+anchor in a known static water volume. A
+destroyer transiting the straight at
+speed does not carry dedicated swimmer
+detection sonar. It has no tool
+optimized for finding a man in a wet
+suit floating beneath a tanker hall. The
+most expensive combat system in the
+surface fleet is blind to the cheapest
+weapon on the battlefield.
+Survivable alone. Together — not.
+Each of those three vectors on its own
+is survivable. Together they are not.
+The tanker cannot maneuver. It cannot
+accelerate. It cannot absorb a hit. Its
+hull is thinner than the armor on a
+civilian pickup truck. Every tanker
+transiting Hormuz is a static
+explosiveladen target moving at walking
+pace through a corridor two nautical
+miles wide. The destroyer cannot protect
+it from above. Terrain masking collapses
+detection time. Radar clutter in the
+confined straight delays target
+classification. An anti-hship ballistic
+missile arriving at Mach 3 from 5
+nautical miles leaves less than a minute
+between detection and impact. And the
+interceptor needs most of that time just
+to fly to the engagement point. The
+geometry designed to give Eegis an
+advantage in open water becomes a
+liability in a canyon. And the destroyer
+cannot protect the tanker from below.
+The billiondoll sonar listens for
+submarines. It does not hear divers. The
+radar stares at the sky. It does not see
+magnets. An Arley Burke class destroyer
+was born for the open ocean where time
+is measured in minutes. Threats arrive
+from predictable azimuths and the ship
+controls the geometry. Place that same
+ship inside a two nautical mile corridor
+flanked by mountains hiding missile
+launchers transiting above shallow water
+where its sonar is degraded and it loses
+the three things it needs most. Time,
+space, and sensor clarity. That is why
+Operation Epic Fury did not begin with a
+convoy. It began with strikes. The
+United States Navy looked at the escort
+equation and reached the same conclusion
+it reached in 1988 after USS Samuel B.
+Roberts. You do not solve a straight by
+defending inside it. You solve it by
+destroying the threats that make it
+dangerous. And here is the insight that
+rewrites Vector 1 entirely. The Super
+Tanker, that lumbering, unarmored,
+indefensible target, is not the victim
+of this conflict. It is the reason for
+it. 20 million barrels of crude per day,
+over a billion dollars in cargo. The
+physics of the straight made escort
+impossible. The economics of the strait
+made war inevitable. The United States
+did not attack Iran over politics. It
+attacked because geometry left no
+alternative that keeps the oil flowing.
+The answer you carry with you
+If this breakdown rewired how you think
+about naval power, subscribe to Navy
+Decoded because here is the answer you
+now carry with you. The next time
+someone in a debate, in a comment
+section, in a news broadcast asks, "Why
+doesn't the Navy just escort the
+tankers?" Remember the USS Samuel B.
+Roberts? Remember the 15 ft hole in the
+hull. Remember that the ship sent to
+protect the convoy had to be saved by
+the convoy. The physics have not
+changed. The geometry has not changed.
+The straight is still 21 nautical miles
+wide, and the shipping lane is still
+two. The mountains still hide the
+launchers. The water is still 800 times
+denser than air, and a diver with a $500
+magnetic charge is still invisible to
+every sensor on a $2.5 billion
+destroyer. What has changed is the
+question. It is no longer whether to
+escort. It is whether you spend $500 to
+attach a magnetic charge to a tanker
+hall or whether you spend hundreds of
+billions of dollars to dismantle the
+entire military infrastructure of the
+nation holding the straight. The United
+States made its choice. Whether that
+math was correct is a calculation Navy
+Decoded leaves for you.

@@ -1,0 +1,9 @@
+Board photo: Sentinel-2 cloudless mosaic, 2024.
+Producer: EOX IT Services GmbH (s2maps.eu).
+Contains modified Copernicus Sentinel data.
+License: CC BY 4.0.
+Crop: lon 54.6 to 57.4, lat 25.0 to 27.5 (EPSG:4326).
+Size: 2016 x 1800.
+Same bbox as the retired NASA Blue Marble Next Generation crop.
+Blue Marble at this zoom is a 500 m vegetation composite. It reads as green noise.
+The overlay (TSS, mines, tanker track) is original to Hormuz Toll.
