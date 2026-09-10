@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Leave a spider hole and it dumps (`HOLE DUMPED`). Traffic balks after blood until you sweep. US sitting is Anti-Mine Warfare. Iran as Mine Warfare is later.
+Leave a spider hole and it dumps (`cede130`). Traffic balks after blood until you sweep. US sitting is Anti-Mine Warfare. Iran as Mine Warfare is later.
 
 ## Next
 

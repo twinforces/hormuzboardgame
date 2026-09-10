@@ -5,6 +5,7 @@
 - **What:** Strike inland or sweep while a hole is live and the stash runs. Dialog title is HOLE DUMPED. First line: you left a spider hole.
 - **Why:** User: hole appeared, then disappeared when they struck something else.
 - **How:** `TurnReport.dumped`. `outcomeTitle` leads with the dump. ADR-024.
+- **Hash:** `cede130`.
 
 ## 2026-09-10 - Traffic balks after blood. No more mole mill.
 
