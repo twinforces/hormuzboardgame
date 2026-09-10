@@ -5,7 +5,7 @@
 - **What:** RECENTGOALS cut to two live bets. README names the five picker seats.
 - **Why:** User: compact, hygiene.
 - **How:** Ringmaster hygiene playbook. Picker already shipped `611db35`.
-- **Hash:** pending.
+- **Hash:** `d144380`.
 
 ## 2026-09-10 - Picker names the seats.
 
