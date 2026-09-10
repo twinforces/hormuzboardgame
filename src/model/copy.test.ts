@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, TANKER_SITS, WAR_SITS, clickToStrike, fogTip, idleChargeLine, iranBrief, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -52,14 +52,21 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.navyNote, /Red does not sit inside green/);
   assert.match(COPY.scenarioHelp, /Weeks/);
   assert.match(COPY.scenarioReopen, /Twelve hulls/);
+  assert.match(COPY.scenarioOverplay, /More mines/);
   assert.match(COPY.scenarioOverplay, /three patches/);
-  assert.equal(SCENARIO_KIT.overplay.label, "Packed TSS");
-  assert.match(COPY.scenarioMine, /You are US/);
-  assert.match(COPY.scenarioMine, /hundred/);
+  assert.equal(SCENARIO_KIT["reopen-lane"].label, "🇬🇷 Tanker CEO");
+  assert.equal(SCENARIO_KIT["one-transit"].label, "🇬🇷 Tanker Captain");
+  assert.equal(SCENARIO_KIT.overplay.label, "🇬🇷 Small CEO");
+  assert.match(COPY.scenarioMine, /Some are greedy/);
+  assert.match(COPY.scenarioMine, /Strike or sweep/);
+  assert.match(COPY.scenarioMine, /🇺🇸/);
   assert.equal(SCENARIO_KIT["mine-warfare"].label, "Anti-Mine Warfare");
   assert.equal(SCENARIO_KIT["iran-warfare"].label, "Mine Warfare");
   assert.match(COPY.scenarioIran, /You are Iran/);
   assert.match(COPY.scenarioIran, /Lay mines/);
+  assert.match(COPY.scenarioIran, /🇮🇷/);
+  assert.deepEqual(TANKER_SITS, ["reopen-lane", "one-transit", "overplay"]);
+  assert.deepEqual(WAR_SITS, ["mine-warfare", "iran-warfare"]);
   assert.match(COPY.iranLock, /Mine warfare/);
   assert.match(COPY.iranHint, /Lay seeds/);
   assert.equal(COPY.iranLay, "Lay mines");

@@ -43,6 +43,12 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(play, /max-w-7xl/);
   assert.match(play, /lg:grid-cols-2/);
   assert.doesNotMatch(play, /lg:grid-cols-3/);
+  assert.doesNotMatch(play, /xl:grid-cols-5/);
+  assert.match(play, /TANKER_SITS/);
+  assert.match(play, /WAR_SITS/);
+  assert.match(play, /role="separator"/);
+  assert.match(play, /sm:w-2\/3/);
+  assert.match(play, /sm:grid-cols-3/);
   assert.match(play, /COPY\.sittingTitle/);
   assert.match(play, /COPY\.accountant/);
   assert.doesNotMatch(play, />\s*Fuses\s*</);

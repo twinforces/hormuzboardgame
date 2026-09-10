@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { COPY, SCENARIO_KIT, clickToStrike, leaveHoleLine } from "@/model/copy.ts";
+import { COPY, SCENARIO_KIT, TANKER_SITS, WAR_SITS, clickToStrike, leaveHoleLine } from "@/model/copy.ts";
 import { STRIKE, STRIKE_NODES } from "@/model/balance.ts";
 import { netUsdM } from "@/model/company.ts";
 import type { DebugSnapshot, ScenarioId, StrikeTarget } from "@/model/types.ts";
@@ -9,8 +9,6 @@ import { IranBoard } from "./iran-board.tsx";
 import { OutcomeDialog } from "./outcome-dialog.tsx";
 import { ScoreDialog } from "./score-dialog.tsx";
 import { cn } from "@/lib/cn.ts";
-
-const SCENARIO_IDS = Object.keys(SCENARIO_KIT) as ScenarioId[];
 
 type LeaveAsk =
   | { kind: "strike"; target: StrikeTarget; pitId?: string }
@@ -128,6 +126,13 @@ export function PlayPage() {
     window.localStorage.setItem("hormuz.debug", next ? "1" : "0");
   }
 
+  function pickSitting(id: ScenarioId) {
+    acted.current = false;
+    setLeaveAsk(null);
+    setScenario(id);
+    window.localStorage.setItem("hormuz.scenario", id);
+  }
+
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
       <section className="rounded-lg border border-border bg-surface p-4">
@@ -135,33 +140,26 @@ export function PlayPage() {
           {COPY.scenarioAsk}
         </p>
         <p className="mt-1 text-sm text-muted">{COPY.scenarioHelp}</p>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-          {SCENARIO_IDS.map((id) => {
-            const sc = SCENARIO_KIT[id];
-            return (
-              <button
-                key={id}
-                type="button"
-                onClick={() => {
-                  acted.current = false;
-                  setLeaveAsk(null);
-                  setScenario(id);
-                  window.localStorage.setItem("hormuz.scenario", id);
-                }}
-                className={cn(
-                  "min-h-11 rounded-md border px-3 py-2 text-left text-sm transition-transform duration-150 ease-out active:scale-[0.96]",
-                  scenario === id
-                    ? "border-accent bg-surface-2 text-accent"
-                    : "border-border text-muted",
-                )}
-              >
-                <span className="block">{sc.label}</span>
-                <span className="mt-0.5 block font-mono text-2xs font-normal text-faint">
-                  {sc.blurb}
-                </span>
-              </button>
-            );
-          })}
+        <div className="mt-3 grid gap-2 sm:grid-cols-3">
+          {TANKER_SITS.map((id) => (
+            <SittingButton
+              key={id}
+              id={id}
+              selected={scenario === id}
+              onPick={pickSitting}
+            />
+          ))}
+        </div>
+        <div className="my-3 border-t border-border" role="separator" />
+        <div className="mx-auto grid w-full gap-2 sm:w-2/3 sm:grid-cols-2">
+          {WAR_SITS.map((id) => (
+            <SittingButton
+              key={id}
+              id={id}
+              selected={scenario === id}
+              onPick={pickSitting}
+            />
+          ))}
         </div>
       </section>
       {war ? (
@@ -674,6 +672,33 @@ export function PlayPage() {
 
       {debug ? <DebugPanel d={d} /> : null}
     </div>
+  );
+}
+
+function SittingButton({
+  id,
+  selected,
+  onPick,
+}: {
+  id: ScenarioId;
+  selected: boolean;
+  onPick: (id: ScenarioId) => void;
+}) {
+  const sc = SCENARIO_KIT[id];
+  return (
+    <button
+      type="button"
+      onClick={() => onPick(id)}
+      className={cn(
+        "min-h-11 rounded-md border px-3 py-2 text-left text-sm transition-transform duration-150 ease-out active:scale-[0.96]",
+        selected ? "border-accent bg-surface-2 text-accent" : "border-border text-muted",
+      )}
+    >
+      <span className="block">{sc.label}</span>
+      <span className="mt-0.5 block font-mono text-2xs font-normal text-faint">
+        {sc.blurb}
+      </span>
+    </button>
   );
 }
 

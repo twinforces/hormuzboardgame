@@ -101,11 +101,10 @@ export const COPY = {
   scenarioHelp: "Which sitting? Pick one. Weeks count. No clock.",
   scenarioReopen: "Twelve hulls. Wait the Navy, or pay and make the mines someone else's problem.",
   scenarioOne: "One hull. Idle still ticks. Send it when expected is fat.",
-  scenarioOverplay: "Five hulls. Packed ribbon. Navy sweeps three patches a week. Red remains.",
-  scenarioMine:
-    "You are US. Anti-mine warfare. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Click a circle or sweep the ribbon.",
+  scenarioOverplay: "Five hulls. More mines. Navy sweeps three patches a week. Red remains.",
+  scenarioMine: "🇺🇸 Some are greedy. Some wait. Strike or sweep.",
   scenarioIran:
-    "You are Iran. Mine warfare. One hundred hulls of traffic. Lay mines, surge drones, or hold the sheds. Fear, not occupation.",
+    "🇮🇷 You are Iran. Mine warfare. One hundred hulls of traffic. Lay mines, surge drones, or hold the sheds. Fear, not occupation.",
   scenarioAsk: "Which sitting?",
   tabIran: "Strikes",
   tabStrait: "Strait",
@@ -201,12 +200,16 @@ export const SCENARIO_KIT: Record<
   ScenarioId,
   { label: string; blurb: string }
 > = {
-  "reopen-lane": { label: "Reopen the lane", blurb: COPY.scenarioReopen },
-  "one-transit": { label: "One transit", blurb: COPY.scenarioOne },
-  overplay: { label: "Packed TSS", blurb: COPY.scenarioOverplay },
+  "reopen-lane": { label: "🇬🇷 Tanker CEO", blurb: COPY.scenarioReopen },
+  "one-transit": { label: "🇬🇷 Tanker Captain", blurb: COPY.scenarioOne },
+  overplay: { label: "🇬🇷 Small CEO", blurb: COPY.scenarioOverplay },
   "mine-warfare": { label: "Anti-Mine Warfare", blurb: COPY.scenarioMine },
   "iran-warfare": { label: "Mine Warfare", blurb: COPY.scenarioIran },
 };
+
+/** Three tanker houses, then the two warfare seats. Divider lives in the View. */
+export const TANKER_SITS: ScenarioId[] = ["reopen-lane", "one-transit", "overplay"];
+export const WAR_SITS: ScenarioId[] = ["mine-warfare", "iran-warfare"];
 
 /** Twelve leftover hulls times $2M is $24M. Not a flat $2M sit. */
 export function idleChargeLine(
