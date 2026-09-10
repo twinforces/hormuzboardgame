@@ -4,7 +4,8 @@
 
 - **What:** After a lost hull, scripted traffic sits until you sweep. Striking a spider hole no longer feeds a new hole the same week. Captains refuse until the Navy is on the ribbon.
 - **Why:** User: endless spider holes. Strike, hull lost, strike, hull lost, week 39, one hull a week. Captains should balk after a ship was lost.
-- **How:** Stop clearing `crewSour` when waiters sit. Sweep still talks them down. ADR-023.
+- **How:** Stop clearing `crewSour` when waiters sit. A human US sweep still talks them down. ADR-023.
+- **Hash:** `9f4f811`.
 
 ## 2026-09-10 - Anti-Mine Warfare. A lost hull lights a spider hole.
 
