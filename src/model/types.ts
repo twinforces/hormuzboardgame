@@ -19,7 +19,7 @@ export type Phase =
   | "decay"
   | "matchOver";
 
-export type ScenarioId = "reopen-lane" | "one-transit" | "overplay" | "mine-warfare";
+export type ScenarioId = "reopen-lane" | "one-transit" | "overplay" | "mine-warfare" | "iran-warfare";
 
 /** Sim space. Never pixels. */
 export type NmPoint = { xNm: number; yNm: number };
@@ -128,8 +128,8 @@ export type TurnReport = {
   iranShotPct: number;
   cause: "none" | "mine" | "shot";
   paid: boolean;
-  /** Who is watching this report. Traffic results when the human is US. */
-  watcher?: "tanker" | "us";
+  /** Who is watching this report. Traffic results when the human is US or Iran. */
+  watcher?: "tanker" | "us" | "iran";
   /** One week of ten companies. Present on the US sitting. */
   wave?: {
     sent: number;

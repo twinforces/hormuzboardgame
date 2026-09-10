@@ -40,7 +40,13 @@ const ADRs = [
   ["017", "Player runs a VLCC house. Books: freight, hull writeoff, families."],
   ["018", "Greece, Inc. Twelve hulls. Freight follows P. Captains balk after blood. Oil is the trader's."],
   ["019", "War-risk checkbox before a door. Tolls on the books. Loss dialog names mine kill."],
-  ["020", "Anti-Mine Warfare is the US sitting. Strikes tab inland. Strait tab shows traffic. Iran as Mine Warfare comes later."],
+  ["020", "Anti-Mine Warfare is the US sitting. Strikes tab inland. Strait tab shows traffic."],
+  ["021", "Two plants, two sheds. Radar blinds drones. A ship hit lights a spider hole."],
+  ["022", "A lost hull lights a spider hole. Mine or shot."],
+  ["023", "Traffic balks after blood until the Navy sweeps."],
+  ["024", "Leaving a spider hole dumps it. That is the vanish."],
+  ["025", "Leaving a hole is a confirm, not a silent click."],
+  ["026", "Iran is Mine Warfare. Lay, surge, or hold. The Navy bombs roofs. Fear, not occupation."],
 ];
 
 export function BriefingPage() {

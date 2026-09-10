@@ -86,7 +86,7 @@ export type SessionLabels = {
   policyOn: boolean;
   policyOpen: boolean;
   policyCost: string;
-  seat: "us" | "tanker";
+  seat: "us" | "tanker" | "iran";
   magDrones: string;
   magCounter: string;
   magLasers: string;
@@ -134,6 +134,9 @@ export type MapSession = {
   wait: () => DispatchResult;
   usSweep: () => DispatchResult;
   usStrike: (target: StrikeTarget, pitId?: string) => DispatchResult;
+  iranLay: () => DispatchResult;
+  iranSurge: () => DispatchResult;
+  iranHold: () => DispatchResult;
   setPolicy: (on: boolean) => DispatchResult;
   actRecommended: () => DispatchResult;
   reset: (seed?: number, scenario?: ScenarioId) => DispatchResult;
@@ -195,17 +198,21 @@ function computeLabels(engine: Engine): SessionLabels {
     omaniEv: pick.omaniEv,
   };
   const band = bandOf(s.price);
-  const seat: "us" | "tanker" = humanSeat(s.scenario) === "us" ? "us" : "tanker";
+  const seat = humanSeat(s.scenario);
   const acting =
-    s.phase === "tankerOrders" || (seat === "us" && s.phase === "usOrders");
+    s.phase === "tankerOrders" ||
+    (seat === "us" && s.phase === "usOrders") ||
+    (seat === "iran" && s.phase === "iranOrders");
   const left = hullsLeft(s.scenario, s.books);
   const recommended: RecommendedDoor = s.phase !== "tankerOrders" ? "none" : pick.door;
   const kit = SCENARIO_KIT[s.scenario];
   const resolveLine = [...s.log].reverse().find((line) => line.includes("Mine kill"));
   const lastBeat =
-    seat === "us"
+    seat === "us" || seat === "iran"
       ? !s.lastDoor
-        ? COPY.warHint
+        ? seat === "iran"
+          ? COPY.iranHint
+          : COPY.warHint
         : `${s.lastUsLine} ${s.lastIranLine}`
       : !s.lastDoor
         ? COPY.lastBeatIdle
@@ -237,11 +244,13 @@ function computeLabels(engine: Engine): SessionLabels {
     hint:
       s.phase === "matchOver"
         ? COPY.matchOver
-        : balk
+        : balk && seat !== "iran"
           ? COPY.balk
           : seat === "us"
             ? COPY.warHint
-            : COPY.doorHint,
+            : seat === "iran"
+              ? COPY.iranHint
+              : COPY.doorHint,
     omaniKill: `${omaniPct}%`,
     iranKill: `${iranPct}%`,
     omaniShot: `${pct(omaniShotP)}%`,
@@ -280,7 +289,7 @@ function computeLabels(engine: Engine): SessionLabels {
     booksIdle: usdM(s.books.idleUsdM),
     booksDamage: usdM(s.books.damageUsdM),
     idleWhy: idleChargeLine(left),
-    houseName: seat === "us" ? COPY.roleUs : COPY.houseName,
+    houseName: seat === "us" ? COPY.roleUs : seat === "iran" ? COPY.roleIran : COPY.houseName,
     balk,
     doorsOpen: acting && !balk && left > 0 && seat === "tanker",
     policyOn: s.buyPolicy,
@@ -306,7 +315,12 @@ function computeLabels(engine: Engine): SessionLabels {
 }
 
 function inputPhase(phase: GameState["phase"]): boolean {
-  return phase === "tankerOrders" || phase === "usOrders" || phase === "matchOver";
+  return (
+    phase === "tankerOrders" ||
+    phase === "usOrders" ||
+    phase === "iranOrders" ||
+    phase === "matchOver"
+  );
 }
 
 export function createSession(
@@ -358,6 +372,15 @@ export function createSession(
     },
     usStrike(target: StrikeTarget, pitId?: string) {
       return run(() => engine.dispatch({ type: "us-strike", target, pitId }));
+    },
+    iranLay() {
+      return run(() => engine.dispatch({ type: "iran-lay" }));
+    },
+    iranSurge() {
+      return run(() => engine.dispatch({ type: "iran-surge" }));
+    },
+    iranHold() {
+      return run(() => engine.dispatch({ type: "iran-hold" }));
     },
     setPolicy(on: boolean) {
       return run(() => engine.dispatch({ type: "tanker-policy", on }));

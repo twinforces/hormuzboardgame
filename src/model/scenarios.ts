@@ -11,10 +11,19 @@ export const SCENARIO_TURNS: Record<ScenarioId, number> = {
   "one-transit": 0,
   overplay: 0,
   "mine-warfare": 0,
+  "iran-warfare": 0,
 };
 
 export function humanSeat(scenario: ScenarioId): Role {
-  return scenario === "mine-warfare" ? "us" : "tanker";
+  if (scenario === "mine-warfare") return "us";
+  if (scenario === "iran-warfare") return "iran";
+  return "tanker";
+}
+
+/** US and Iran sittings watch scripted traffic, not one gold hull. */
+export function isTrafficSitting(scenario: ScenarioId): boolean {
+  const seat = humanSeat(scenario);
+  return seat === "us" || seat === "iran";
 }
 
 function mine(

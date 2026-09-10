@@ -45,7 +45,7 @@ Rules:
 | factions.js | `src/model/factions.ts` | US / Iran / tanker action schemas and legality |
 | ai.js | `src/model/ai.ts` | Scripted v1 tendencies, not a solver |
 | copy.js | `src/model/copy.ts` | Teaching beats, tooltips, after-action, no em-dashes |
-| scenarios.js | `src/model/scenarios.ts` | Reopen / one-transit / overplay / mine-warfare |
+| scenarios.js | `src/model/scenarios.ts` | Reopen / one-transit / overplay / mine-warfare / iran-warfare |
 | (new) | `src/model/receipts.ts` | Annotated bibliography, source of `/receipts` |
 | (new) | `src/model/rng.ts` | Seeded mulberry32 or equivalent |
 | index.html | `src/view/` + routes | Shell, three panels, ticker, fuses |

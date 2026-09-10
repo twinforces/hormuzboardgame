@@ -65,6 +65,11 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(play, /IranBoard/);
   assert.match(play, /session\.usSweep/);
   assert.match(play, /session\.usStrike/);
+  assert.match(play, /session\.iranLay/);
+  assert.match(play, /session\.iranSurge/);
+  assert.match(play, /session\.iranHold/);
+  assert.match(play, /COPY\.iranLay/);
+  assert.match(play, /iranSeat/);
   assert.match(play, /COPY\.scenarioAsk/);
   assert.match(play, /setBoard\("strait"\)/);
   assert.match(play, /leaveAsk/);

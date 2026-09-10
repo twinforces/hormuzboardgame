@@ -4,13 +4,12 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Leave a spider hole is a confirm, then a dump, not a silent vanish (`74f247a`). Traffic balks after blood until you sweep. US sitting is Anti-Mine Warfare. Iran as Mine Warfare is later.
+Iran is a human seat. Mine Warfare. Lay / Surge / Hold. Week 1 the Navy already hit the mine factory.
 
 ## Next
 
-1. Iran as a human seat. Lay / Surge / Hold.
-2. Spend lasers against a real drone surge, not only the weekly intercept.
-3. Factories, bribes, secret pipeline, fuses after clearance teaches.
+1. Spend lasers against a real drone surge, not only the weekly intercept.
+2. Factories, bribes, secret pipeline, fuses after clearance teaches.
 
 ## Don't
 
@@ -21,5 +20,5 @@ Leave a spider hole is a confirm, then a dump, not a silent vanish (`74f247a`). 
 - Do not let accountants pick the door.
 - Do not print Mine factory, Drone factory, Warehouse, Radar, Port as a numbered plan.
 - Do not let radar shrink mine circles.
-- Do not add an Iran Mine Warfare picker until Iran is a human seat.
 - Do not let scripted waiters talk crews down after blood.
+- Do not let Iran click US strike nouns. Their verbs are Lay, Surge, Hold.

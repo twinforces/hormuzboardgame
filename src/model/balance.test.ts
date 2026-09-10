@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, MAGAZINE, MINES, OPEN_RESEARCH, PRICE, SPIDER, STRIKE, STRIKE_NODES, TRAFFIC } from "./balance.ts";
+import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, IRAN_VERB, MAGAZINE, MINES, OPEN_RESEARCH, PRICE, SPIDER, STRIKE, STRIKE_NODES, TRAFFIC } from "./balance.ts";
 
 test("company books use a cited VLCC newbuild", () => {
   assert.equal(COMPANY.hullUsdM, 129);
@@ -53,6 +53,8 @@ test("strike order is a lock, not player copy", () => {
     ["mine-factory", "drone-factory", "mine-warehouse", "drone-warehouse", "radar", "port"],
   );
   assert.equal(COMPANY.fleet["mine-warfare"], TRAFFIC.hulls);
+  assert.equal(COMPANY.fleet["iran-warfare"], TRAFFIC.hulls);
+  assert.equal(IRAN_VERB.surgeDrones, 3);
   assert.equal(MAGAZINE.interceptPerWeek, 1);
   assert.ok(MAGAZINE.usLasers > 0);
   assert.equal(MAGAZINE.iranDrones, DRONES.warehouseStart);

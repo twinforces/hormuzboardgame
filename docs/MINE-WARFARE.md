@@ -1,6 +1,7 @@
-# Anti-Mine Warfare sitting
+# Anti-Mine Warfare and Mine Warfare sittings
 
-Why this exists: the strait sitting is tanker-vs-circles. Anti-Mine Warfare is a **different board**. You are US. Iran as Mine Warfare is later. Traffic is scripted. You do not steer Greece, Inc.
+Why this exists: the strait sitting is tanker-vs-circles. These two sittings share a **different board**. US is Anti-Mine Warfare. Iran is Mine Warfare. Traffic is scripted. You do not steer Greece, Inc.
+
 
 ## Two boards, not one zoom
 
@@ -18,6 +19,7 @@ Do not put strike buttons on the strait overlay. A JDAM on a fog circle teaches 
 People on the tanker sitting still see **accountant** recommendations. They have to learn to ignore a plus-EV till.
 
 When the human is US or Iran, hulls are traffic:
+
 
 - 100 hulls, 10 companies.
 - 4 greedy houses count EV. 6 stubborn houses wait for a sweep, then Oman. They do not pay.
@@ -63,6 +65,21 @@ Warehouse before radar because leftover stores still sail if the plant is dead a
 A ship hit reveals one coastal cell: pierside strike, or a tanker that took a graze, a shot-kill, or a mine. Blood in the water is the cue. The tooltip is the stash (mines, drones). Strike it this week. That eats the US verb. Strike a factory or sweep instead and the board asks first: leave the hole? Confirm and the stash dumps: extra TSS mines plus a drone raid on another Gulf state. A Dumped mark sits on the pit so the vanish is the dump, not a despawn. Captains balk after a lost hull until you sweep. Strike the hole and traffic sits. No new mole. Fear, not occupation. Radar does not stop the mine dump. Coastal cells recycle. One live hole at a time.
 
 
+## Iran verbs
+
+One verb a week. XOR, same as the US sitting.
+
+| Verb | What it does |
+|---|---|
+| Lay mines | Warehouse dump into the TSS. Factory print still happens if that roof lives. |
+| Surge drones | Spend up to 3 drones. A Gulf state eats the raid. Mines stay in the sheds. |
+| Hold | Print. Do not dump. After a sweep, hold is not cowardice. |
+
+Turn order: US-AI, then you, then traffic. Week 1 the Navy already hit the mine factory. US-AI bombs the next live roof in `STRIKE.ideal` unless captains are sour, then it sweeps. Spider holes stay a US-human mole. You do not click them.
+
+A surge is ammo and fear. Lasers still eat one drone a week. A real laser wall vs a massed raid is later.
+
+
 ## Magazines (v1 bars)
 
 Iran: drones, mines, boats. US: counter-drones, lasers (or "effectors"), sweepers.
@@ -78,6 +95,7 @@ No physics sim. A strike on a factory cuts that refill rate only. A strike on a 
 4. Done: US verb chips Sweep vs Strike. Traffic moves after you act. Iran still lays.
 5. Done: Factories do not shrink red circles the week you bomb them. Clearance is rented. Industry is slow.
 6. Done: Two plants, two sheds. Radar blinds drones, not mines. A ship hit reveals a spider hole. Ignore it and the stash dumps.
+7. Done: Iran is a human seat. Lay / Surge / Hold. US-AI bombs roofs, then sweeps after blood.
 
 ## Don't
 
@@ -87,6 +105,6 @@ No physics sim. A strike on a factory cuts that refill rate only. A strike on a 
 - Do not put Khojir on the Hormuz photo by lying about lat/lon.
 - Do not fill STEEL.
 - Do not let radar shrink mine circles.
-- Do not add an Iran Mine Warfare picker until Iran is a human seat.
 - Do not let scripted waiters talk crews down after blood.
+- Do not let Iran click US strike nouns. Their verbs are Lay, Surge, Hold.
 

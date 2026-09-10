@@ -579,3 +579,79 @@ test("mine-warfare traffic sitting ends after the hundred hulls go", () => {
   assert.equal(eng.state().books.hullsSent, 100);
   assert.ok(n >= 10);
 });
+
+test("iran-warfare starts at iranOrders with the mine factory already struck", () => {
+  const eng = createEngine(1, "iran-warfare");
+  assert.equal(eng.state().phase, "iranOrders");
+  assert.equal(eng.state().scenario, "iran-warfare");
+  assert.equal(eng.state().industry.mineFactoryAlive, false);
+  assert.equal(eng.state().industry.droneFactoryAlive, true);
+  assert.equal(eng.state().trafficLeft.length, 10);
+  assert.match(eng.state().lastUsLine, /roof is gone/);
+  assert.match(eng.state().log.join(" "), /Mine warfare/i);
+  assert.equal(eng.dispatch({ type: "tanker-wait" }).ok, false);
+  assert.equal(eng.dispatch({ type: "us-sweep" }).ok, false);
+  assert.equal(eng.dispatch({ type: "us-strike", target: "drone-factory" }).ok, false);
+});
+
+test("iran lay dumps three, hold dumps none, surge ticks the gulf", () => {
+  const lay = createEngine(1, "iran-warfare");
+  const n0 = warehouseLaid(lay.state());
+  const r = lay.dispatch({ type: "iran-lay" });
+  assert.equal(r.ok, true);
+  assert.equal(lay.state().phase, "iranOrders");
+  assert.equal(lay.state().turn, 2);
+  assert.equal(warehouseLaid(lay.state()), n0 + 3);
+  assert.equal(lay.state().industry.mineFactoryAlive, false);
+  assert.equal(lay.state().lastReport?.watcher, "iran");
+  assert.match(lay.state().lastIranLine, /seeded 3/);
+  const wave = lay.state().lastReport?.wave;
+  assert.ok(wave);
+  assert.equal(wave.sent + wave.waited, 10);
+
+  const hold = createEngine(1, "iran-warfare");
+  const mines0 = hold.state().mines.length;
+  hold.dispatch({ type: "iran-hold" });
+  assert.equal(warehouseLaid(hold.state()), 0);
+  assert.equal(hold.state().mines.length, mines0);
+  assert.match(hold.state().lastIranLine, /held/i);
+  assert.equal(hold.state().turn, 2);
+  assert.equal(hold.state().industry.droneFactoryAlive, false, "week 2 Navy hits the drone roof");
+
+  const surge = createEngine(1, "iran-warfare");
+  const drones0 = surge.state().iranPool.drones;
+  const gulf0 = surge.state().gulfHits;
+  surge.dispatch({ type: "iran-surge" });
+  assert.equal(surge.state().gulfHits, gulf0 + 1);
+  assert.ok(
+    surge.state().iranPool.drones < drones0 + 2,
+    "surge spent air after print, intercept still eats one",
+  );
+  assert.equal(surge.state().priceComponents.gulf, 8);
+  assert.match(surge.state().lastIranLine, /surged/i);
+  assert.equal(warehouseLaid(surge.state()), 0);
+});
+
+test("iran-warfare reset boots the Navy strike again", () => {
+  const eng = createEngine(1, "iran-warfare");
+  eng.dispatch({ type: "iran-hold" });
+  assert.equal(eng.state().turn, 2);
+  eng.dispatch({ type: "reset", seed: 1, scenario: "iran-warfare" });
+  assert.equal(eng.state().phase, "iranOrders");
+  assert.equal(eng.state().turn, 1);
+  assert.equal(eng.state().industry.mineFactoryAlive, false);
+  assert.match(eng.state().lastUsLine, /roof is gone/);
+});
+
+test("iran-warfare US-AI sweeps after blood so traffic can move", () => {
+  const eng = createEngine(1, "iran-warfare");
+  let weeks = 0;
+  while (eng.state().books.hullsLost === 0 && weeks < 40) {
+    assert.equal(eng.dispatch({ type: "iran-lay" }).ok, true);
+    weeks += 1;
+  }
+  assert.ok(eng.state().books.hullsLost > 0, "need a dead hull to teach the sweep");
+  assert.equal(eng.state().spiderHoles.length, 0, "spider holes stay US-human");
+  assert.equal(eng.state().crewSour, false, "US-AI already talked crews down this week");
+  assert.match(eng.state().lastUsLine, /minelayer|Sweepers|escorts/i);
+});

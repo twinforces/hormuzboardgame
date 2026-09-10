@@ -377,6 +377,7 @@ export const COMPANY = {
     "one-transit": 1,
     overplay: 5,
     "mine-warfare": 100,
+    "iran-warfare": 100,
   },
 } as const;
 
@@ -420,6 +421,15 @@ export const MINES = {
 export const DRONES = {
   warehouseStart: 6,
   factoryPerTurn: 2,
+} as const;
+
+/**
+ * Human Iran verbs. One a week. Lay uses the warehouse dump.
+ * Surge spends drones on a Gulf raid. Hold prints and does not dump.
+ * A real laser wall vs a massed surge is later.
+ */
+export const IRAN_VERB = {
+  surgeDrones: 3,
 } as const;
 
 /**

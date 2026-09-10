@@ -58,7 +58,7 @@ export function OutcomeDialog({
               <li key={line}>{line}</li>
             ))}
           </ul>
-          {report.watcher === "us" ? (
+          {report.watcher === "us" || report.watcher === "iran" ? (
             <div className="mt-4 grid grid-cols-2 gap-2">
               <button
                 type="button"

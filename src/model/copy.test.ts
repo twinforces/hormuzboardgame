@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranSeedLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -57,6 +57,20 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.scenarioMine, /You are US/);
   assert.match(COPY.scenarioMine, /hundred/);
   assert.equal(SCENARIO_KIT["mine-warfare"].label, "Anti-Mine Warfare");
+  assert.equal(SCENARIO_KIT["iran-warfare"].label, "Mine Warfare");
+  assert.match(COPY.scenarioIran, /You are Iran/);
+  assert.match(COPY.scenarioIran, /Lay mines/);
+  assert.match(COPY.iranLock, /Mine warfare/);
+  assert.match(COPY.iranHint, /Lay seeds/);
+  assert.equal(COPY.iranLay, "Lay mines");
+  assert.equal(COPY.iranSurge, "Surge drones");
+  assert.equal(COPY.iranHold, "Hold");
+  assert.doesNotMatch(COPY.iranLock, /1\./);
+  assert.doesNotMatch(COPY.scenarioIran, /1\./);
+  for (const kit of Object.values(SCENARIO_KIT)) {
+    assert.doesNotMatch(kit.label, /\u2014/, `${kit.label} has an em-dash`);
+    assert.doesNotMatch(kit.blurb, /\u2014/, `${kit.label} blurb has an em-dash`);
+  }
   assert.match(COPY.warLock, /anti-mine warfare/i);
   assert.match(COPY.warLock, /sit until you sweep/);
   assert.match(COPY.warHint, /After blood/);
@@ -417,6 +431,65 @@ test("leaving a hole asks before the stash runs", () => {
   assert.equal(COPY.leaveStrike, "Strike anyway");
   assert.equal(COPY.leaveSweep, "Sweep anyway");
   assert.equal(COPY.holeDumpedMark, "Dumped");
+});
+
+test("iran hold and surge lines name the verb without a numbered plan", () => {
+  assert.match(iranHoldLine(2), /Iran held/);
+  assert.match(iranHoldLine(2), /Nothing new in the TSS/);
+  assert.match(iranSurgeLine({ turn: 2, drones: 3, gulf: true }), /surged 3 drones/);
+  assert.match(iranSurgeLine({ turn: 2, drones: 3, gulf: true }), /Gulf state/);
+  assert.match(iranSurgeLine({ turn: 2, drones: 0, gulf: false }), /no air/);
+  assert.doesNotMatch(iranHoldLine(2), /\u2014/);
+  assert.doesNotMatch(iranSurgeLine({ turn: 2, drones: 3, gulf: true }), /\u2014/);
+  const iran = scoreLines({
+    weeks: 8,
+    live: 7,
+    lost: 1,
+    freightUsdM: 0,
+    bonusUsdM: 0,
+    idleUsdM: 0,
+    tollUsdM: 4,
+    minesBought: 2,
+    omaniSent: 5,
+    iranSent: 2,
+    netUsdM: 0,
+    price: 110,
+    seat: "iran",
+    factoryUp: false,
+    warehouseUp: true,
+    radarUp: true,
+    portUp: true,
+  });
+  assert.ok(iran.some((l) => /Traffic live 7/.test(l)));
+  assert.ok(iran.some((l) => /Mine factory is down/.test(l)));
+  assert.ok(iran.some((l) => /A hull died/.test(l)));
+  assert.ok(iran.some((l) => /Fear, not occupation/.test(l)));
+  assert.ok(!iran.some((l) => /Traders paid you/.test(l)));
+  assert.equal(
+    outcomeTitle({
+      id: "i1",
+      turn: 1,
+      kind: "live",
+      door: "omani",
+      netDeltaUsdM: 0,
+      freightUsdM: 0,
+      bonusUsdM: 0,
+      tollUsdM: 0,
+      damageUsdM: 0,
+      idleUsdM: 0,
+      minesBought: 0,
+      usLine: "x",
+      iranLine: "y",
+      omaniMinePct: 40,
+      iranMinePct: 0,
+      omaniShotPct: 10,
+      iranShotPct: 6,
+      cause: "none",
+      paid: false,
+      watcher: "iran",
+    }),
+    COPY.trafficLive,
+  );
 });
 
 

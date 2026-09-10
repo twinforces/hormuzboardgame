@@ -13,11 +13,13 @@ import {
   MATCH,
   MINES,
   SPIDER,
+  STRIKE,
   TRAFFIC,
+  IRAN_VERB,
   bandOf,
   radiusNm,
 } from "./balance.ts";
-import { COPY, SCENARIO_KIT, idleChargeLine, iranSeedLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, idleChargeLine, iranHoldLine, iranSeedLine, iranSurgeLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine } from "./copy.ts";
 import { clearedNm2, grazeUsdM, rollShot, shotChance, type ShotKind } from "./combat.ts";
 import {
   captainsBalk,
@@ -34,7 +36,7 @@ import {
 import { combinedKillChance, lonLatToNm, polylineLengthNm } from "./geo.ts";
 import { tickPrice } from "./price.ts";
 import { mulberry32 } from "./rng.ts";
-import { SCENARIO_TURNS, humanSeat, initialMines } from "./scenarios.ts";
+import { SCENARIO_TURNS, humanSeat, initialMines, isTrafficSitting } from "./scenarios.ts";
 import { flyingDrones, interceptDrones, iranDronePrint, iranFactoryPrint, iranWarehouseDump, trafficDoor } from "./ai.ts";
 import type {
   DebugSnapshot,
@@ -58,6 +60,9 @@ export type EngineAction =
   | { type: "tanker-policy"; on: boolean }
   | { type: "us-sweep" }
   | { type: "us-strike"; target: StrikeTarget; pitId?: string }
+  | { type: "iran-lay" }
+  | { type: "iran-surge" }
+  | { type: "iran-hold" }
   | { type: "reset"; seed?: number; scenario?: ScenarioId };
 
 export type DispatchResult =
@@ -76,12 +81,13 @@ export function iranPath(): NmPolyline {
 
 export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "reopen-lane"): GameState {
   const seat = humanSeat(scenario);
-  const greeting = seat === "us" ? COPY.warHint : COPY.doorHint;
+  const greeting =
+    seat === "us" ? COPY.warHint : seat === "iran" ? COPY.iranHint : COPY.doorHint;
   return {
     scenario,
     turn: 1,
     maxTurns: SCENARIO_TURNS[scenario],
-    phase: seat === "us" ? "usOrders" : "tankerOrders",
+    phase: seat === "tanker" ? "tankerOrders" : "usOrders",
     seed,
     price: 82,
     priceComponents: {
@@ -133,7 +139,7 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
     iranPool: {
       boats: MAGAZINE.iranBoats,
       drones: MAGAZINE.iranDrones,
-      mines: seat === "us" ? MINES.warehouseStart : 3,
+      mines: isTrafficSitting(scenario) ? MINES.warehouseStart : 3,
     },
     usPool: { counterDrones: MAGAZINE.usCounterDrones, lasers: MAGAZINE.usLasers },
     secretSuspicion: 0,
@@ -147,10 +153,9 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
     bribePolicy: "honor",
     gulfHits: 0,
     spiderHoles: [],
-    trafficLeft:
-      seat === "us"
-        ? Array(TRAFFIC.companies).fill(TRAFFIC.hulls / TRAFFIC.companies)
-        : [],
+    trafficLeft: isTrafficSitting(scenario)
+      ? Array(TRAFFIC.companies).fill(TRAFFIC.hulls / TRAFFIC.companies)
+      : [],
   };
 }
 
@@ -229,6 +234,34 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     const nm2 = clearedNm2(mines.filter((m) => hot.some((c) => c.id === m.id)));
     const line = usSweepLine({ turn: s.turn, layers: punched, nm2 });
     return { ...s, phase: "usOrders", mines, navyPulled, lastUsLine: line, log: [...s.log, line] };
+  }
+
+  function nodeUp(s: GameState, t: (typeof STRIKE.ideal)[number]): boolean {
+    if (t === "mine-factory") return s.industry.mineFactoryAlive;
+    if (t === "drone-factory") return s.industry.droneFactoryAlive;
+    if (t === "mine-warehouse") return s.industry.mineDepotAlive;
+    if (t === "drone-warehouse") return s.industry.droneDepotAlive;
+    if (t === "radar") return s.industry.radarAlive;
+    return s.industry.portAlive;
+  }
+
+  /** Iran sitting: Navy is the opponent. Sweep after blood. Else bomb roofs. */
+  function applyUsAi(s: GameState): GameState {
+    if (s.crewSour) {
+      return { ...applyUsOrders(s), crewSour: false };
+    }
+    for (const t of STRIKE.ideal) {
+      if (nodeUp(s, t)) return applyUsStrike(s, t);
+    }
+    return applyUsOrders(s);
+  }
+
+  /** Week 1 the Navy already hit a roof. Reset has to do this too. */
+  function bootIranSeat(s: GameState): GameState {
+    if (humanSeat(s.scenario) !== "iran" || s.phase !== "usOrders") return s;
+    s = applyUsAi({ ...s, phase: "usOrders" });
+    s = { ...s, phase: "iranOrders" };
+    return tickPrice(s);
   }
 
   function revealSpider(s: GameState): GameState {
@@ -367,10 +400,40 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     };
   }
 
-  function applyIranOrders(s: GameState, shot: ShotKind = "none"): GameState {
+  function applyIranOrders(
+    s: GameState,
+    shot: ShotKind = "none",
+    verb: "auto" | "lay" | "surge" | "hold" = "auto",
+  ): GameState {
     let pool = s.iranPool.mines + iranFactoryPrint(s);
-    const drones = s.iranPool.drones + iranDronePrint(s);
-    const dump = iranWarehouseDump(s, pool);
+    let drones = s.iranPool.drones + iranDronePrint(s);
+    let gulfHits = s.gulfHits;
+    if (verb === "hold") {
+      const line = iranHoldLine(s.turn);
+      return {
+        ...s,
+        phase: "iranOrders",
+        iranPool: { ...s.iranPool, mines: pool, drones },
+        lastIranLine: line,
+        log: [...s.log, line],
+      };
+    }
+    if (verb === "surge") {
+      const spent = Math.min(IRAN_VERB.surgeDrones, drones);
+      drones -= spent;
+      const gulf = spent > 0;
+      if (gulf) gulfHits += 1;
+      const line = iranSurgeLine({ turn: s.turn, drones: spent, gulf });
+      return {
+        ...s,
+        phase: "iranOrders",
+        iranPool: { ...s.iranPool, mines: pool, drones },
+        gulfHits,
+        lastIranLine: line,
+        log: [...s.log, line],
+      };
+    }
+    const dump = verb === "lay" || verb === "auto" ? iranWarehouseDump(s, pool) : 0;
     if (dump <= 0) {
       const line = iranSeedLine({ turn: s.turn, laid: 0, shot });
       return {
@@ -420,10 +483,14 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
         });
         return { ...s, phase, mines };
       }
-      case "usOrders":
-        if (humanSeat(s.scenario) === "us") return { ...s, phase };
+      case "usOrders": {
+        const seat = humanSeat(s.scenario);
+        if (seat === "us") return { ...s, phase };
+        if (seat === "iran") return applyUsAi({ ...s, phase });
         return applyUsOrders({ ...s, phase });
+      }
       case "iranOrders":
+        if (humanSeat(s.scenario) === "iran") return { ...s, phase };
         return applyIranOrders({ ...s, phase }, pendingShot);
       case "tankerOrders":
         return { ...s, phase };
@@ -452,7 +519,9 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     let cur = s;
     const needsInput = (p: Phase) => {
       if (p === "matchOver") return true;
-      if (humanSeat(s.scenario) === "us") return p === "usOrders";
+      const seat = humanSeat(s.scenario);
+      if (seat === "us") return p === "usOrders";
+      if (seat === "iran") return p === "iranOrders";
       return p === "tankerOrders";
     };
     let guard = 0;
@@ -472,6 +541,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     if (
       cur.phase === "tankerOrders" ||
       cur.phase === "usOrders" ||
+      cur.phase === "iranOrders" ||
       cur.phase === "matchOver"
     ) {
       cur = tickPrice(cur);
@@ -527,7 +597,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       usLine: s.lastUsLine,
       iranLine: s.lastIranLine,
       ...doorRisk(s),
-      watcher: humanSeat(s.scenario) === "us" ? "us" : "tanker",
+      watcher: humanSeat(s.scenario) === "tanker" ? "tanker" : humanSeat(s.scenario),
     };
     return { ...s, lastReport: report };
   }
@@ -695,7 +765,15 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       dumpedN > 0
         ? { mines: SPIDER.stashMines * dumpedN, drones: SPIDER.stashDrones * dumpedN }
         : undefined;
-    cur = interceptDrones(cur);
+    return afterTraffic(cur, dumped);
+  }
+
+  function afterIranVerb(s: GameState): GameState {
+    return afterTraffic(s);
+  }
+
+  function afterTraffic(s: GameState, dumped?: TurnReport["dumped"]): GameState {
+    let cur = interceptDrones(s);
     pendingShot = "none";
     if (hullsLeft(cur.scenario, cur.books) <= 0) {
       return { ...cur, phase: "matchOver", log: [...cur.log, COPY.noHulls] };
@@ -818,7 +896,8 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       const seed = action.seed ?? state.seed;
       const scenario = action.scenario ?? state.scenario;
       rng = mulberry32(seed);
-      state = tickPrice(createState(seed, scenario));
+      pendingShot = "none";
+      state = bootIranSeat(tickPrice(createState(seed, scenario)));
       return { ok: true, state };
     }
 
@@ -837,6 +916,17 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
           ? { ...applyUsOrders(state), crewSour: false }
           : applyUsStrike(state, action.target, action.type === "us-strike" ? action.pitId : undefined);
       state = afterUsVerb(state);
+      return { ok: true, state };
+    }
+
+    if (action.type === "iran-lay" || action.type === "iran-surge" || action.type === "iran-hold") {
+      if (state.phase !== "iranOrders") {
+        return { ok: false, reason: `Illegal in phase ${state.phase}.`, state };
+      }
+      const verb =
+        action.type === "iran-lay" ? "lay" : action.type === "iran-surge" ? "surge" : "hold";
+      state = applyIranOrders(state, pendingShot, verb);
+      state = afterIranVerb(state);
       return { ok: true, state };
     }
 
@@ -945,6 +1035,8 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
 
     return { ok: false, reason: "Unknown action.", state };
   }
+
+  state = bootIranSeat(state);
 
   return { state: snapshot, dispatch, debug };
 }

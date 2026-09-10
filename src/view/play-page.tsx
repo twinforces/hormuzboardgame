@@ -25,7 +25,7 @@ function readStoredSeed(): number {
 function readStoredScenario(): ScenarioId {
   if (typeof window === "undefined") return "reopen-lane";
   const raw = window.localStorage.getItem("hormuz.scenario");
-  if (raw === "one-transit" || raw === "overplay" || raw === "reopen-lane" || raw === "mine-warfare") {
+  if (raw === "one-transit" || raw === "overplay" || raw === "reopen-lane" || raw === "mine-warfare" || raw === "iran-warfare") {
     return raw;
   }
   return "reopen-lane";
@@ -42,7 +42,8 @@ export function PlayPage() {
   const [board, setBoard] = useState<"iran" | "strait">("strait");
   const [leaveAsk, setLeaveAsk] = useState<LeaveAsk | null>(null);
   const d = session.debug();
-  const war = labels.seat === "us";
+  const war = labels.seat === "us" || labels.seat === "iran";
+  const iranSeat = labels.seat === "iran";
 
   useEffect(() => {
     setBoard(war ? "iran" : "strait");
@@ -134,7 +135,7 @@ export function PlayPage() {
           {COPY.scenarioAsk}
         </p>
         <p className="mt-1 text-sm text-muted">{COPY.scenarioHelp}</p>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
           {SCENARIO_IDS.map((id) => {
             const sc = SCENARIO_KIT[id];
             return (
@@ -185,7 +186,9 @@ export function PlayPage() {
           >
             {COPY.tabStrait}
           </button>
-          <p className="font-mono text-2xs text-muted">{COPY.strikeMarks}</p>
+          <p className="font-mono text-2xs text-muted">
+            {iranSeat ? COPY.iranMarks : COPY.strikeMarks}
+          </p>
         </div>
       ) : null}
       {war && leaveAsk ? (
@@ -218,7 +221,7 @@ export function PlayPage() {
       ) : null}
       {war && board === "iran" ? (
         <IranBoard
-          canAct={labels.canAct}
+          canAct={labels.canAct && !iranSeat}
           mineFactoryUp={labels.factoryUp}
           droneFactoryUp={labels.droneFactoryUp}
           mineWarehouseUp={labels.warehouseUp}
@@ -285,7 +288,9 @@ export function PlayPage() {
             <p className="font-mono text-2xs uppercase tracking-widest text-accent">
               {labels.houseName}
             </p>
-            <p className="mt-3 text-sm text-muted">{war ? COPY.warLock : COPY.roleLock}</p>
+            <p className="mt-3 text-sm text-muted">
+              {iranSeat ? COPY.iranLock : war ? COPY.warLock : COPY.roleLock}
+            </p>
             <p className="mt-2 text-sm text-muted">{labels.hint}</p>
 
             {war ? (
@@ -297,7 +302,50 @@ export function PlayPage() {
                   <Stat k={COPY.magCounter} v={labels.magCounter} />
                   <Stat k={COPY.magLasers} v={labels.magLasers} />
                 </dl>
-                <p className="font-mono text-2xs text-muted">{COPY.strikeMarks}</p>
+                <p className="font-mono text-2xs text-muted">
+                  {iranSeat ? COPY.iranMarks : COPY.strikeMarks}
+                </p>
+                {iranSeat ? (
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                  <button
+                    type="button"
+                    disabled={!labels.canAct}
+                    title={COPY.iranLay}
+                    onClick={() => {
+                      markAct();
+                      session.iranLay();
+                    }}
+                    className="min-h-11 rounded-md border border-danger bg-surface-2 px-3 text-sm text-fg disabled:opacity-50"
+                  >
+                    {COPY.iranLay}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={!labels.canAct}
+                    title={COPY.iranSurge}
+                    onClick={() => {
+                      markAct();
+                      session.iranSurge();
+                    }}
+                    className="min-h-11 rounded-md border border-accent bg-surface-2 px-3 text-sm text-fg disabled:opacity-50"
+                  >
+                    {COPY.iranSurge}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={!labels.canAct}
+                    title={COPY.iranHold}
+                    onClick={() => {
+                      markAct();
+                      session.iranHold();
+                    }}
+                    className="min-h-11 rounded-md bg-accent px-3 text-sm font-medium text-accent-fg disabled:opacity-50"
+                  >
+                    {COPY.iranHold}
+                  </button>
+                </div>
+                ) : (
+                <>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {STRIKE.targets.map((id) => {
                     const n = STRIKE_NODES[id];
@@ -375,6 +423,8 @@ export function PlayPage() {
                 >
                   {COPY.usSweep}
                 </button>
+                </>
+                )}
               </div>
             ) : null}
             <p className="mt-2 font-mono text-2xs leading-snug text-accent" aria-live="polite">

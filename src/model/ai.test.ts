@@ -14,6 +14,9 @@ test("dead factory stops the refill; live factory prints ten a week", () => {
   assert.equal(iranRefillMines(rubble), 0);
   const tanker = createState(1, "reopen-lane");
   assert.equal(iranRefillMines(tanker), 0);
+  const iran = createState(1, "iran-warfare");
+  assert.equal(iranRefillMines(iran), 10);
+  assert.equal(iranWarehouseDump(iran, 30), 3);
 });
 
 test("warehouse dumps three until the sheds are gone; tanker still lays one", () => {
@@ -26,6 +29,8 @@ test("warehouse dumps three until the sheds are gone; tanker still lays one", ()
   assert.equal(iranWarehouseDump(rubble, 30), 0);
   const tanker = createState(1, "reopen-lane");
   assert.equal(iranWarehouseDump(tanker, 3), 1);
+  const iran = createState(1, "iran-warfare");
+  assert.equal(iranWarehouseDump(iran, 30), 3);
 });
 
 test("drone factory is a different plant from the mine roof", () => {

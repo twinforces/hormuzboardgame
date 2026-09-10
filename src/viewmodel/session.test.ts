@@ -317,3 +317,29 @@ test("leaving a live hole to strike inland still names the dump remnant", () => 
   assert.equal(s.labels().dumpedHoles.some((h) => h.id === hole.id), true);
   assert.ok(s.state().lastReport?.dumped);
 });
+
+test("iran-warfare session is Iran seat: lay surge hold, US verbs stay shut", () => {
+  const s = createSession(1, "iran-warfare");
+  assert.equal(s.labels().seat, "iran");
+  assert.equal(s.state().phase, "iranOrders");
+  assert.equal(s.labels().canAct, true);
+  assert.equal(s.labels().doorsOpen, false);
+  assert.equal(s.labels().factoryUp, false);
+  assert.equal(s.labels().droneFactoryUp, true);
+  assert.equal(s.labels().houseName, COPY.roleIran);
+  assert.match(s.labels().hint, /Lay seeds/);
+  assert.equal(s.wait().ok, false);
+  assert.equal(s.usSweep().ok, false);
+  const lay = s.iranLay();
+  assert.equal(lay.ok, true);
+  assert.equal(s.state().turn, 2);
+  assert.equal(s.labels().canAct, true);
+  assert.equal(s.state().lastReport?.watcher, "iran");
+  assert.match(s.labels().lastBeat, /seeded/);
+  const surge = s.iranSurge();
+  assert.equal(surge.ok, true);
+  assert.match(s.labels().lastBeat, /surged/);
+  const hold = s.iranHold();
+  assert.equal(hold.ok, true);
+  assert.match(s.labels().lastBeat, /held/);
+});

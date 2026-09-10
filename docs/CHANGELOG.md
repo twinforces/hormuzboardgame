@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-10 - Iran is Mine Warfare. Lay, surge, or hold.
+
+- **What:** New sitting. You are Iran. One hundred hulls of traffic. One verb a week: lay mines, surge drones, or hold. Week 1 the Navy already hit the mine factory. After blood the Navy sweeps.
+- **Why:** User: 23 weeks to empty the strait felt like reality. Ready to do Iran.
+- **How:** Scenario id `iran-warfare`. Picker Mine Warfare. US-AI follows `STRIKE.ideal` then sweeps after blood. Spider holes stay US-human. ADR-026.
+- **Hash:** pending.
+
 ## 2026-09-10 - Leave a spider hole is a confirm.
 
 - **What:** Click a factory, warehouse, radar, port, or sweep while a spider hole is live and the board asks first. Keep the hole is the gold chip. Strike anyway dumps. The Iran board stays up. A Dumped mark sits on the pit that week.

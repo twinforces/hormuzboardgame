@@ -195,7 +195,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** The mole has to be a choice they can refuse. A factory click that also flips the photo looks like the circle despawned.
 - **Rejected:** A grace week that keeps the live hole after a factory strike. That is two US results for one week, already rejected in ADR-024.
 
+## ADR-026. Iran is a human seat. Mine Warfare. Lay / Surge / Hold.
+
+- **Status:** accepted
+- **Context:** User: ready to do Iran. US is Anti-Mine Warfare. Iran is Mine Warfare. One verb a week: Lay, Surge, or Hold.
+- **Decision:** Scenario id `iran-warfare`. Picker label Mine Warfare. Human seat is Iran. Same 100-hull traffic as the US sitting. Turn order is US-AI, then Iran human, then traffic. Week 1 the Navy already struck the mine factory. US-AI follows `STRIKE.ideal` while plants live. After blood it sweeps and talks crews down. Lay dumps the warehouse into the TSS. Surge spends up to `IRAN_VERB.surgeDrones` and ticks a Gulf raid. Hold prints and does not dump. Spider holes stay US-human only.
+- **Why:** Playing Iran is industrial math, not a numbered strike plan in reverse. The roof going first is the lesson. A surge is ammo and fear. A real laser wall vs a massed raid is later.
+- **Rejected:** A second picker named Mine Warfare before this seat existed (ADR-022). Iran clicking US strike nouns. Radar shrinking mine circles. Scripted waiters talking crews down after blood.
+
 ## Open questions
 
-
-Default human seat Iran vs US (US shipped). Laser vs "effectors" copy.
+Laser vs "effectors" copy. Real laser wall vs a massed drone surge.

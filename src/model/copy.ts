@@ -104,6 +104,8 @@ export const COPY = {
   scenarioOverplay: "Five hulls. Packed ribbon. Navy sweeps three patches a week. Red remains.",
   scenarioMine:
     "You are US. Anti-mine warfare. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Click a circle or sweep the ribbon.",
+  scenarioIran:
+    "You are Iran. Mine warfare. One hundred hulls of traffic. Lay mines, surge drones, or hold the sheds. Fear, not occupation.",
   scenarioAsk: "Which sitting?",
   tabIran: "Strikes",
   tabStrait: "Strait",
@@ -120,6 +122,14 @@ export const COPY = {
     "Click a circle to strike, or sweep the ribbon. After blood, traffic sits until you sweep. Leave a spider hole and it dumps.",
   warLock:
     "You are US, anti-mine warfare. One hundred hulls. Ten companies. Some count EV. Some wait for a sweep. After blood they sit until you sweep. Once the till is the hotter mine field, they flip.",
+  iranLock:
+    "You are Iran. Mine warfare. The Navy bombs roofs. Traffic is not yours. Lay, surge, or hold. One verb a week. Fear, not occupation.",
+  iranHint:
+    "Lay seeds the TSS. Surge spends drones on a Gulf state. Hold keeps the sheds. After a sweep, hold is not cowardice.",
+  iranLay: "Lay mines",
+  iranSurge: "Surge drones",
+  iranHold: "Hold",
+  iranMarks: "Lay, surge, or hold. One verb a week.",
   trafficBooks: "Traffic",
   trafficNote: "One hundred traffic hulls, ten companies. You do not own them. Tolls still buy mines.",
   trafficWait: "Traffic sat.",
@@ -190,6 +200,7 @@ export const SCENARIO_KIT: Record<
   "one-transit": { label: "One transit", blurb: COPY.scenarioOne },
   overplay: { label: "Packed TSS", blurb: COPY.scenarioOverplay },
   "mine-warfare": { label: "Anti-Mine Warfare", blurb: COPY.scenarioMine },
+  "iran-warfare": { label: "Mine Warfare", blurb: COPY.scenarioIran },
 };
 
 /** Twelve leftover hulls times $2M is $24M. Not a flat $2M sit. */
@@ -311,6 +322,18 @@ export function iranSeedLine(opts: {
   return `${seed} Pay is a promise they will not shoot. It does not sweep, mines drift.`;
 }
 
+export function iranHoldLine(turn: number): string {
+  return `Week ${turn}: Iran held. The sheds filled. Nothing new in the TSS.`;
+}
+
+export function iranSurgeLine(opts: { turn: number; drones: number; gulf: boolean }): string {
+  const n = Math.max(0, Math.round(opts.drones));
+  if (n <= 0) return `Week ${opts.turn}: Iran had no air to surge.`;
+  const air = n === 1 ? "1 drone" : `${n} drones`;
+  const gulf = opts.gulf ? " A Gulf state ate the raid. Fear, not occupation." : "";
+  return `Week ${opts.turn}: Iran surged ${air}.${gulf}`;
+}
+
 export function fogTip(m: {
   radiusSteps: number;
   hole: null | { radiusNm: number };
@@ -406,7 +429,7 @@ export type ScoreInput = {
   iranSent: number;
   netUsdM: number;
   price: number;
-  seat?: "tanker" | "us";
+  seat?: "tanker" | "us" | "iran";
   factoryUp?: boolean;
   droneFactoryUp?: boolean;
   warehouseUp?: boolean;
@@ -438,6 +461,25 @@ export function scoreLines(s: ScoreInput): string[] {
     if (s.portUp === false) lines.push(COPY.portDown);
     return lines;
   }
+  if (s.seat === "iran") {
+    const lines = [
+      `Week ${s.weeks}. Oil $${s.price}. Peak on this meter is $126.`,
+      `Traffic live ${s.live}. Lost ${s.lost}.`,
+    ];
+    if (s.lost > 0) {
+      lines.push("A hull died. The paper died. That is a win.");
+    } else {
+      lines.push("No hull died. The paper still lives.");
+    }
+    lines.push(s.factoryUp === false ? COPY.factoryDown : COPY.factoryPrints);
+    if (s.droneFactoryUp === false) lines.push(COPY.droneFactoryDown);
+    if (s.warehouseUp === false) lines.push(COPY.warehouseDown);
+    if (s.droneWarehouseUp === false) lines.push(COPY.droneWarehouseDown);
+    if (s.radarUp === false) lines.push(COPY.radarDown);
+    if (s.portUp === false) lines.push(COPY.portDown);
+    lines.push("Fear, not occupation.");
+    return lines;
+  }
   const net = Math.round(s.netUsdM);
   const netLabel = net < 0 ? `-$${Math.abs(net)}M` : `$${net}M`;
   const lines = [
@@ -466,7 +508,7 @@ export function scoreLines(s: ScoreInput): string[] {
 }
 
 export function outcomeTitle(r: TurnReport): string {
-  if (r.watcher === "us") {
+  if (r.watcher === "us" || r.watcher === "iran") {
     if (r.kind === "lost") return COPY.trafficLost;
     if (r.dumped) return COPY.holeDumped;
     if (r.kind === "wait") return COPY.trafficWait;
@@ -480,7 +522,7 @@ export function outcomeTitle(r: TurnReport): string {
 }
 
 export function outcomeLines(r: TurnReport): string[] {
-  if (r.watcher === "us") {
+  if (r.watcher === "us" || r.watcher === "iran") {
     const lines: string[] = [];
     if (r.dumped) {
       lines.push(COPY.leftHole);

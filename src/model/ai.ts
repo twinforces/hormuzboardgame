@@ -13,9 +13,9 @@ import {
 } from "./company.ts";
 import { grazeUsdM } from "./combat.ts";
 import type { GameState } from "./types.ts";
-import { humanSeat } from "./scenarios.ts";
+import { humanSeat, isTrafficSitting } from "./scenarios.ts";
 
-export { humanSeat };
+export { humanSeat, isTrafficSitting };
 
 export function trafficDoor(
   s: GameState,
@@ -56,7 +56,7 @@ export function trafficDoor(
 /** Mine factory prints this many into the mine warehouse. Stops when that roof is gone. Dead sheds cannot take the run. */
 export function iranFactoryPrint(s: GameState): number {
   if (!s.industry.mineFactoryAlive) return 0;
-  if (humanSeat(s.scenario) !== "us") {
+  if (!isTrafficSitting(s.scenario)) {
     const band = bandOf(s.price);
     return band === "high" || band === "panic" ? 1 : 0;
   }
@@ -66,7 +66,7 @@ export function iranFactoryPrint(s: GameState): number {
 
 /** Drone factory prints into the drone sheds. Separate plant from the mine roof. */
 export function iranDronePrint(s: GameState): number {
-  if (humanSeat(s.scenario) !== "us") return 0;
+  if (!isTrafficSitting(s.scenario)) return 0;
   if (!s.industry.droneFactoryAlive) return 0;
   if (!s.industry.droneDepotAlive) return 0;
   return DRONES.factoryPerTurn;
@@ -75,7 +75,7 @@ export function iranDronePrint(s: GameState): number {
 /** How many devices leave the mine warehouse for the TSS this week. */
 export function iranWarehouseDump(s: GameState, pool: number): number {
   if (pool <= 0) return 0;
-  if (humanSeat(s.scenario) !== "us") return 1;
+  if (!isTrafficSitting(s.scenario)) return 1;
   if (!s.industry.mineDepotAlive) return 0;
   return Math.min(MINES.warehouseLay, pool);
 }
