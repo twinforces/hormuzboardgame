@@ -5,7 +5,7 @@
 - **What:** New sitting. You are Iran. One hundred hulls of traffic. One verb a week: lay mines, surge drones, or hold. Week 1 the Navy already hit the mine factory. After blood the Navy sweeps.
 - **Why:** User: 23 weeks to empty the strait felt like reality. Ready to do Iran.
 - **How:** Scenario id `iran-warfare`. Picker Mine Warfare. US-AI follows `STRIKE.ideal` then sweeps after blood. Spider holes stay US-human. ADR-026.
-- **Hash:** pending.
+- **Hash:** `b92d46b`.
 
 ## 2026-09-10 - Leave a spider hole is a confirm.
 
