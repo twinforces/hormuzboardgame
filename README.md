@@ -28,7 +28,7 @@ Receipts (annotated bibliography) live in [`src/model/receipts.ts`](src/model/re
 
 ## Status
 
-Playable Greece, Inc. sitting. You are a VLCC house. Accountants pick the fattest plus-EV door. Wait books idle. Out of hulls opens a scorecard with replay. Oil on this meter cannot print past the 2026 peak ($126).
+Playable. Five sittings: Tanker CEO, Tanker Captain, Small CEO, Anti-Mine Warfare, Mine Warfare. Greece, Inc. is the tanker house. Oil on this meter cannot print past the 2026 peak ($126).
 
 Auth off. Database off. localStorage for last scenario and debug.
 

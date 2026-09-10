@@ -1,11 +1,10 @@
 # RECENTGOALS
 
-Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboardgame). Auth off. DB off.
+Shipped at [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboardgame). Auth off. DB off.
 
 ## Now
 
-Picker names the seats. Three tanker houses, then warfare. Flags on the chips (`611db35`).
-
+Idle. Last: picker names (`611db35`).
 
 ## Next
 

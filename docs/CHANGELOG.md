@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-10 - Compact + hygiene
+
+- **What:** RECENTGOALS cut to two live bets. README names the five picker seats.
+- **Why:** User: compact, hygiene.
+- **How:** Ringmaster hygiene playbook. Picker already shipped `611db35`.
+- **Hash:** pending.
+
 ## 2026-09-10 - Picker names the seats.
 
 - **What:** Tanker chips are Tanker CEO, Tanker Captain, Small CEO, each with the Greek flag. A divider, then Anti-Mine Warfare and Mine Warfare centered under them. US blurb: some are greedy, some wait, strike or sweep. Iran blurb keeps the flag.
