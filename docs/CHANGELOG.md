@@ -5,7 +5,7 @@
 - **What:** Human Iran still has a leftover fight after the warehouse cannot dump. Lay dumps one coastal cell: stash mines into the TSS plus a Gulf tick. Four cells. No recycle. Then Lay is dead. Surge dies with the air. Hold still prints. Fog still grows. Boats still shoot. US sitting does not get this faucet.
 - **Why:** User: week 26, strait empty. Laid until the sheds ran out, then out of drones, nothing to do. Did take out 15 ships. Once Iran was hotter than Oman, ten hulls a week walked the ribbon.
 - **How:** `iranCoastalLeft` / `nextIranPit`. Warehouse dump first. Human Iran only. `m-coast-` ids. ADR-027.
-- **Hash:** pending.
+- **Hash:** `af8fa4b`.
 
 ## 2026-09-10 - Iran is Mine Warfare. Lay, surge, or hold.
 
