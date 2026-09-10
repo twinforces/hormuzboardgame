@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Fog stays on water. Plan Strikes sits on the strait window (ADR-028).
+Fog stays on water. Plan Strikes sits on the strait window (`b74e26f`).
 
 
 ## Next

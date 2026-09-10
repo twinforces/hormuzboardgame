@@ -5,7 +5,7 @@
 - **What:** Red fog clips to the real shoreline. Till water still paints. Land does not. War sittings get a Plan Strikes chip at the top of the strait window, the pair of Open the Strait on the Iran map.
 - **Why:** User: mines can't drift onto land, circles look weird over land. Need a way to switch maps from the strait window.
 - **How:** `MAP.waterMaskSrc` luminance mask. `DEEP_WATER` still clips green holes. Kill math unchanged. `COPY.planStrikes`. ADR-028.
-- **Hash:** pending.
+- **Hash:** `b74e26f`.
 
 ## 2026-09-10 - After the sheds die, Iran Lay dumps a coastal cell.
 
