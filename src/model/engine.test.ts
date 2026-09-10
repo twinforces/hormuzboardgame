@@ -334,3 +334,155 @@ test("a checked policy pays the hull then the paper dies", () => {
   assert.equal(again.ok, false);
   assert.equal(again.reason, COPY.policyGone);
 });
+
+test("mine-warfare starts at usOrders and tanker verbs are illegal", () => {
+  const eng = createEngine(1, "mine-warfare");
+  assert.equal(eng.state().phase, "usOrders");
+  assert.equal(eng.state().scenario, "mine-warfare");
+  assert.match(eng.state().log.join(" "), /yellow mark/i);
+  const late = eng.dispatch({ type: "tanker-wait" });
+  assert.equal(late.ok, false);
+  const sweep = eng.dispatch({ type: "us-sweep" });
+  assert.equal(sweep.ok, true);
+  assert.equal(eng.state().phase, "usOrders");
+  assert.equal(eng.state().turn, 2);
+  assert.ok(eng.state().mines.filter((m) => m.hole).length > 0, "sweep punches holes");
+  assert.ok(eng.state().lastReport);
+  assert.equal(eng.state().lastReport?.watcher, "us");
+});
+
+test("a mine factory strike does not punch Navy holes and kills only mine refill", () => {
+  const eng = createEngine(1, "mine-warfare");
+  const holes0 = eng.state().mines.filter((m) => m.hole).length;
+  const drones0 = eng.state().iranPool.drones;
+  const r = eng.dispatch({ type: "us-strike", target: "mine-factory" });
+  assert.equal(r.ok, true);
+  assert.equal(eng.state().industry.mineFactoryAlive, false);
+  assert.equal(eng.state().industry.droneFactoryAlive, true);
+  assert.equal(eng.state().mines.filter((m) => m.hole).length, holes0);
+  assert.match(eng.state().lastUsLine, /roof is gone/);
+  assert.ok(eng.state().iranPool.drones >= drones0, "drone plant is a different roof");
+  const again = eng.dispatch({ type: "us-strike", target: "mine-factory" });
+  assert.equal(again.ok, true);
+  assert.match(eng.state().lastUsLine, /already down/);
+});
+
+test("mine warehouse zeros mines, drone warehouse zeros air, radar blinds shot not mines", () => {
+  const warehouse = createEngine(2, "mine-warfare");
+  const n0 = warehouse.state().mines.length;
+  const drones0 = warehouse.state().iranPool.drones;
+  warehouse.dispatch({ type: "us-strike", target: "mine-warehouse" });
+  assert.equal(warehouse.state().industry.mineDepotAlive, false);
+  assert.equal(warehouse.state().industry.droneDepotAlive, true);
+  assert.equal(warehouse.state().mines.length, n0, "mine warehouse down means no dump this week");
+  assert.ok(
+    warehouse.state().iranPool.drones >= drones0 - 1,
+    "drone sheds are a different stack",
+  );
+  warehouse.dispatch({ type: "us-sweep" });
+  assert.equal(warehouse.state().mines.length, n0, "dead mine warehouse does not dump later either");
+
+  const sheds = createEngine(5, "mine-warfare");
+  sheds.dispatch({ type: "us-strike", target: "drone-warehouse" });
+  assert.equal(sheds.state().industry.droneDepotAlive, false);
+  assert.equal(sheds.state().iranPool.drones, 0);
+  assert.equal(sheds.state().industry.mineDepotAlive, true);
+
+  const radar = createEngine(3, "mine-warfare");
+  const mines0 = radar.state().mines.length;
+  radar.dispatch({ type: "us-strike", target: "radar" });
+  assert.equal(radar.state().industry.radarAlive, false);
+  assert.match(radar.state().lastUsLine, /Drones guess/);
+  assert.match(radar.state().lastUsLine, /Mines still drift/);
+  assert.equal(radar.state().mines.length, mines0 + 3, "radar does not stop the mine dump");
+  const shot1 = radar.state().lastReport?.omaniShotPct ?? 99;
+  assert.ok(shot1 < 32, `dead radar cuts drone shot, got ${shot1}`);
+
+  const port = createEngine(4, "mine-warfare");
+  port.dispatch({ type: "us-strike", target: "port" });
+  assert.equal(port.state().industry.portAlive, false);
+  assert.equal(port.state().iranPool.boats, 0);
+  assert.equal(port.state().industry.mineFactoryAlive, true);
+  assert.equal(port.state().industry.droneFactoryAlive, true);
+  assert.match(port.state().lastUsLine, /plant still prints/);
+  const hole = port.state().spiderHoles.find((h) => h.alive);
+  assert.ok(hole, "hitting pierside ships lights a spider hole");
+  assert.equal(hole!.mines, 4);
+  assert.equal(hole!.drones, 3);
+});
+
+test("factory prints ten, warehouse dumps three, until those roofs are gone", () => {
+  const eng = createEngine(1, "mine-warfare");
+  const pool0 = eng.state().iranPool.mines;
+  const n0 = eng.state().mines.length;
+  eng.dispatch({ type: "us-sweep" });
+  assert.equal(eng.state().mines.length, n0 + 3);
+  assert.ok(eng.state().iranPool.mines > pool0, "factory printed into the warehouse");
+  eng.dispatch({ type: "us-strike", target: "mine-factory" });
+  const n1 = eng.state().mines.length;
+  assert.equal(n1, n0 + 6, "warehouse still dumps the week the roof comes off");
+  eng.dispatch({ type: "us-strike", target: "radar" });
+  assert.equal(eng.state().industry.mineFactoryAlive, false);
+  assert.equal(eng.state().industry.droneFactoryAlive, true);
+  assert.equal(eng.state().mines.length, n1 + 3);
+});
+
+test("lasers eat a drone each week while both magazines last", () => {
+  const eng = createEngine(1, "mine-warfare");
+  const drones0 = eng.state().iranPool.drones;
+  const lasers0 = eng.state().usPool.lasers;
+  eng.dispatch({ type: "us-sweep" });
+  assert.equal(eng.state().iranPool.drones, drones0 + 2 - 1);
+  assert.equal(eng.state().usPool.lasers, lasers0 - 1);
+});
+
+test("a revealed spider hole eats a week or dumps mines and gulf drones", () => {
+  const hit = createEngine(4, "mine-warfare");
+  hit.dispatch({ type: "us-strike", target: "port" });
+  const hole = hit.state().spiderHoles.find((h) => h.alive);
+  assert.ok(hole);
+  const n0 = hit.state().mines.length;
+  const gulf0 = hit.state().gulfHits;
+  const strike = hit.dispatch({
+    type: "us-strike",
+    target: "spider-hole",
+    pitId: hole!.id,
+  });
+  assert.equal(strike.ok, true);
+  assert.equal(hit.state().turn, 3);
+  assert.equal(hit.state().spiderHoles.some((h) => h.alive), false);
+  assert.match(hit.state().lastUsLine, /Hidden stores are gone/);
+  assert.equal(hit.state().gulfHits, gulf0);
+  assert.ok(hit.state().mines.length <= n0 + 3, "striking the hole stops the stash dump");
+
+  const dump = createEngine(4, "mine-warfare");
+  dump.dispatch({ type: "us-strike", target: "port" });
+  const live = dump.state().spiderHoles.find((h) => h.alive);
+  assert.ok(live);
+  const minesBefore = dump.state().mines.length;
+  dump.dispatch({ type: "us-sweep" });
+  assert.equal(dump.state().spiderHoles.some((h) => h.alive), false);
+  assert.ok(dump.state().mines.length >= minesBefore + 4, "ignored hole dumps extra mines");
+  assert.equal(dump.state().gulfHits, 1);
+  assert.match(dump.state().lastIranLine, /Gulf state/);
+  assert.equal(dump.state().priceComponents.gulf, 8);
+});
+
+test("mine-warfare traffic sitting ends after the hundred hulls go", () => {
+  const eng = createEngine(1, "mine-warfare");
+  const first = eng.dispatch({ type: "us-sweep" });
+  assert.equal(first.ok, true);
+  const wave = eng.state().lastReport?.wave;
+  assert.ok(wave);
+  assert.equal(wave!.sent + wave!.waited, 10);
+  assert.equal(eng.state().books.hullsSent, wave!.sent);
+  let n = 1;
+  while (eng.state().phase !== "matchOver" && n < 80) {
+    const r = eng.dispatch({ type: "us-sweep" });
+    assert.equal(r.ok, true, `sweep ${n} failed: ${"reason" in r ? r.reason : ""}`);
+    n += 1;
+  }
+  assert.equal(eng.state().phase, "matchOver");
+  assert.equal(eng.state().books.hullsSent, 100);
+  assert.ok(n >= 10);
+});

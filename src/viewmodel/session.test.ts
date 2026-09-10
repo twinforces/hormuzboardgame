@@ -59,24 +59,23 @@ test("conflicting briefs disagree and STEEL copy says years", () => {
   assert.doesNotMatch(l.hint, /draw a track/i);
 });
 
-test("week one the CEO waits the ribbon and never pays", () => {
+test("week one the till is plus-EV so accountants take Iran, not the mined TSS", () => {
   const s = createSession(1, "reopen-lane");
   const start = s.labels();
   assert.equal(start.omaniKill, "66%");
-  assert.equal(start.recommended, "wait");
-  assert.match(start.boardAct, /Wait/);
+  assert.equal(start.recommended, "iran");
+  assert.match(start.boardAct, /Iran/);
   assert.match(start.iranEv, /\+/);
   assert.match(start.omaniEv, /-/);
-  let waits = 0;
-  while (s.labels().recommended === "wait" && waits < 8) {
-    s.wait();
-    waits += 1;
-  }
-  assert.ok(waits >= 1, "CEO sits at least one week");
-  assert.equal(s.labels().recommended, "omani");
-  assert.match(s.labels().boardAct, /do not pay/i);
-  assert.match(s.labels().usAct, /minelayer|Sweepers|escorts/i);
-  assert.match(s.labels().iranAct, /seeded/i);
+  s.wait();
+  const after = s.labels();
+  assert.notEqual(after.omaniKill, "100%");
+  assert.ok(after.omaniPct < 90, `displayed Omani ${after.omaniKill}`);
+  assert.notEqual(after.recommended, "wait");
+  assert.match(after.boardAct, /Expected \+/);
+  assert.ok(after.recommended === "omani" || after.recommended === "iran");
+  assert.match(after.usAct, /minelayer|Sweepers|escorts/i);
+  assert.match(after.iranAct, /seeded/i);
 });
 
 test("tanker labels show Navy punches and fog blobs, not Iran magazine", () => {
@@ -87,7 +86,7 @@ test("tanker labels show Navy punches and fog blobs, not Iran magazine", () => {
   assert.equal(start.holesOpen, "0");
   assert.notEqual(start.fogBlobs, String(s.state().iranPool.mines));
   assert.match(start.scenarioBlurb, /Twelve hulls/);
-  assert.match(start.lastBeat, /CEO/);
+  assert.match(start.lastBeat, /Accountants/);
   s.wait();
   const after = s.labels();
   assert.ok(Number(after.navyPunched) > 0);
@@ -179,24 +178,24 @@ test("while canAct the VM always names a live move", () => {
   assert.equal(s.labels().recommended, "none");
 });
 
-test("actRecommended waits night one, then never takes the till", () => {
+test("actRecommended takes the plus-EV till on night one", () => {
   const s = createSession(1, "reopen-lane");
-  assert.equal(s.labels().recommended, "wait");
+  assert.equal(s.labels().recommended, "iran");
   const first = s.actRecommended();
   assert.equal(first.ok, true);
-  assert.equal(s.state().lastDoor, "wait");
+  assert.equal(s.state().lastDoor, "iran");
 });
 
 test("boardAct names the gold move without lecturing about tracks", () => {
   const s = createSession(1, "reopen-lane");
   const start = s.labels();
   assert.equal(start.canAct, true);
-  assert.match(start.boardAct, /Wait/);
+  assert.match(start.boardAct, /Iran/);
   assert.doesNotMatch(start.hint, /draw a track/i);
   s.wait();
   const after = s.labels();
   assert.equal(after.canAct, true);
-  assert.match(after.boardAct, /Wait|Omani/);
+  assert.match(after.boardAct, /Expected \+/);
   const transit = createSession(1, "one-transit");
   transit.omani();
   assert.equal(transit.labels().canAct, false);
@@ -226,9 +225,9 @@ test("after a kill the gold chip is balk-wait, not a dead door", () => {
   assert.equal(s.labels().doorsOpen, true);
 });
 
-test("week one Iran is plus-EV and the CEO still waits", () => {
+test("week one Iran is plus-EV because the till is unmined", () => {
   const s = createSession(1, "reopen-lane");
-  assert.equal(s.labels().recommended, "wait");
+  assert.equal(s.labels().recommended, "iran");
   assert.match(s.labels().iranEv, /\+/);
 });
 
@@ -258,4 +257,43 @@ test("setPolicy before a door covers the hull on a boom", () => {
   assert.equal(s.labels().policyOpen, false);
   assert.match(s.labels().booksRecover, /\$/);
   assert.match(s.labels().booksPremium, /\$/);
+});
+
+test("mine-warfare session is US seat: sweep and strike, tanker doors stay shut", () => {
+  const s = createSession(1, "mine-warfare");
+  assert.equal(s.labels().seat, "us");
+  assert.equal(s.state().phase, "usOrders");
+  assert.equal(s.labels().canAct, true);
+  assert.equal(s.labels().doorsOpen, false);
+  assert.equal(s.labels().recommended, "none");
+  assert.match(s.labels().hint, /yellow mark/i);
+  assert.equal(s.labels().houseName, COPY.roleUs);
+  assert.equal(s.labels().factoryUp, true);
+  assert.equal(s.labels().droneFactoryUp, true);
+  assert.equal(s.labels().warehouseUp, true);
+  assert.equal(s.labels().droneWarehouseUp, true);
+  const wait = s.wait();
+  assert.equal(wait.ok, false);
+  const sweep = s.usSweep();
+  assert.equal(sweep.ok, true);
+  assert.equal(s.state().phase, "usOrders");
+  assert.equal(s.labels().canAct, true);
+  assert.ok(s.state().lastReport);
+  const strike = s.usStrike("mine-factory");
+  assert.equal(strike.ok, true);
+  assert.equal(s.labels().factoryUp, false);
+  assert.equal(s.labels().droneFactoryUp, true);
+  assert.match(s.labels().lastBeat, /roof is gone/);
+  const radar = s.usStrike("radar");
+  assert.equal(radar.ok, true);
+  assert.equal(s.labels().radarUp, false);
+  assert.match(s.labels().lastBeat, /Mines still drift/);
+  const port = s.usStrike("port");
+  assert.equal(port.ok, true);
+  assert.equal(s.labels().spiderHoles.length, 1);
+  assert.equal(s.labels().spiderHoles[0]?.mines, 4);
+  const hole = s.labels().spiderHoles[0]!;
+  const kill = s.usStrike("spider-hole", hole.id);
+  assert.equal(kill.ok, true);
+  assert.equal(s.labels().spiderHoles.length, 0);
 });

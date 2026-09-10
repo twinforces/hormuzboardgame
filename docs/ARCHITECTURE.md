@@ -22,7 +22,7 @@ Precedent: [twinforces/GTB911sim](https://github.com/twinforces/GTB911sim). Same
 ```
 src/model/        GameState, turn FSM, geo in nm, balance, AI, receipts
 src/viewmodel/    RoleSession, MapSession, TickerSession, AfterAction
-src/view/         Chrome, MapBoard, RolePanels, ReceiptsPage
+src/view/         Chrome, MapBoard, IranBoard, RolePanels, ReceiptsPage
 src/routes/       Thin TanStack wrappers. No sim logic.
 ```
 
@@ -45,7 +45,7 @@ Rules:
 | factions.js | `src/model/factions.ts` | US / Iran / tanker action schemas and legality |
 | ai.js | `src/model/ai.ts` | Scripted v1 tendencies, not a solver |
 | copy.js | `src/model/copy.ts` | Teaching beats, tooltips, after-action, no em-dashes |
-| scenarios.js | `src/model/scenarios.ts` | Reopen / one-transit / overplay |
+| scenarios.js | `src/model/scenarios.ts` | Reopen / one-transit / overplay / mine-warfare |
 | (new) | `src/model/receipts.ts` | Annotated bibliography, source of `/receipts` |
 | (new) | `src/model/rng.ts` | Seeded mulberry32 or equivalent |
 | index.html | `src/view/` + routes | Shell, three panels, ticker, fuses |

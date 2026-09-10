@@ -1,63 +1,91 @@
-# Mine warfare slice
+# Mine warfare sitting
 
-Why this exists: the tanker is now a script. The sitting is US vs Iran over devices in the water. Today both sides auto-fire on every week. That is not play.
+Why this exists: the strait sitting is tanker-vs-circles. Mine warfare is a **different board**. You are US or Iran. Traffic is scripted. You do not steer Greece, Inc.
 
-## What
+## Two boards, not one zoom
 
-Human picks one mine verb a week. The other faction is a small script. Greece, Inc. is `ceoPick`: wait the ribbon, never pay.
+The current Sentinel crop is 54.6E-57.4E, 25.0N-27.5N. That is the strait. Bandar Abbas is on the north lip. Shahroud, Isfahan, Parchin, Khojir are hundreds of kilometers inland. Stretching this photo does not show them. It shrinks Hormuz to a speck or crops them out.
 
-## Why not factories yet
-
-`UsHormuzAction` already names strike-industry, depots, pits, boarding, capital. Those are real, and they take years or a prestige hull. If they land in the same slice as sweep vs lay, the player will bomb a factory and wonder why the red circles did not shrink. Clearance is rented. Industry is permanent. Teach clearance first.
-
-## Verbs (v1)
-
-US, one Hormuz plan per week, still XOR with an off-board lever later:
-
-| Verb | Does | Does not |
+| Board | Who clicks | Photo |
 |---|---|---|
-| Sweep | Punch up to 3 hottest Omani mines. Clip green to DEEP_WATER. | Bleach the till. Kill the device inventory. |
-| Sense | Mark the hottest blobs. Next sweep is smarter. | Punch a hole this week. |
-| Escort | Cut shot chance (already modeled). | Sweep mines. |
-| Hold | Escorts stay, no new holes. | Waste a week on purpose. Fog still grows. |
+| Strait | Tanker owner | Current Hormuz crop. Mines, doors, green sweeps. |
+| Iran | US or Iran | A wider Iran crop plus named nodes. Factories, warehouses, radar, port. |
 
-Iran, still never the till:
+Do not put strike buttons on the strait overlay. A JDAM on a fog circle teaches the wrong lesson.
 
-| Verb | Does | Does not |
-|---|---|---|
-| Lay TSS | One tight circle on `LAY_SPOTS`. Spends pool.mines. | Mine Qeshm-Larak. |
-| Surge | Two lays if the pool has two. | A magic extra magazine. |
-| Hold | Keep the next device. | Stop drift on what is already in the water. |
+## Tanker traffic (script, not the gold chip)
 
-Income: CEO never pays, so toll refill is gone in auto play. High P still funds next-turn pool (ARCHITECTURE invariant 8). That is now the point of making oil expensive.
+People on the tanker sitting still see **accountant** recommendations. They have to learn to ignore a plus-EV till.
 
-## Turn FSM
+When the human is US or Iran, hulls are traffic:
 
-Keep `PHASE_ORDER`. Change who may click:
+- 100 hulls, 10 companies.
+- 4 greedy houses count EV. 6 stubborn houses wait for a sweep, then Oman. They do not pay.
+- Once Iran mine risk is higher than Oman, even the greedy flip off the till.
 
-- `usOrders` and `iranOrders` become input when that seat is human.
-- `tankerOrders` auto-fires `ceoPick` when the tanker is AI (default).
-- Hotseat later: three humans. Not v1.
+`TRAFFIC.hulls = 100`, `TRAFFIC.companies = 10`, `TRAFFIC.pay = 4`, `TRAFFIC.wait = 6`, shuffled by seed. Mine factory prints 10 a turn until struck. Mine warehouse dumps 3 into the TSS until struck. Drone factory is a different roof. Drone warehouse is a different stack. Warehouse strike zeros that stack only.
 
-Default seat: **US**. Iran is a script (lay while the CEO is waiting and the pool is live, hold when empty). Flip seat in the sitting kit, same engine.
+## What the Iran board shows
 
-## AI scripts (tendencies, not a solver)
+Visible, player-facing:
 
-- Tanker: `ceoPick`. Done.
-- Iran: lay if `pool.mines > 0` and waiting hulls > 0. Surge if pool >= 2 and Omani mine kill < 20% (the ribbon is getting clean). Hold if magazine empty.
-- US (if human is Iran): sweep if Omani mine > 15%. Escort if shot > mine. Sense if holes are about to expire. Hold only if the ribbon is already quiet.
+- Named nodes: mine factory, drone factory, mine warehouse, drone warehouse, radar, port. Markers, not a lecture.
+- Magazines as bars: drones, counter-drones, lasers, mines in pool, boats. Numbers go down. That is the remaining fight, not a flavor label.
+- Strait inset or a "lane status" chip (Omani mine %, waiting hulls, P). You still care if traffic is moving.
+- Spider holes only after a ship is hit. Hidden stash numbers. Not a standing mark.
 
-## Implementer first cut
+Not on the board:
 
-1. `src/model/ai.ts`: `iranMinePick`, `usMinePick`. Pure. Seeded. Tests.
-2. Drive today's `applyUsOrders` / `applyIranOrders` from those picks instead of always sweep+lay.
-3. Then View: US verb chips during `usOrders`. Same gold-chip pattern as the tanker CEO.
-4. Do not add factory buttons in this cut.
+- The ideal strike order. After-action can hint. The nodes do not number themselves 1-6.
+
+
+## US strike choices
+
+One strike pick per week, XOR with a full Hormuz sweep plan (ARCHITECTURE: one Hormuz plan or one off-board later; capital extra).
+
+Player labels: Mine factory / Drone factory / Mine warehouse / Drone warehouse / Radar / Port. A revealed spider hole is an extra verb that week.
+
+Teaching order lives in `STRIKE.ideal` in balance. Tests and the after-action tutor may use it. Copy files must not. If you hit Port first you punched Bandar Abbas and both plants still print.
+
+Why that order (for us, not the board):
+
+1. Mine factory. Roof gone, mine print stops. Navy Decoded inland plant.
+2. Drone factory. Separate roof. Shahed output goes toward zero. Radar did not do this.
+3. Mine warehouse. Ready mines die. Day-1 dump vs day-10 trickle.
+4. Drone warehouse. Ready air dies. Separate sheds from the mine stack.
+5. Radar. Drones guess. Mines still drift. Boats still drive by eye.
+6. Port. Pierside bullseye. 17 hulls at Bandar Abbas. Hitting those ships lights a spider hole.
+
+Warehouse before radar because leftover stores still sail if the plant is dead and the magazine is not. Radar before port because a blind coast is how traffic lives; a smashed pier is a highlight reel.
+
+## Spider holes
+
+A ship hit reveals one coastal cell: pierside strike, or a tanker that took a drone/boat graze or rare shot-kill. The tooltip is the stash (mines, drones). Strike it this week. That eats the US verb. Leave it for next week's resolve and the stash dumps extra TSS mines plus a drone raid on another Gulf state. Fear, not occupation. Radar does not stop the mine dump. A mine kill does not reveal a hole. Mines drift. There is no launch cell to geolocate.
+
+
+## Magazines (v1 bars)
+
+Iran: drones, mines, boats. US: counter-drones, lasers (or "effectors"), sweepers.
+
+No physics sim. A strike on a factory cuts that refill rate only. A strike on a warehouse cuts that stack only. Radar cuts drone shot, never mine fog. Lasers and counter-drones spend against the drone bar when Iran surges. Keep it one integer per bar.
+
+
+## Implementer cuts
+
+1. Done: tanker gold chip is accountants. Traffic mix is 4 pay / 6 wait.
+2. Done: `STRIKE.ideal` in balance. No player copy.
+3. Done: Iran-board plus Strait tab. Sentinel hinterland crop. Node layer + magazine bars.
+4. Done: US verb chips Sweep vs Strike. Traffic moves after you act. Iran still lays.
+5. Done: Factories do not shrink red circles the week you bomb them. Clearance is rented. Industry is slow.
+6. Done: Two plants, two sheds. Radar blinds drones, not mines. A ship hit reveals a spider hole. Ignore it and the stash dumps.
 
 ## Don't
 
+- Do not print Mine factory, Drone factory, Warehouse, Radar, Port as a numbered plan.
 - Do not mine the till.
-- Do not let a sweep disk bleach Qeshm-Larak.
+- Do not let accountants drive scripted CEO hulls.
+- Do not put Khojir on the Hormuz photo by lying about lat/lon.
 - Do not fill STEEL.
-- Do not ask the tanker AI to pay. Tolls buy mines.
-- Do not spawn Leaflet, auth, or a second map.
+- Do not let radar shrink mine circles.
+- Do not reveal spider holes on a mine kill.
+

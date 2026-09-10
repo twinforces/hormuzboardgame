@@ -25,7 +25,7 @@ const MODULES = [
   ["factions.ts", "US / Iran / tanker action schemas"],
   ["ai.ts", "Scripted v1 tendencies"],
   ["copy.ts", "Teaching beats, tooltips, after-action"],
-  ["scenarios.ts", "Reopen / one-transit / overplay"],
+  ["scenarios.ts", "Reopen / one-transit / overplay / mine-warfare"],
   ["receipts.ts", "Annotated bibliography"],
   ["rng.ts", "Seeded PRNG"],
 ];

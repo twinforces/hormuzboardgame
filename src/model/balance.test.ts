@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COMPANY, COST_FAMILY, FORCE, OPEN_RESEARCH } from "./balance.ts";
+import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, MAGAZINE, MINES, OPEN_RESEARCH, SPIDER, STRIKE, TRAFFIC } from "./balance.ts";
 
 test("company books use a cited VLCC newbuild", () => {
   assert.equal(COMPANY.hullUsdM, 129);
@@ -35,4 +35,28 @@ test("cost families stay ranges, not a blended sticker", () => {
 test("Avenger status stays open research", () => {
   assert.match(OPEN_RESEARCH.avenger, /Open/);
   assert.match(OPEN_RESEARCH.avenger, /rented/);
+});
+
+test("scripted traffic is ten companies, four EV, six waiters, 100 hulls", () => {
+  assert.equal(TRAFFIC.pay, 4);
+  assert.equal(TRAFFIC.wait, 6);
+  assert.equal(TRAFFIC.companies, TRAFFIC.pay + TRAFFIC.wait);
+  assert.equal(TRAFFIC.hulls, 100);
+  assert.equal(MINES.factoryPerTurn, 10);
+  assert.equal(MINES.warehouseLay, 3);
+  assert.equal(MINES.warehouseStart, MAGAZINE.iranMines);
+});
+
+test("strike order is a lock, not player copy", () => {
+  assert.deepEqual(
+    [...STRIKE.ideal],
+    ["mine-factory", "drone-factory", "mine-warehouse", "drone-warehouse", "radar", "port"],
+  );
+  assert.equal(COMPANY.fleet["mine-warfare"], TRAFFIC.hulls);
+  assert.equal(MAGAZINE.interceptPerWeek, 1);
+  assert.ok(MAGAZINE.usLasers > 0);
+  assert.equal(MAGAZINE.iranDrones, DRONES.warehouseStart);
+  assert.equal(ATTACK.omaniDrone + ATTACK.omaniBoat, ATTACK.omaniShot);
+  assert.equal(SPIDER.pits.length, 4);
+  assert.ok(SPIDER.stashMines > 0);
 });

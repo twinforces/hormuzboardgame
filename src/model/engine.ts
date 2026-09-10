@@ -9,11 +9,15 @@ import {
   IRANIAN_INBOUND,
   JMIC_INBOUND,
   LAY_SPOTS,
+  MAGAZINE,
   MATCH,
+  MINES,
+  SPIDER,
+  TRAFFIC,
   bandOf,
   radiusNm,
 } from "./balance.ts";
-import { COPY, SCENARIO_KIT, idleChargeLine, iranSeedLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, idleChargeLine, iranSeedLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine } from "./copy.ts";
 import { clearedNm2, grazeUsdM, rollShot, shotChance, type ShotKind } from "./combat.ts";
 import {
   captainsBalk,
@@ -30,7 +34,8 @@ import {
 import { combinedKillChance, lonLatToNm, polylineLengthNm } from "./geo.ts";
 import { tickPrice } from "./price.ts";
 import { mulberry32 } from "./rng.ts";
-import { SCENARIO_TURNS, initialMines } from "./scenarios.ts";
+import { SCENARIO_TURNS, humanSeat, initialMines } from "./scenarios.ts";
+import { flyingDrones, interceptDrones, iranDronePrint, iranFactoryPrint, iranWarehouseDump, trafficDoor } from "./ai.ts";
 import type {
   DebugSnapshot,
   GameState,
@@ -38,6 +43,8 @@ import type {
   NmPolyline,
   Phase,
   ScenarioId,
+  StrikeTarget,
+  SpiderHole,
   TankerDoor,
   TurnReport,
 } from "./types.ts";
@@ -49,6 +56,8 @@ export type EngineAction =
   | { type: "tanker-toll" }
   | { type: "tanker-wait" }
   | { type: "tanker-policy"; on: boolean }
+  | { type: "us-sweep" }
+  | { type: "us-strike"; target: StrikeTarget; pitId?: string }
   | { type: "reset"; seed?: number; scenario?: ScenarioId };
 
 export type DispatchResult =
@@ -66,11 +75,13 @@ export function iranPath(): NmPolyline {
 }
 
 export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "reopen-lane"): GameState {
+  const seat = humanSeat(scenario);
+  const greeting = seat === "us" ? COPY.warHint : COPY.doorHint;
   return {
     scenario,
     turn: 1,
     maxTurns: SCENARIO_TURNS[scenario],
-    phase: "tankerOrders",
+    phase: seat === "us" ? "usOrders" : "tankerOrders",
     seed,
     price: 82,
     priceComponents: {
@@ -80,6 +91,7 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
       waiting: 0,
       flow: 0,
       kill: 0,
+      gulf: 0,
       contracts: 0,
     },
     insurance: "open",
@@ -105,12 +117,25 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
     lastIranLine: COPY.iranDoorNote,
     navyPulled: 0,
     log: [
-      `Week 1. ${COPY.doorHint} ${SCENARIO_KIT[scenario].blurb}`,
+      `Week 1. ${greeting} ${SCENARIO_KIT[scenario].blurb}`,
     ],
     capitalCommitted: false,
     catastrophe: false,
-    industry: { factoriesAlive: true, depotsAlive: true, knownPits: 0 },
-    iranPool: { boats: 4, drones: 6, mines: 3 },
+    industry: {
+      mineFactoryAlive: true,
+      droneFactoryAlive: true,
+      mineDepotAlive: true,
+      droneDepotAlive: true,
+      radarAlive: true,
+      portAlive: true,
+      knownPits: 0,
+    },
+    iranPool: {
+      boats: MAGAZINE.iranBoats,
+      drones: MAGAZINE.iranDrones,
+      mines: seat === "us" ? MINES.warehouseStart : 3,
+    },
+    usPool: { counterDrones: MAGAZINE.usCounterDrones, lasers: MAGAZINE.usLasers },
     secretSuspicion: 0,
     packageQueue: 0,
     contracts: { ...EMPTY_FUSE },
@@ -120,6 +145,12 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
     tutor: { pitsOnlyWhileFactoriesLive: false },
     lastOffboard: null,
     bribePolicy: "honor",
+    gulfHits: 0,
+    spiderHoles: [],
+    trafficLeft:
+      seat === "us"
+        ? Array(TRAFFIC.companies).fill(TRAFFIC.hulls / TRAFFIC.companies)
+        : [],
   };
 }
 
@@ -200,26 +231,174 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     return { ...s, phase: "usOrders", mines, navyPulled, lastUsLine: line, log: [...s.log, line] };
   }
 
-  function applyIranOrders(s: GameState, shot: ShotKind = "none"): GameState {
-    if (s.iranPool.mines <= 0) {
-      const line = iranSeedLine({ turn: s.turn, laid: 0, shot });
-      return { ...s, phase: "iranOrders", lastIranLine: line, log: [...s.log, line] };
-    }
-    const spot = LAY_SPOTS[(s.turn - 1) % LAY_SPOTS.length]!;
-    const id = `m-lay-${s.turn}`;
-    const laid: MineCircle = {
-      id,
-      center: lonLatToNm(spot),
-      radiusSteps: 0,
-      laidTurn: s.turn,
-      hole: null,
+  function revealSpider(s: GameState): GameState {
+    if (humanSeat(s.scenario) !== "us") return s;
+    if (s.spiderHoles.some((h) => h.alive)) return s;
+    const used = new Set(s.spiderHoles.map((h) => h.pit));
+    const pit = SPIDER.pits.findIndex((_, i) => !used.has(i));
+    if (pit < 0) return s;
+    const loc = SPIDER.pits[pit]!;
+    const hole: SpiderHole = {
+      id: `pit-${s.turn}-${pit}`,
+      pit,
+      lat: loc.lat,
+      lon: loc.lon,
+      mines: SPIDER.stashMines,
+      drones: SPIDER.stashDrones,
+      revealedTurn: s.turn,
+      alive: true,
     };
-    const line = iranSeedLine({ turn: s.turn, laid: 1, shot });
+    const line = spiderRevealLine({
+      turn: s.turn,
+      mines: hole.mines,
+      drones: hole.drones,
+    });
+    const alreadyNamed = s.lastUsLine.includes("spider hole");
+    return {
+      ...s,
+      spiderHoles: [...s.spiderHoles, hole],
+      industry: { ...s.industry, knownPits: s.industry.knownPits + 1 },
+      lastUsLine: alreadyNamed ? s.lastUsLine : `${s.lastUsLine} ${line}`.trim(),
+      log: [...s.log, line],
+    };
+  }
+
+  function dumpSpiders(s: GameState): GameState {
+    const ripe = s.spiderHoles.filter((h) => h.alive && h.revealedTurn < s.turn);
+    if (ripe.length === 0) return s;
+    const laid: MineCircle[] = [];
+    let dumped = 0;
+    let air = 0;
+    const holes = s.spiderHoles.map((h) => {
+      if (!(h.alive && h.revealedTurn < s.turn)) return h;
+      for (let i = 0; i < h.mines; i++) {
+        const spot = LAY_SPOTS[(s.turn - 1 + dumped + i) % LAY_SPOTS.length]!;
+        laid.push({
+          id: `m-pit-${s.turn}-${h.pit}-${i}`,
+          center: lonLatToNm(spot),
+          radiusSteps: 0,
+          laidTurn: s.turn,
+          hole: null,
+        });
+      }
+      dumped += h.mines;
+      air += h.drones;
+      return { ...h, alive: false, mines: 0, drones: 0 };
+    });
+    const line = spiderDumpLine({ turn: s.turn, mines: dumped, drones: air });
+    const iranLine = s.lastIranLine ? `${s.lastIranLine} ${line}` : line;
+    return {
+      ...s,
+      spiderHoles: holes,
+      mines: [...s.mines, ...laid],
+      gulfHits: s.gulfHits + ripe.length,
+      lastIranLine: iranLine,
+      log: [...s.log, line],
+    };
+  }
+
+  function applyUsStrike(s: GameState, target: StrikeTarget, pitId?: string): GameState {
+    if (target === "spider-hole") {
+      const hole = s.spiderHoles.find((h) => h.alive && (pitId ? h.id === pitId : true));
+      const already = !hole;
+      const line = usStrikeLine({ turn: s.turn, target, already });
+      if (already || !hole) {
+        return { ...s, phase: "usOrders", lastUsLine: line, log: [...s.log, line] };
+      }
+      return {
+        ...s,
+        phase: "usOrders",
+        spiderHoles: s.spiderHoles.map((h) =>
+          h.id === hole.id ? { ...h, alive: false, mines: 0, drones: 0 } : h,
+        ),
+        lastUsLine: line,
+        log: [...s.log, line],
+      };
+    }
+    const already =
+      (target === "mine-factory" && !s.industry.mineFactoryAlive) ||
+      (target === "drone-factory" && !s.industry.droneFactoryAlive) ||
+      (target === "mine-warehouse" && !s.industry.mineDepotAlive) ||
+      (target === "drone-warehouse" && !s.industry.droneDepotAlive) ||
+      (target === "radar" && !s.industry.radarAlive) ||
+      (target === "port" && !s.industry.portAlive);
+    const line = usStrikeLine({
+      turn: s.turn,
+      target,
+      already,
+      mineFactoryUp: s.industry.mineFactoryAlive,
+      droneFactoryUp: s.industry.droneFactoryAlive,
+    });
+    if (already) {
+      return { ...s, phase: "usOrders", lastUsLine: line, log: [...s.log, line] };
+    }
+    let industry = { ...s.industry };
+    let iranPool = { ...s.iranPool };
+    let next = s;
+    if (target === "mine-factory") industry = { ...industry, mineFactoryAlive: false };
+    if (target === "drone-factory") industry = { ...industry, droneFactoryAlive: false };
+    if (target === "mine-warehouse") {
+      industry = { ...industry, mineDepotAlive: false };
+      iranPool = { ...iranPool, mines: 0 };
+    }
+    if (target === "drone-warehouse") {
+      industry = { ...industry, droneDepotAlive: false };
+      iranPool = { ...iranPool, drones: 0 };
+    }
+    if (target === "radar") industry = { ...industry, radarAlive: false };
+    if (target === "port") {
+      industry = { ...industry, portAlive: false };
+      iranPool = { ...iranPool, boats: 0 };
+      next = revealSpider({ ...s, industry, iranPool });
+      return {
+        ...next,
+        phase: "usOrders",
+        lastUsLine: line,
+        log: [...next.log, line],
+      };
+    }
+    return {
+      ...s,
+      phase: "usOrders",
+      industry,
+      iranPool,
+      lastUsLine: line,
+      log: [...s.log, line],
+    };
+  }
+
+  function applyIranOrders(s: GameState, shot: ShotKind = "none"): GameState {
+    let pool = s.iranPool.mines + iranFactoryPrint(s);
+    const drones = s.iranPool.drones + iranDronePrint(s);
+    const dump = iranWarehouseDump(s, pool);
+    if (dump <= 0) {
+      const line = iranSeedLine({ turn: s.turn, laid: 0, shot });
+      return {
+        ...s,
+        phase: "iranOrders",
+        iranPool: { ...s.iranPool, mines: pool, drones },
+        lastIranLine: line,
+        log: [...s.log, line],
+      };
+    }
+    const laidMines: MineCircle[] = [];
+    for (let i = 0; i < dump; i++) {
+      const spot = LAY_SPOTS[(s.turn - 1 + i) % LAY_SPOTS.length]!;
+      laidMines.push({
+        id: `m-lay-${s.turn}-${i}`,
+        center: lonLatToNm(spot),
+        radiusSteps: 0,
+        laidTurn: s.turn,
+        hole: null,
+      });
+    }
+    pool -= dump;
+    const line = iranSeedLine({ turn: s.turn, laid: dump, shot });
     return {
       ...s,
       phase: "iranOrders",
-      mines: [...s.mines, laid],
-      iranPool: { ...s.iranPool, mines: s.iranPool.mines - 1 },
+      mines: [...s.mines, ...laidMines],
+      iranPool: { ...s.iranPool, mines: pool, drones },
       lastIranLine: line,
       log: [...s.log, line],
     };
@@ -242,6 +421,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
         return { ...s, phase, mines };
       }
       case "usOrders":
+        if (humanSeat(s.scenario) === "us") return { ...s, phase };
         return applyUsOrders({ ...s, phase });
       case "iranOrders":
         return applyIranOrders({ ...s, phase }, pendingShot);
@@ -270,7 +450,11 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
 
   function advancePastAuto(s: GameState): GameState {
     let cur = s;
-    const needsInput = (p: Phase) => p === "tankerOrders" || p === "matchOver";
+    const needsInput = (p: Phase) => {
+      if (p === "matchOver") return true;
+      if (humanSeat(s.scenario) === "us") return p === "usOrders";
+      return p === "tankerOrders";
+    };
     let guard = 0;
     while (!needsInput(cur.phase) && guard++ < 40) {
       if (cur.phase === "decay") {
@@ -285,10 +469,25 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       const nxt = nextPhase(cur.phase);
       cur = applyPhase({ ...cur, phase: nxt }, nxt);
     }
-    if (cur.phase === "tankerOrders" || cur.phase === "matchOver") {
+    if (
+      cur.phase === "tankerOrders" ||
+      cur.phase === "usOrders" ||
+      cur.phase === "matchOver"
+    ) {
       cur = tickPrice(cur);
     }
     return cur;
+  }
+
+  function doorShot(s: GameState, door: TankerDoor, paid: boolean): number {
+    return shotChance({
+      door,
+      waitingHulls: s.waitingHulls,
+      paid,
+      radarAlive: s.industry.radarAlive,
+      drones: flyingDrones(s),
+      boats: s.iranPool.boats,
+    });
   }
 
   function doorRisk(s: GameState) {
@@ -298,12 +497,8 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     return {
       omaniMinePct: Math.round(mineO * 100),
       iranMinePct: Math.round(mineI * 100),
-      omaniShotPct: Math.round(
-        shotChance({ door: "omani", waitingHulls: s.waitingHulls, paid: false }) * 100,
-      ),
-      iranShotPct: Math.round(
-        shotChance({ door: "iran", waitingHulls: s.waitingHulls, paid: true }) * 100,
-      ),
+      omaniShotPct: Math.round(doorShot(s, "omani", false) * 100),
+      iranShotPct: Math.round(doorShot(s, "iran", true) * 100),
     };
   }
 
@@ -321,6 +516,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       minesBought: number;
       cause: TurnReport["cause"];
       paid: boolean;
+      wave?: TurnReport["wave"];
     },
   ): GameState {
     const report: TurnReport = {
@@ -330,6 +526,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       usLine: s.lastUsLine,
       iranLine: s.lastIranLine,
       ...doorRisk(s),
+      watcher: humanSeat(s.scenario) === "us" ? "us" : "tanker",
     };
     return { ...s, lastReport: report };
   }
@@ -342,7 +539,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
   ): GameState {
     const { chance, clips } = combinedKillChance(path, s.mines, s.draftClass, omaniPath());
     const mineHit = chance > 0 && rng() < chance;
-    const shotP = shotChance({ door, waitingHulls: s.waitingHulls, paid });
+    const shotP = doorShot(s, door, paid);
     let shot: ShotKind = "none";
     if (!mineHit) shot = rollShot(rng, shotP);
     pendingShot = shot;
@@ -424,7 +621,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       ? {
           ...s.iranPool,
           mines: s.iranPool.mines + 1,
-          boats: s.iranPool.boats + 1,
+          boats: s.industry.portAlive ? s.iranPool.boats + 1 : s.iranPool.boats,
         }
       : s.iranPool;
     const lastLoss = hullDead
@@ -469,6 +666,120 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     };
   }
 
+  function applyTankerWait(s: GameState): GameState {
+    const idle = idleThisWeek(s.scenario, s.books);
+    const leftover = hullsLeft(s.scenario, s.books);
+    const line = `Week ${s.turn}: ${COPY.waited} ${idleChargeLine(leftover)}`.trim();
+    return {
+      ...s,
+      waitingHulls: s.waitingHulls + 1,
+      lastKillChance: 0,
+      tankerPath: [],
+      tankerExited: false,
+      tankerPaid: false,
+      lastDoor: "wait",
+      crewSour: false,
+      books: postIdle(s.books, idle),
+      log: [...s.log, line],
+      phase: "resolve",
+    };
+  }
+
+  function afterUsVerb(s: GameState): GameState {
+    let cur = applyIranOrders({ ...s, phase: "iranOrders" }, pendingShot);
+    cur = dumpSpiders(cur);
+    cur = interceptDrones(cur);
+    pendingShot = "none";
+    if (hullsLeft(cur.scenario, cur.books) <= 0) {
+      return { ...cur, phase: "matchOver", log: [...cur.log, COPY.noHulls] };
+    }
+    const wave = { sent: 0, waited: 0, paid: 0, omani: 0, live: 0, lost: 0 };
+    const before = netUsdM(cur.books);
+    const dmg0 = cur.books.damageUsdM;
+    const fr0 = cur.books.freightUsdM;
+    const bo0 = cur.books.bonusUsdM;
+    const to0 = cur.books.tollUsdM;
+    let lastDoor: TankerDoor = "wait";
+    let lastPaid = false;
+    let lastCause: TurnReport["cause"] = "none";
+    let shipHit = false;
+    for (let i = 0; i < TRAFFIC.companies; i++) {
+      if ((cur.trafficLeft[i] ?? 0) <= 0) continue;
+      if (hullsLeft(cur.scenario, cur.books) <= 0) break;
+      const risk = doorRisk(cur);
+      const door = trafficDoor(
+        cur,
+        risk.omaniMinePct / 100,
+        risk.iranMinePct / 100,
+        risk.omaniShotPct / 100,
+        risk.iranShotPct / 100,
+        i,
+      );
+      if (door === "wait" || captainsBalk(cur)) {
+        cur = {
+          ...cur,
+          waitingHulls: cur.waitingHulls + 1,
+          lastDoor: "wait",
+          tankerPath: [],
+          tankerExited: false,
+          tankerPaid: false,
+        };
+        wave.waited += 1;
+        lastDoor = "wait";
+        continue;
+      }
+      const paid = door === "iran";
+      const path = paid ? iranPath() : omaniPath();
+      const lost0 = cur.books.hullsLost;
+      cur = runResolve(cur, path, door, paid);
+      const left = cur.trafficLeft.slice();
+      left[i] = (left[i] ?? 1) - 1;
+      cur = { ...cur, trafficLeft: left };
+      wave.sent += 1;
+      if (paid) wave.paid += 1;
+      else wave.omani += 1;
+      if (cur.books.hullsLost > lost0) {
+        wave.lost += 1;
+        lastCause = cur.lastLoss?.cause ?? "mine";
+        if (lastCause === "shot") shipHit = true;
+      } else {
+        wave.live += 1;
+        if (cur.books.damageUsdM > dmg0) shipHit = true;
+      }
+      lastDoor = door;
+      lastPaid = paid;
+    }
+    if (shipHit) {
+      cur = revealSpider(cur);
+    }
+    if (wave.waited > 0) {
+      cur = { ...cur, crewSour: false };
+    }
+    cur = finishTurn(cur);
+    const kind: TurnReport["kind"] =
+      wave.lost > 0
+        ? "lost"
+        : cur.books.damageUsdM > dmg0
+          ? "graze"
+          : wave.sent > 0
+            ? "live"
+            : "wait";
+    return attachReport(cur, {
+      kind,
+      door: lastDoor,
+      netDeltaUsdM: netUsdM(cur.books) - before,
+      freightUsdM: cur.books.freightUsdM - fr0,
+      bonusUsdM: cur.books.bonusUsdM - bo0,
+      tollUsdM: cur.books.tollUsdM - to0,
+      damageUsdM: cur.books.damageUsdM - dmg0,
+      idleUsdM: 0,
+      minesBought: wave.paid,
+      cause: lastCause,
+      paid: lastPaid,
+      wave,
+    });
+  }
+
   function finishTurn(s: GameState): GameState {
     let cur = applyPhase({ ...s, phase: "bankExit" }, "bankExit");
     cur = applyPhase({ ...cur, phase: "fuses" }, "fuses");
@@ -496,6 +807,19 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     if (state.phase === "matchOver") {
       return { ok: false, reason: "Match over.", state };
     }
+
+    if (action.type === "us-sweep" || action.type === "us-strike") {
+      if (state.phase !== "usOrders") {
+        return { ok: false, reason: `Illegal in phase ${state.phase}.`, state };
+      }
+      state =
+        action.type === "us-sweep"
+          ? applyUsOrders(state)
+          : applyUsStrike(state, action.target, action.type === "us-strike" ? action.pitId : undefined);
+      state = afterUsVerb(state);
+      return { ok: true, state };
+    }
+
     if (state.phase !== "tankerOrders") {
       return { ok: false, reason: `Illegal in phase ${state.phase}.`, state };
     }

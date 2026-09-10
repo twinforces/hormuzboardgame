@@ -70,3 +70,10 @@ test("a live exit still cuts P after the meter hits the peak", () => {
     `flow should bite the cap ${peaked} -> ${eng.state().price}`,
   );
 });
+
+test("a gulf drone raid after an ignored spider hole raises P", () => {
+  const s = createState(1, "mine-warfare");
+  const calm = sumPrice(priceComponents(s));
+  const hit = sumPrice(priceComponents({ ...s, gulfHits: 1 }));
+  assert.equal(hit, calm + PRICE.gulfDrone);
+});

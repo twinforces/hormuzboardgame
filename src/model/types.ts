@@ -19,7 +19,7 @@ export type Phase =
   | "decay"
   | "matchOver";
 
-export type ScenarioId = "reopen-lane" | "one-transit" | "overplay";
+export type ScenarioId = "reopen-lane" | "one-transit" | "overplay" | "mine-warfare";
 
 /** Sim space. Never pixels. */
 export type NmPoint = { xNm: number; yNm: number };
@@ -128,12 +128,48 @@ export type TurnReport = {
   iranShotPct: number;
   cause: "none" | "mine" | "shot";
   paid: boolean;
+  /** Who is watching this report. Traffic results when the human is US. */
+  watcher?: "tanker" | "us";
+  /** One week of ten companies. Present on the US sitting. */
+  wave?: {
+    sent: number;
+    waited: number;
+    paid: number;
+    omani: number;
+    live: number;
+    lost: number;
+  };
 };
 
+export type StrikeTarget =
+  | "mine-factory"
+  | "drone-factory"
+  | "mine-warehouse"
+  | "drone-warehouse"
+  | "radar"
+  | "port"
+  | "spider-hole";
+
 export type Industry = {
-  factoriesAlive: boolean;
-  depotsAlive: boolean;
+  mineFactoryAlive: boolean;
+  droneFactoryAlive: boolean;
+  mineDepotAlive: boolean;
+  droneDepotAlive: boolean;
+  radarAlive: boolean;
+  portAlive: boolean;
   knownPits: number;
+};
+
+/** Revealed launch cell. Strike it this week or the stash dumps. */
+export type SpiderHole = {
+  id: string;
+  pit: number;
+  lat: number;
+  lon: number;
+  mines: number;
+  drones: number;
+  revealedTurn: number;
+  alive: boolean;
 };
 
 export type PriceComponents = {
@@ -143,6 +179,7 @@ export type PriceComponents = {
   waiting: number;
   flow: number;
   kill: number;
+  gulf: number;
   contracts: number;
 };
 
@@ -181,6 +218,7 @@ export type GameState = {
   catastrophe: boolean;
   industry: Industry;
   iranPool: { boats: number; drones: number; mines: number };
+  usPool: { counterDrones: number; lasers: number };
   secretSuspicion: number;
   packageQueue: number;
   contracts: FuseState;
@@ -192,6 +230,10 @@ export type GameState = {
   };
   lastOffboard: UsOffboardAction | null;
   bribePolicy: BribePolicy;
+  gulfHits: number;
+  spiderHoles: SpiderHole[];
+  /** Hulls left per traffic company. Empty on tanker sittings. */
+  trafficLeft: number[];
 };
 
 export type DebugSnapshot = {

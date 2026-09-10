@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, fogTip, idleChargeLine, iranBrief, iranSeedLine, lossLines, outcomeLines, scoreLines, usBrief, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranSeedLine, lossLines, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -13,16 +13,17 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.doesNotMatch(COPY.fujairah, /Suez replacing/i);
   assert.match(COPY.fujairah, /Red Sea/);
   assert.match(COPY.roleLock, /Greece, Inc/);
-  assert.match(COPY.roleLock, /CEO waits/);
+  assert.match(COPY.roleLock, /Accountants pick/);
   assert.match(COPY.roleLock, /captains still balk/i);
-  assert.equal(COPY.ceoWait, "Wait. Mine and shot are still hot.");
-  assert.equal(COPY.boardActWait, COPY.ceoWait);
+  assert.equal(COPY.accountantSit, "Sit. Expected is negative.");
+  assert.equal(COPY.boardActWait, COPY.accountantSit);
   assert.match(COPY.waitHint, /Sit a night/);
   assert.match(COPY.sittingTitle, /sitting/i);
   assert.doesNotMatch(COPY.roleLock, /Onassis/i);
   assert.doesNotMatch(COPY.roleLock, /The Wire/i);
   assert.doesNotMatch(COPY.roleLock, /independent/i);
   assert.doesNotMatch(COPY.roleLock, /You are the tanker/i);
+  assert.doesNotMatch(JSON.stringify(COPY), /factory, warehouse, radar, port/i);
   assert.equal(COPY.roleTanker, "Owner");
   assert.equal(COPY.houseName, "Greece, Inc.");
   assert.match(COPY.balk, /Captains refuse/);
@@ -30,7 +31,7 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.booksNote, /trader bonus/i);
   assert.match(COPY.booksNote, /Oman-China/);
   assert.match(COPY.booksNote, /\$2M/);
-  assert.match(COPY.boardActSit, /Wait/);
+  assert.match(COPY.boardActSit, /Sit/);
   assert.match(COPY.policyBuy, /war-risk/i);
   assert.match(COPY.lossMine, /mine kill/i);
   assert.match(COPY.killHintIran, /till/);
@@ -45,7 +46,7 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.doesNotMatch(COPY.doorHint, /plot/i);
   assert.doesNotMatch(COPY.doorHint, /draw a track/i);
   assert.doesNotMatch(COPY.lastBeatIdle, /draw a track/i);
-  assert.equal(COPY.boardActWait, COPY.ceoWait);
+  assert.equal(COPY.boardActWait, COPY.accountantSit);
   assert.match(COPY.waitHint, /Sit a night/);
   assert.match(COPY.navyNote, /Green/);
   assert.match(COPY.navyNote, /Red does not sit inside green/);
@@ -53,6 +54,18 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.scenarioReopen, /Twelve hulls/);
   assert.match(COPY.scenarioOverplay, /three patches/);
   assert.equal(SCENARIO_KIT.overplay.label, "Packed TSS");
+  assert.match(COPY.scenarioMine, /You are US/);
+  assert.match(COPY.scenarioMine, /hundred/);
+  assert.match(COPY.tabIran, /Strikes/);
+  assert.match(COPY.tabStrait, /Strait/);
+  assert.match(COPY.warLock, /hundred/);
+  assert.match(COPY.warHint, /yellow mark/i);
+  assert.match(COPY.usStrike, /Strike/);
+  assert.match(COPY.outcomeBackStrikes, /strikes/i);
+  assert.equal(clickToStrike("Factory"), "Click to strike Factory");
+  assert.equal(clickToStrike("Warehouse"), "Click to strike Warehouse");
+  assert.doesNotMatch(COPY.warLock, /1\./);
+  assert.doesNotMatch(COPY.scenarioMine, /1\./);
   assert.match(COPY.booksIdle, /Idle/);
   assert.match(COPY.scoreTitle, /Out of hulls/);
   assert.match(COPY.scoreReplay, /Replay/);
@@ -241,6 +254,107 @@ test("navy lines sink minelayers. Iran seeds. Pay does not sweep.", () => {
     paid: true,
   });
   assert.ok(paid.some((l) => /\$2M in tolls, buying Iran 1 mine/.test(l)));
+});
+
+test("strike lines name the node without printing a numbered plan", () => {
+  assert.match(usStrikeLine({ turn: 1, target: "mine-factory", already: false }), /roof is gone/);
+  assert.match(
+    usStrikeLine({ turn: 1, target: "radar", already: false, droneFactoryUp: true }),
+    /Mines still drift/,
+  );
+  assert.match(
+    usStrikeLine({ turn: 1, target: "radar", already: false, droneFactoryUp: true }),
+    /Drones guess/,
+  );
+  assert.match(
+    usStrikeLine({ turn: 1, target: "port", already: false, mineFactoryUp: true }),
+    /spider hole showed itself/,
+  );
+  assert.doesNotMatch(
+    usStrikeLine({ turn: 1, target: "port", already: false, mineFactoryUp: true }),
+    /mine-factory, drone-factory/i,
+  );
+  const traffic = outcomeLines({
+    id: "w1",
+    turn: 1,
+    kind: "wait",
+    door: "wait",
+    netDeltaUsdM: 0,
+    freightUsdM: 0,
+    bonusUsdM: 0,
+    tollUsdM: 0,
+    damageUsdM: 0,
+    idleUsdM: 20,
+    minesBought: 0,
+    usLine: "US Navy sank 2 minelayers.",
+    iranLine: "Iran seeded 1 mine in the TSS.",
+    omaniMinePct: 40,
+    iranMinePct: 0,
+    omaniShotPct: 10,
+    iranShotPct: 6,
+    cause: "none",
+    paid: false,
+    watcher: "us",
+  });
+  assert.equal(outcomeTitle({
+    id: "w1",
+    turn: 1,
+    kind: "wait",
+    door: "wait",
+    netDeltaUsdM: 0,
+    freightUsdM: 0,
+    bonusUsdM: 0,
+    tollUsdM: 0,
+    damageUsdM: 0,
+    idleUsdM: 20,
+    minesBought: 0,
+    usLine: "x",
+    iranLine: "y",
+    omaniMinePct: 40,
+    iranMinePct: 0,
+    omaniShotPct: 10,
+    iranShotPct: 6,
+    cause: "none",
+    paid: false,
+    watcher: "us",
+  }), COPY.trafficWait);
+  assert.ok(traffic.some((l) => /Traffic sat/.test(l)));
+  assert.ok(!traffic.some((l) => /You made/.test(l)));
+  const war = scoreLines({
+    weeks: 8,
+    live: 7,
+    lost: 1,
+    freightUsdM: 0,
+    bonusUsdM: 0,
+    idleUsdM: 0,
+    tollUsdM: 4,
+    minesBought: 2,
+    omaniSent: 5,
+    iranSent: 2,
+    netUsdM: 0,
+    price: 110,
+    seat: "us",
+    factoryUp: true,
+    warehouseUp: false,
+    radarUp: true,
+    portUp: true,
+  });
+  assert.ok(war.some((l) => /Traffic live 7/.test(l)));
+  assert.ok(war.some((l) => /Mine factory still prints/.test(l)));
+  assert.ok(war.some((l) => /Mine warehouse is down/.test(l)));
+  assert.ok(!war.some((l) => /Traders paid you/.test(l)));
+});
+
+test("spider copy names the stash without numbering a plan", () => {
+  assert.match(
+    spiderRevealLine({ turn: 2, mines: 4, drones: 3 }),
+    /4 mines and 3 drones/,
+  );
+  assert.match(spiderTipLine({ mines: 4, drones: 3 }), /Hidden stash: 4 mines, 3 drones/);
+  assert.match(spiderDumpLine({ turn: 3, mines: 4, drones: 3 }), /4 mines/);
+  assert.match(spiderDumpLine({ turn: 3, mines: 4, drones: 3 }), /3 drones hit a Gulf state/);
+  assert.doesNotMatch(spiderRevealLine({ turn: 2, mines: 4, drones: 3 }), /\u2014/);
+  assert.doesNotMatch(spiderDumpLine({ turn: 3, mines: 4, drones: 3 }), /\u2014/);
 });
 
 

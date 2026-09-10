@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { COPY, SCENARIO_KIT } from "@/model/copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike } from "@/model/copy.ts";
+import { STRIKE, STRIKE_NODES } from "@/model/balance.ts";
 import { netUsdM } from "@/model/company.ts";
-import type { DebugSnapshot, ScenarioId } from "@/model/types.ts";
+import type { DebugSnapshot, ScenarioId, StrikeTarget } from "@/model/types.ts";
 import { useSession } from "./use-session.ts";
 import { MapBoard } from "./map-board.tsx";
+import { IranBoard } from "./iran-board.tsx";
 import { OutcomeDialog } from "./outcome-dialog.tsx";
 import { ScoreDialog } from "./score-dialog.tsx";
 import { cn } from "@/lib/cn.ts";
@@ -19,7 +21,9 @@ function readStoredSeed(): number {
 function readStoredScenario(): ScenarioId {
   if (typeof window === "undefined") return "reopen-lane";
   const raw = window.localStorage.getItem("hormuz.scenario");
-  if (raw === "one-transit" || raw === "overplay" || raw === "reopen-lane") return raw;
+  if (raw === "one-transit" || raw === "overplay" || raw === "reopen-lane" || raw === "mine-warfare") {
+    return raw;
+  }
   return "reopen-lane";
 }
 
@@ -31,7 +35,13 @@ export function PlayPage() {
   const [debug, setDebug] = useState(false);
   const [reportSeen, setReportSeen] = useState<string | null>(null);
   const [scoreOpen, setScoreOpen] = useState(false);
+  const [board, setBoard] = useState<"iran" | "strait">("strait");
   const d = session.debug();
+  const war = labels.seat === "us";
+
+  useEffect(() => {
+    setBoard(war ? "iran" : "strait");
+  }, [war]);
 
   useEffect(() => {
     if (acted.current) return;
@@ -71,7 +81,93 @@ export function PlayPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
-      <MapBoard
+      <section className="rounded-lg border border-border bg-surface p-4">
+        <p className="font-mono text-2xs uppercase tracking-widest text-accent">
+          {COPY.scenarioAsk}
+        </p>
+        <p className="mt-1 text-sm text-muted">{COPY.scenarioHelp}</p>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {SCENARIO_IDS.map((id) => {
+            const sc = SCENARIO_KIT[id];
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => {
+                  acted.current = false;
+                  setScenario(id);
+                  window.localStorage.setItem("hormuz.scenario", id);
+                }}
+                className={cn(
+                  "min-h-11 rounded-md border px-3 py-2 text-left text-sm transition-transform duration-150 ease-out active:scale-[0.96]",
+                  scenario === id
+                    ? "border-accent bg-surface-2 text-accent"
+                    : "border-border text-muted",
+                )}
+              >
+                <span className="block">{sc.label}</span>
+                <span className="mt-0.5 block font-mono text-2xs font-normal text-faint">
+                  {sc.blurb}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+      {war ? (
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setBoard("iran")}
+            className={cn(
+              "min-h-11 rounded-md border px-4 text-sm",
+              board === "iran" ? "border-accent bg-surface-2 text-accent" : "border-border text-muted",
+            )}
+          >
+            {COPY.tabIran}
+          </button>
+          <button
+            type="button"
+            onClick={() => setBoard("strait")}
+            className={cn(
+              "min-h-11 rounded-md border px-4 text-sm",
+              board === "strait" ? "border-accent bg-surface-2 text-accent" : "border-border text-muted",
+            )}
+          >
+            {COPY.tabStrait}
+          </button>
+          <p className="font-mono text-2xs text-muted">{COPY.strikeMarks}</p>
+        </div>
+      ) : null}
+      {war && board === "iran" ? (
+        <IranBoard
+          canAct={labels.canAct}
+          mineFactoryUp={labels.factoryUp}
+          droneFactoryUp={labels.droneFactoryUp}
+          mineWarehouseUp={labels.warehouseUp}
+          droneWarehouseUp={labels.droneWarehouseUp}
+          radarUp={labels.radarUp}
+          portUp={labels.portUp}
+          spiderHoles={labels.spiderHoles}
+          price={labels.price}
+          omaniKill={labels.omaniKill}
+          waiting={String(state.waitingHulls)}
+          live={labels.booksLive}
+          lost={labels.booksLost}
+          magDrones={labels.magDrones}
+          magCounter={labels.magCounter}
+          magLasers={labels.magLasers}
+          magMines={labels.magMines}
+          magBoats={labels.magBoats}
+          onStrike={(target: StrikeTarget, pitId?: string) => {
+            markAct();
+            session.usStrike(target, pitId);
+            setBoard("strait");
+          }}
+          onOpenStrait={() => setBoard("strait")}
+        />
+      ) : (
+        <MapBoard
           state={state}
           price={labels.price}
           band={labels.band}
@@ -106,21 +202,101 @@ export function PlayPage() {
             session.actRecommended();
           }}
         />
+      )}
 
       <div className="grid gap-4 lg:grid-cols-2">
           <section className="rounded-lg border border-border bg-surface p-4">
             <p className="font-mono text-2xs uppercase tracking-widest text-accent">
-              {COPY.houseName}
+              {labels.houseName}
             </p>
-            <p className="mt-3 text-sm text-muted">{COPY.roleLock}</p>
+            <p className="mt-3 text-sm text-muted">{war ? COPY.warLock : COPY.roleLock}</p>
             <p className="mt-2 text-sm text-muted">{labels.hint}</p>
+
+            {war ? (
+              <div className="mt-4 space-y-3">
+                <dl className="grid grid-cols-2 gap-2 font-mono text-xs sm:grid-cols-5">
+                  <Stat k={COPY.magMines} v={labels.magMines} />
+                  <Stat k={COPY.magDrones} v={labels.magDrones} />
+                  <Stat k={COPY.magBoats} v={labels.magBoats} />
+                  <Stat k={COPY.magCounter} v={labels.magCounter} />
+                  <Stat k={COPY.magLasers} v={labels.magLasers} />
+                </dl>
+                <p className="font-mono text-2xs text-muted">{COPY.strikeMarks}</p>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {STRIKE.targets.map((id) => {
+                    const n = STRIKE_NODES[id];
+                    const liveNode =
+                      id === "mine-factory"
+                        ? labels.factoryUp
+                        : id === "drone-factory"
+                          ? labels.droneFactoryUp
+                          : id === "mine-warehouse"
+                            ? labels.warehouseUp
+                            : id === "drone-warehouse"
+                              ? labels.droneWarehouseUp
+                              : id === "radar"
+                                ? labels.radarUp
+                                : labels.portUp;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        disabled={!labels.canAct || !liveNode}
+                        title={liveNode ? clickToStrike(n.label) : `${n.label} ${COPY.nodeDown}`}
+                        onClick={() => {
+                          markAct();
+                          session.usStrike(id);
+                          setBoard("strait");
+                        }}
+                        className={cn(
+                          "min-h-11 rounded-md border px-3 text-sm disabled:opacity-50",
+                          liveNode
+                            ? "border-accent bg-surface-2 text-fg"
+                            : "border-border bg-bg text-faint",
+                        )}
+                      >
+                        {liveNode ? `${COPY.usStrike} ${n.label}` : `${n.label} ${COPY.nodeDown}`}
+                      </button>
+                    );
+                  })}
+                  {labels.spiderHoles.map((h) => (
+                    <button
+                      key={h.id}
+                      type="button"
+                      disabled={!labels.canAct}
+                      title={clickToStrike(COPY.spiderHole)}
+                      onClick={() => {
+                        markAct();
+                        session.usStrike("spider-hole", h.id);
+                        setBoard("strait");
+                      }}
+                      className="min-h-11 rounded-md border border-danger bg-surface-2 px-3 text-sm text-fg disabled:opacity-50"
+                    >
+                      {COPY.usStrike} {COPY.spiderHole}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  disabled={!labels.canAct}
+                  onClick={() => {
+                    markAct();
+                    session.usSweep();
+                  }}
+                  className="min-h-11 w-full rounded-md bg-lane px-3 text-sm text-fg disabled:opacity-50"
+                >
+                  {COPY.usSweep}
+                </button>
+              </div>
+            ) : null}
             <p className="mt-2 font-mono text-2xs leading-snug text-accent" aria-live="polite">
               {labels.lastBeat}
             </p>
 
+            {war ? null : (
             <div className="mt-4 rounded-md border border-accent/40 bg-bg px-3 py-2">
               <p className="font-mono text-2xs uppercase tracking-widest text-accent">
-                {COPY.ceo}
+                {COPY.accountant}
               </p>
               <dl className="mt-2 grid grid-cols-2 gap-2 font-mono text-xs">
                 <Stat
@@ -135,9 +311,10 @@ export function PlayPage() {
                 />
               </dl>
               <p className="mt-2 font-mono text-xs text-fg">{labels.boardAct}</p>
-              <p className="mt-1 font-mono text-2xs text-muted">{COPY.accountantNote}</p>
             </div>
+            )}
 
+            {war ? null : (
             <label
               className={cn(
                 "mt-4 flex min-h-11 items-center gap-3 rounded-md border px-3 text-sm",
@@ -162,7 +339,9 @@ export function PlayPage() {
                 </span>
               </span>
             </label>
+            )}
 
+            {war ? null : (
             <div className="mt-3 flex flex-col gap-2">
               <button
                 type="button"
@@ -224,13 +403,14 @@ export function PlayPage() {
                 </span>
               </button>
             </div>
+            )}
             {error ? (
               <p className="mt-2 text-sm text-danger">{error}</p>
             ) : null}
 
             <div className="mt-3 rounded-md border border-border bg-bg px-3 py-2">
               <p className="font-mono text-2xs uppercase tracking-widest text-accent">
-                {labels.houseName}
+                {war ? COPY.trafficBooks : labels.houseName}
               </p>
               <dl className="mt-2 grid grid-cols-2 gap-2 font-mono text-xs">
                 <Stat k={COPY.booksLeft} v={labels.booksLeft} />
@@ -258,7 +438,9 @@ export function PlayPage() {
               >
                 {COPY.booksNet} {labels.booksNet}
               </p>
-              <p className="mt-1 text-2xs leading-snug text-faint">{COPY.booksNote}</p>
+              <p className="mt-1 text-2xs leading-snug text-faint">
+                {war ? COPY.trafficNote : COPY.booksNote}
+              </p>
             </div>
           </section>
 
@@ -266,33 +448,7 @@ export function PlayPage() {
             <p className="font-mono text-2xs uppercase tracking-widest text-accent">
               {COPY.sittingTitle}
             </p>
-            <p className="mt-2 text-sm text-muted">{COPY.scenarioHelp}</p>
             <div className="mt-3 flex flex-col gap-2">
-              {SCENARIO_IDS.map((id) => {
-                const sc = SCENARIO_KIT[id];
-                return (
-                  <button
-                    key={id}
-                    type="button"
-                    onClick={() => {
-                      acted.current = false;
-                      setScenario(id);
-                      window.localStorage.setItem("hormuz.scenario", id);
-                    }}
-                    className={cn(
-                      "min-h-11 rounded-md border px-3 py-2 text-left text-sm transition-transform duration-150 ease-out active:scale-[0.96]",
-                      scenario === id
-                        ? "border-accent bg-surface-2 text-accent"
-                        : "border-border text-muted",
-                    )}
-                  >
-                    <span className="block">{sc.label}</span>
-                    <span className="mt-0.5 block font-mono text-2xs font-normal text-faint">
-                      {sc.blurb}
-                    </span>
-                  </button>
-                );
-              })}
               <button
                 type="button"
                 onClick={replay}
@@ -325,6 +481,8 @@ export function PlayPage() {
         onClose={() => {
           if (state.lastReport) setReportSeen(state.lastReport.id);
         }}
+        onSeeStrait={() => setBoard("strait")}
+        onSeeStrikes={() => setBoard("iran")}
       />
 
       <ScoreDialog
@@ -346,6 +504,13 @@ export function PlayPage() {
           iranSent: state.books.iranSent,
           netUsdM: netUsdM(state.books),
           price: state.price,
+          seat: labels.seat,
+          factoryUp: labels.factoryUp,
+          droneFactoryUp: labels.droneFactoryUp,
+          warehouseUp: labels.warehouseUp,
+          droneWarehouseUp: labels.droneWarehouseUp,
+          radarUp: labels.radarUp,
+          portUp: labels.portUp,
         }}
         onReplay={replay}
         onFresh={fresh}

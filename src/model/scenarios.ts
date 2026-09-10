@@ -4,13 +4,18 @@
  */
 
 import { lonLatToNm } from "./geo.ts";
-import type { MineCircle, ScenarioId } from "./types.ts";
+import type { MineCircle, Role, ScenarioId } from "./types.ts";
 
 export const SCENARIO_TURNS: Record<ScenarioId, number> = {
   "reopen-lane": 0,
   "one-transit": 0,
   overplay: 0,
+  "mine-warfare": 0,
 };
+
+export function humanSeat(scenario: ScenarioId): Role {
+  return scenario === "mine-warfare" ? "us" : "tanker";
+}
 
 function mine(
   id: string,

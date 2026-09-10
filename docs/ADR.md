@@ -139,21 +139,30 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Decision:** Three legal paths, in order. (1) User pastes YouTube Show transcript into chat. (2) Agent walks each watch URL in timestamp chunks into `docs/ingest/nd-<id>.txt`. (3) Search-index excerpts stay partial. Never mark full without a complete file in-repo.
 - **Why:** The teaching claim is industrial math. Pretending a 3 minute caption scrape is a 15 minute watch is a Reviewer fail.
 
-## ADR-016. The tanker is a CEO script, not an accountant
+## ADR-016. Accountant gold chip. CEO mix is traffic AI.
 
 - **Status:** accepted
-- **Context:** User play: wait until mine and shot are quiet, never pay Iran, accountants are not the CEO. Iran/US play needs a scripted tanker to fight over.
-- **Decision:** `ceoPick` is the gold chip and `actRecommended`. Wait while Omani mine > 15% or shot > 12%, then Oman. Never Iran. After 6 waits, sail anyway (charterers). `accountantPick` still computes EV so the pane can show the temptation.
-- **Why:** Tolls buy mines. A plus-EV till is how you fund the next wave. The owner does not do that. Accountants remain on the books as a warning, not a door.
+- **Context:** User: CEO talk was color for behind-the-scenes tanker AI. People playing the tanker side should see accountant recommendations and have to learn to ignore them. Traffic flavor: 4 pay the till (Iran gets 4 mines), 6 wait.
+- **Decision:** Tanker view gold chip stays `accountantPick`. `ceoPick` is a persona. `TRAFFIC` is 4 accountant / 6 CEO, shuffled. Scripted traffic uses `tankerAiPick`.
+- **Why:** The till is plus-EV week one. That is the trap. Hiding it behind a CEO chip teaches the wrong sitting.
 
-## ADR-017. Next slice is mine warfare, not factories
+## ADR-017. Mine warfare is a second board
 
-- **Status:** proposed
-- **Context:** `usOrders` and `iranOrders` auto-fire sweep+lay every week. Types already list strike-industry, pits, off-board levers. Tanker is now a script, so those phases are the game.
-- **Decision:** First US/Iran slice is mine verbs only. US: sweep, sense, escort, hold. Iran: lay TSS, surge, hold. Not the till. High P funds Iran's pool (ARCHITECTURE invariant 8) because the CEO never pays the toll. Factories, off-board, secret pipeline wait.
-- **Why:** One new input phase per faction. If we open factories in the same slice, STEEL years and mine holes fight for attention and neither teaches.
-- **Rejected:** Keep auto-firing both sides while the human is still the tanker. That sitting is done.
+- **Status:** accepted
+- **Context:** Strait crop cannot show Shahroud / Isfahan / Parchin / Khojir. User wants remaining drones / counter-drones / lasers, factory marks, US strike Factory / Warehouse / Radar / Port. User: show both maps, or a tab to the strait to see results.
+- **Decision:** New Iran-board sitting. Different Sentinel crop (47E-62E, 25N-38N). Named nodes. Magazine bars. Tabs: Iran (strike) and Strait (traffic / fog). After a US verb the board flips to the strait. Strike labels are the four nouns, never numbered. Ideal order Factory, Warehouse, Radar, Port lives in `STRIKE.ideal` only.
+- **Why:** A JDAM on a mine fog circle teaches clearance-is-rented backwards. Industry is inland. The strait stays the tanker board.
+- **Rejected:** Zoom the Hormuz Sentinel until Tehran fits. Hormuz becomes a pixel.
+
+## ADR-021. Two plants, two sheds, radar blinds drones, ships reveal spider holes
+
+- **Status:** accepted
+- **Context:** User: Mine Factory and Drone Factory are different factories, different warehouses. Radar cuts drone accuracy, not mines (mines drift). Hitting a ship exposes a spider hole with hidden mines/drones. Striking the hole eats a turn. Ignore it next turn and you get more mines, maybe drone attacks on other Gulf states.
+- **Decision:** Standing Iran nodes are six nouns: mine factory, drone factory, mine warehouse, drone warehouse, radar, port. Spider holes are revealed, not a seventh lesson on the board. Radar multiplies drone shot only (`ATTACK.radarBlind`). Boats and mine fog ignore it. A ship hit is (1) a port strike on pierside hulls or (2) a tanker graze or shot-kill. That reveal shows the stash integers. The hole is the week's US verb. Leave it alive into the next resolve and the stash dumps extra TSS mines plus a Gulf drone tick (`PRICE.gulfDrone`).
+- **Why:** One "factory" button taught the wrong industrial map. Radar as a mine sweeper taught the wrong physics. Spider holes are the whack-a-mole that starts when a hull gets hit, not a labeled pit on day one.
+- **Rejected:** One shared plant. Radar shrinking fog circles. Numbering Factory / Warehouse / Radar / Port / Hole on the board.
 
 ## Open questions
 
-Mine-warfare AI tendencies and whether the default human seat is US or Iran. See `docs/MINE-WARFARE.md`.
+
+Default human seat Iran vs US (US shipped). Laser vs "effectors" copy.

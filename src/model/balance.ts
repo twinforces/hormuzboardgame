@@ -74,6 +74,8 @@ export const PRICE = {
    */
   exitRelief: 16,
   contractsRelief: 3,
+  /** Drone dump on a Gulf state after you ignore a spider hole. */
+  gulfDrone: 8,
 } as const;
 
 export function bandOf(price: number): PriceBand {
@@ -257,14 +259,21 @@ export const DEEP_WATER: LonLat[] = [
  * graze. Kill from a shot is rare.
  */
 export const ATTACK = {
+  omaniDrone: 0.2,
+  omaniBoat: 0.12,
+  /** Sum of drone plus boat. Naked Omani shot with radar and boats up. */
   omaniShot: 0.32,
   iranPaid: 0.06,
+  iranNakedDrone: 0.14,
+  iranNakedBoat: 0.08,
   iranNaked: 0.22,
   escortCoverPerWait: 0.35,
   escortCoverMax: 0.7,
   missWeight: 0.62,
   grazeWeight: 0.33,
   killWeight: 0.05,
+  /** Dead radar. Drones guess. Boats and mines do not use this. */
+  radarBlind: 0.4,
   grazeUsdMByBand: {
     cheap: 2,
     tolerable: 3,
@@ -362,6 +371,7 @@ export const COMPANY = {
     "reopen-lane": 12,
     "one-transit": 1,
     overplay: 5,
+    "mine-warfare": 100,
   },
 } as const;
 
@@ -374,6 +384,119 @@ export const CEO = {
   maxMine: 0.15,
   maxShot: 0.12,
   maxWaitWeeks: 6,
+} as const;
+
+/**
+ * Scripted traffic when the human is US or Iran, not the tanker.
+ * Ten companies, 100 hulls. Four greedy houses count EV. Six wait for a
+ * sweep. Once the till is the hotter mine field, even the greedy flip.
+ */
+export const TRAFFIC = {
+  hulls: 100,
+  companies: 10,
+  pay: 4,
+  wait: 6,
+} as const;
+
+/**
+ * Factory prints into the warehouse. Warehouse dumps into the TSS.
+ * Strike the plant, the +10 stops. Strike the sheds, the stack is gone
+ * and the 3-at-a-time dump stops.
+ */
+export const MINES = {
+  warehouseStart: 30,
+  factoryPerTurn: 10,
+  warehouseLay: 3,
+} as const;
+
+/**
+ * Separate plant from the mine sheds. Radar blinds these, not mines.
+ */
+export const DRONES = {
+  warehouseStart: 6,
+  factoryPerTurn: 2,
+} as const;
+
+/**
+ * Coastal cells, not Khojir glued onto the Hormuz photo.
+ * Hit a ship, one of these shows. Strike it this week or it dumps.
+ */
+export const SPIDER = {
+  stashMines: 4,
+  stashDrones: 3,
+  pits: [
+    { lat: 26.82, lon: 55.95 },
+    { lat: 26.264, lon: 55.305 },
+    { lat: 25.879, lon: 55.023 },
+    { lat: 25.64, lon: 57.77 },
+  ] as const,
+} as const;
+
+/**
+ * US strike nouns on the Iran board. Ideal order is for tests and
+ * after-action only. Never print this sequence in player copy.
+ * Spider holes are revealed, not a standing sixth lesson.
+ */
+export const STRIKE = {
+  targets: [
+    "mine-factory",
+    "drone-factory",
+    "mine-warehouse",
+    "drone-warehouse",
+    "radar",
+    "port",
+  ] as const,
+  ideal: [
+    "mine-factory",
+    "drone-factory",
+    "mine-warehouse",
+    "drone-warehouse",
+    "radar",
+    "port",
+  ] as const,
+} as const;
+
+/** Iran hinterland board. Not the strait crop. Hormuz sits in the SE corner. */
+export const IRAN_MAP = {
+  imageSrc: "/maps/iran-sentinel.jpg",
+  credit:
+    "Sentinel-2 cloudless 2024 by EOX. Contains modified Copernicus Sentinel data. CC BY 4.0.",
+  widthPx: 1600,
+  heightPx: 1400,
+  westLon: 47,
+  eastLon: 62,
+  southLat: 25,
+  northLat: 38,
+} as const;
+
+/**
+ * Teaching nodes. Names only. Not a numbered plan.
+ * Shahroud drones, Parchin mines, Isfahan drone sheds, Bandar mine sheds,
+ * coastal radar, Bandar Abbas pier.
+ */
+export const STRIKE_NODES: Record<
+  (typeof STRIKE.targets)[number],
+  LonLat & { label: string }
+> = {
+  "mine-factory": { lat: 35.52, lon: 51.77, label: "Mine factory" },
+  "drone-factory": { lat: 36.42, lon: 55.02, label: "Drone factory" },
+  "mine-warehouse": { lat: 27.35, lon: 56.1, label: "Mine warehouse" },
+  "drone-warehouse": { lat: 32.65, lon: 51.68, label: "Drone warehouse" },
+  radar: { lat: 26.95, lon: 56.15, label: "Radar" },
+  port: { lat: 27.183, lon: 56.267, label: "Port" },
+};
+
+/**
+ * Magazines as remaining integers. A strike cuts refill or the stack.
+ * Lasers spend first, then counter-drones. One intercept a week.
+ */
+export const MAGAZINE = {
+  iranDrones: DRONES.warehouseStart,
+  iranBoats: 4,
+  iranMines: MINES.warehouseStart,
+  usCounterDrones: 8,
+  usLasers: 5,
+  interceptPerWeek: 1,
 } as const;
 
 /**

@@ -331,6 +331,18 @@ export const RECEIPTS: Receipt[] = [
     beats: ["21nm", "fujairah-door"],
   },
   {
+    id: "eox-s2cloudless-iran",
+    kind: "geography",
+    title: "Sentinel-2 cloudless mosaic of the Iran hinterland",
+    authors: "EOX IT Services GmbH / Copernicus",
+    date: "2024",
+    url: "https://s2maps.eu/",
+    ingest: "full",
+    annotation:
+      "Iran-board photo for the mine-warfare sitting. Crop west 47 east 62 south 25 north 38, 1600x1400, EPSG:4326. Same EOX s2cloudless-2024 WMS as the Hormuz plate. Shahroud, Isfahan, and Bandar Abbas fit. Hormuz sits in the southeast corner. This is not a zoom of the strait crop. Overlay nodes are teaching marks, not a classified site list.",
+    beats: ["bomb-factories-first", "bomb-storehouses"],
+  },
+  {
     id: "jmic-011-26",
     kind: "official",
     title: "JMIC Advisory Note 011-26, southern corridor widened",

@@ -19,12 +19,22 @@ export function shotChance(opts: {
   door: TankerDoor;
   waitingHulls: number;
   paid: boolean;
+  radarAlive?: boolean;
+  drones?: number;
+  boats?: number;
 }): number {
   if (opts.door === "wait") return 0;
+  const drones = opts.drones ?? 1;
+  const boats = opts.boats ?? 1;
+  const radar = opts.radarAlive === false ? ATTACK.radarBlind : 1;
   if (opts.door === "iran") {
-    return opts.paid ? ATTACK.iranPaid : ATTACK.iranNaked;
+    const drone = drones > 0 ? (opts.paid ? ATTACK.iranPaid : ATTACK.iranNakedDrone) * radar : 0;
+    const boat = opts.paid || boats <= 0 ? 0 : ATTACK.iranNakedBoat;
+    return drone + boat;
   }
-  return ATTACK.omaniShot * (1 - escortCover(opts.waitingHulls));
+  const drone = drones > 0 ? ATTACK.omaniDrone * radar : 0;
+  const boat = boats > 0 ? ATTACK.omaniBoat * (1 - escortCover(opts.waitingHulls)) : 0;
+  return drone + boat;
 }
 
 export function grazeUsdM(price: number): number {

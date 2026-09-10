@@ -10,6 +10,7 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   const board = readFileSync(join(dir, "map-board.tsx"), "utf8");
   const play = readFileSync(join(dir, "play-page.tsx"), "utf8");
   const briefing = readFileSync(join(dir, "briefing.tsx"), "utf8");
+  const iran = readFileSync(join(dir, "iran-board.tsx"), "utf8");
   assert.match(play, /onOmani=/);
   assert.match(play, /onIran=/);
   assert.match(play, /onBoardAct=/);
@@ -42,7 +43,7 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(play, /lg:grid-cols-2/);
   assert.doesNotMatch(play, /lg:grid-cols-3/);
   assert.match(play, /COPY\.sittingTitle/);
-  assert.match(play, /COPY\.ceo/);
+  assert.match(play, /COPY\.accountant/);
   assert.doesNotMatch(play, />\s*Fuses\s*</);
   assert.match(board, /onIran: \(\) => void/);
   assert.match(board, /onBoardAct: \(\) => void/);
@@ -58,6 +59,23 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.doesNotMatch(board, /You do not draw a track/);
   assert.doesNotMatch(briefing, /not a plotted track/i);
   assert.doesNotMatch(briefing, /draw a track/i);
+  assert.match(play, /COPY\.tabIran/);
+  assert.match(play, /COPY\.tabStrait/);
+  assert.match(play, /IranBoard/);
+  assert.match(play, /session\.usSweep/);
+  assert.match(play, /session\.usStrike/);
+  assert.match(play, /COPY\.scenarioAsk/);
+  assert.match(play, /setBoard\("strait"\)/);
+  assert.match(iran, /STRIKE_NODES/);
+  assert.match(iran, /onOpenStrait/);
+  assert.match(iran, /clickToStrike/);
+  assert.match(iran, /COPY\.usStrike/);
+  assert.match(iran, /role="tooltip"/);
+  assert.match(iran, /onPointerEnter/);
+  assert.match(play, /COPY\.usStrike/);
+  assert.match(play, /clickToStrike/);
+  assert.doesNotMatch(iran, /STRIKE\.ideal/);
+  assert.doesNotMatch(play, /STRIKE\.ideal/);
 });
 
 test("price meter stays a meter; mine circles carry mines est", () => {

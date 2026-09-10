@@ -5,6 +5,8 @@ import {
   accountantPick,
   captainsBalk,
   ceoPick,
+  tankerAiPick,
+  tankerPersonas,
   emptyBooks,
   expectedVoyageUsdM,
   fleetSize,
@@ -256,4 +258,34 @@ test("CEO waits the hot ribbon, never pays, and sails Oman when both risks are q
     ceoPick({ balk: false, omaniKill: 0.5, omaniShot: 0.4, waitingHulls: 6 }),
     "omani",
   );
+});
+
+test("scripted traffic is four paying houses and six waiters, shuffled", () => {
+  const deck = tankerPersonas(1);
+  assert.equal(deck.length, 10);
+  assert.equal(deck.filter((p) => p === "accountant").length, 4);
+  assert.equal(deck.filter((p) => p === "ceo").length, 6);
+  const other = tankerPersonas(2);
+  assert.notDeepEqual(deck, other);
+  const greedy = {
+    balk: false,
+    omaniKill: 0.66,
+    iranKill: 0,
+    payUsdM: 40,
+    crewUsdM: 0,
+    insured: false,
+    premiumUsdM: 0,
+    tollUsdM: 2,
+    idleUsdM: 4,
+  };
+  const stubborn = {
+    balk: false,
+    omaniKill: 0.66,
+    omaniShot: 0.32,
+    waitingHulls: 0,
+  };
+  assert.equal(tankerAiPick("accountant", greedy, stubborn), "iran");
+  assert.equal(tankerAiPick("ceo", greedy, stubborn), "wait");
+  const flipped = { ...greedy, iranKill: 0.7, omaniKill: 0.2 };
+  assert.equal(tankerAiPick("accountant", flipped, stubborn), "omani");
 });

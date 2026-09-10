@@ -6,9 +6,13 @@ import { cn } from "@/lib/cn.ts";
 export function OutcomeDialog({
   report,
   onClose,
+  onSeeStrait,
+  onSeeStrikes,
 }: {
   report: TurnReport | null;
   onClose: () => void;
+  onSeeStrait?: () => void;
+  onSeeStrikes?: () => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
 
@@ -46,6 +50,30 @@ export function OutcomeDialog({
               <li key={line}>{line}</li>
             ))}
           </ul>
+          {report.watcher === "us" ? (
+            <div className="mt-4 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  onSeeStrait?.();
+                  ref.current?.close();
+                }}
+                className="min-h-11 w-full rounded-md bg-accent px-3 font-medium text-accent-fg transition-transform duration-150 ease-out active:scale-[0.96]"
+              >
+                {COPY.outcomeCloseWar}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onSeeStrikes?.();
+                  ref.current?.close();
+                }}
+                className="min-h-11 w-full rounded-md border border-border bg-surface-2 px-3 text-sm"
+              >
+                {COPY.outcomeBackStrikes}
+              </button>
+            </div>
+          ) : (
           <form method="dialog" className="mt-4">
             <button
               type="submit"
@@ -54,6 +82,7 @@ export function OutcomeDialog({
               {COPY.outcomeClose}
             </button>
           </form>
+          )}
         </>
       ) : null}
     </dialog>

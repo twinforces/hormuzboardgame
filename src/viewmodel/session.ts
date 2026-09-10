@@ -6,10 +6,10 @@
  */
 
 import { bandOf, COMPANY } from "../model/balance.ts";
+import { humanSeat } from "../model/scenarios.ts";
 import { COPY, BAND_LABEL, SCENARIO_KIT, idleChargeLine, iranBrief, usBrief } from "../model/copy.ts";
 import {
   accountantPick,
-  ceoPick,
   captainsBalk,
   hullsLeft,
   idleThisWeek,
@@ -25,9 +25,10 @@ import {
   type DispatchResult,
   type Engine,
 } from "../model/engine.ts";
+import { flyingDrones } from "../model/ai.ts";
 import { grazeUsdM, shotChance } from "../model/combat.ts";
 import { combinedKillChance } from "../model/geo.ts";
-import type { DebugSnapshot, GameState, ScenarioId } from "../model/types.ts";
+import type { DebugSnapshot, GameState, ScenarioId, SpiderHole, StrikeTarget } from "../model/types.ts";
 
 export type RecommendedDoor = "wait" | "omani" | "iran" | "none";
 
@@ -85,6 +86,19 @@ export type SessionLabels = {
   policyOn: boolean;
   policyOpen: boolean;
   policyCost: string;
+  seat: "us" | "tanker";
+  magDrones: string;
+  magCounter: string;
+  magLasers: string;
+  magMines: string;
+  magBoats: string;
+  factoryUp: boolean;
+  droneFactoryUp: boolean;
+  warehouseUp: boolean;
+  droneWarehouseUp: boolean;
+  radarUp: boolean;
+  portUp: boolean;
+  spiderHoles: SpiderHole[];
 };
 
 export type SessionSnapshot = {
@@ -117,6 +131,8 @@ export type MapSession = {
   omani: () => DispatchResult;
   toll: () => DispatchResult;
   wait: () => DispatchResult;
+  usSweep: () => DispatchResult;
+  usStrike: (target: StrikeTarget, pitId?: string) => DispatchResult;
   setPolicy: (on: boolean) => DispatchResult;
   actRecommended: () => DispatchResult;
   reset: (seed?: number, scenario?: ScenarioId) => DispatchResult;
@@ -134,11 +150,17 @@ function computeLabels(engine: Engine): SessionLabels {
     door: "omani",
     waitingHulls: s.waitingHulls,
     paid: false,
+    radarAlive: s.industry.radarAlive,
+    drones: flyingDrones(s),
+    boats: s.iranPool.boats,
   });
   const iranShotP = shotChance({
     door: "iran",
     waitingHulls: s.waitingHulls,
     paid: true,
+    radarAlive: s.industry.radarAlive,
+    drones: flyingDrones(s),
+    boats: s.iranPool.boats,
   });
   const holes = s.mines.filter((m) => m.hole).length;
   const omaniPct = pct(omani);
@@ -161,12 +183,6 @@ function computeLabels(engine: Engine): SessionLabels {
     iranShot: iranShotP,
     grazeUsdM: grazeUsdM(s.price),
   });
-  const ceo = ceoPick({
-    balk,
-    omaniKill: omani,
-    omaniShot: omaniShotP,
-    waitingHulls: s.waitingHulls,
-  });
   const brief = {
     turn: s.turn,
     omaniPct,
@@ -178,25 +194,32 @@ function computeLabels(engine: Engine): SessionLabels {
     omaniEv: pick.omaniEv,
   };
   const band = bandOf(s.price);
-  const acting = s.phase === "tankerOrders";
+  const seat: "us" | "tanker" = humanSeat(s.scenario) === "us" ? "us" : "tanker";
+  const acting =
+    s.phase === "tankerOrders" || (seat === "us" && s.phase === "usOrders");
   const left = hullsLeft(s.scenario, s.books);
-  const recommended: RecommendedDoor = !acting ? "none" : ceo;
+  const recommended: RecommendedDoor = s.phase !== "tankerOrders" ? "none" : pick.door;
   const kit = SCENARIO_KIT[s.scenario];
   const resolveLine = [...s.log].reverse().find((line) => line.includes("Mine kill"));
-  const lastBeat = !s.lastDoor
-    ? COPY.lastBeatIdle
-    : s.lastDoor === "wait"
-      ? `${s.lastUsLine} ${s.lastIranLine}`
-      : (resolveLine ?? s.log.at(-1) ?? COPY.lastBeatIdle);
+  const lastBeat =
+    seat === "us"
+      ? !s.lastDoor
+        ? COPY.warHint
+        : `${s.lastUsLine} ${s.lastIranLine}`
+      : !s.lastDoor
+        ? COPY.lastBeatIdle
+        : s.lastDoor === "wait"
+          ? `${s.lastUsLine} ${s.lastIranLine}`
+          : (resolveLine ?? s.log.at(-1) ?? COPY.lastBeatIdle);
   const boardAct =
     recommended === "wait"
       ? balk
         ? COPY.boardActBalk
-        : COPY.ceoWait
+        : COPY.accountantSit
       : recommended === "omani"
-        ? COPY.ceoOmani
+        ? `Omani. Expected ${evUsd(pick.omaniEv)}.`
         : recommended === "iran"
-          ? COPY.boardActIran
+          ? `Iran. Expected ${evUsd(pick.iranEv)}.`
           : COPY.boardActNone;
   const quote = voyagePayUsdM(s.price);
   const policyOpen = policyAvailable(s.insurance);
@@ -210,7 +233,14 @@ function computeLabels(engine: Engine): SessionLabels {
     seed: `seed ${s.seed}`,
     payWarning: COPY.payWarning,
     steel: COPY.steel,
-    hint: s.phase === "matchOver" ? COPY.matchOver : balk ? COPY.balk : COPY.doorHint,
+    hint:
+      s.phase === "matchOver"
+        ? COPY.matchOver
+        : balk
+          ? COPY.balk
+          : seat === "us"
+            ? COPY.warHint
+            : COPY.doorHint,
     omaniKill: `${omaniPct}%`,
     iranKill: `${iranPct}%`,
     omaniShot: `${pct(omaniShotP)}%`,
@@ -249,17 +279,30 @@ function computeLabels(engine: Engine): SessionLabels {
     booksIdle: usdM(s.books.idleUsdM),
     booksDamage: usdM(s.books.damageUsdM),
     idleWhy: idleChargeLine(left),
-    houseName: COPY.houseName,
+    houseName: seat === "us" ? COPY.roleUs : COPY.houseName,
     balk,
-    doorsOpen: acting && !balk && left > 0,
+    doorsOpen: acting && !balk && left > 0 && seat === "tanker",
     policyOn: s.buyPolicy,
     policyOpen,
     policyCost: usdM(policyCost),
+    seat,
+    magDrones: String(s.iranPool.drones),
+    magCounter: String(s.usPool.counterDrones),
+    magLasers: String(s.usPool.lasers),
+    magMines: String(s.iranPool.mines),
+    magBoats: String(s.iranPool.boats),
+    factoryUp: s.industry.mineFactoryAlive,
+    droneFactoryUp: s.industry.droneFactoryAlive,
+    warehouseUp: s.industry.mineDepotAlive,
+    droneWarehouseUp: s.industry.droneDepotAlive,
+    radarUp: s.industry.radarAlive,
+    portUp: s.industry.portAlive,
+    spiderHoles: s.spiderHoles.filter((h) => h.alive),
   };
 }
 
 function inputPhase(phase: GameState["phase"]): boolean {
-  return phase === "tankerOrders" || phase === "matchOver";
+  return phase === "tankerOrders" || phase === "usOrders" || phase === "matchOver";
 }
 
 export function createSession(
@@ -305,6 +348,12 @@ export function createSession(
     },
     wait() {
       return run(() => engine.dispatch({ type: "tanker-wait" }));
+    },
+    usSweep() {
+      return run(() => engine.dispatch({ type: "us-sweep" }));
+    },
+    usStrike(target: StrikeTarget, pitId?: string) {
+      return run(() => engine.dispatch({ type: "us-strike", target, pitId }));
     },
     setPolicy(on: boolean) {
       return run(() => engine.dispatch({ type: "tanker-policy", on }));

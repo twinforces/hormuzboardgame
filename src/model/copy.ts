@@ -18,9 +18,9 @@ export const COPY = {
   insuranceOpen: "INSURANCE OPEN",
   insuranceCollapsed: "INSURANCE COLLAPSED",
   doorHint:
-    "Click the US ribbon near Oman, or the Iran track between Qeshm and Larak. CEO waits the ribbon. We do not pay. Captains balk after blood.",
+    "Click the US ribbon near Oman, or the Iran track between Qeshm and Larak. Sit if expected is negative. Captains balk after blood.",
   roleLock:
-    "Greece, Inc. The CEO waits until mine and shot are quiet, then Oman. We do not pay. Accountants still count EV. Captains still balk after blood.",
+    "Greece, Inc. Accountants pick the door. If expected is positive, go. Captains still balk after blood.",
   roleTanker: "Owner",
   houseName: "Greece, Inc.",
   roleUs: "US",
@@ -98,10 +98,48 @@ export const COPY = {
   ceoWait: "Wait. Mine and shot are still hot.",
   ceoOmani: "Omani. Risk is low enough. We do not pay.",
   accountantNote: "Accountants still count EV. Tolls buy mines. We do not pay.",
-  scenarioHelp: "A kit: hulls and fog. Weeks just count. Same two doors.",
+  scenarioHelp: "Which sitting? Pick one. Weeks count. No clock.",
   scenarioReopen: "Twelve hulls. Wait the Navy, or pay and make the mines someone else's problem.",
   scenarioOne: "One hull. Idle still ticks. Send it when expected is fat.",
   scenarioOverplay: "Five hulls. Packed ribbon. Navy sweeps three patches a week. Red remains.",
+  scenarioMine:
+    "You are US. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Strike a yellow mark or sweep the ribbon.",
+  scenarioAsk: "Which sitting?",
+  tabIran: "Strikes",
+  tabStrait: "Strait",
+  usSweep: "Sweep the ribbon",
+  usStrike: "Strike",
+  strikeMarks: "Yellow marks. Hover, then click to strike.",
+  magDrones: "Drones",
+  magCounter: "Counter-drones",
+  magLasers: "Lasers",
+  magMines: "Mines",
+  magBoats: "Boats",
+  nodeDown: "Down",
+  warHint: "Click a yellow mark to strike, or sweep the ribbon. Traffic moves after you act.",
+  warLock:
+    "You are US. One hundred hulls. Ten companies. Some count EV. Some wait for a sweep. Once the till is the hotter mine field, they flip.",
+  trafficBooks: "Traffic",
+  trafficNote: "One hundred traffic hulls, ten companies. You do not own them. Tolls still buy mines.",
+  trafficWait: "Traffic sat.",
+  trafficLive: "TRAFFIC LIVE",
+  trafficGraze: "TRAFFIC GRAZED",
+  trafficLost: "TRAFFIC LOST",
+  outcomeCloseWar: "See the strait",
+  outcomeBackStrikes: "Back to strikes",
+  openStrait: "Open the strait",
+  laneChip: "Lane",
+  factoryPrints: "Mine factory still prints.",
+  factoryDown: "Mine factory is down.",
+  droneFactoryPrints: "Drone factory still prints.",
+  droneFactoryDown: "Drone factory is down.",
+  warehouseDown: "Mine warehouse is down.",
+  droneWarehouseDown: "Drone warehouse is down.",
+  radarDown: "Radar is down.",
+  portDown: "Port is down.",
+  spiderHole: "Spider hole",
+  spiderTip: "Hidden mines and drones. Strike this week or they dump.",
+  spiderDump: "The hole dumped mines into the TSS. Drones hit a Gulf state. Fear, not occupation.",
   matchOverHint: "Out of hulls. Replay or take a new seed.",
   scoreTitle: "Out of hulls",
   scoreReplay: "Replay this sitting",
@@ -113,11 +151,11 @@ export const COPY = {
   outcomeGraze: "SUCCESS, with damage",
   outcomeClose: "Next hull",
   booksDamage: "Damage",
-  lastBeatIdle: "CEO waits the ribbon. Click Oman or sit. We do not pay.",
-  boardActWait: "Wait. Mine and shot are still hot.",
-  boardActSit: "Wait. Mine and shot are still hot.",
-  boardActOmani: "Omani. Risk is low enough. We do not pay.",
-  boardActIran: "We do not pay. Tolls buy mines.",
+  lastBeatIdle: "Accountants named a door. Click it or sit.",
+  boardActWait: "Sit. Expected is negative.",
+  boardActSit: "Sit. Expected is negative.",
+  boardActOmani: "Omani. Expected is positive.",
+  boardActIran: "Iran. Expected is positive.",
   boardActBalk: "Captains refuse. Wait.",
   boardActNone: "Sitting over.",
   clickOmani: "US ribbon, Omani side",
@@ -140,6 +178,7 @@ export const SCENARIO_KIT: Record<
   "reopen-lane": { label: "Reopen the lane", blurb: COPY.scenarioReopen },
   "one-transit": { label: "One transit", blurb: COPY.scenarioOne },
   overplay: { label: "Packed TSS", blurb: COPY.scenarioOverplay },
+  "mine-warfare": { label: "Mine warfare", blurb: COPY.scenarioMine },
 };
 
 /** Twelve leftover hulls times $2M is $24M. Not a flat $2M sit. */
@@ -149,6 +188,74 @@ export function idleChargeLine(
 ): string {
   if (hulls <= 0) return "No leftover hulls.";
   return `${hulls} leftover × $${per}M = $${hulls * per}M this week.`;
+}
+
+export function clickToStrike(label: string): string {
+  return `Click to strike ${label}`;
+}
+
+export function usStrikeLine(opts: {
+  turn: number;
+  target: string;
+  already: boolean;
+  mineFactoryUp?: boolean;
+  droneFactoryUp?: boolean;
+}): string {
+  if (opts.already) return `Week ${opts.turn}: ${opts.target} is already down.`;
+  if (opts.target === "mine-factory") {
+    return `Week ${opts.turn}: US struck the mine factory. The roof is gone.`;
+  }
+  if (opts.target === "drone-factory") {
+    return `Week ${opts.turn}: US struck the drone factory. Shahed output goes toward zero.`;
+  }
+  if (opts.target === "mine-warehouse") {
+    return `Week ${opts.turn}: US struck the mine warehouse. Ready mines are cut.`;
+  }
+  if (opts.target === "drone-warehouse") {
+    return `Week ${opts.turn}: US struck the drone warehouse. Ready air is cut.`;
+  }
+  if (opts.target === "radar") {
+    const leftover = opts.droneFactoryUp === false ? "" : " The drone plant still prints.";
+    return `Week ${opts.turn}: US struck coastal radar. Drones guess. Mines still drift.${leftover}`;
+  }
+  if (opts.target === "spider-hole") {
+    return `Week ${opts.turn}: US struck a spider hole. Hidden stores are gone.`;
+  }
+  const leftover = opts.mineFactoryUp === false ? "" : " The mine plant still prints.";
+  return `Week ${opts.turn}: US struck the port. Pierside hulls are scrap. A spider hole showed itself.${leftover}`;
+}
+
+export function spiderRevealLine(opts: {
+  turn: number;
+  mines: number;
+  drones: number;
+}): string {
+  const mines = Math.max(0, Math.round(opts.mines));
+  const drones = Math.max(0, Math.round(opts.drones));
+  return `Week ${opts.turn}: A hull got hit. A spider hole showed ${mines} mines and ${drones} drones. Strike it this week or they dump.`;
+}
+
+export function spiderTipLine(h: { mines: number; drones: number }): string {
+  const mines = Math.max(0, Math.round(h.mines));
+  const drones = Math.max(0, Math.round(h.drones));
+  return `Hidden stash: ${mines} mines, ${drones} drones. Strike this week or they dump.`;
+}
+
+export function spiderDumpLine(opts: {
+  turn: number;
+  mines: number;
+  drones?: number;
+}): string {
+  const n = Math.max(0, Math.round(opts.mines));
+  const word = n === 1 ? "mine" : "mines";
+  const d = Math.max(0, Math.round(opts.drones ?? 0));
+  const air =
+    d <= 0
+      ? "No extra air this week"
+      : d === 1
+        ? "1 drone hit a Gulf state"
+        : `${d} drones hit a Gulf state`;
+  return `Week ${opts.turn}: The hole dumped ${n} ${word} into the TSS. ${air}. Fear, not occupation.`;
 }
 
 export function usSweepLine(opts: {
@@ -273,13 +380,40 @@ export type ScoreInput = {
   iranSent: number;
   netUsdM: number;
   price: number;
+  seat?: "tanker" | "us";
+  factoryUp?: boolean;
+  droneFactoryUp?: boolean;
+  warehouseUp?: boolean;
+  droneWarehouseUp?: boolean;
+  radarUp?: boolean;
+  portUp?: boolean;
 };
 
 export function scoreLines(s: ScoreInput): string[] {
-  const net = Math.round(s.netUsdM);
-  const netLabel = net < 0 ? `-$${Math.abs(net)}M` : `$${net}M`;
   const mines = Math.max(0, Math.round(s.minesBought));
   const mineWord = mines === 1 ? "mine" : "mines";
+  if (s.seat === "us") {
+    const lines = [
+      `Week ${s.weeks}. Oil $${s.price}. Peak on this meter is $126.`,
+      `Traffic live ${s.live}. Lost ${s.lost}.`,
+    ];
+    if (s.tollUsdM > 0) {
+      lines.push(
+        `Traffic spent $${Math.round(s.tollUsdM)}M in tolls, buying Iran ${mines} ${mineWord}.`,
+      );
+    } else {
+      lines.push("Traffic spent $0 in tolls. Nobody bought their next mine.");
+    }
+    lines.push(s.factoryUp === false ? COPY.factoryDown : COPY.factoryPrints);
+    if (s.droneFactoryUp === false) lines.push(COPY.droneFactoryDown);
+    if (s.warehouseUp === false) lines.push(COPY.warehouseDown);
+    if (s.droneWarehouseUp === false) lines.push(COPY.droneWarehouseDown);
+    if (s.radarUp === false) lines.push(COPY.radarDown);
+    if (s.portUp === false) lines.push(COPY.portDown);
+    return lines;
+  }
+  const net = Math.round(s.netUsdM);
+  const netLabel = net < 0 ? `-$${Math.abs(net)}M` : `$${net}M`;
   const lines = [
     `Week ${s.weeks}. Oil $${s.price}. Peak on this meter is $126.`,
     `Live ${s.live}. Lost ${s.lost}.`,
@@ -306,6 +440,12 @@ export function scoreLines(s: ScoreInput): string[] {
 }
 
 export function outcomeTitle(r: TurnReport): string {
+  if (r.watcher === "us") {
+    if (r.kind === "wait") return COPY.trafficWait;
+    if (r.kind === "graze") return COPY.trafficGraze;
+    if (r.kind === "lost") return COPY.trafficLost;
+    return COPY.trafficLive;
+  }
   if (r.kind === "wait") return COPY.outcomeWait;
   if (r.kind === "graze") return COPY.outcomeGraze;
   if (r.kind === "lost") return COPY.lossTitle;
@@ -313,6 +453,52 @@ export function outcomeTitle(r: TurnReport): string {
 }
 
 export function outcomeLines(r: TurnReport): string[] {
+  if (r.watcher === "us") {
+    const lines: string[] = [];
+    if (r.wave) {
+      lines.push(
+        `${r.wave.sent} sailed. ${r.wave.waited} sat. Paid ${r.wave.paid}. Oman ${r.wave.omani}. Live ${r.wave.live}. Lost ${r.wave.lost}.`,
+      );
+      if (r.wave.paid > 0) {
+        const n = Math.max(1, Math.round(r.minesBought));
+        const word = n === 1 ? "mine" : "mines";
+        lines.push(
+          `Tolls $${Math.round(r.tollUsdM)}M bought Iran ${n} ${word}.`,
+        );
+      }
+    } else if (r.kind === "wait") {
+      lines.push("Traffic sat the ribbon.");
+    } else if (r.kind === "lost") {
+      const how = r.cause === "shot" ? "A shot holed a hull." : "A mine listened.";
+      lines.push(`A traffic hull is gone. ${how}`);
+      if (r.paid) {
+        const n = Math.max(1, Math.round(r.minesBought));
+        const word = n === 1 ? "mine" : "mines";
+        lines.push(
+          `They paid $${Math.round(r.tollUsdM)}M. That bought Iran ${n} ${word}.`,
+        );
+      }
+    } else {
+      const door = r.door === "iran" ? "Iran door" : "Omani door";
+      lines.push(`A hull took the ${door}.`);
+      if (r.paid) {
+        const n = Math.max(1, Math.round(r.minesBought));
+        const word = n === 1 ? "mine" : "mines";
+        lines.push(
+          `They paid $${Math.round(r.tollUsdM)}M. That bought Iran ${n} ${word}.`,
+        );
+      }
+      if (r.damageUsdM > 0) {
+        lines.push(`Light damage $${Math.round(r.damageUsdM)}M. The hull lived.`);
+      }
+    }
+    lines.push(r.usLine);
+    lines.push(r.iranLine);
+    lines.push(
+      `Omani mine risk is now ${r.omaniMinePct}%. Shot ${r.omaniShotPct}%. Iran mine ${r.iranMinePct}%.`,
+    );
+    return lines;
+  }
   const net = Math.round(r.netDeltaUsdM);
   const netLabel = net < 0 ? `-$${Math.abs(net)}M` : `$${net}M`;
   const lines: string[] = [];

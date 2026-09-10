@@ -14,6 +14,46 @@ test("pay cuts the shot, escort cuts Omani shot, neither is a mine sweep", () =>
   assert.ok(escortCover(2) >= 0.69);
 });
 
+test("dead radar cuts drone shot, not boat shot, and never mines", () => {
+  const naked = shotChance({ door: "omani", waitingHulls: 0, paid: false, drones: 6, boats: 4 });
+  const blind = shotChance({
+    door: "omani",
+    waitingHulls: 0,
+    paid: false,
+    radarAlive: false,
+    drones: 6,
+    boats: 4,
+  });
+  assert.ok(blind < naked);
+  assert.equal(blind, ATTACK.omaniDrone * ATTACK.radarBlind + ATTACK.omaniBoat);
+  const boatOnly = shotChance({
+    door: "omani",
+    waitingHulls: 0,
+    paid: false,
+    radarAlive: true,
+    drones: 0,
+    boats: 4,
+  });
+  const boatBlind = shotChance({
+    door: "omani",
+    waitingHulls: 0,
+    paid: false,
+    radarAlive: false,
+    drones: 0,
+    boats: 4,
+  });
+  assert.equal(boatOnly, boatBlind);
+  const paid = shotChance({
+    door: "iran",
+    waitingHulls: 0,
+    paid: true,
+    radarAlive: false,
+    drones: 6,
+    boats: 4,
+  });
+  assert.equal(paid, ATTACK.iranPaid * ATTACK.radarBlind);
+});
+
 test("most shots miss or graze. Kill is rare.", () => {
   let miss = 0;
   let graze = 0;

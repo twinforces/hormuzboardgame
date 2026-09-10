@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-10 - Two plants, two sheds, spider holes after a ship hit
+
+- **What:** Mine factory and drone factory are different roofs. Mine warehouse and drone warehouse are different stacks. Radar makes drones guess and does not move mines. Hitting pierside ships or grazing a tanker lights a spider hole with a hidden stash. Striking the hole eats the week. Ignore it and the stash dumps extra TSS mines plus a Gulf drone raid.
+- **Why:** User: different factories, different warehouses. Radar cuts drone accuracy, not mines. Hitting a ship exposes a spider hole. Strike it or get more mines and maybe drones on other Gulf states.
+- **How:** Split industry flags. `ATTACK.radarBlind` on drone shot only. Port strike and tanker graze/shot-kill call `revealSpider`. `dumpSpiders` lays the stash and ticks `PRICE.gulfDrone`.
+
+
 ## 2026-09-10 - Tanker CEO waits the ribbon. Never pay.
 
 - **What:** Gold chip is `ceoPick`. Wait while Omani mine > 15% or shot > 12%. Then Oman. Never Iran. After 6 waits, sail anyway. Accountants still show EV.

@@ -6,7 +6,8 @@
  * Crew bonus sticks after blood.
  */
 
-import { ATTACK, CEO, COMPANY, bandOf } from "./balance.ts";
+import { ATTACK, CEO, COMPANY, TRAFFIC, bandOf } from "./balance.ts";
+import { mulberry32 } from "./rng.ts";
 import type {
   CompanyBooks,
   GameState,
@@ -171,6 +172,40 @@ export function ceoPick(opts: {
   const tired = opts.waitingHulls >= CEO.maxWaitWeeks;
   if ((mineOk && shotOk) || tired) return "omani";
   return "wait";
+}
+
+export type TankerPersona = "accountant" | "ceo";
+
+/** Seeded mix. Four EV houses, six wait-for-sweep. Shuffled so it is not a tell. */
+export function tankerPersonas(seed: number): TankerPersona[] {
+  const deck: TankerPersona[] = [
+    ...Array<TankerPersona>(TRAFFIC.pay).fill("accountant"),
+    ...Array<TankerPersona>(TRAFFIC.wait).fill("ceo"),
+  ];
+  const rng = mulberry32((seed ^ 0x7a11) >>> 0);
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    const a = deck[i]!;
+    deck[i] = deck[j]!;
+    deck[j] = a;
+  }
+  return deck;
+}
+
+export function tankerAiPick(
+  persona: TankerPersona,
+  accountant: Parameters<typeof accountantPick>[0],
+  ceo: Parameters<typeof ceoPick>[0],
+): AccountantDoor {
+  if (persona === "accountant") {
+    const pick = accountantPick(accountant);
+    if (pick.door === "iran" && accountant.iranKill > accountant.omaniKill) {
+      if (accountant.balk || pick.omaniEv <= -accountant.idleUsdM) return "wait";
+      return "omani";
+    }
+    return pick.door;
+  }
+  return ceoPick(ceo);
 }
 
 export function netUsdM(b: CompanyBooks): number {
