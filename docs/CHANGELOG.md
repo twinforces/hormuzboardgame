@@ -5,7 +5,7 @@
 - **What:** RECENTGOALS cut to four live bets. README status is playable, not Architect stub. Hashes stamped 9771380. Pushed to twinforces/hormuzboardgame.
 - **Why:** User: compact, then hygiene with commit and push.
 - **How:** Ringmaster hygiene playbook. Merge kept workspace docs over the Architect stub.
-- **Hash:** pending.
+- **Hash:** b41222c.
 
 ## 2026-09-10 - Scorecard, idle, Packed TSS, oil cap
 
