@@ -13,6 +13,12 @@ import type { DraftClass, PriceBand } from "./types.ts";
 /** Sentinel-2 cloudless mosaic. Same equirectangular crop as the retired Blue Marble plate. */
 export const MAP = {
   imageSrc: "/maps/hormuz-sentinel.jpg",
+  /**
+   * White = water, black = land. View clips red fog to this.
+   * Kill math stays full-circle in nm. Tankers do not sail land.
+   * The till is water. DEEP_WATER is the sweep ribbon, not this mask.
+   */
+  waterMaskSrc: "/maps/hormuz-water-mask.png",
   credit:
     "Sentinel-2 cloudless 2024 by EOX. Contains modified Copernicus Sentinel data. CC BY 4.0.",
   widthPx: 2016,
@@ -237,6 +243,7 @@ export const CLEARANCE = {
   /**
    * Sweep ribbon width. TSS usable water is about 6 nm. Not the till.
    * Green holes clip to DEEP_WATER, not the whole disk.
+   * Red fog clips to the water mask, which includes the till.
    */
   sweepBandNm: 6,
 } as const;
@@ -244,6 +251,7 @@ export const CLEARANCE = {
 /**
  * Deep water the Navy actually sweeps: Omani TSS and the JMIC southern
  * corridor. North of ~26.52N is Qeshm-Larak shallows. Holes do not bleach it.
+ * Red fog may still sit on that till. Red fog may not sit on land.
  */
 export const DEEP_WATER: LonLat[] = [
   { lat: 25.45, lon: 56.90 },

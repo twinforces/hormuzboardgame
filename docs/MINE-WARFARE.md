@@ -12,7 +12,7 @@ The current Sentinel crop is 54.6E-57.4E, 25.0N-27.5N. That is the strait. Banda
 | Strait | Tanker owner | Current Hormuz crop. Mines, doors, green sweeps. |
 | Iran | US or Iran | A wider Iran crop plus named nodes. Factories, warehouses, radar, port. |
 
-Do not put strike buttons on the strait overlay. A JDAM on a fog circle teaches the wrong lesson.
+Do not put strike buttons on the strait overlay. A JDAM on a fog circle teaches the wrong lesson. Open the Strait sits on the Iran photo. Plan Strikes sits at the top of the strait window. Same two boards, both directions.
 
 ## Tanker traffic (script, not the gold chip)
 

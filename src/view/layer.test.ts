@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -55,6 +55,12 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(board, /lat=\{26\.82\}/);
   assert.match(board, /clipPath="url\(#deep-water-clip\)"/);
   assert.match(board, /DEEP_WATER/);
+  assert.match(board, /mask="url\(#water-clip\)"/);
+  assert.match(board, /MAP\.waterMaskSrc/);
+  assert.match(board, /onPlanStrikes/);
+  assert.match(board, /COPY\.planStrikes/);
+  assert.match(play, /onPlanStrikes=/);
+  assert.match(play, /setBoard\("iran"\)/);
   assert.match(board, /recommended !== "none"/);
   assert.doesNotMatch(board, /absolute inset-0 z-10/);
   assert.doesNotMatch(board, /You do not draw a track/);
@@ -96,6 +102,15 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.doesNotMatch(iran, /STRIKE\.ideal/);
   assert.doesNotMatch(play, /STRIKE\.ideal/);
   assert.doesNotMatch(iran, /sm:grid-cols-3/);
+});
+
+test("water mask plate exists next to the Sentinel crop", () => {
+  const root = join(dir, "../..");
+  assert.equal(existsSync(join(root, "public/maps/hormuz-water-mask.png")), true);
+  assert.match(
+    readFileSync(join(root, "public/maps/CREDIT.txt"), "utf8"),
+    /hormuz-water-mask/,
+  );
 });
 
 test("price meter stays a meter; mine circles carry mines est", () => {

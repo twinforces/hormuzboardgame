@@ -211,6 +211,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** The plant dying is the industrial math. The leftover fight is hidden coastal stores, not a fourth verb and not an endless magazine. Ten hulls walking Oman after the till flips is traffic doing its job.
 - **Rejected:** A fourth button. Recycling pits. Auto coastal dumps on the US sitting.
 
+## ADR-028. Fog clips to water. Plan Strikes sits on the strait.
+
+- **Status:** accepted
+- **Context:** User: mines can't drift onto land, circles look weird over land. Open the Strait is on the Iran map; the strait window needs Plan Strikes as the other switch.
+- **Decision:** Red fog is masked to a water plate derived from the Sentinel crop (`MAP.waterMaskSrc`). The till stays wet. Qeshm, Larak, Hormuz, Musandam, and the UAE stay dry. Green holes still clip to `DEEP_WATER`. Kill math stays full-circle in nm. War sittings get a Plan Strikes chip at the top of the strait window. Tanker sittings do not.
+- **Why:** Uncertainty blobs grow. They do not climb beaches. The till is still the teaching beat: Iran did not mine its cash register, fog can still sit there. A JDAM still happens on the hinterland board, not on a fog circle.
+- **Rejected:** Clipping red to `DEEP_WATER` (that would hide till fog). Changing clip tests. A fourth map tab.
+
 ## Open questions
 
 Laser vs "effectors" copy. Real laser wall vs a massed drone surge.

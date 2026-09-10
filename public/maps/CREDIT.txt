@@ -9,6 +9,10 @@ Same bbox as the retired NASA Blue Marble Next Generation crop.
 Blue Marble at this zoom is a 500 m vegetation composite. It reads as green noise.
 The overlay (TSS, mines, tanker track) is original to Hormuz Toll.
 
+Water mask: `hormuz-water-mask.png`. White is gulf-connected water,
+black is land. Derived from this crop so red fog cannot paint beaches.
+The Qeshm-Larak till stays water. Not a chart. Overlay is still the game.
+
 Iran hinterland crop: lon 47 to 62, lat 25 to 38 (EPSG:4326).
 Size: 1600 x 1400.
 Used by the mine-warfare sitting. Hormuz sits in the southeast corner.

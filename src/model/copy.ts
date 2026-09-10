@@ -90,7 +90,7 @@ export const COPY = {
   fogBlobs: "Fog blobs",
   holesOpen: "Sweeps",
   navyNote:
-    "Green is this week's sweep. Red is unswept fog. Red does not sit inside green. Escort cuts the shot, not the mine.",
+    "Green is this week's sweep. Red is unswept fog. Red stays on water. Red does not sit inside green. Escort cuts the shot, not the mine.",
   sittingTitle: "This sitting",
   accountant: "Accountants",
   ceo: "CEO",
@@ -152,6 +152,7 @@ export const COPY = {
   outcomeGoStrait: "Go to strait",
   outcomeGoStrikes: "Go to strikes",
   openStrait: "Open the strait",
+  planStrikes: "Plan Strikes",
   laneChip: "Lane",
   factoryPrints: "Mine factory still prints.",
   factoryDown: "Mine factory is down.",

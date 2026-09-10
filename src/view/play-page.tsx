@@ -280,6 +280,7 @@ export function PlayPage() {
             markAct();
             session.actRecommended();
           }}
+          onPlanStrikes={war ? () => setBoard("iran") : undefined}
         />
       )}
 

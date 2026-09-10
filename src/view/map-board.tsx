@@ -30,6 +30,7 @@ type Props = {
   onOmani: () => void;
   onIran: () => void;
   onBoardAct: () => void;
+  onPlanStrikes?: () => void;
 };
 
 function polyPoints(path: NmPolyline): string {
@@ -78,6 +79,7 @@ export function MapBoard({
   onOmani,
   onIran,
   onBoardAct,
+  onPlanStrikes,
 }: Props) {
   const lastPath = state.tankerPath;
   const scale = nmRadiusToPx(10);
@@ -105,6 +107,17 @@ export function MapBoard({
 
   return (
     <figure className="relative overflow-hidden rounded-lg border border-border bg-surface">
+      {onPlanStrikes ? (
+        <div className="flex justify-center border-b border-border px-3 py-2">
+          <button
+            type="button"
+            onClick={onPlanStrikes}
+            className="min-h-11 rounded-md border border-accent bg-surface-2 px-4 font-mono text-xs text-accent transition-transform duration-150 ease-out active:scale-[0.96]"
+          >
+            {COPY.planStrikes}
+          </button>
+        </div>
+      ) : null}
       <div
         className="relative aspect-[2016/1220] w-full"
         onPointerMove={(e) => {
@@ -152,11 +165,29 @@ export function MapBoard({
                 }).join(" ")}
               />
             </clipPath>
+            <mask
+              id="water-clip"
+              maskUnits="userSpaceOnUse"
+              x={0}
+              y={0}
+              width={MAP.widthPx}
+              height={CHART_VIEW_H}
+            >
+              <image
+                href={MAP.waterMaskSrc}
+                x={0}
+                y={0}
+                width={MAP.widthPx}
+                height={CHART_VIEW_H}
+                preserveAspectRatio="none"
+              />
+            </mask>
           </defs>
           {(() => {
             const holes = mineHoles(state.mines);
             return (
               <>
+                <g mask="url(#water-clip)">
                 {state.mines.map((m) => {
                   const c = nmToPx(m.center);
                   const r = nmRadiusToPx(radiusNm(m.radiusSteps));
@@ -182,6 +213,7 @@ export function MapBoard({
                     />
                   );
                 })}
+                </g>
                 <g clipPath="url(#deep-water-clip)">
                   {holes.map((h, i) => {
                     const hc = nmToPx(h.center);

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, IRAN_VERB, MAGAZINE, MINES, OPEN_RESEARCH, PRICE, SPIDER, STRIKE, STRIKE_NODES, TRAFFIC } from "./balance.ts";
+import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, IRAN_VERB, MAGAZINE, MAP, MINES, OPEN_RESEARCH, PRICE, SPIDER, STRIKE, STRIKE_NODES, TRAFFIC } from "./balance.ts";
 
 test("company books use a cited VLCC newbuild", () => {
   assert.equal(COMPANY.hullUsdM, 129);
@@ -65,4 +65,9 @@ test("strike order is a lock, not player copy", () => {
   const marks = STRIKE.targets.map((id) => STRIKE_NODES[id].emoji);
   assert.equal(new Set(marks).size, marks.length);
   assert.ok(marks.every((e) => e.length > 0));
+});
+
+test("water mask is a view plate, not a sweep polygon", () => {
+  assert.match(MAP.waterMaskSrc, /hormuz-water-mask/);
+  assert.notEqual(MAP.waterMaskSrc, MAP.imageSrc);
 });

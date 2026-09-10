@@ -82,6 +82,9 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.usStrike, /Strike/);
   assert.match(COPY.outcomeGoStrikes, /Go to strikes/);
   assert.match(COPY.outcomeGoStrait, /Go to strait/);
+  assert.equal(COPY.planStrikes, "Plan Strikes");
+  assert.match(COPY.openStrait, /Open the strait/);
+  assert.match(COPY.navyNote, /Red stays on water/);
   assert.equal(clickToStrike("Factory"), "Click to strike Factory");
   assert.equal(clickToStrike("Warehouse"), "Click to strike Warehouse");
   assert.doesNotMatch(COPY.warLock, /1\./);

@@ -41,6 +41,7 @@ const LOCKS = [
 
 const INVARIANTS = [
   "Existing mine circles expand one step during expandMines. New lays wait.",
+  "Red fog paints water, including the till. It does not paint land.",
   "One tanker mine-kill in the TSS collapses insurance for the match.",
   "Bribes never shrink circles and never grant mine immunity.",
   "STEEL never fills in v1. CONTRACTS can.",

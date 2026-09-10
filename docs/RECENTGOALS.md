@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-After the sheds die, Iran Lay dumps a coastal cell. Four cells. Then dry (`af8fa4b`).
+Fog stays on water. Plan Strikes sits on the strait window (ADR-028).
 
 
 ## Next

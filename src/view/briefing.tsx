@@ -48,6 +48,7 @@ const ADRs = [
   ["025", "Leaving a hole is a confirm, not a silent click."],
   ["026", "Iran is Mine Warfare. Lay, surge, or hold. The Navy bombs roofs. Fear, not occupation."],
   ["027", "After the sheds die, Iran Lay dumps a coastal cell. Four cells. Then dry."],
+  ["028", "Fog clips to water. Plan Strikes sits on the strait window."],
 ];
 
 export function BriefingPage() {

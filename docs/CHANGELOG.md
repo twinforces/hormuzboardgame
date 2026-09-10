@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-10 - Fog stays on water. Plan Strikes sits on the strait.
+
+- **What:** Red fog clips to the real shoreline. Till water still paints. Land does not. War sittings get a Plan Strikes chip at the top of the strait window, the pair of Open the Strait on the Iran map.
+- **Why:** User: mines can't drift onto land, circles look weird over land. Need a way to switch maps from the strait window.
+- **How:** `MAP.waterMaskSrc` luminance mask. `DEEP_WATER` still clips green holes. Kill math unchanged. `COPY.planStrikes`. ADR-028.
+- **Hash:** pending.
+
 ## 2026-09-10 - After the sheds die, Iran Lay dumps a coastal cell.
 
 - **What:** Human Iran still has a leftover fight after the warehouse cannot dump. Lay dumps one coastal cell: stash mines into the TSS plus a Gulf tick. Four cells. No recycle. Then Lay is dead. Surge dies with the air. Hold still prints. Fog still grows. Boats still shoot. US sitting does not get this faucet.
