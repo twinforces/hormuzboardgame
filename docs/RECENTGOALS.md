@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Picker names the seats. Three tanker houses, then warfare. Flags on the chips.
+Picker names the seats. Three tanker houses, then warfare. Flags on the chips (`611db35`).
 
 
 ## Next

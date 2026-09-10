@@ -5,7 +5,7 @@
 - **What:** Tanker chips are Tanker CEO, Tanker Captain, Small CEO, each with the Greek flag. A divider, then Anti-Mine Warfare and Mine Warfare centered under them. US blurb: some are greedy, some wait, strike or sweep. Iran blurb keeps the flag.
 - **Why:** User: rename the three tanker sittings, flag them, compact the warfare blurbs, split the row.
 - **How:** `TANKER_SITS` / `WAR_SITS`. Picker is a 3-col then a centered 2-col. Scenario ids unchanged.
-- **Hash:** pending.
+- **Hash:** `611db35`.
 
 ## 2026-09-10 - Fog stays on water. Plan Strikes sits on the strait.
 
