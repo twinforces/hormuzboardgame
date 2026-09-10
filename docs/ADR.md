@@ -203,6 +203,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** Playing Iran is industrial math, not a numbered strike plan in reverse. The roof going first is the lesson. A surge is ammo and fear. A real laser wall vs a massed raid is later.
 - **Rejected:** A second picker named Mine Warfare before this seat existed (ADR-022). Iran clicking US strike nouns. Radar shrinking mine circles. Scripted waiters talking crews down after blood.
 
+## ADR-027. After the sheds die, Iran Lay dumps a coastal cell.
+
+- **Status:** accepted
+- **Context:** Playtest: laid until the warehouse ran out, then out of drones, nothing to do. 15 hulls died. Once the till was hotter than Oman, ten hulls a week walked the ribbon.
+- **Decision:** Same three verbs. Warehouse dump first. When that dump is 0, human Iran Lay dumps one coastal cell (`SPIDER` stash into the TSS plus a Gulf tick). Four cells. No recycle. Then Lay is dead. Surge disables when there is no air. Hold still prints, fog still grows, boats still shoot. US sitting Iran-AI does not get this faucet. Ignore-hole dumps stay the US leftover.
+- **Why:** The plant dying is the industrial math. The leftover fight is hidden coastal stores, not a fourth verb and not an endless magazine. Ten hulls walking Oman after the till flips is traffic doing its job.
+- **Rejected:** A fourth button. Recycling pits. Auto coastal dumps on the US sitting.
+
 ## Open questions
 
 Laser vs "effectors" copy. Real laser wall vs a massed drone surge.

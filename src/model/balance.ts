@@ -424,9 +424,9 @@ export const DRONES = {
 } as const;
 
 /**
- * Human Iran verbs. One a week. Lay uses the warehouse dump.
- * Surge spends drones on a Gulf raid. Hold prints and does not dump.
- * A real laser wall vs a massed surge is later.
+ * Human Iran verbs. One a week. Lay uses the warehouse dump, then four
+ * coastal cells. Surge spends drones on a Gulf raid. Hold prints and
+ * does not dump. A real laser wall vs a massed surge is later.
  */
 export const IRAN_VERB = {
   surgeDrones: 3,

@@ -3,7 +3,7 @@
  * Traffic mix is four EV houses and six wait-for-sweep companies.
  */
 
-import { COMPANY, DRONES, MINES, MAGAZINE, bandOf } from "./balance.ts";
+import { COMPANY, DRONES, MINES, MAGAZINE, SPIDER, bandOf } from "./balance.ts";
 import {
   tankerAiPick,
   tankerPersonas,
@@ -78,6 +78,29 @@ export function iranWarehouseDump(s: GameState, pool: number): number {
   if (!isTrafficSitting(s.scenario)) return 1;
   if (!s.industry.mineDepotAlive) return 0;
   return Math.min(MINES.warehouseLay, pool);
+}
+
+/**
+ * Human Iran leftover after the sheds cannot dump.
+ * Four coastal cells, no recycle. US sitting already has ignore-hole dumps.
+ */
+export function iranCoastalLeft(s: GameState): number {
+  if (humanSeat(s.scenario) !== "iran") return 0;
+  const used = new Set(s.spiderHoles.map((h) => h.pit));
+  let n = 0;
+  for (let i = 0; i < SPIDER.pits.length; i++) {
+    if (!used.has(i)) n += 1;
+  }
+  return n;
+}
+
+export function nextIranPit(s: GameState): number | null {
+  if (humanSeat(s.scenario) !== "iran") return null;
+  const used = new Set(s.spiderHoles.map((h) => h.pit));
+  for (let i = 0; i < SPIDER.pits.length; i++) {
+    if (!used.has(i)) return i;
+  }
+  return null;
 }
 
 /** Drones that can still find. Radar and a living drone shed. */

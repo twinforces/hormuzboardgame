@@ -47,6 +47,7 @@ const ADRs = [
   ["024", "Leaving a spider hole dumps it. That is the vanish."],
   ["025", "Leaving a hole is a confirm, not a silent click."],
   ["026", "Iran is Mine Warfare. Lay, surge, or hold. The Navy bombs roofs. Fear, not occupation."],
+  ["027", "After the sheds die, Iran Lay dumps a coastal cell. Four cells. Then dry."],
 ];
 
 export function BriefingPage() {

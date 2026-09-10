@@ -1,13 +1,22 @@
 # CHANGELOG
 
+## 2026-09-10 - After the sheds die, Iran Lay dumps a coastal cell.
+
+- **What:** Human Iran still has a leftover fight after the warehouse cannot dump. Lay dumps one coastal cell: stash mines into the TSS plus a Gulf tick. Four cells. No recycle. Then Lay is dead. Surge dies with the air. Hold still prints. Fog still grows. Boats still shoot. US sitting does not get this faucet.
+- **Why:** User: week 26, strait empty. Laid until the sheds ran out, then out of drones, nothing to do. Did take out 15 ships. Once Iran was hotter than Oman, ten hulls a week walked the ribbon.
+- **How:** `iranCoastalLeft` / `nextIranPit`. Warehouse dump first. Human Iran only. `m-coast-` ids. ADR-027.
+- **Hash:** pending.
+
 ## 2026-09-10 - Iran is Mine Warfare. Lay, surge, or hold.
 
 - **What:** New sitting. You are Iran. One hundred hulls of traffic. One verb a week: lay mines, surge drones, or hold. Week 1 the Navy already hit the mine factory. After blood the Navy sweeps.
+
 - **Why:** User: 23 weeks to empty the strait felt like reality. Ready to do Iran.
 - **How:** Scenario id `iran-warfare`. Picker Mine Warfare. US-AI follows `STRIKE.ideal` then sweeps after blood. Spider holes stay US-human. ADR-026.
 - **Hash:** `b92d46b`.
 
 ## 2026-09-10 - Leave a spider hole is a confirm.
+
 
 - **What:** Click a factory, warehouse, radar, port, or sweep while a spider hole is live and the board asks first. Keep the hole is the gold chip. Strike anyway dumps. The Iran board stays up. A Dumped mark sits on the pit that week.
 - **Why:** User: hole appeared, then disappeared when they decided to strike something else.

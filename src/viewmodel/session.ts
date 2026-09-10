@@ -25,7 +25,7 @@ import {
   type DispatchResult,
   type Engine,
 } from "../model/engine.ts";
-import { flyingDrones } from "../model/ai.ts";
+import { flyingDrones, iranCoastalLeft, iranDronePrint, iranFactoryPrint, iranWarehouseDump } from "../model/ai.ts";
 import { grazeUsdM, shotChance } from "../model/combat.ts";
 import { combinedKillChance } from "../model/geo.ts";
 import type { DebugSnapshot, GameState, ScenarioId, SpiderHole, StrikeTarget } from "../model/types.ts";
@@ -100,6 +100,11 @@ export type SessionLabels = {
   portUp: boolean;
   spiderHoles: SpiderHole[];
   dumpedHoles: SpiderHole[];
+  canLay: boolean;
+  canSurge: boolean;
+  canWarehouseLay: boolean;
+  coastalLeft: number;
+  iranVerbHint: string;
 };
 
 export type SessionSnapshot = {
@@ -232,6 +237,18 @@ function computeLabels(engine: Engine): SessionLabels {
   const quote = voyagePayUsdM(s.price);
   const policyOpen = policyAvailable(s.insurance);
   const policyCost = voyagePremiumUsdM(s.price, s.insurance);
+  const minePool = s.iranPool.mines + iranFactoryPrint(s);
+  const warehouseLay = iranWarehouseDump(s, minePool) > 0;
+  const coastalLeft = iranCoastalLeft(s);
+  const canLay = warehouseLay || coastalLeft > 0;
+  const canSurge = s.iranPool.drones + iranDronePrint(s) > 0;
+  const iranVerbHint = warehouseLay
+    ? COPY.iranMarks
+    : coastalLeft > 0
+      ? COPY.iranLayCoastal
+      : canSurge
+        ? COPY.iranMarks
+        : COPY.iranDry;
   return {
     price: `$${s.price}`,
     band: BAND_LABEL[band],
@@ -308,9 +325,16 @@ function computeLabels(engine: Engine): SessionLabels {
     radarUp: s.industry.radarAlive,
     portUp: s.industry.portAlive,
     spiderHoles: s.spiderHoles.filter((h) => h.alive),
-    dumpedHoles: s.spiderHoles.filter(
-      (h) => !h.alive && h.dumpedTurn != null && s.turn <= h.dumpedTurn + 1,
-    ),
+    dumpedHoles: s.spiderHoles.filter((h) => {
+      if (h.alive || h.dumpedTurn == null) return false;
+      if (seat === "iran") return true;
+      return s.turn <= h.dumpedTurn + 1;
+    }),
+    canLay,
+    canSurge,
+    canWarehouseLay: warehouseLay,
+    coastalLeft,
+    iranVerbHint,
   };
 }
 

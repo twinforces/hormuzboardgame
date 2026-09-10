@@ -187,7 +187,7 @@ export function PlayPage() {
             {COPY.tabStrait}
           </button>
           <p className="font-mono text-2xs text-muted">
-            {iranSeat ? COPY.iranMarks : COPY.strikeMarks}
+            {iranSeat ? labels.iranVerbHint : COPY.strikeMarks}
           </p>
         </div>
       ) : null}
@@ -303,14 +303,20 @@ export function PlayPage() {
                   <Stat k={COPY.magLasers} v={labels.magLasers} />
                 </dl>
                 <p className="font-mono text-2xs text-muted">
-                  {iranSeat ? COPY.iranMarks : COPY.strikeMarks}
+                  {iranSeat ? labels.iranVerbHint : COPY.strikeMarks}
                 </p>
                 {iranSeat ? (
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                   <button
                     type="button"
-                    disabled={!labels.canAct}
-                    title={COPY.iranLay}
+                    disabled={!labels.canAct || !labels.canLay}
+                    title={
+                      labels.canWarehouseLay
+                        ? COPY.iranLay
+                        : labels.canLay
+                          ? COPY.iranLayCoastal
+                          : COPY.iranLayEmpty
+                    }
                     onClick={() => {
                       markAct();
                       session.iranLay();
@@ -321,8 +327,8 @@ export function PlayPage() {
                   </button>
                   <button
                     type="button"
-                    disabled={!labels.canAct}
-                    title={COPY.iranSurge}
+                    disabled={!labels.canAct || !labels.canSurge}
+                    title={labels.canSurge ? COPY.iranSurge : COPY.iranSurgeEmpty}
                     onClick={() => {
                       markAct();
                       session.iranSurge();

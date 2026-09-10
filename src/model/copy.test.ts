@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -441,6 +441,12 @@ test("iran hold and surge lines name the verb without a numbered plan", () => {
   assert.match(iranSurgeLine({ turn: 2, drones: 0, gulf: false }), /no air/);
   assert.doesNotMatch(iranHoldLine(2), /\u2014/);
   assert.doesNotMatch(iranSurgeLine({ turn: 2, drones: 3, gulf: true }), /\u2014/);
+  assert.match(iranCoastalLine({ turn: 4, mines: 4, drones: 3 }), /sheds were empty/i);
+  assert.match(iranCoastalLine({ turn: 4, mines: 4, drones: 3 }), /coastal cell dumped 4 mines/);
+  assert.doesNotMatch(iranCoastalLine({ turn: 4, mines: 4, drones: 3 }), /\u2014/);
+  assert.equal(COPY.iranLayCoastal, "Sheds empty. Lay dumps a coastal cell.");
+  assert.match(COPY.iranDry, /Fog still grows/);
+  assert.doesNotMatch(COPY.iranDry, /1\./);
   const iran = scoreLines({
     weeks: 8,
     live: 7,

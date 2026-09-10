@@ -328,6 +328,10 @@ test("iran-warfare session is Iran seat: lay surge hold, US verbs stay shut", ()
   assert.equal(s.labels().droneFactoryUp, true);
   assert.equal(s.labels().houseName, COPY.roleIran);
   assert.match(s.labels().hint, /Lay seeds/);
+  assert.equal(s.labels().canLay, true);
+  assert.equal(s.labels().canWarehouseLay, true);
+  assert.equal(s.labels().canSurge, true);
+  assert.equal(s.labels().coastalLeft, 4);
   assert.equal(s.wait().ok, false);
   assert.equal(s.usSweep().ok, false);
   const lay = s.iranLay();
@@ -341,5 +345,27 @@ test("iran-warfare session is Iran seat: lay surge hold, US verbs stay shut", ()
   assert.match(s.labels().lastBeat, /surged/);
   const hold = s.iranHold();
   assert.equal(hold.ok, true);
+  assert.match(s.labels().lastBeat, /held/);
+});
+
+test("iran leftover: after the sheds cannot dump, Lay is coastal, then dry, Hold still works", () => {
+  const s = createSession(1, "iran-warfare");
+  let n = 0;
+  while (s.labels().canWarehouseLay && n < 40) {
+    assert.equal(s.iranLay().ok, true);
+    n += 1;
+  }
+  assert.ok(n > 0, "warehouse had something to dump");
+  assert.equal(s.labels().canWarehouseLay, false);
+  assert.equal(s.labels().canLay, true);
+  assert.ok(s.labels().coastalLeft > 0);
+  assert.match(s.labels().iranVerbHint, /coastal cell/);
+  while (s.labels().canLay && n < 50) {
+    assert.equal(s.iranLay().ok, true);
+    n += 1;
+  }
+  assert.equal(s.labels().canLay, false);
+  assert.equal(s.labels().coastalLeft, 0);
+  assert.equal(s.iranHold().ok, true);
   assert.match(s.labels().lastBeat, /held/);
 });

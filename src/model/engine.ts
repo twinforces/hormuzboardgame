@@ -19,7 +19,7 @@ import {
   bandOf,
   radiusNm,
 } from "./balance.ts";
-import { COPY, SCENARIO_KIT, idleChargeLine, iranHoldLine, iranSeedLine, iranSurgeLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, idleChargeLine, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine } from "./copy.ts";
 import { clearedNm2, grazeUsdM, rollShot, shotChance, type ShotKind } from "./combat.ts";
 import {
   captainsBalk,
@@ -37,7 +37,7 @@ import { combinedKillChance, lonLatToNm, polylineLengthNm } from "./geo.ts";
 import { tickPrice } from "./price.ts";
 import { mulberry32 } from "./rng.ts";
 import { SCENARIO_TURNS, humanSeat, initialMines, isTrafficSitting } from "./scenarios.ts";
-import { flyingDrones, interceptDrones, iranDronePrint, iranFactoryPrint, iranWarehouseDump, trafficDoor } from "./ai.ts";
+import { flyingDrones, interceptDrones, iranDronePrint, iranFactoryPrint, iranWarehouseDump, nextIranPit, trafficDoor } from "./ai.ts";
 import type {
   DebugSnapshot,
   GameState,
@@ -435,6 +435,53 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     }
     const dump = verb === "lay" || verb === "auto" ? iranWarehouseDump(s, pool) : 0;
     if (dump <= 0) {
+      // Human Iran leftover. Warehouse first. Then four coastal cells.
+      // US sitting already has ignore-hole dumps. Do not double the faucet.
+      if (verb === "lay") {
+        const pit = nextIranPit(s);
+        if (pit != null) {
+          const loc = SPIDER.pits[pit]!;
+          const laidMines: MineCircle[] = [];
+          for (let i = 0; i < SPIDER.stashMines; i++) {
+            const spot = LAY_SPOTS[(s.turn - 1 + i) % LAY_SPOTS.length]!;
+            laidMines.push({
+              id: `m-coast-${s.turn}-${i}`,
+              center: lonLatToNm(spot),
+              radiusSteps: 0,
+              laidTurn: s.turn,
+              hole: null,
+            });
+          }
+          const air = SPIDER.stashDrones;
+          const gulfHits = s.gulfHits + (air > 0 ? 1 : 0);
+          const hole: SpiderHole = {
+            id: `pit-iran-${s.turn}-${pit}`,
+            pit,
+            lat: loc.lat,
+            lon: loc.lon,
+            mines: 0,
+            drones: 0,
+            revealedTurn: s.turn,
+            alive: false,
+            dumpedTurn: s.turn,
+          };
+          const line = iranCoastalLine({
+            turn: s.turn,
+            mines: SPIDER.stashMines,
+            drones: air,
+          });
+          return {
+            ...s,
+            phase: "iranOrders",
+            mines: [...s.mines, ...laidMines],
+            iranPool: { ...s.iranPool, mines: pool, drones },
+            gulfHits,
+            spiderHoles: [...s.spiderHoles, hole],
+            lastIranLine: line,
+            log: [...s.log, line],
+          };
+        }
+      }
       const line = iranSeedLine({ turn: s.turn, laid: 0, shot });
       return {
         ...s,

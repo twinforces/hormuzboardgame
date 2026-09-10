@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DRONES, MAGAZINE, MINES } from "./balance.ts";
-import { interceptDrones, iranDronePrint, iranFactoryPrint, iranRefillMines, iranWarehouseDump } from "./ai.ts";
+import { interceptDrones, iranCoastalLeft, iranDronePrint, iranFactoryPrint, iranRefillMines, iranWarehouseDump, nextIranPit } from "./ai.ts";
 import { createState } from "./engine.ts";
 
 test("dead factory stops the refill; live factory prints ten a week", () => {
@@ -31,6 +31,17 @@ test("warehouse dumps three until the sheds are gone; tanker still lays one", ()
   assert.equal(iranWarehouseDump(tanker, 3), 1);
   const iran = createState(1, "iran-warfare");
   assert.equal(iranWarehouseDump(iran, 30), 3);
+});
+
+test("coastal leftover is human Iran only, four cells, no recycle", () => {
+  const iran = createState(1, "iran-warfare");
+  assert.equal(iranCoastalLeft(iran), 4);
+  assert.equal(nextIranPit(iran), 0);
+  const us = createState(1, "mine-warfare");
+  assert.equal(iranCoastalLeft(us), 0);
+  assert.equal(nextIranPit(us), null);
+  const tanker = createState(1, "reopen-lane");
+  assert.equal(iranCoastalLeft(tanker), 0);
 });
 
 test("drone factory is a different plant from the mine roof", () => {

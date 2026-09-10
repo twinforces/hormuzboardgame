@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Iran is a human seat. Mine Warfare. Lay / Surge / Hold. Week 1 the Navy already hit the mine factory (`b92d46b`).
+After the sheds die, Iran Lay dumps a coastal cell. Four cells. Then dry.
 
 ## Next
 

@@ -130,6 +130,10 @@ export const COPY = {
   iranSurge: "Surge drones",
   iranHold: "Hold",
   iranMarks: "Lay, surge, or hold. One verb a week.",
+  iranLayCoastal: "Sheds empty. Lay dumps a coastal cell.",
+  iranLayEmpty: "Sheds empty. Coastal leftover is gone.",
+  iranSurgeEmpty: "No air to surge.",
+  iranDry: "Sheds empty. No air. Fog still grows. Boats still shoot.",
   trafficBooks: "Traffic",
   trafficNote: "One hundred traffic hulls, ten companies. You do not own them. Tolls still buy mines.",
   trafficWait: "Traffic sat.",
@@ -332,6 +336,23 @@ export function iranSurgeLine(opts: { turn: number; drones: number; gulf: boolea
   const air = n === 1 ? "1 drone" : `${n} drones`;
   const gulf = opts.gulf ? " A Gulf state ate the raid. Fear, not occupation." : "";
   return `Week ${opts.turn}: Iran surged ${air}.${gulf}`;
+}
+
+export function iranCoastalLine(opts: {
+  turn: number;
+  mines: number;
+  drones: number;
+}): string {
+  const n = Math.max(0, Math.round(opts.mines));
+  const word = n === 1 ? "mine" : "mines";
+  const d = Math.max(0, Math.round(opts.drones));
+  const air =
+    d <= 0
+      ? "No extra air this week"
+      : d === 1
+        ? "1 drone hit a Gulf state"
+        : `${d} drones hit a Gulf state`;
+  return `Week ${opts.turn}: The sheds were empty. A coastal cell dumped ${n} ${word}. ${air}.`;
 }
 
 export function fogTip(m: {

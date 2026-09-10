@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createEngine, iranPath, omaniPath } from "./engine.ts";
 import { combinedKillChance, lonLatToNm } from "./geo.ts";
-import { bandOf, COMPANY } from "./balance.ts";
+import { bandOf, COMPANY, SPIDER } from "./balance.ts";
 import { COPY } from "./copy.ts";
 import { voyagePayUsdM, voyagePremiumUsdM } from "./company.ts";
 
@@ -651,7 +651,60 @@ test("iran-warfare US-AI sweeps after blood so traffic can move", () => {
     weeks += 1;
   }
   assert.ok(eng.state().books.hullsLost > 0, "need a dead hull to teach the sweep");
-  assert.equal(eng.state().spiderHoles.length, 0, "spider holes stay US-human");
+  assert.equal(
+    eng.state().spiderHoles.filter((h) => h.alive).length,
+    0,
+    "live spider holes stay US-human",
+  );
   assert.equal(eng.state().crewSour, false, "US-AI already talked crews down this week");
   assert.match(eng.state().lastUsLine, /minelayer|Sweepers|escorts/i);
+});
+
+test("iran lay after the sheds die dumps a coastal cell, then goes dry", () => {
+  const eng = createEngine(1, "iran-warfare");
+  let weeks = 0;
+  while (
+    eng.state().industry.mineDepotAlive &&
+    eng.state().iranPool.mines > 0 &&
+    weeks < 30
+  ) {
+    assert.equal(eng.dispatch({ type: "iran-lay" }).ok, true);
+    weeks += 1;
+  }
+  assert.ok(weeks > 0, "warehouse had something to dump");
+  const mines0 = eng.state().mines.length;
+  const gulf0 = eng.state().gulfHits;
+  const pits0 = eng.state().spiderHoles.length;
+  const coastal = eng.dispatch({ type: "iran-lay" });
+  assert.equal(coastal.ok, true);
+  assert.equal(eng.state().spiderHoles.length, pits0 + 1);
+  assert.equal(eng.state().spiderHoles.some((h) => h.alive), false);
+  assert.ok(eng.state().mines.length >= mines0 + SPIDER.stashMines);
+  assert.equal(eng.state().gulfHits, gulf0 + 1);
+  assert.match(eng.state().lastIranLine, /coastal cell dumped/);
+  let left = SPIDER.pits.length - eng.state().spiderHoles.length;
+  let n = 0;
+  while (left > 0 && n < 8) {
+    assert.equal(eng.dispatch({ type: "iran-lay" }).ok, true);
+    left = SPIDER.pits.length - eng.state().spiderHoles.length;
+    n += 1;
+  }
+  assert.equal(eng.state().spiderHoles.length, SPIDER.pits.length);
+  const dry = eng.state().mines.length;
+  eng.dispatch({ type: "iran-lay" });
+  assert.equal(eng.state().mines.length, dry, "four cells, no recycle");
+  assert.match(eng.state().lastIranLine, /pool was empty/);
+});
+
+test("US sitting Iran-AI does not dump coastal leftover after the warehouse dies", () => {
+  const eng = createEngine(1, "mine-warfare");
+  eng.dispatch({ type: "us-strike", target: "mine-warehouse" });
+  const n0 = warehouseLaid(eng.state());
+  const coast0 = eng.state().mines.filter((m) => m.id.startsWith("m-coast-")).length;
+  eng.dispatch({ type: "us-sweep" });
+  assert.equal(warehouseLaid(eng.state()), n0);
+  assert.equal(
+    eng.state().mines.filter((m) => m.id.startsWith("m-coast-")).length,
+    coast0,
+  );
 });

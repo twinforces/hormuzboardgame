@@ -71,11 +71,13 @@ One verb a week. XOR, same as the US sitting.
 
 | Verb | What it does |
 |---|---|
-| Lay mines | Warehouse dump into the TSS. Factory print still happens if that roof lives. |
-| Surge drones | Spend up to 3 drones. A Gulf state eats the raid. Mines stay in the sheds. |
-| Hold | Print. Do not dump. After a sweep, hold is not cowardice. |
+| Lay mines | Warehouse dump into the TSS. Factory print still happens if that roof lives. When the sheds cannot dump, a coastal cell dumps (four cells, then dry). |
+| Surge drones | Spend up to 3 drones. A Gulf state eats the raid. Mines stay in the sheds. Dead when there is no air. |
+| Hold | Print. Do not dump. After a sweep, hold is not cowardice. Fog still grows. Boats still shoot. |
 
-Turn order: US-AI, then you, then traffic. Week 1 the Navy already hit the mine factory. US-AI bombs the next live roof in `STRIKE.ideal` unless captains are sour, then it sweeps. Spider holes stay a US-human mole. You do not click them.
+Turn order: US-AI, then you, then traffic. Week 1 the Navy already hit the mine factory. US-AI bombs the next live roof in `STRIKE.ideal` unless captains are sour, then it sweeps. Live spider holes stay a US-human mole. You do not click them. After the warehouse is empty, Lay is those coastal cells from your side.
+
+Once the till is hotter than Oman, even the greedy flip. Ten hulls a week on the ribbon is traffic, not a bug.
 
 A surge is ammo and fear. Lasers still eat one drone a week. A real laser wall vs a massed raid is later.
 
@@ -96,6 +98,7 @@ No physics sim. A strike on a factory cuts that refill rate only. A strike on a 
 5. Done: Factories do not shrink red circles the week you bomb them. Clearance is rented. Industry is slow.
 6. Done: Two plants, two sheds. Radar blinds drones, not mines. A ship hit reveals a spider hole. Ignore it and the stash dumps.
 7. Done: Iran is a human seat. Lay / Surge / Hold. US-AI bombs roofs, then sweeps after blood.
+8. Done: After the sheds die, Lay dumps a coastal cell. Four cells. Then you are dry.
 
 ## Don't
 
