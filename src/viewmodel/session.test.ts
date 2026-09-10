@@ -301,3 +301,19 @@ test("mine-warfare session is US seat: sweep and strike, tanker doors stay shut"
     "the hole you struck is gone. A new one can still light if traffic bled.",
   );
 });
+
+test("leaving a live hole to strike inland still names the dump remnant", () => {
+  const s = createSession(4, "mine-warfare");
+  s.usStrike("port");
+  assert.equal(s.labels().spiderHoles.length, 1);
+  assert.equal(s.labels().dumpedHoles.length, 0);
+  const hole = s.labels().spiderHoles[0]!;
+  s.usStrike("mine-factory");
+  assert.equal(
+    s.labels().spiderHoles.some((h) => h.id === hole.id),
+    false,
+    "the hole you left is not live",
+  );
+  assert.equal(s.labels().dumpedHoles.some((h) => h.id === hole.id), true);
+  assert.ok(s.state().lastReport?.dumped);
+});

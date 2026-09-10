@@ -283,7 +283,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       }
       dumped += h.mines;
       air += h.drones;
-      return { ...h, alive: false, mines: 0, drones: 0 };
+      return { ...h, alive: false, mines: 0, drones: 0, dumpedTurn: s.turn };
     });
     const line = spiderDumpLine({ turn: s.turn, mines: dumped, drones: air });
     const iranLine = s.lastIranLine ? `${s.lastIranLine} ${line}` : line;

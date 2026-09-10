@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DRONES, IRAN_MAP, MAGAZINE, MAP, MINES, STRIKE, STRIKE_NODES } from "@/model/balance.ts";
-import { COPY, clickToStrike, spiderTipLine } from "@/model/copy.ts";
+import { COPY, clickToStrike, leaveHoleLine, spiderTipLine } from "@/model/copy.ts";
 import type { SpiderHole, StrikeTarget } from "@/model/types.ts";
 import { cn } from "@/lib/cn.ts";
 
@@ -30,6 +30,7 @@ export function IranBoard({
   radarUp,
   portUp,
   spiderHoles,
+  dumpedHoles,
   price,
   omaniKill,
   waiting,
@@ -51,6 +52,7 @@ export function IranBoard({
   radarUp: boolean;
   portUp: boolean;
   spiderHoles: SpiderHole[];
+  dumpedHoles: SpiderHole[];
   price: string;
   omaniKill: string;
   waiting: string;
@@ -80,6 +82,7 @@ export function IranBoard({
   const standingHover = (STRIKE.targets as readonly string[]).includes(hover ?? "")
     ? (hover as Standing)
     : null;
+  const holeLive = spiderHoles.length > 0;
 
   return (
     <div className="relative overflow-hidden rounded-lg border border-border bg-bg aspect-[1600/1400]">
@@ -145,7 +148,9 @@ export function IranBoard({
                 liveNode
                   ? hot
                     ? "border-accent-fg bg-accent motion-safe:scale-110"
-                    : "border-accent-fg bg-accent motion-safe:hover:scale-110 motion-safe:active:scale-90"
+                    : holeLive
+                      ? "border-danger bg-accent motion-safe:hover:scale-110 motion-safe:active:scale-90"
+                      : "border-accent-fg bg-accent motion-safe:hover:scale-110 motion-safe:active:scale-90"
                   : "border-border bg-faint/70 opacity-70",
               )}
             >
@@ -177,10 +182,10 @@ export function IranBoard({
           >
             <span
               className={cn(
-                "flex size-11 items-center justify-center rounded-full border-2 text-lg shadow-sm transition-transform duration-150 ease-out",
+                "flex size-11 items-center justify-center rounded-full border-2 text-lg shadow-sm transition-transform duration-150 ease-out motion-safe:animate-pulse",
                 hot
                   ? "border-accent-fg bg-danger motion-safe:scale-110"
-                  : "border-danger bg-danger motion-safe:hover:scale-110 motion-safe:active:scale-90",
+                  : "border-danger bg-danger ring-2 ring-danger/70 motion-safe:hover:scale-110 motion-safe:active:scale-90",
               )}
             >
               {COPY.spiderEmoji}
@@ -201,6 +206,11 @@ export function IranBoard({
           }}
         >
           <p className="font-mono text-xs text-accent">{clickToStrike(STRIKE_NODES[standingHover].label)}</p>
+          {holeLive ? (
+            <p className="mt-1 font-mono text-2xs text-danger">
+              {leaveHoleLine(`strike ${STRIKE_NODES[standingHover].label}`)}
+            </p>
+          ) : null}
         </div>
       ) : null}
       {spiderHover ? (
@@ -216,6 +226,26 @@ export function IranBoard({
           <p className="mt-1 font-mono text-2xs text-muted">{spiderTipLine(spiderHover)}</p>
         </div>
       ) : null}
+      {dumpedHoles.map((h) => {
+        const p = nodePx(h.lat, h.lon);
+        return (
+          <div
+            key={`dump-${h.id}`}
+            className="pointer-events-none absolute z-10 flex -translate-x-1/2 -translate-y-[70%] flex-col items-center opacity-70"
+            style={{
+              left: `${(p.x / IRAN_MAP.widthPx) * 100}%`,
+              top: `${(p.y / IRAN_MAP.heightPx) * 100}%`,
+            }}
+          >
+            <span className="flex size-11 items-center justify-center rounded-full border-2 border-faint bg-surface-2 text-lg">
+              {COPY.spiderEmoji}
+            </span>
+            <span className="mt-1 max-w-[7.5rem] rounded-sm bg-fg/95 px-1 py-0.5 text-center font-mono text-2xs font-semibold leading-tight text-accent-fg">
+              {COPY.holeDumpedMark}
+            </span>
+          </div>
+        );
+      })}
       <button
         type="button"
         onClick={onOpenStrait}

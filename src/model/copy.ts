@@ -127,6 +127,11 @@ export const COPY = {
   holeDumped: "HOLE DUMPED",
   leftHole:
     "You left a spider hole. The stash ran. Mines in the TSS. Drones on a Gulf state.",
+  leaveAsk: "Leave the spider hole? The stash dumps.",
+  leaveStrike: "Strike anyway",
+  leaveSweep: "Sweep anyway",
+  leaveKeep: "Keep the hole",
+  holeDumpedMark: "Dumped",
   trafficLive: "TRAFFIC LIVE",
   trafficGraze: "TRAFFIC GRAZED",
   trafficLost: "TRAFFIC LOST",
@@ -255,6 +260,11 @@ export function spiderTipLine(h: { mines: number; drones: number }): string {
   const mines = Math.max(0, Math.round(h.mines));
   const drones = Math.max(0, Math.round(h.drones));
   return `Hidden stash: ${mines} mines, ${drones} drones. Strike this week or they dump.`;
+}
+
+/** Inland strike or sweep while a hole is live. Confirm before the stash runs. */
+export function leaveHoleLine(verb: string): string {
+  return `Leave the spider hole to ${verb}? The stash dumps.`;
 }
 
 export function spiderDumpLine(opts: {

@@ -172,6 +172,8 @@ export type SpiderHole = {
   drones: number;
   revealedTurn: number;
   alive: boolean;
+  /** Set when the stash ran. Struck holes stay unset so the remnant is dump-only. */
+  dumpedTurn?: number;
 };
 
 export type PriceComponents = {

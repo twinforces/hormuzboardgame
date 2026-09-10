@@ -485,6 +485,8 @@ test("leaving a spider hole to strike inland dumps the stash", () => {
   assert.equal(eng.state().lastReport?.dumped?.mines, 4);
   assert.equal(eng.state().lastReport?.dumped?.drones, 3);
   assert.match(eng.state().lastIranLine, /dumped/);
+  const dumped = eng.state().spiderHoles.find((h) => h.id === hole!.id);
+  assert.ok(dumped?.dumpedTurn, "dump leaves a remnant mark, not a silent vanish");
 });
 
 test("a lost traffic hull lights a spider hole, mine or shot", () => {

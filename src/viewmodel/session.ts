@@ -99,6 +99,7 @@ export type SessionLabels = {
   radarUp: boolean;
   portUp: boolean;
   spiderHoles: SpiderHole[];
+  dumpedHoles: SpiderHole[];
 };
 
 export type SessionSnapshot = {
@@ -298,6 +299,9 @@ function computeLabels(engine: Engine): SessionLabels {
     radarUp: s.industry.radarAlive,
     portUp: s.industry.portAlive,
     spiderHoles: s.spiderHoles.filter((h) => h.alive),
+    dumpedHoles: s.spiderHoles.filter(
+      (h) => !h.alive && h.dumpedTurn != null && s.turn <= h.dumpedTurn + 1,
+    ),
   };
 }
 

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranSeedLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranSeedLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -401,6 +401,22 @@ test("leaving a hole is the dump headline, not a silent vanish", () => {
     outcomeTitle({ ...base, dumped: undefined, kind: "lost" }),
     COPY.trafficLost,
   );
+});
+
+test("leaving a hole asks before the stash runs", () => {
+  assert.equal(
+    leaveHoleLine("strike Mine factory"),
+    "Leave the spider hole to strike Mine factory? The stash dumps.",
+  );
+  assert.equal(
+    leaveHoleLine("sweep the ribbon"),
+    "Leave the spider hole to sweep the ribbon? The stash dumps.",
+  );
+  assert.doesNotMatch(leaveHoleLine("strike Radar"), /\u2014/);
+  assert.equal(COPY.leaveKeep, "Keep the hole");
+  assert.equal(COPY.leaveStrike, "Strike anyway");
+  assert.equal(COPY.leaveSweep, "Sweep anyway");
+  assert.equal(COPY.holeDumpedMark, "Dumped");
 });
 
 

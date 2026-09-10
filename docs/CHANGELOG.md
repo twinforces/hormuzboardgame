@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-10 - Leave a spider hole is a confirm.
+
+- **What:** Click a factory, warehouse, radar, port, or sweep while a spider hole is live and the board asks first. Keep the hole is the gold chip. Strike anyway dumps. The Iran board stays up. A Dumped mark sits on the pit that week.
+- **Why:** User: hole appeared, then disappeared when they decided to strike something else.
+- **How:** View confirm before `usStrike` / `usSweep`. `dumpedTurn` remnant. Stay on strikes. ADR-025.
+- **Hash:** pending.
+
 ## 2026-09-10 - Leaving a spider hole dumps it. Headline says so.
 
 - **What:** Strike inland or sweep while a hole is live and the stash runs. Dialog title is HOLE DUMPED. First line: you left a spider hole.

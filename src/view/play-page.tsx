@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { COPY, SCENARIO_KIT, clickToStrike } from "@/model/copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike, leaveHoleLine } from "@/model/copy.ts";
 import { STRIKE, STRIKE_NODES } from "@/model/balance.ts";
 import { netUsdM } from "@/model/company.ts";
 import type { DebugSnapshot, ScenarioId, StrikeTarget } from "@/model/types.ts";
@@ -11,6 +11,10 @@ import { ScoreDialog } from "./score-dialog.tsx";
 import { cn } from "@/lib/cn.ts";
 
 const SCENARIO_IDS = Object.keys(SCENARIO_KIT) as ScenarioId[];
+
+type LeaveAsk =
+  | { kind: "strike"; target: StrikeTarget; pitId?: string }
+  | { kind: "sweep" };
 
 function readStoredSeed(): number {
   if (typeof window === "undefined") return 1;
@@ -36,6 +40,7 @@ export function PlayPage() {
   const [reportSeen, setReportSeen] = useState<string | null>(null);
   const [scoreOpen, setScoreOpen] = useState(false);
   const [board, setBoard] = useState<"iran" | "strait">("strait");
+  const [leaveAsk, setLeaveAsk] = useState<LeaveAsk | null>(null);
   const d = session.debug();
   const war = labels.seat === "us";
 
@@ -62,6 +67,7 @@ export function PlayPage() {
     markAct();
     setReportSeen(null);
     setScoreOpen(false);
+    setLeaveAsk(null);
     session.reset(seed, scenario);
   }
 
@@ -70,7 +76,49 @@ export function PlayPage() {
     window.localStorage.setItem("hormuz.seed", String(next));
     setReportSeen(null);
     setScoreOpen(false);
+    setLeaveAsk(null);
     setSeed(next);
+  }
+
+  function commitStrike(target: StrikeTarget, pitId?: string) {
+    markAct();
+    setLeaveAsk(null);
+    session.usStrike(target, pitId);
+  }
+
+  function commitSweep() {
+    markAct();
+    setLeaveAsk(null);
+    session.usSweep();
+  }
+
+  function requestStrike(target: StrikeTarget, pitId?: string) {
+    if (target === "spider-hole") {
+      commitStrike(target, pitId);
+      return;
+    }
+    if (labels.spiderHoles.length > 0) {
+      setLeaveAsk({ kind: "strike", target, pitId });
+      setBoard("iran");
+      return;
+    }
+    commitStrike(target, pitId);
+  }
+
+  function requestSweep() {
+    if (labels.spiderHoles.length > 0) {
+      setLeaveAsk({ kind: "sweep" });
+      setBoard("iran");
+      return;
+    }
+    commitSweep();
+  }
+
+  function leaveVerb(ask: LeaveAsk): string {
+    if (ask.kind === "sweep") return "sweep the ribbon";
+    const id = STRIKE.targets.find((t) => t === ask.target);
+    const label = id ? STRIKE_NODES[id].label : ask.target;
+    return `strike ${label}`;
   }
 
   function toggleDebug() {
@@ -95,6 +143,7 @@ export function PlayPage() {
                 type="button"
                 onClick={() => {
                   acted.current = false;
+                  setLeaveAsk(null);
                   setScenario(id);
                   window.localStorage.setItem("hormuz.scenario", id);
                 }}
@@ -139,6 +188,34 @@ export function PlayPage() {
           <p className="font-mono text-2xs text-muted">{COPY.strikeMarks}</p>
         </div>
       ) : null}
+      {war && leaveAsk ? (
+        <div
+          role="alertdialog"
+          aria-label={COPY.leaveAsk}
+          className="rounded-lg border border-danger/60 bg-surface p-3"
+        >
+          <p className="text-sm text-fg">{leaveHoleLine(leaveVerb(leaveAsk))}</p>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                if (leaveAsk.kind === "sweep") commitSweep();
+                else commitStrike(leaveAsk.target, leaveAsk.pitId);
+              }}
+              className="min-h-11 rounded-md border border-danger bg-surface-2 px-3 text-sm text-fg transition-transform duration-150 ease-out active:scale-[0.96]"
+            >
+              {leaveAsk.kind === "sweep" ? COPY.leaveSweep : COPY.leaveStrike}
+            </button>
+            <button
+              type="button"
+              onClick={() => setLeaveAsk(null)}
+              className="min-h-11 rounded-md bg-accent px-3 text-sm font-medium text-accent-fg transition-transform duration-150 ease-out active:scale-[0.96]"
+            >
+              {COPY.leaveKeep}
+            </button>
+          </div>
+        </div>
+      ) : null}
       {war && board === "iran" ? (
         <IranBoard
           canAct={labels.canAct}
@@ -149,6 +226,7 @@ export function PlayPage() {
           radarUp={labels.radarUp}
           portUp={labels.portUp}
           spiderHoles={labels.spiderHoles}
+          dumpedHoles={labels.dumpedHoles}
           price={labels.price}
           omaniKill={labels.omaniKill}
           waiting={String(state.waitingHulls)}
@@ -160,9 +238,7 @@ export function PlayPage() {
           magMines={labels.magMines}
           magBoats={labels.magBoats}
           onStrike={(target: StrikeTarget, pitId?: string) => {
-            markAct();
-            session.usStrike(target, pitId);
-            setBoard("strait");
+            requestStrike(target, pitId);
           }}
           onOpenStrait={() => setBoard("strait")}
         />
@@ -242,11 +318,15 @@ export function PlayPage() {
                         key={id}
                         type="button"
                         disabled={!labels.canAct || !liveNode}
-                        title={liveNode ? clickToStrike(n.label) : `${n.label} ${COPY.nodeDown}`}
+                        title={
+                          liveNode
+                            ? labels.spiderHoles.length > 0
+                              ? leaveHoleLine(`strike ${n.label}`)
+                              : clickToStrike(n.label)
+                            : `${n.label} ${COPY.nodeDown}`
+                        }
                         onClick={() => {
-                          markAct();
-                          session.usStrike(id);
-                          setBoard("strait");
+                          requestStrike(id);
                         }}
                         className={cn(
                           "min-h-11 rounded-md border px-3 text-sm disabled:opacity-50",
@@ -269,9 +349,7 @@ export function PlayPage() {
                       disabled={!labels.canAct}
                       title={clickToStrike(COPY.spiderHole)}
                       onClick={() => {
-                        markAct();
-                        session.usStrike("spider-hole", h.id);
-                        setBoard("strait");
+                        requestStrike("spider-hole", h.id);
                       }}
                       className="min-h-11 rounded-md border border-danger bg-surface-2 px-3 text-sm text-fg disabled:opacity-50"
                     >
@@ -285,9 +363,13 @@ export function PlayPage() {
                 <button
                   type="button"
                   disabled={!labels.canAct}
+                  title={
+                    labels.spiderHoles.length > 0
+                      ? leaveHoleLine("sweep the ribbon")
+                      : undefined
+                  }
                   onClick={() => {
-                    markAct();
-                    session.usSweep();
+                    requestSweep();
                   }}
                   className="min-h-11 w-full rounded-md bg-lane px-3 text-sm text-fg disabled:opacity-50"
                 >

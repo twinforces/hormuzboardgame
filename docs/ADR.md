@@ -187,6 +187,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** The original lock was strike it this week or they dump. Players read the missing circle as a bug because Traffic sat hid the dump.
 - **Rejected:** Keep the hole after a factory strike. That would be two US results for one week.
 
+## ADR-025. Leaving a hole is a confirm, not a silent click.
+
+- **Status:** accepted
+- **Context:** User still read the dump as a glitch: hole appeared, then disappeared when they decided to strike something else. ADR-024 made the dump the headline, but the click still flipped the board to the strait and killed the mark with no warning.
+- **Decision:** Inland strike or sweep while a hole is live opens a confirm: Leave the spider hole? Keep the hole is the gold chip. Strike anyway / Sweep anyway is the dump. Stay on the Iran board. A dumped remnant mark sits on the pit for that week. The stash still runs. XOR is unchanged.
+- **Why:** The mole has to be a choice they can refuse. A factory click that also flips the photo looks like the circle despawned.
+- **Rejected:** A grace week that keeps the live hole after a factory strike. That is two US results for one week, already rejected in ADR-024.
+
 ## Open questions
 
 
