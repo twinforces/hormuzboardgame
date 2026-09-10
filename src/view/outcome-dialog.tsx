@@ -31,7 +31,7 @@ export function OutcomeDialog({
     if (!report && el.open) el.close();
   }, [report]);
 
-  const lost = report?.kind === "lost";
+  const lost = report?.kind === "lost" || Boolean(report?.dumped);
 
   return (
     <dialog

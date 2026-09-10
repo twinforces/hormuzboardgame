@@ -517,6 +517,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       cause: TurnReport["cause"];
       paid: boolean;
       wave?: TurnReport["wave"];
+      dumped?: TurnReport["dumped"];
     },
   ): GameState {
     const report: TurnReport = {
@@ -687,7 +688,13 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
 
   function afterUsVerb(s: GameState): GameState {
     let cur = applyIranOrders({ ...s, phase: "iranOrders" }, pendingShot);
+    const gulf0 = cur.gulfHits;
     cur = dumpSpiders(cur);
+    const dumpedN = cur.gulfHits - gulf0;
+    const dumped =
+      dumpedN > 0
+        ? { mines: SPIDER.stashMines * dumpedN, drones: SPIDER.stashDrones * dumpedN }
+        : undefined;
     cur = interceptDrones(cur);
     pendingShot = "none";
     if (hullsLeft(cur.scenario, cur.books) <= 0) {
@@ -787,6 +794,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       cause: lastCause,
       paid: lastPaid,
       wave,
+      dumped,
     });
   }
 

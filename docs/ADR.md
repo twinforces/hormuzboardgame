@@ -179,6 +179,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** Six CEOs sitting was treated as a Wait verb, so balk died the same night. One tired hull then ran the unswept mines and lit a new hole. The mole taught you to never sweep.
 - **Rejected:** An endless coastal stash as the US sitting.
 
+## ADR-024. Leaving a spider hole dumps it. That is the vanish.
+
+- **Status:** accepted
+- **Context:** User: spider hole appeared, then disappeared when they struck something else.
+- **Decision:** One US verb a week. Strike inland or sweep and the live hole dumps: extra TSS mines, Gulf drones, the mark is gone. Outcome title is HOLE DUMPED. The hole did not glitch. The stash ran.
+- **Why:** The original lock was strike it this week or they dump. Players read the missing circle as a bug because Traffic sat hid the dump.
+- **Rejected:** Keep the hole after a factory strike. That would be two US results for one week.
+
 ## Open questions
 
 

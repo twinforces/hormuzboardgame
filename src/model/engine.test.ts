@@ -474,6 +474,19 @@ test("a revealed spider hole eats a week or dumps mines and gulf drones", () => 
   assert.equal(dump.state().priceComponents.gulf, 8);
 });
 
+test("leaving a spider hole to strike inland dumps the stash", () => {
+  const eng = createEngine(4, "mine-warfare");
+  eng.dispatch({ type: "us-strike", target: "port" });
+  const hole = eng.state().spiderHoles.find((h) => h.alive);
+  assert.ok(hole);
+  eng.dispatch({ type: "us-strike", target: "mine-factory" });
+  assert.equal(eng.state().spiderHoles.find((h) => h.id === hole!.id)?.alive, false);
+  assert.ok(eng.state().lastReport?.dumped, "inland strike is leaving the hole");
+  assert.equal(eng.state().lastReport?.dumped?.mines, 4);
+  assert.equal(eng.state().lastReport?.dumped?.drones, 3);
+  assert.match(eng.state().lastIranLine, /dumped/);
+});
+
 test("a lost traffic hull lights a spider hole, mine or shot", () => {
   const eng = createEngine(1, "mine-warfare");
   let weeks = 0;

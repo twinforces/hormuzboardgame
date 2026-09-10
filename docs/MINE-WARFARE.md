@@ -60,7 +60,7 @@ Warehouse before radar because leftover stores still sail if the plant is dead a
 
 ## Spider holes
 
-A ship hit reveals one coastal cell: pierside strike, or a tanker that took a graze, a shot-kill, or a mine. Blood in the water is the cue. The tooltip is the stash (mines, drones). Strike it this week. That eats the US verb. Captains balk after a lost hull until you sweep. Strike the hole and traffic sits. No new mole. Leave the hole for next week's resolve and the stash dumps extra TSS mines plus a drone raid on another Gulf state. Fear, not occupation. Radar does not stop the mine dump. Coastal cells recycle. One live hole at a time.
+A ship hit reveals one coastal cell: pierside strike, or a tanker that took a graze, a shot-kill, or a mine. Blood in the water is the cue. The tooltip is the stash (mines, drones). Strike it this week. That eats the US verb. Strike a factory or sweep instead and the stash dumps: extra TSS mines plus a drone raid on another Gulf state. The mark is gone because the stash ran, not because the mole glitched. Captains balk after a lost hull until you sweep. Strike the hole and traffic sits. No new mole. Fear, not occupation. Radar does not stop the mine dump. Coastal cells recycle. One live hole at a time.
 
 
 ## Magazines (v1 bars)

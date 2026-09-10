@@ -370,4 +370,37 @@ test("continue highlight follows the spider hole, then the empty board", () => {
   assert.equal(outcomeContinue({ spider: false, industryDown: false }), "strait");
 });
 
+test("leaving a hole is the dump headline, not a silent vanish", () => {
+  const base = {
+    id: "d1",
+    turn: 3,
+    kind: "wait" as const,
+    door: "wait" as const,
+    netDeltaUsdM: 0,
+    freightUsdM: 0,
+    bonusUsdM: 0,
+    tollUsdM: 0,
+    damageUsdM: 0,
+    idleUsdM: 0,
+    minesBought: 0,
+    usLine: "US struck the mine factory.",
+    iranLine: "The hole dumped 4 mines.",
+    omaniMinePct: 40,
+    iranMinePct: 0,
+    omaniShotPct: 10,
+    iranShotPct: 6,
+    cause: "none" as const,
+    paid: false,
+    watcher: "us" as const,
+    dumped: { mines: 4, drones: 3 },
+  };
+  assert.equal(outcomeTitle(base), COPY.holeDumped);
+  assert.equal(outcomeLines(base)[0], COPY.leftHole);
+  assert.match(COPY.warHint, /Leave a spider hole/);
+  assert.equal(
+    outcomeTitle({ ...base, dumped: undefined, kind: "lost" }),
+    COPY.trafficLost,
+  );
+});
+
 

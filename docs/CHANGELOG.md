@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-10 - Leaving a spider hole dumps it. Headline says so.
+
+- **What:** Strike inland or sweep while a hole is live and the stash runs. Dialog title is HOLE DUMPED. First line: you left a spider hole.
+- **Why:** User: hole appeared, then disappeared when they struck something else.
+- **How:** `TurnReport.dumped`. `outcomeTitle` leads with the dump. ADR-024.
+
 ## 2026-09-10 - Traffic balks after blood. No more mole mill.
 
 - **What:** After a lost hull, scripted traffic sits until you sweep. Striking a spider hole no longer feeds a new hole the same week. Captains refuse until the Navy is on the ribbon.

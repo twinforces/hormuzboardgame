@@ -116,13 +116,17 @@ export const COPY = {
   magMines: "Mines",
   magBoats: "Boats",
   nodeDown: "Down",
-  warHint: "Click a circle to strike, or sweep the ribbon. After blood, traffic sits until you sweep.",
+  warHint:
+    "Click a circle to strike, or sweep the ribbon. After blood, traffic sits until you sweep. Leave a spider hole and it dumps.",
   warLock:
     "You are US, anti-mine warfare. One hundred hulls. Ten companies. Some count EV. Some wait for a sweep. After blood they sit until you sweep. Once the till is the hotter mine field, they flip.",
   trafficBooks: "Traffic",
   trafficNote: "One hundred traffic hulls, ten companies. You do not own them. Tolls still buy mines.",
   trafficWait: "Traffic sat.",
   trafficBalk: "Captains refuse. Sweep the ribbon or they stay tied.",
+  holeDumped: "HOLE DUMPED",
+  leftHole:
+    "You left a spider hole. The stash ran. Mines in the TSS. Drones on a Gulf state.",
   trafficLive: "TRAFFIC LIVE",
   trafficGraze: "TRAFFIC GRAZED",
   trafficLost: "TRAFFIC LOST",
@@ -453,9 +457,10 @@ export function scoreLines(s: ScoreInput): string[] {
 
 export function outcomeTitle(r: TurnReport): string {
   if (r.watcher === "us") {
+    if (r.kind === "lost") return COPY.trafficLost;
+    if (r.dumped) return COPY.holeDumped;
     if (r.kind === "wait") return COPY.trafficWait;
     if (r.kind === "graze") return COPY.trafficGraze;
-    if (r.kind === "lost") return COPY.trafficLost;
     return COPY.trafficLive;
   }
   if (r.kind === "wait") return COPY.outcomeWait;
@@ -467,6 +472,9 @@ export function outcomeTitle(r: TurnReport): string {
 export function outcomeLines(r: TurnReport): string[] {
   if (r.watcher === "us") {
     const lines: string[] = [];
+    if (r.dumped) {
+      lines.push(COPY.leftHole);
+    }
     if (r.wave) {
       lines.push(
         `${r.wave.sent} sailed. ${r.wave.waited} sat. Paid ${r.wave.paid}. Oman ${r.wave.omani}. Live ${r.wave.live}. Lost ${r.wave.lost}.`,

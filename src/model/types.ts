@@ -139,6 +139,8 @@ export type TurnReport = {
     live: number;
     lost: number;
   };
+  /** Stash that ran because you spent the week on something else. */
+  dumped?: { mines: number; drones: number };
 };
 
 export type StrikeTarget =
