@@ -1,6 +1,6 @@
 # RECENTGOALS
 
-Shipped sitting work on [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboardgame). Auth off. DB off.
+Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboardgame). Auth off. DB off.
 
 ## Now
 
