@@ -77,3 +77,20 @@ test("a gulf drone raid after an ignored spider hole raises P", () => {
   const hit = sumPrice(priceComponents({ ...s, gulfHits: 1 }));
   assert.equal(hit, calm + PRICE.gulfDrone);
 });
+
+test("US traffic needs ten live hulls to match one tanker-house exit; a kill is the same spike", () => {
+  const tanker = createState(1, "reopen-lane");
+  const war = createState(1, "mine-warfare");
+  assert.equal(PRICE.usFlowHulls, 10);
+  assert.equal(priceComponents({ ...tanker, exits: 1 }).flow, -PRICE.exitRelief);
+  assert.equal(priceComponents({ ...war, exits: 10 }).flow, -PRICE.exitRelief);
+  assert.equal(priceComponents({ ...war, exits: 1 }).flow, -PRICE.exitRelief / PRICE.usFlowHulls);
+  assert.equal(
+    priceComponents({ ...tanker, waitingHulls: 1 }).waiting,
+    priceComponents({ ...war, waitingHulls: 10 }).waiting,
+  );
+  const tankerKill = priceComponents({ ...tanker, tankerAlive: false, hullFactor: 0 }).kill;
+  const warKill = priceComponents({ ...war, tankerAlive: false, hullFactor: 0 }).kill;
+  assert.equal(tankerKill, PRICE.killSpike);
+  assert.equal(warKill, PRICE.killSpike);
+});

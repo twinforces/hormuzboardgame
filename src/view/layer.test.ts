@@ -11,6 +11,7 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   const play = readFileSync(join(dir, "play-page.tsx"), "utf8");
   const briefing = readFileSync(join(dir, "briefing.tsx"), "utf8");
   const iran = readFileSync(join(dir, "iran-board.tsx"), "utf8");
+  const outcome = readFileSync(join(dir, "outcome-dialog.tsx"), "utf8");
   assert.match(play, /onOmani=/);
   assert.match(play, /onIran=/);
   assert.match(play, /onBoardAct=/);
@@ -69,13 +70,18 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(iran, /STRIKE_NODES/);
   assert.match(iran, /onOpenStrait/);
   assert.match(iran, /clickToStrike/);
-  assert.match(iran, /COPY\.usStrike/);
+  assert.match(iran, /n\.emoji/);
   assert.match(iran, /role="tooltip"/);
   assert.match(iran, /onPointerEnter/);
-  assert.match(play, /COPY\.usStrike/);
+  assert.match(play, /n\.emoji/);
   assert.match(play, /clickToStrike/);
+  assert.match(play, /spider=\{labels\.spiderHoles\.length > 0\}/);
+  assert.match(outcome, /COPY\.outcomeGoStrikes/);
+  assert.match(outcome, /COPY\.outcomeGoStrait/);
+  assert.match(outcome, /grid-cols-2/);
   assert.doesNotMatch(iran, /STRIKE\.ideal/);
   assert.doesNotMatch(play, /STRIKE\.ideal/);
+  assert.doesNotMatch(iran, /sm:grid-cols-3/);
 });
 
 test("price meter stays a meter; mine circles carry mines est", () => {

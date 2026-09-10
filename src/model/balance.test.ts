@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, MAGAZINE, MINES, OPEN_RESEARCH, SPIDER, STRIKE, TRAFFIC } from "./balance.ts";
+import { ATTACK, COMPANY, COST_FAMILY, DRONES, FORCE, MAGAZINE, MINES, OPEN_RESEARCH, PRICE, SPIDER, STRIKE, STRIKE_NODES, TRAFFIC } from "./balance.ts";
 
 test("company books use a cited VLCC newbuild", () => {
   assert.equal(COMPANY.hullUsdM, 129);
@@ -59,4 +59,8 @@ test("strike order is a lock, not player copy", () => {
   assert.equal(ATTACK.omaniDrone + ATTACK.omaniBoat, ATTACK.omaniShot);
   assert.equal(SPIDER.pits.length, 4);
   assert.ok(SPIDER.stashMines > 0);
+  assert.equal(PRICE.usFlowHulls, 10);
+  const marks = STRIKE.targets.map((id) => STRIKE_NODES[id].emoji);
+  assert.equal(new Set(marks).size, marks.length);
+  assert.ok(marks.every((e) => e.length > 0));
 });

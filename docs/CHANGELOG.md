@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-10 - Circles on the Iran map. Continue row. US oil scale.
+
+- **What:** Strike chips no longer sit on the photo. Each node is a clickable circle with an emoji and dark text on a cream chip. Continue is Go to strikes / Go to strait side by side. A live spider hole highlights strikes. An empty board highlights the strait. US traffic needs ten live hulls to match one tanker-house exit. A ship hit still spikes the same.
+- **Why:** User: six buttons covered the map, white labels died on light land, clicking a circle is the US verb, continue should point at the mole or the lane, one hull as Greece Inc should not equal one hull in a hundred-ship week.
+- **How:** IranBoard HTML marks. `outcomeContinue`. `PRICE.usFlowHulls` 10 on flow and waiting, not on kill.
+
 ## 2026-09-10 - Two plants, two sheds, spider holes after a ship hit
 
 - **What:** Mine factory and drone factory are different roofs. Mine warehouse and drone warehouse are different stacks. Radar makes drones guess and does not move mines. Hitting pierside ships or grazing a tanker lights a spider hole with a hidden stash. Striking the hole eats the week. Ignore it and the stash dumps extra TSS mines plus a Gulf drone raid.

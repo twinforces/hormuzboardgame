@@ -339,7 +339,7 @@ test("mine-warfare starts at usOrders and tanker verbs are illegal", () => {
   const eng = createEngine(1, "mine-warfare");
   assert.equal(eng.state().phase, "usOrders");
   assert.equal(eng.state().scenario, "mine-warfare");
-  assert.match(eng.state().log.join(" "), /yellow mark/i);
+  assert.match(eng.state().log.join(" "), /circle/i);
   const late = eng.dispatch({ type: "tanker-wait" });
   assert.equal(late.ok, false);
   const sweep = eng.dispatch({ type: "us-sweep" });

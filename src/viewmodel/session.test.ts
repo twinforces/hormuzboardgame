@@ -266,7 +266,7 @@ test("mine-warfare session is US seat: sweep and strike, tanker doors stay shut"
   assert.equal(s.labels().canAct, true);
   assert.equal(s.labels().doorsOpen, false);
   assert.equal(s.labels().recommended, "none");
-  assert.match(s.labels().hint, /yellow mark/i);
+  assert.match(s.labels().hint, /circle/i);
   assert.equal(s.labels().houseName, COPY.roleUs);
   assert.equal(s.labels().factoryUp, true);
   assert.equal(s.labels().droneFactoryUp, true);

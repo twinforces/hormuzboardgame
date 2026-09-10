@@ -103,20 +103,20 @@ export const COPY = {
   scenarioOne: "One hull. Idle still ticks. Send it when expected is fat.",
   scenarioOverplay: "Five hulls. Packed ribbon. Navy sweeps three patches a week. Red remains.",
   scenarioMine:
-    "You are US. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Strike a yellow mark or sweep the ribbon.",
+    "You are US. One hundred hulls, ten companies. Some count EV. Some wait for a sweep. Click a circle or sweep the ribbon.",
   scenarioAsk: "Which sitting?",
   tabIran: "Strikes",
   tabStrait: "Strait",
   usSweep: "Sweep the ribbon",
   usStrike: "Strike",
-  strikeMarks: "Yellow marks. Hover, then click to strike.",
+  strikeMarks: "Click a circle to strike.",
   magDrones: "Drones",
   magCounter: "Counter-drones",
   magLasers: "Lasers",
   magMines: "Mines",
   magBoats: "Boats",
   nodeDown: "Down",
-  warHint: "Click a yellow mark to strike, or sweep the ribbon. Traffic moves after you act.",
+  warHint: "Click a circle to strike, or sweep the ribbon. Traffic moves after you act.",
   warLock:
     "You are US. One hundred hulls. Ten companies. Some count EV. Some wait for a sweep. Once the till is the hotter mine field, they flip.",
   trafficBooks: "Traffic",
@@ -125,8 +125,8 @@ export const COPY = {
   trafficLive: "TRAFFIC LIVE",
   trafficGraze: "TRAFFIC GRAZED",
   trafficLost: "TRAFFIC LOST",
-  outcomeCloseWar: "See the strait",
-  outcomeBackStrikes: "Back to strikes",
+  outcomeGoStrait: "Go to strait",
+  outcomeGoStrikes: "Go to strikes",
   openStrait: "Open the strait",
   laneChip: "Lane",
   factoryPrints: "Mine factory still prints.",
@@ -138,6 +138,7 @@ export const COPY = {
   radarDown: "Radar is down.",
   portDown: "Port is down.",
   spiderHole: "Spider hole",
+  spiderEmoji: "🕳️",
   spiderTip: "Hidden mines and drones. Strike this week or they dump.",
   spiderDump: "The hole dumped mines into the TSS. Drones hit a Gulf state. Fear, not occupation.",
   matchOverHint: "Out of hulls. Replay or take a new seed.",
@@ -192,6 +193,16 @@ export function idleChargeLine(
 
 export function clickToStrike(label: string): string {
   return `Click to strike ${label}`;
+}
+
+/** Spider hole this week is the mole. Otherwise look at the lane. */
+export function outcomeContinue(opts: {
+  spider: boolean;
+  industryDown: boolean;
+}): "strikes" | "strait" {
+  if (opts.spider) return "strikes";
+  if (opts.industryDown) return "strait";
+  return "strait";
 }
 
 export function usStrikeLine(opts: {

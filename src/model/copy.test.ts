@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranSeedLine, lossLines, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, clickToStrike, fogTip, idleChargeLine, iranBrief, iranSeedLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -59,9 +59,10 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.match(COPY.tabIran, /Strikes/);
   assert.match(COPY.tabStrait, /Strait/);
   assert.match(COPY.warLock, /hundred/);
-  assert.match(COPY.warHint, /yellow mark/i);
+  assert.match(COPY.warHint, /circle/i);
   assert.match(COPY.usStrike, /Strike/);
-  assert.match(COPY.outcomeBackStrikes, /strikes/i);
+  assert.match(COPY.outcomeGoStrikes, /Go to strikes/);
+  assert.match(COPY.outcomeGoStrait, /Go to strait/);
   assert.equal(clickToStrike("Factory"), "Click to strike Factory");
   assert.equal(clickToStrike("Warehouse"), "Click to strike Warehouse");
   assert.doesNotMatch(COPY.warLock, /1\./);
@@ -355,6 +356,13 @@ test("spider copy names the stash without numbering a plan", () => {
   assert.match(spiderDumpLine({ turn: 3, mines: 4, drones: 3 }), /3 drones hit a Gulf state/);
   assert.doesNotMatch(spiderRevealLine({ turn: 2, mines: 4, drones: 3 }), /\u2014/);
   assert.doesNotMatch(spiderDumpLine({ turn: 3, mines: 4, drones: 3 }), /\u2014/);
+});
+
+test("continue highlight follows the spider hole, then the empty board", () => {
+  assert.equal(outcomeContinue({ spider: true, industryDown: false }), "strikes");
+  assert.equal(outcomeContinue({ spider: true, industryDown: true }), "strikes");
+  assert.equal(outcomeContinue({ spider: false, industryDown: true }), "strait");
+  assert.equal(outcomeContinue({ spider: false, industryDown: false }), "strait");
 });
 
 

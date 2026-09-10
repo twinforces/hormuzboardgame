@@ -6,10 +6,10 @@ import { cn } from "@/lib/cn.ts";
 
 type Standing = (typeof STRIKE.targets)[number];
 
-function nodePx(lat: number, lon: number): { x: number; y: number } {
+function nodePx(lat: number, lon: number, dx = 0, dy = 0): { x: number; y: number } {
   return {
-    x: ((lon - IRAN_MAP.westLon) / (IRAN_MAP.eastLon - IRAN_MAP.westLon)) * IRAN_MAP.widthPx,
-    y: ((IRAN_MAP.northLat - lat) / (IRAN_MAP.northLat - IRAN_MAP.southLat)) * IRAN_MAP.heightPx,
+    x: ((lon - IRAN_MAP.westLon) / (IRAN_MAP.eastLon - IRAN_MAP.westLon)) * IRAN_MAP.widthPx + dx,
+    y: ((IRAN_MAP.northLat - lat) / (IRAN_MAP.northLat - IRAN_MAP.southLat)) * IRAN_MAP.heightPx + dy,
   };
 }
 
@@ -115,69 +115,12 @@ export function IranBoard({
         >
           {COPY.tabStrait}
         </text>
-        {STRIKE.targets.map((id) => {
-          const n = STRIKE_NODES[id];
-          const p = nodePx(n.lat, n.lon);
-          const liveNode = up[id];
-          const hot = hover === id && liveNode;
-          return (
-            <g key={id}>
-              <circle
-                cx={p.x}
-                cy={p.y}
-                r={hot ? 42 : 32}
-                className={
-                  liveNode
-                    ? hot
-                      ? "fill-accent stroke-accent-fg"
-                      : "fill-accent/80 stroke-accent-fg"
-                    : "fill-faint/80 stroke-border"
-                }
-                strokeWidth={hot ? 5 : 3}
-              />
-              <text
-                x={p.x}
-                y={p.y - 52}
-                textAnchor="middle"
-                className="fill-fg"
-                fontSize={28}
-                fontFamily="IBM Plex Sans, sans-serif"
-              >
-                {liveNode ? n.label : `${n.label} ${COPY.nodeDown}`}
-              </text>
-            </g>
-          );
-        })}
-        {spiderHoles.map((h) => {
-          const p = nodePx(h.lat, h.lon);
-          const hot = hover === h.id;
-          return (
-            <g key={h.id}>
-              <circle
-                cx={p.x}
-                cy={p.y}
-                r={hot ? 40 : 30}
-                className={hot ? "fill-danger stroke-accent-fg" : "fill-danger/80 stroke-danger"}
-                strokeWidth={hot ? 5 : 3}
-              />
-              <text
-                x={p.x}
-                y={p.y - 48}
-                textAnchor="middle"
-                className="fill-fg"
-                fontSize={26}
-                fontFamily="IBM Plex Sans, sans-serif"
-              >
-                {COPY.spiderHole}
-              </text>
-            </g>
-          );
-        })}
       </svg>
       {STRIKE.targets.map((id) => {
         const n = STRIKE_NODES[id];
-        const p = nodePx(n.lat, n.lon);
+        const p = nodePx(n.lat, n.lon, n.dx, n.dy);
         const liveNode = up[id];
+        const hot = hover === id && liveNode;
         return (
           <button
             key={`hit-${id}`}
@@ -187,7 +130,7 @@ export function IranBoard({
             onPointerEnter={() => setHover(id)}
             onPointerLeave={() => setHover(null)}
             className={cn(
-              "absolute z-10 min-h-14 min-w-14 -translate-x-1/2 -translate-y-1/2 rounded-full",
+              "absolute z-10 flex -translate-x-1/2 -translate-y-[70%] flex-col items-center",
               canAct && liveNode ? "cursor-pointer" : "cursor-default",
             )}
             style={{
@@ -195,11 +138,28 @@ export function IranBoard({
               top: `${(p.y / IRAN_MAP.heightPx) * 100}%`,
             }}
             aria-label={clickToStrike(n.label)}
-          />
+          >
+            <span
+              className={cn(
+                "flex size-11 items-center justify-center rounded-full border-2 text-lg shadow-sm transition-transform duration-150 ease-out",
+                liveNode
+                  ? hot
+                    ? "border-accent-fg bg-accent motion-safe:scale-110"
+                    : "border-accent-fg bg-accent motion-safe:hover:scale-110 motion-safe:active:scale-90"
+                  : "border-border bg-faint/70 opacity-70",
+              )}
+            >
+              {n.emoji}
+            </span>
+            <span className="mt-1 max-w-[7.5rem] rounded-sm bg-fg/95 px-1 py-0.5 text-center font-mono text-2xs font-semibold leading-tight text-accent-fg">
+              {liveNode ? n.label : `${n.label} ${COPY.nodeDown}`}
+            </span>
+          </button>
         );
       })}
       {spiderHoles.map((h) => {
         const p = nodePx(h.lat, h.lon);
+        const hot = hover === h.id;
         return (
           <button
             key={`hit-${h.id}`}
@@ -208,22 +168,36 @@ export function IranBoard({
             onClick={() => onStrike("spider-hole", h.id)}
             onPointerEnter={() => setHover(h.id)}
             onPointerLeave={() => setHover(null)}
-            className="absolute z-10 min-h-14 min-w-14 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            className="absolute z-20 flex -translate-x-1/2 -translate-y-[70%] flex-col items-center"
             style={{
               left: `${(p.x / IRAN_MAP.widthPx) * 100}%`,
               top: `${(p.y / IRAN_MAP.heightPx) * 100}%`,
             }}
             aria-label={clickToStrike(COPY.spiderHole)}
-          />
+          >
+            <span
+              className={cn(
+                "flex size-11 items-center justify-center rounded-full border-2 text-lg shadow-sm transition-transform duration-150 ease-out",
+                hot
+                  ? "border-accent-fg bg-danger motion-safe:scale-110"
+                  : "border-danger bg-danger motion-safe:hover:scale-110 motion-safe:active:scale-90",
+              )}
+            >
+              {COPY.spiderEmoji}
+            </span>
+            <span className="mt-1 max-w-[7.5rem] rounded-sm bg-fg/95 px-1 py-0.5 text-center font-mono text-2xs font-semibold leading-tight text-accent-fg">
+              {COPY.spiderHole}
+            </span>
+          </button>
         );
       })}
       {standingHover && up[standingHover] ? (
         <div
           role="tooltip"
-          className="pointer-events-none absolute z-20 w-max max-w-[14rem] -translate-x-1/2 -translate-y-[calc(100%+1.75rem)] rounded-md border border-accent bg-bg/95 px-2 py-1.5 text-fg shadow-sm"
+          className="pointer-events-none absolute z-30 w-max max-w-[14rem] -translate-x-1/2 -translate-y-[calc(100%+2.75rem)] rounded-md border border-accent bg-bg/95 px-2 py-1.5 text-fg shadow-sm"
           style={{
-            left: `${(nodePx(STRIKE_NODES[standingHover].lat, STRIKE_NODES[standingHover].lon).x / IRAN_MAP.widthPx) * 100}%`,
-            top: `${(nodePx(STRIKE_NODES[standingHover].lat, STRIKE_NODES[standingHover].lon).y / IRAN_MAP.heightPx) * 100}%`,
+            left: `${(nodePx(STRIKE_NODES[standingHover].lat, STRIKE_NODES[standingHover].lon, STRIKE_NODES[standingHover].dx, STRIKE_NODES[standingHover].dy).x / IRAN_MAP.widthPx) * 100}%`,
+            top: `${(nodePx(STRIKE_NODES[standingHover].lat, STRIKE_NODES[standingHover].lon, STRIKE_NODES[standingHover].dx, STRIKE_NODES[standingHover].dy).y / IRAN_MAP.heightPx) * 100}%`,
           }}
         >
           <p className="font-mono text-xs text-accent">{clickToStrike(STRIKE_NODES[standingHover].label)}</p>
@@ -232,7 +206,7 @@ export function IranBoard({
       {spiderHover ? (
         <div
           role="tooltip"
-          className="pointer-events-none absolute z-20 w-max max-w-[14rem] -translate-x-1/2 -translate-y-[calc(100%+1.75rem)] rounded-md border border-danger bg-bg/95 px-2 py-1.5 text-fg shadow-sm"
+          className="pointer-events-none absolute z-30 w-max max-w-[14rem] -translate-x-1/2 -translate-y-[calc(100%+2.75rem)] rounded-md border border-danger bg-bg/95 px-2 py-1.5 text-fg shadow-sm"
           style={{
             left: `${(nodePx(spiderHover.lat, spiderHover.lon).x / IRAN_MAP.widthPx) * 100}%`,
             top: `${(nodePx(spiderHover.lat, spiderHover.lon).y / IRAN_MAP.heightPx) * 100}%`,
@@ -282,46 +256,6 @@ export function IranBoard({
         <MagBar k={COPY.magBoats} v={Number(magBoats)} max={MAGAZINE.iranBoats} tone="danger" />
         <MagBar k={COPY.magCounter} v={Number(magCounter)} max={MAGAZINE.usCounterDrones} tone="lane" />
         <MagBar k={COPY.magLasers} v={Number(magLasers)} max={MAGAZINE.usLasers} tone="ok" />
-      </div>
-      <p className="absolute bottom-[7.25rem] left-2 right-2 z-10 font-mono text-2xs text-accent sm:bottom-[7.5rem]">
-        {COPY.strikeMarks}
-      </p>
-      <div className="absolute bottom-2 left-2 right-2 z-10 grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {STRIKE.targets.map((id) => {
-          const n = STRIKE_NODES[id];
-          const liveNode = up[id];
-          return (
-            <button
-              key={`chip-${id}`}
-              type="button"
-              disabled={!canAct || !liveNode}
-              onPointerEnter={() => setHover(id)}
-              onPointerLeave={() => setHover(null)}
-              onClick={() => onStrike(id)}
-              className={cn(
-                "min-h-11 rounded-md border px-3 text-sm",
-                liveNode
-                  ? "border-accent bg-surface/90 text-fg disabled:opacity-50"
-                  : "border-border bg-surface-2 text-faint",
-              )}
-            >
-              {liveNode ? `${COPY.usStrike} ${n.label}` : `${n.label} ${COPY.nodeDown}`}
-            </button>
-          );
-        })}
-        {spiderHoles.map((h) => (
-          <button
-            key={`chip-${h.id}`}
-            type="button"
-            disabled={!canAct}
-            onPointerEnter={() => setHover(h.id)}
-            onPointerLeave={() => setHover(null)}
-            onClick={() => onStrike("spider-hole", h.id)}
-            className="min-h-11 rounded-md border border-danger bg-surface/90 px-3 text-sm text-fg disabled:opacity-50"
-          >
-            {COPY.usStrike} {COPY.spiderHole}
-          </button>
-        ))}
       </div>
     </div>
   );

@@ -73,6 +73,11 @@ export const PRICE = {
    * has to beat that or the ticker never falls when the lane works.
    */
   exitRelief: 16,
+  /**
+   * US / traffic sittings send ten hulls a week. Ten live exits equal
+   * one tanker-house hull on the meter. A ship hit is not scaled.
+   */
+  usFlowHulls: 10,
   contractsRelief: 3,
   /** Drone dump on a Gulf state after you ignore a spider hole. */
   gulfDrone: 8,
@@ -476,14 +481,21 @@ export const IRAN_MAP = {
  */
 export const STRIKE_NODES: Record<
   (typeof STRIKE.targets)[number],
-  LonLat & { label: string }
+  LonLat & { label: string; emoji: string; dx?: number; dy?: number }
 > = {
-  "mine-factory": { lat: 35.52, lon: 51.77, label: "Mine factory" },
-  "drone-factory": { lat: 36.42, lon: 55.02, label: "Drone factory" },
-  "mine-warehouse": { lat: 27.35, lon: 56.1, label: "Mine warehouse" },
-  "drone-warehouse": { lat: 32.65, lon: 51.68, label: "Drone warehouse" },
-  radar: { lat: 26.95, lon: 56.15, label: "Radar" },
-  port: { lat: 27.183, lon: 56.267, label: "Port" },
+  "mine-factory": { lat: 35.52, lon: 51.77, label: "Mine factory", emoji: "🏭" },
+  "drone-factory": { lat: 36.42, lon: 55.02, label: "Drone factory", emoji: "🛸" },
+  "mine-warehouse": {
+    lat: 27.35,
+    lon: 56.1,
+    label: "Mine warehouse",
+    emoji: "📦",
+    dx: -90,
+    dy: -50,
+  },
+  "drone-warehouse": { lat: 32.65, lon: 51.68, label: "Drone warehouse", emoji: "🗃️" },
+  radar: { lat: 26.95, lon: 56.15, label: "Radar", emoji: "📡", dx: -95, dy: 70 },
+  port: { lat: 27.183, lon: 56.267, label: "Port", emoji: "⚓", dx: 70, dy: 8 },
 };
 
 /**

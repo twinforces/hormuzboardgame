@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { COPY, outcomeLines, outcomeTitle } from "@/model/copy.ts";
+import { COPY, outcomeContinue, outcomeLines, outcomeTitle } from "@/model/copy.ts";
 import type { TurnReport } from "@/model/types.ts";
 import { cn } from "@/lib/cn.ts";
 
@@ -8,13 +8,21 @@ export function OutcomeDialog({
   onClose,
   onSeeStrait,
   onSeeStrikes,
+  spider,
+  industryDown,
 }: {
   report: TurnReport | null;
   onClose: () => void;
   onSeeStrait?: () => void;
   onSeeStrikes?: () => void;
+  spider?: boolean;
+  industryDown?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const focus = outcomeContinue({
+    spider: spider === true,
+    industryDown: industryDown === true,
+  });
 
   useEffect(() => {
     const el = ref.current;
@@ -51,33 +59,43 @@ export function OutcomeDialog({
             ))}
           </ul>
           {report.watcher === "us" ? (
-            <div className="mt-4 flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  onSeeStrait?.();
-                  ref.current?.close();
-                }}
-                className="min-h-11 w-full rounded-md bg-accent px-3 font-medium text-accent-fg transition-transform duration-150 ease-out active:scale-[0.96]"
-              >
-                {COPY.outcomeCloseWar}
-              </button>
+            <div className="mt-4 grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => {
                   onSeeStrikes?.();
                   ref.current?.close();
                 }}
-                className="min-h-11 w-full rounded-md border border-border bg-surface-2 px-3 text-sm"
+                className={cn(
+                  "min-h-11 rounded-md px-3 text-sm font-medium transition-transform duration-150 ease-out active:scale-[0.96]",
+                  focus === "strikes"
+                    ? "bg-accent text-accent-fg"
+                    : "border border-border bg-surface-2 text-fg",
+                )}
               >
-                {COPY.outcomeBackStrikes}
+                {COPY.outcomeGoStrikes}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onSeeStrait?.();
+                  ref.current?.close();
+                }}
+                className={cn(
+                  "min-h-11 rounded-md px-3 text-sm font-medium transition-transform duration-150 ease-out active:scale-[0.96]",
+                  focus === "strait"
+                    ? "bg-accent text-accent-fg"
+                    : "border border-border bg-surface-2 text-fg",
+                )}
+              >
+                {COPY.outcomeGoStrait}
               </button>
             </div>
           ) : (
           <form method="dialog" className="mt-4">
             <button
               type="submit"
-              className="min-h-11 w-full rounded-md bg-accent px-3 font-medium text-accent-fg transition-transform duration-150 ease-out active:scale-[0.96]"
+              className="min-h-11 w-full rounded-md bg-accent px-3 font-medium text-accent-fg transition-transform duration-150 ease-out active:not-disabled:scale-[0.96]"
             >
               {COPY.outcomeClose}
             </button>

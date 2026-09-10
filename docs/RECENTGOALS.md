@@ -4,7 +4,7 @@ Shipped sitting work at `405c34b` on [twinforces/hormuzboardgame](https://github
 
 ## Now
 
-Mine warfare sitting is on the board. Two plants, two sheds. Radar blinds drones, not mines. Hitting a ship lights a spider hole with a hidden stash. Strike it this week or it dumps extra TSS mines plus a Gulf drone raid.
+Mine warfare sitting is on the board. Circles with emojis. Dark labels. Continue row highlights the spider hole or the empty board. US oil flow is ten hulls to one tanker-house exit. A ship hit still spikes the same.
 
 ## Next
 

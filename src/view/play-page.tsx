@@ -255,7 +255,10 @@ export function PlayPage() {
                             : "border-border bg-bg text-faint",
                         )}
                       >
-                        {liveNode ? `${COPY.usStrike} ${n.label}` : `${n.label} ${COPY.nodeDown}`}
+                        <span className="mr-1" aria-hidden>
+                          {n.emoji}
+                        </span>
+                        {liveNode ? n.label : `${n.label} ${COPY.nodeDown}`}
                       </button>
                     );
                   })}
@@ -272,7 +275,10 @@ export function PlayPage() {
                       }}
                       className="min-h-11 rounded-md border border-danger bg-surface-2 px-3 text-sm text-fg disabled:opacity-50"
                     >
-                      {COPY.usStrike} {COPY.spiderHole}
+                      <span className="mr-1" aria-hidden>
+                        {COPY.spiderEmoji}
+                      </span>
+                      {COPY.spiderHole}
                     </button>
                   ))}
                 </div>
@@ -483,6 +489,16 @@ export function PlayPage() {
         }}
         onSeeStrait={() => setBoard("strait")}
         onSeeStrikes={() => setBoard("iran")}
+        spider={labels.spiderHoles.length > 0}
+        industryDown={
+          !labels.factoryUp &&
+          !labels.droneFactoryUp &&
+          !labels.warehouseUp &&
+          !labels.droneWarehouseUp &&
+          !labels.radarUp &&
+          !labels.portUp &&
+          labels.spiderHoles.length === 0
+        }
       />
 
       <ScoreDialog
