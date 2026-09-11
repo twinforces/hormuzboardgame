@@ -4,7 +4,7 @@ Shipped at [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboar
 
 ## Now
 
-EN / فا. Farsi is RTL. Title stays Hormuz War Game.
+EN / فا. Farsi is RTL. Title stays Hormuz War Game (`dba587a`).
 
 ## Next
 
