@@ -19,7 +19,7 @@ import {
   bandOf,
   radiusNm,
 } from "./balance.ts";
-import { COPY, SCENARIO_KIT, idleChargeLine, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine } from "./copy.ts";
+import { idleChargeLine, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, spiderDumpLine, spiderRevealLine, usStrikeLine, usSweepLine, strings, sittingKit } from "./copy.ts";
 import { clearedNm2, grazeUsdM, rollShot, shotChance, type ShotKind } from "./combat.ts";
 import {
   captainsBalk,
@@ -81,8 +81,9 @@ export function iranPath(): NmPolyline {
 
 export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "reopen-lane"): GameState {
   const seat = humanSeat(scenario);
+  const copy = strings();
   const greeting =
-    seat === "us" ? COPY.warHint : seat === "iran" ? COPY.iranHint : COPY.doorHint;
+    seat === "us" ? copy.warHint : seat === "iran" ? copy.iranHint : copy.doorHint;
   return {
     scenario,
     turn: 1,
@@ -119,11 +120,11 @@ export function createState(seed = MATCH.defaultSeed, scenario: ScenarioId = "re
     lastKillChance: 0,
     lastDetonatedMineId: null,
     lastDoor: null,
-    lastUsLine: COPY.usDoorNote,
-    lastIranLine: COPY.iranDoorNote,
+    lastUsLine: copy.usDoorNote,
+    lastIranLine: copy.iranDoorNote,
     navyPulled: 0,
     log: [
-      `Week 1. ${greeting} ${SCENARIO_KIT[scenario].blurb}`,
+      `${copy.week} 1. ${greeting} ${sittingKit()[scenario].blurb}`,
     ],
     capitalCommitted: false,
     catastrophe: false,
@@ -216,7 +217,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       .sort((a, b) => b.chance - a.chance)
       .slice(0, CLEARANCE.maxHolesPerWait);
     if (hot.length === 0) {
-      const line = `Week ${s.turn}: US sensing. Omani ribbon is quiet enough. Do not pay.`;
+      const line = `${strings().week} ${s.turn}: ${strings().usSensing}`;
       return { ...s, phase: "usOrders", lastUsLine: line, log: [...s.log, line] };
     }
     const mines = s.mines.map((m) => {
@@ -675,7 +676,8 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     let exits = s.exits;
     let lastDetonatedMineId: string | null = null;
     const nm = Math.round(polylineLengthNm(path));
-    const doorWord = door === "iran" ? "Iran door" : "Omani door";
+    const copy = strings();
+    const doorWord = door === "iran" ? copy.logIranDoor : copy.logOmaniDoor;
     const crewRate = s.crewBonusUsdM;
     const freight = hullDead ? 0 : voyageFreightUsdM(s.price);
     const bonus = hullDead ? 0 : voyageBonusUsdM(s.price);
@@ -704,36 +706,36 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       lastDetonatedMineId = hitClip?.id ?? null;
       insurance = "collapsed";
       const how = mineHit
-        ? `Mine kill ${(chance * 100).toFixed(0)}%. Boom.`
-        : `Shot kill. Rare.`;
+        ? `${copy.mineKill} ${(chance * 100).toFixed(0)}%. ${copy.logBoom}`
+        : copy.logShotKillRare;
       log = [
         ...log,
-        `Week ${s.turn}: ${doorWord}, ${nm} nm. ${how} ${COPY.dead}`,
-        COPY.cargoNotYours,
-        COPY.crewBonusNow,
+        `${strings().week} ${s.turn}: ${doorWord}, ${nm} nm. ${how} ${strings().dead}`,
+        strings().cargoNotYours,
+        strings().crewBonusNow,
       ];
       if (insured) {
-        log = [...log, COPY.lossCovered];
+        log = [...log, strings().lossCovered];
       }
       if (s.insurance === "open") {
-        log = [...log, COPY.collapsedNow];
+        log = [...log, strings().collapsedNow];
       }
     } else {
       tankerExited = true;
       exits += 1;
       const shotBit =
         shot === "miss"
-          ? " Shot missed."
+          ? ` ${copy.logShotMissed}`
           : graze
-            ? ` Light damage $${damage}M.`
+            ? ` ${copy.logLightDamage} $${damage}M.`
             : "";
       log = [
         ...log,
-        `Week ${s.turn}: ${doorWord}, ${nm} nm. Mine ${(chance * 100).toFixed(0)}%. Shot ${(shotP * 100).toFixed(0)}%. ${COPY.lived}${shotBit}`,
+        `${copy.week} ${s.turn}: ${doorWord}, ${nm} nm. ${copy.logMineWord} ${(chance * 100).toFixed(0)}%. ${copy.logShotWord} ${(shotP * 100).toFixed(0)}%. ${copy.lived}${shotBit}`,
       ];
     }
     if (paid) {
-      log = [...log, COPY.payWarning];
+      log = [...log, strings().payWarning];
     }
     const iranPool = paid
       ? {
@@ -787,7 +789,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
   function applyTankerWait(s: GameState): GameState {
     const idle = idleThisWeek(s.scenario, s.books);
     const leftover = hullsLeft(s.scenario, s.books);
-    const line = `Week ${s.turn}: ${COPY.waited} ${idleChargeLine(leftover)}`.trim();
+    const line = `${strings().week} ${s.turn}: ${strings().waited} ${idleChargeLine(leftover)}`.trim();
     return {
       ...s,
       waitingHulls: s.waitingHulls + 1,
@@ -823,7 +825,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     let cur = interceptDrones(s);
     pendingShot = "none";
     if (hullsLeft(cur.scenario, cur.books) <= 0) {
-      return { ...cur, phase: "matchOver", log: [...cur.log, COPY.noHulls] };
+      return { ...cur, phase: "matchOver", log: [...cur.log, strings().noHulls] };
     }
     const wave = { sent: 0, waited: 0, paid: 0, omani: 0, live: 0, lost: 0 };
     const before = netUsdM(cur.books);
@@ -889,7 +891,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
     // talk crews down or one tired hull keeps dying into unswept mines
     // and lighting a new mole every week. ADR-023.
     if (wave.sent === 0 && cur.crewSour) {
-      const line = COPY.trafficBalk;
+      const line = strings().trafficBalk;
       const already = cur.lastUsLine.includes("Captains refuse");
       cur = {
         ...cur,
@@ -932,7 +934,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       cur = {
         ...cur,
         phase: "matchOver",
-        log: [...cur.log, COPY.noHulls],
+        log: [...cur.log, strings().noHulls],
       };
     }
     return cur;
@@ -987,16 +989,16 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       action.type === "tanker-run";
     if (sending) {
       if (hullsLeft(state.scenario, state.books) <= 0) {
-        return { ok: false, reason: COPY.noHulls, state };
+        return { ok: false, reason: strings().noHulls, state };
       }
       if (captainsBalk(state)) {
-        return { ok: false, reason: COPY.balk, state };
+        return { ok: false, reason: strings().balk, state };
       }
     }
 
     if (action.type === "tanker-policy") {
       if (action.on && state.insurance === "collapsed") {
-        return { ok: false, reason: COPY.policyGone, state };
+        return { ok: false, reason: strings().policyGone, state };
       }
       state = { ...state, buyPolicy: action.on };
       return { ok: true, state };
@@ -1007,7 +1009,7 @@ export function createEngine(seed = MATCH.defaultSeed, scenario: ScenarioId = "r
       const idle = idleThisWeek(state.scenario, state.books);
       const leftover = hullsLeft(state.scenario, state.books);
       const before = netUsdM(state.books);
-      const line = `Week ${state.turn}: ${COPY.waited} ${idleChargeLine(leftover)}`.trim();
+      const line = `${strings().week} ${state.turn}: ${strings().waited} ${idleChargeLine(leftover)}`.trim();
       let s: GameState = {
         ...state,
         waitingHulls: state.waitingHulls + 1,

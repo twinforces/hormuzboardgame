@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
-import { COPY, outcomeContinue, outcomeLines, outcomeTitle } from "@/model/copy.ts";
+import { outcomeContinue, outcomeLines, outcomeTitle } from "@/model/copy.ts";
 import type { TurnReport } from "@/model/types.ts";
 import { cn } from "@/lib/cn.ts";
+import { useCopy } from "./locale.tsx";
 
 export function OutcomeDialog({
   report,
@@ -32,6 +33,7 @@ export function OutcomeDialog({
   }, [report]);
 
   const lost = report?.kind === "lost" || Boolean(report?.dumped);
+  const COPY = useCopy();
 
   return (
     <dialog

@@ -219,6 +219,14 @@ These are Architect decisions. Veto in chat and they flip. Silence after review 
 - **Why:** Uncertainty blobs grow. They do not climb beaches. The till is still the teaching beat: Iran did not mine its cash register, fog can still sit there. A JDAM still happens on the hinterland board, not on a fog circle.
 - **Rejected:** Clipping red to `DEEP_WATER` (that would hide till fog). Changing clip tests. A fourth map tab.
 
+## ADR-029. EN / فا. Farsi is RTL.
+
+- **Status:** accepted
+- **Context:** User: publishing for feedback. Farsi/English switch. Translate everything.
+- **Decision:** Locale `en` | `fa` in localStorage `hormuz.lang`. `COPY_FA` matches English keys. View sets `dir=rtl` and Vazirmatn. Header title stays Hormuz War Game. Map photo is not mirrored. Chart place names switch. Receipts catalog titles stay English because they are the sources.
+- **Why:** Iran is a human seat. Feedback from Farsi speakers needs the verbs, not a caption.
+- **Rejected:** A translated parallel app. Mirroring the Sentinel crop. Persian digits on dollar amounts.
+
 ## Open questions
 
 Laser vs "effectors" copy. Real laser wall vs a massed drone surge.

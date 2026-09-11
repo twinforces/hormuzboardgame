@@ -12,6 +12,8 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   const briefing = readFileSync(join(dir, "briefing.tsx"), "utf8");
   const iran = readFileSync(join(dir, "iran-board.tsx"), "utf8");
   const outcome = readFileSync(join(dir, "outcome-dialog.tsx"), "utf8");
+  const chrome = readFileSync(join(dir, "chrome.tsx"), "utf8");
+  const root = readFileSync(join(dir, "../routes/__root.tsx"), "utf8");
   assert.match(play, /onOmani=/);
   assert.match(play, /onIran=/);
   assert.match(play, /onBoardAct=/);
@@ -49,6 +51,11 @@ test("US and Iran tracks bind V -> VM; the whole chart is not a single button", 
   assert.match(play, /role="separator"/);
   assert.match(play, /sm:w-2\/3/);
   assert.match(play, /sm:grid-cols-3/);
+  assert.match(chrome, /setLocale\("fa"\)/);
+  assert.match(chrome, /copy\.langFa/);
+  assert.match(root, /LocaleProvider/);
+  assert.match(root, /Vazirmatn/);
+  assert.match(board, /placeLabel/);
   assert.match(play, /COPY\.sittingTitle/);
   assert.match(play, /COPY\.accountant/);
   assert.doesNotMatch(play, />\s*Fuses\s*</);

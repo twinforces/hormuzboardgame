@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-10 - EN / فا. Translate the board.
+
+- **What:** Language chips in the header. Farsi is RTL with Vazirmatn. Picker, doors, books, strikes, briefing, and chart names switch. Title stays Hormuz War Game.
+- **Why:** User: publishing for feedback. Farsi/English switch. Translate everything.
+- **How:** `COPY_FA` same keys as `COPY`. `setLocale` relabels the session. Map is not mirrored. ADR-029.
+- **Hash:** pending.
+
 ## 2026-09-10 - Compact + hygiene
 
 - **What:** RECENTGOALS cut to two live bets. README names the five picker seats.

@@ -7,7 +7,8 @@
 
 import { bandOf, COMPANY } from "../model/balance.ts";
 import { humanSeat } from "../model/scenarios.ts";
-import { COPY, BAND_LABEL, SCENARIO_KIT, idleChargeLine, iranBrief, usBrief } from "../model/copy.ts";
+import { idleChargeLine, iranBrief, usBrief, strings, sittingKit, bandLabel, expectedDoorLine } from "../model/copy.ts";
+import { subscribeLocale } from "../model/locale.ts";
 import {
   accountantPick,
   captainsBalk,
@@ -210,30 +211,31 @@ function computeLabels(engine: Engine): SessionLabels {
     (seat === "iran" && s.phase === "iranOrders");
   const left = hullsLeft(s.scenario, s.books);
   const recommended: RecommendedDoor = s.phase !== "tankerOrders" ? "none" : pick.door;
-  const kit = SCENARIO_KIT[s.scenario];
-  const resolveLine = [...s.log].reverse().find((line) => line.includes("Mine kill"));
+  const kit = sittingKit()[s.scenario];
+  const copy = strings();
+  const resolveLine = [...s.log].reverse().find((line) => line.includes("Mine kill") || line.includes("کشتن با مین"));
   const lastBeat =
     seat === "us" || seat === "iran"
       ? !s.lastDoor
         ? seat === "iran"
-          ? COPY.iranHint
-          : COPY.warHint
+          ? copy.iranHint
+          : copy.warHint
         : `${s.lastUsLine} ${s.lastIranLine}`
       : !s.lastDoor
-        ? COPY.lastBeatIdle
+        ? copy.lastBeatIdle
         : s.lastDoor === "wait"
           ? `${s.lastUsLine} ${s.lastIranLine}`
-          : (resolveLine ?? s.log.at(-1) ?? COPY.lastBeatIdle);
+          : (resolveLine ?? s.log.at(-1) ?? copy.lastBeatIdle);
   const boardAct =
     recommended === "wait"
       ? balk
-        ? COPY.boardActBalk
-        : COPY.accountantSit
+        ? copy.boardActBalk
+        : copy.accountantSit
       : recommended === "omani"
-        ? `Omani. Expected ${evUsd(pick.omaniEv)}.`
+        ? expectedDoorLine("omani", evUsd(pick.omaniEv))
         : recommended === "iran"
-          ? `Iran. Expected ${evUsd(pick.iranEv)}.`
-          : COPY.boardActNone;
+          ? expectedDoorLine("iran", evUsd(pick.iranEv))
+          : copy.boardActNone;
   const quote = voyagePayUsdM(s.price);
   const policyOpen = policyAvailable(s.insurance);
   const policyCost = voyagePremiumUsdM(s.price, s.insurance);
@@ -243,31 +245,31 @@ function computeLabels(engine: Engine): SessionLabels {
   const canLay = warehouseLay || coastalLeft > 0;
   const canSurge = s.iranPool.drones + iranDronePrint(s) > 0;
   const iranVerbHint = warehouseLay
-    ? COPY.iranMarks
+    ? copy.iranMarks
     : coastalLeft > 0
-      ? COPY.iranLayCoastal
+      ? copy.iranLayCoastal
       : canSurge
-        ? COPY.iranMarks
-        : COPY.iranDry;
+        ? copy.iranMarks
+        : copy.iranDry;
   return {
     price: `$${s.price}`,
-    band: BAND_LABEL[band],
-    insurance: s.insurance === "open" ? COPY.insuranceOpen : COPY.insuranceCollapsed,
-    turn: `Week ${s.turn}`,
+    band: bandLabel(band),
+    insurance: s.insurance === "open" ? copy.insuranceOpen : copy.insuranceCollapsed,
+    turn: `${copy.week} ${s.turn}`,
     phase: s.phase,
-    seed: `seed ${s.seed}`,
-    payWarning: COPY.payWarning,
-    steel: COPY.steel,
+    seed: `${copy.seedWord} ${s.seed}`,
+    payWarning: copy.payWarning,
+    steel: copy.steel,
     hint:
       s.phase === "matchOver"
-        ? COPY.matchOver
+        ? copy.matchOver
         : balk && seat !== "iran"
-          ? COPY.balk
+          ? copy.balk
           : seat === "us"
-            ? COPY.warHint
+            ? copy.warHint
             : seat === "iran"
-              ? COPY.iranHint
-              : COPY.doorHint,
+              ? copy.iranHint
+              : copy.doorHint,
     omaniKill: `${omaniPct}%`,
     iranKill: `${iranPct}%`,
     omaniShot: `${pct(omaniShotP)}%`,
@@ -306,7 +308,7 @@ function computeLabels(engine: Engine): SessionLabels {
     booksIdle: usdM(s.books.idleUsdM),
     booksDamage: usdM(s.books.damageUsdM),
     idleWhy: idleChargeLine(left),
-    houseName: seat === "us" ? COPY.roleUs : seat === "iran" ? COPY.roleIran : COPY.houseName,
+    houseName: seat === "us" ? copy.roleUs : seat === "iran" ? copy.roleIran : copy.houseName,
     balk,
     doorsOpen: acting && !balk && left > 0 && seat === "tanker",
     policyOn: s.buyPolicy,
@@ -370,6 +372,8 @@ export function createSession(
     };
     for (const fn of listeners) fn();
   }
+
+  subscribeLocale(() => publish());
 
   function run(dispatch: () => DispatchResult): DispatchResult {
     const r = dispatch();

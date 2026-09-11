@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { COPY, SCENARIO_KIT, TANKER_SITS, WAR_SITS, clickToStrike, fogTip, idleChargeLine, iranBrief, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, spiderDumpLine, spiderRevealLine, spiderTipLine, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY, SCENARIO_KIT, TANKER_SITS, WAR_SITS, clickToStrike, fogTip, idleChargeLine, iranBrief, iranCoastalLine, iranHoldLine, iranSeedLine, iranSurgeLine, leaveHoleLine, lossLines, outcomeContinue, outcomeLines, outcomeTitle, scoreLines, sittingKit, spiderDumpLine, spiderRevealLine, spiderTipLine, strings, usBrief, usStrikeLine, usSweepLine } from "./copy.ts";
+import { COPY_FA, FA_KIT } from "./copy-fa.ts";
+import { setLocale } from "./locale.ts";
 
 test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   for (const [k, v] of Object.entries(COPY)) {
@@ -103,6 +105,30 @@ test("player-facing copy has no em-dashes and keeps the bribe warning", () => {
   assert.doesNotMatch(COPY.scenarioOverplay, /12 turns/);
   assert.doesNotMatch(COPY.scenarioOne, /1 turn/);
   assert.doesNotMatch(COPY.navyNote, /total mines/i);
+});
+
+test("Farsi bag matches English keys, no em-dashes, and locale switch relabels", () => {
+  assert.deepEqual(Object.keys(COPY_FA).sort(), Object.keys(COPY).sort());
+  for (const [k, v] of Object.entries(COPY_FA)) {
+    assert.doesNotMatch(v, /\u2014/, `${k} fa has an em-dash`);
+    assert.doesNotMatch(v, /Maersk/i, `${k} fa lectures a brand`);
+  }
+  assert.match(COPY_FA.wait, /صف/);
+  assert.match(COPY_FA.scenarioMine, /🇺🇸/);
+  assert.match(COPY_FA.scenarioIran, /🇮🇷/);
+  assert.equal(FA_KIT.overplay.label, "🇬🇷 مدیرعامل کوچک");
+  assert.equal(FA_KIT["mine-warfare"].label, "جنگ ضد مین");
+  try {
+    setLocale("fa");
+    assert.equal(strings().wait, COPY_FA.wait);
+    assert.match(idleChargeLine(12), /مانده/);
+    assert.equal(sittingKit()["reopen-lane"].label, "🇬🇷 مدیرعامل نفتکش");
+    assert.match(usStrikeLine({ turn: 1, target: "mine-factory", already: false }), /کارخانه مین/);
+  } finally {
+    setLocale("en");
+  }
+  assert.equal(strings().wait, COPY.wait);
+  assert.equal(sittingKit().overplay.label, "🇬🇷 Small CEO");
 });
 
 test("fog tip is tanker intel on one blob, not Iran's magazine", () => {

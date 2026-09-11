@@ -5,6 +5,31 @@
 
 import type { LossReport, ScenarioId, TurnReport } from "./types.ts";
 import { COMPANY, fogEstimate } from "./balance.ts";
+import { getLocale } from "./locale.ts";
+import {
+  COPY_FA,
+  FA_BAND,
+  FA_KIT,
+  FA_PLACE,
+  faClickToStrike,
+  faExpectedDoorLine,
+  faIdleChargeLine,
+  faIranBrief,
+  faIranCoastalLine,
+  faIranHoldLine,
+  faIranSeedLine,
+  faIranSurgeLine,
+  faLeaveHoleLine,
+  faLossLines,
+  faOutcomeLines,
+  faScoreLines,
+  faSpiderDumpLine,
+  faSpiderRevealLine,
+  faSpiderTipLine,
+  faUsBrief,
+  faUsStrikeLine,
+  faUsSweepLine,
+} from "./copy-fa.ts";
 
 export const COPY = {
   runOmani: "US door, Omani corridor",
@@ -194,6 +219,34 @@ export const COPY = {
   mineHole: "Navy sweep",
   mineSwept: "Swept this week",
   mineListen: "Fog returns when the hole expires",
+  appTitle: "Hormuz War Game",
+  appJoint: "a GrumpyTechBro joint",
+  appTag: "Hormuz Toll. Teach industrial and market math, not a Hollywood carrier charge.",
+  navBoard: "Board",
+  navBriefing: "Briefing",
+  navArchitecture: "Architecture",
+  navReceipts: "Receipts",
+  langEn: "EN",
+  langFa: "فا",
+  week: "Week",
+  seedWord: "seed",
+  nodeMineFactory: "Mine factory",
+  nodeDroneFactory: "Drone factory",
+  nodeMineWarehouse: "Mine warehouse",
+  nodeDroneWarehouse: "Drone warehouse",
+  nodeRadar: "Radar",
+  nodePort: "Port",
+  afterAction: "After-action",
+  debugTitle: "Debug",
+  usSensing: "US sensing. Omani ribbon is quiet enough. Do not pay.",
+  logOmaniDoor: "Omani door",
+  logIranDoor: "Iran door",
+  logShotKillRare: "Shot kill. Rare.",
+  logShotMissed: "Shot missed.",
+  logLightDamage: "Light damage",
+  logMineWord: "Mine",
+  logShotWord: "Shot",
+  logBoom: "Boom.",
 } as const;
 
 export const SCENARIO_KIT: Record<
@@ -211,16 +264,52 @@ export const SCENARIO_KIT: Record<
 export const TANKER_SITS: ScenarioId[] = ["reopen-lane", "one-transit", "overplay"];
 export const WAR_SITS: ScenarioId[] = ["mine-warfare", "iran-warfare"];
 
+export function strings(): typeof COPY {
+  return (getLocale() === "fa" ? COPY_FA : COPY) as typeof COPY;
+}
+
+export function sittingKit(): Record<ScenarioId, { label: string; blurb: string }> {
+  return getLocale() === "fa" ? FA_KIT : SCENARIO_KIT;
+}
+
+export function bandLabel(band: keyof typeof BAND_LABEL): string {
+  return getLocale() === "fa" ? FA_BAND[band] : BAND_LABEL[band];
+}
+
+export function nodeLabel(id: string): string {
+  const c = strings();
+  if (id === "mine-factory") return c.nodeMineFactory;
+  if (id === "drone-factory") return c.nodeDroneFactory;
+  if (id === "mine-warehouse") return c.nodeMineWarehouse;
+  if (id === "drone-warehouse") return c.nodeDroneWarehouse;
+  if (id === "radar") return c.nodeRadar;
+  if (id === "port") return c.nodePort;
+  if (id === "spider-hole") return c.spiderHole;
+  return id;
+}
+
+export function placeLabel(id: string, fallback: string): string {
+  if (getLocale() === "fa") return FA_PLACE[id] ?? fallback;
+  return fallback;
+}
+
+export function expectedDoorLine(door: "omani" | "iran", ev: string): string {
+  if (getLocale() === "fa") return faExpectedDoorLine(door, ev);
+  return door === "omani" ? `Omani. Expected ${ev}.` : `Iran. Expected ${ev}.`;
+}
+
 /** Twelve leftover hulls times $2M is $24M. Not a flat $2M sit. */
 export function idleChargeLine(
   hulls: number,
   per = COMPANY.idleUsdMPerHull,
 ): string {
+  if (getLocale() === "fa") return faIdleChargeLine(hulls, per);
   if (hulls <= 0) return "No leftover hulls.";
   return `${hulls} leftover × $${per}M = $${hulls * per}M this week.`;
 }
 
 export function clickToStrike(label: string): string {
+  if (getLocale() === "fa") return faClickToStrike(label);
   return `Click to strike ${label}`;
 }
 
@@ -241,6 +330,7 @@ export function usStrikeLine(opts: {
   mineFactoryUp?: boolean;
   droneFactoryUp?: boolean;
 }): string {
+  if (getLocale() === "fa") return faUsStrikeLine(opts);
   if (opts.already) return `Week ${opts.turn}: ${opts.target} is already down.`;
   if (opts.target === "mine-factory") {
     return `Week ${opts.turn}: US struck the mine factory. The roof is gone.`;
@@ -270,12 +360,14 @@ export function spiderRevealLine(opts: {
   mines: number;
   drones: number;
 }): string {
+  if (getLocale() === "fa") return faSpiderRevealLine(opts);
   const mines = Math.max(0, Math.round(opts.mines));
   const drones = Math.max(0, Math.round(opts.drones));
   return `Week ${opts.turn}: A hull got hit. A spider hole showed ${mines} mines and ${drones} drones. Strike it this week or they dump.`;
 }
 
 export function spiderTipLine(h: { mines: number; drones: number }): string {
+  if (getLocale() === "fa") return faSpiderTipLine(h);
   const mines = Math.max(0, Math.round(h.mines));
   const drones = Math.max(0, Math.round(h.drones));
   return `Hidden stash: ${mines} mines, ${drones} drones. Strike this week or they dump.`;
@@ -283,6 +375,7 @@ export function spiderTipLine(h: { mines: number; drones: number }): string {
 
 /** Inland strike or sweep while a hole is live. Confirm before the stash runs. */
 export function leaveHoleLine(verb: string): string {
+  if (getLocale() === "fa") return faLeaveHoleLine(verb);
   return `Leave the spider hole to ${verb}? The stash dumps.`;
 }
 
@@ -291,6 +384,7 @@ export function spiderDumpLine(opts: {
   mines: number;
   drones?: number;
 }): string {
+  if (getLocale() === "fa") return faSpiderDumpLine(opts);
   const n = Math.max(0, Math.round(opts.mines));
   const word = n === 1 ? "mine" : "mines";
   const d = Math.max(0, Math.round(opts.drones ?? 0));
@@ -308,6 +402,7 @@ export function usSweepLine(opts: {
   layers: number;
   nm2: number;
 }): string {
+  if (getLocale() === "fa") return faUsSweepLine(opts);
   if (opts.layers <= 0) {
     return `Week ${opts.turn}: US Navy escorts held the Omani ribbon. No new minelayers in the south.`;
   }
@@ -320,6 +415,7 @@ export function iranSeedLine(opts: {
   laid: number;
   shot: "none" | "miss" | "graze" | "kill";
 }): string {
+  if (getLocale() === "fa") return faIranSeedLine(opts);
   const seed =
     opts.laid <= 0
       ? `Week ${opts.turn}: Iran's mine pool was empty.`
@@ -331,10 +427,12 @@ export function iranSeedLine(opts: {
 }
 
 export function iranHoldLine(turn: number): string {
+  if (getLocale() === "fa") return faIranHoldLine(turn);
   return `Week ${turn}: Iran held. The sheds filled. Nothing new in the TSS.`;
 }
 
 export function iranSurgeLine(opts: { turn: number; drones: number; gulf: boolean }): string {
+  if (getLocale() === "fa") return faIranSurgeLine(opts);
   const n = Math.max(0, Math.round(opts.drones));
   if (n <= 0) return `Week ${opts.turn}: Iran had no air to surge.`;
   const air = n === 1 ? "1 drone" : `${n} drones`;
@@ -347,6 +445,7 @@ export function iranCoastalLine(opts: {
   mines: number;
   drones: number;
 }): string {
+  if (getLocale() === "fa") return faIranCoastalLine(opts);
   const n = Math.max(0, Math.round(opts.mines));
   const word = n === 1 ? "mine" : "mines";
   const d = Math.max(0, Math.round(opts.drones));
@@ -364,10 +463,11 @@ export function fogTip(m: {
   hole: null | { radiusNm: number };
 }): string[] {
   const intel = fogEstimate(m);
-  const lines = [`${COPY.mineEst} ${intel.est}`, `${COPY.mineFog} ${intel.fogNm} nm`];
+  const c = strings();
+  const lines = [`${c.mineEst} ${intel.est}`, `${c.mineFog} ${intel.fogNm} nm`];
   if (intel.holeNm != null) {
-    lines.push(`${COPY.mineHole} ${intel.holeNm} nm`);
-    lines.push(COPY.mineSwept);
+    lines.push(`${c.mineHole} ${intel.holeNm} nm`);
+    lines.push(c.mineSwept);
   }
   return lines;
 }
@@ -391,6 +491,7 @@ export type BriefInput = {
 };
 
 export function usBrief(b: BriefInput): string {
+  if (getLocale() === "fa") return faUsBrief(b);
   if (b.insurance === "collapsed") {
     return "The paper is dead. Hull factor is 0 or 1. Escorts cut boats, not mines. Sit unless the trader bonus covers a naked hull.";
   }
@@ -410,6 +511,7 @@ export function usBrief(b: BriefInput): string {
 }
 
 export function iranBrief(b: BriefInput): string {
+  if (getLocale() === "fa") return faIranBrief(b);
   if (b.insurance === "collapsed") {
     return "Insurance is a Western habit. We still sell a wave. Pay and we do not shoot. The device still listens.";
   }
@@ -423,6 +525,7 @@ export function iranBrief(b: BriefInput): string {
 }
 
 export function lossLines(r: LossReport): string[] {
+  if (getLocale() === "fa") return faLossLines(r);
   const door = r.door === "iran" ? "Iran door" : "Omani door";
   const lines = [
     `${door}. Mine kill was ${r.killPct}%. ${COPY.lossMine}`,
@@ -464,6 +567,7 @@ export type ScoreInput = {
 };
 
 export function scoreLines(s: ScoreInput): string[] {
+  if (getLocale() === "fa") return faScoreLines(s);
   const mines = Math.max(0, Math.round(s.minesBought));
   const mineWord = mines === 1 ? "mine" : "mines";
   if (s.seat === "us") {
@@ -533,20 +637,22 @@ export function scoreLines(s: ScoreInput): string[] {
 }
 
 export function outcomeTitle(r: TurnReport): string {
+  const c = strings();
   if (r.watcher === "us" || r.watcher === "iran") {
-    if (r.kind === "lost") return COPY.trafficLost;
-    if (r.dumped) return COPY.holeDumped;
-    if (r.kind === "wait") return COPY.trafficWait;
-    if (r.kind === "graze") return COPY.trafficGraze;
-    return COPY.trafficLive;
+    if (r.kind === "lost") return c.trafficLost;
+    if (r.dumped) return c.holeDumped;
+    if (r.kind === "wait") return c.trafficWait;
+    if (r.kind === "graze") return c.trafficGraze;
+    return c.trafficLive;
   }
-  if (r.kind === "wait") return COPY.outcomeWait;
-  if (r.kind === "graze") return COPY.outcomeGraze;
-  if (r.kind === "lost") return COPY.lossTitle;
-  return COPY.outcomeLive;
+  if (r.kind === "wait") return c.outcomeWait;
+  if (r.kind === "graze") return c.outcomeGraze;
+  if (r.kind === "lost") return c.lossTitle;
+  return c.outcomeLive;
 }
 
 export function outcomeLines(r: TurnReport): string[] {
+  if (getLocale() === "fa") return faOutcomeLines(r);
   if (r.watcher === "us" || r.watcher === "iran") {
     const lines: string[] = [];
     if (r.dumped) {

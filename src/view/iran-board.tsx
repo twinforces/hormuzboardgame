@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { DRONES, IRAN_MAP, MAGAZINE, MAP, MINES, STRIKE, STRIKE_NODES } from "@/model/balance.ts";
-import { COPY, clickToStrike, leaveHoleLine, spiderTipLine } from "@/model/copy.ts";
+import { clickToStrike, leaveHoleLine, spiderTipLine, nodeLabel } from "@/model/copy.ts";
 import type { SpiderHole, StrikeTarget } from "@/model/types.ts";
 import { cn } from "@/lib/cn.ts";
+import { useCopy } from "./locale.tsx";
 
 type Standing = (typeof STRIKE.targets)[number];
 
@@ -66,6 +67,7 @@ export function IranBoard({
   onStrike: (target: StrikeTarget, pitId?: string) => void;
   onOpenStrait: () => void;
 }) {
+  const COPY = useCopy();
   const [hover, setHover] = useState<string | null>(null);
   const up: Record<Standing, boolean> = {
     "mine-factory": mineFactoryUp,
@@ -157,7 +159,7 @@ export function IranBoard({
               {n.emoji}
             </span>
             <span className="mt-1 max-w-[7.5rem] rounded-sm bg-fg/95 px-1 py-0.5 text-center font-mono text-2xs font-semibold leading-tight text-accent-fg">
-              {liveNode ? n.label : `${n.label} ${COPY.nodeDown}`}
+              {liveNode ? nodeLabel(id) : `${nodeLabel(id)} ${COPY.nodeDown}`}
             </span>
           </button>
         );
@@ -205,10 +207,10 @@ export function IranBoard({
             top: `${(nodePx(STRIKE_NODES[standingHover].lat, STRIKE_NODES[standingHover].lon, STRIKE_NODES[standingHover].dx, STRIKE_NODES[standingHover].dy).y / IRAN_MAP.heightPx) * 100}%`,
           }}
         >
-          <p className="font-mono text-xs text-accent">{clickToStrike(STRIKE_NODES[standingHover].label)}</p>
+          <p className="font-mono text-xs text-accent">{clickToStrike(nodeLabel(standingHover))}</p>
           {holeLive ? (
             <p className="mt-1 font-mono text-2xs text-danger">
-              {leaveHoleLine(`strike ${STRIKE_NODES[standingHover].label}`)}
+              {leaveHoleLine(`${COPY.usStrike} ${nodeLabel(standingHover)}`)}
             </p>
           ) : null}
         </div>

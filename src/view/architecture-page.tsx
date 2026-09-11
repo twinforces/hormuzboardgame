@@ -1,4 +1,5 @@
 import { PHASE_ORDER } from "@/model/types";
+import { useLocale } from "./locale";
 
 const LAYERS = [
   {
@@ -67,19 +68,20 @@ const TESTS = [
 ];
 
 export function ArchitecturePage() {
+  const fa = useLocale().locale === "fa";
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-8">
       <header>
         <p className="font-mono text-2xs uppercase tracking-widest text-accent">
-          System
+          {fa ? "سامانه" : "System"}
         </p>
         <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
-          MVVM, one board, tests that play the game
+          {fa ? "MVVM، یک صفحه، آزمون‌هایی که بازی می‌کنند" : "MVVM, one board, tests that play the game"}
         </h2>
         <p className="mt-3 max-w-3xl text-sm text-muted">
-          Same split as Collapse Lab. If a critic claims mines sit still or
-          that paying Iran sweeps the lane, they open one Model file and a
-          matching test.
+          {fa
+            ? "همان شکاف Collapse Lab. اگر منتقد بگوید مین‌ها ساکن‌اند یا پرداخت به ایران مسیر را می‌روبد، یک فایل مدل و آزمون جور را باز می‌کند."
+            : "Same split as Collapse Lab. If a critic claims mines sit still or that paying Iran sweeps the lane, they open one Model file and a matching test."}
         </p>
       </header>
 
@@ -89,7 +91,7 @@ export function ArchitecturePage() {
             key={layer.name}
             className="rounded-md border border-border bg-surface p-4"
           >
-            <h3 className="font-semibold">{layer.name}</h3>
+            <h3 className="font-semibold">{fa && layer.name === "Model" ? "مدل" : fa && layer.name === "ViewModel" ? "ویومدل" : fa && layer.name === "View" ? "نما" : layer.name}</h3>
             <p className="mt-1 font-mono text-2xs text-accent">{layer.path}</p>
             <p className="mt-2 text-sm text-muted">{layer.rule}</p>
           </article>
@@ -98,7 +100,7 @@ export function ArchitecturePage() {
 
       <section>
         <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-          Turn order
+          {fa ? "ترتیب نوبت" : "Turn order"}
         </h3>
         <ol className="mt-3 flex flex-wrap gap-2">
           {PHASE_ORDER.map((phase, i) => (
@@ -115,11 +117,12 @@ export function ArchitecturePage() {
 
       <section>
         <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-          Architect locks, 9 Sep
+          {fa ? "قفل معمار، ۹ سپتامبر" : "Architect locks, 9 Sep"}
         </h3>
         <p className="mt-2 max-w-3xl text-sm text-muted">
-          Ingest is closed. This is a math problem. Transcripts keep their
-          numbers. The sim uses one cited knob per family.
+          {fa
+            ? "بلع بسته است. این مسئله ریاضی است. رونوشت‌ها عدد خود را نگه می‌دارند. سیم برای هر خانواده یک پیچ نقل‌شده به کار می‌برد."
+            : "Ingest is closed. This is a math problem. Transcripts keep their numbers. The sim uses one cited knob per family."}
         </p>
         <ul className="mt-3 space-y-2">
           {LOCKS.map((line) => (
@@ -136,7 +139,7 @@ export function ArchitecturePage() {
       <section className="grid gap-6 md:grid-cols-2">
         <div>
           <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-            Modules (master §14, relocated)
+            {fa ? "ماژول‌ها (اصل ۱۴، جابه‌جا شده)" : "Modules (master §14, relocated)"}
           </h3>
           <ul className="mt-3 divide-y divide-border rounded-md border border-border bg-surface">
             {MODULES.map(([file, job]) => (
@@ -149,7 +152,7 @@ export function ArchitecturePage() {
         </div>
         <div>
           <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-            Invariants (tests lock these)
+            {fa ? "ناورداها (آزمون‌ها قفل می‌کنند)" : "Invariants (tests lock these)"}
           </h3>
           <ol className="mt-3 space-y-2 text-sm">
             {INVARIANTS.map((line, i) => (
@@ -166,10 +169,12 @@ export function ArchitecturePage() {
 
       <section>
         <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-          Gameplay simulations
+          {fa ? "شبیه‌سازی‌های بازی" : "Gameplay simulations"}
         </h3>
         <p className="mt-2 text-sm text-muted">
-          Not UI tests. An array of role/action pairs against engine.dispatch.
+          {fa
+            ? "آزمون UI نیست. آرایه‌ای از جفت نقش/عمل روی engine.dispatch."
+            : "Not UI tests. An array of role/action pairs against engine.dispatch."}
         </p>
         <ul className="mt-3 divide-y divide-border rounded-md border border-border bg-surface">
           {TESTS.map(([id, assert]) => (
@@ -182,8 +187,9 @@ export function ArchitecturePage() {
       </section>
 
       <p className="text-sm text-muted">
-        Tanker slice is two doors, not a plotted track. Wait forces US
-        clearance and an Iran lay. Price sits on the map.
+        {fa
+          ? "برش نفتکش دو در است، نه مسیر رسم‌شده. ماندن روبش آمریکا و کاشت ایران را وادار می‌کند. قیمت روی نقشه می‌نشیند."
+          : "Tanker slice is two doors, not a plotted track. Wait forces US clearance and an Iran lay. Price sits on the map."}
       </p>
     </div>
   );

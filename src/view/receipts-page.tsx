@@ -1,4 +1,5 @@
 import { INGEST_COUNTS, RECEIPTS, type ReceiptKind } from "@/model/receipts";
+import { useLocale } from "./locale";
 
 const KIND_LABEL: Record<ReceiptKind, string> = {
   "navy-decoded": "Navy Decoded",
@@ -24,19 +25,31 @@ const KIND_ORDER: ReceiptKind[] = [
   "design",
 ];
 
+const KIND_LABEL_FA: Record<ReceiptKind, string> = {
+  "navy-decoded": "Navy Decoded",
+  "navy-response": "Navy Response",
+  "war-vision": "WarVision",
+  official: "رسمی",
+  journalism: "خبرنگاری",
+  geography: "جغرافیا",
+  market: "بازار",
+  legal: "حقوقی / TSS",
+  design: "طراحی",
+};
+
 export function ReceiptsPage() {
+  const fa = useLocale().locale === "fa";
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-8">
       <header>
         <p className="font-mono text-2xs uppercase tracking-widest text-accent">
-          Annotated bibliography
+          {fa ? "کتاب‌شناسی حاشیه‌نویس" : "Annotated bibliography"}
         </p>
-        <h2 className="mt-2 text-2xl font-semibold md:text-3xl">Receipts</h2>
+        <h2 className="mt-2 text-2xl font-semibold md:text-3xl">{fa ? "رسیدها" : "Receipts"}</h2>
         <p className="mt-3 max-w-3xl text-sm text-muted">
-          Every source used to research this sim. Partial means a search
-          snippet or transcript excerpt, not a full watch. Metadata means the
-          item is queued. Full means we read the thing. Adding a fact without
-          a receipt is a Reviewer fail.
+          {fa
+            ? "هر منبعی که برای پژوهش این سیم به کار رفت. ناقص یعنی تکه جستجو یا برش رونوشت، نه تماشای کامل. فراداده یعنی در صف است. کامل یعنی آن را خواندیم. افزودن واقعیت بدون رسید شکست بازبین است."
+            : "Every source used to research this sim. Partial means a search snippet or transcript excerpt, not a full watch. Metadata means the item is queued. Full means we read the thing. Adding a fact without a receipt is a Reviewer fail."}
         </p>
         <p className="mt-2 font-mono text-xs text-faint">
           {RECEIPTS.length} sources · {INGEST_COUNTS.full} full ·{" "}
@@ -50,7 +63,7 @@ export function ReceiptsPage() {
         return (
           <section key={kind}>
             <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-              {KIND_LABEL[kind]}
+              {fa ? KIND_LABEL_FA[kind] : KIND_LABEL[kind]}
             </h3>
             <ul className="mt-3 space-y-3">
               {rows.map((r) => (
@@ -78,7 +91,7 @@ export function ReceiptsPage() {
                     {r.annotation}
                   </p>
                   <p className="mt-2 font-mono text-2xs text-faint">
-                    beats: {r.beats.join(", ")}
+                    {fa ? "ضرب‌ها: " : "beats: "}{r.beats.join(", ")}
                   </p>
                 </li>
               ))}

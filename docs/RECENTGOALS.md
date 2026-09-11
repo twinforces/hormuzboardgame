@@ -4,7 +4,7 @@ Shipped at [twinforces/hormuzboardgame](https://github.com/twinforces/hormuzboar
 
 ## Now
 
-Idle. Last: picker names (`611db35`).
+EN / فا. Farsi is RTL. Title stays Hormuz War Game.
 
 ## Next
 

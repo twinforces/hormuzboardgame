@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { COPY, lossLines } from "@/model/copy.ts";
+import { lossLines } from "@/model/copy.ts";
 import type { LossReport } from "@/model/types.ts";
+import { useCopy } from "./locale.tsx";
 
 export function LossDialog({
   loss,
@@ -10,6 +11,7 @@ export function LossDialog({
   onClose: () => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const COPY = useCopy();
 
   useEffect(() => {
     const el = ref.current;

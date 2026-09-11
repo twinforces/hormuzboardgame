@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { COPY, scoreLines, type ScoreInput } from "@/model/copy.ts";
+import { scoreLines, type ScoreInput } from "@/model/copy.ts";
 import { cn } from "@/lib/cn.ts";
+import { useCopy } from "./locale.tsx";
 
 export function ScoreDialog({
   open,
@@ -16,6 +17,7 @@ export function ScoreDialog({
   onClose: () => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const COPY = useCopy();
 
   useEffect(() => {
     const el = ref.current;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { COPY, SCENARIO_KIT, TANKER_SITS, WAR_SITS, clickToStrike, leaveHoleLine } from "@/model/copy.ts";
+import { TANKER_SITS, WAR_SITS, clickToStrike, leaveHoleLine, sittingKit, nodeLabel } from "@/model/copy.ts";
 import { STRIKE, STRIKE_NODES } from "@/model/balance.ts";
 import { netUsdM } from "@/model/company.ts";
 import type { DebugSnapshot, ScenarioId, StrikeTarget } from "@/model/types.ts";
@@ -9,6 +9,7 @@ import { IranBoard } from "./iran-board.tsx";
 import { OutcomeDialog } from "./outcome-dialog.tsx";
 import { ScoreDialog } from "./score-dialog.tsx";
 import { cn } from "@/lib/cn.ts";
+import { useCopy } from "./locale.tsx";
 
 type LeaveAsk =
   | { kind: "strike"; target: StrikeTarget; pitId?: string }
@@ -30,6 +31,8 @@ function readStoredScenario(): ScenarioId {
 }
 
 export function PlayPage() {
+  const COPY = useCopy();
+  const kit = sittingKit();
   const [seed, setSeed] = useState(1);
   const [scenario, setScenario] = useState<ScenarioId>("reopen-lane");
   const acted = useRef(false);
@@ -114,10 +117,10 @@ export function PlayPage() {
   }
 
   function leaveVerb(ask: LeaveAsk): string {
-    if (ask.kind === "sweep") return "sweep the ribbon";
+    if (ask.kind === "sweep") return COPY.usSweep;
     const id = STRIKE.targets.find((t) => t === ask.target);
-    const label = id ? STRIKE_NODES[id].label : ask.target;
-    return `strike ${label}`;
+    const label = id ? nodeLabel(id) : ask.target;
+    return `${COPY.usStrike} ${label}`;
   }
 
   function toggleDebug() {
@@ -374,9 +377,9 @@ export function PlayPage() {
                         title={
                           liveNode
                             ? labels.spiderHoles.length > 0
-                              ? leaveHoleLine(`strike ${n.label}`)
-                              : clickToStrike(n.label)
-                            : `${n.label} ${COPY.nodeDown}`
+                              ? leaveHoleLine(`${COPY.usStrike} ${nodeLabel(id)}`)
+                              : clickToStrike(nodeLabel(id))
+                            : `${nodeLabel(id)} ${COPY.nodeDown}`
                         }
                         onClick={() => {
                           requestStrike(id);
@@ -388,10 +391,10 @@ export function PlayPage() {
                             : "border-border bg-bg text-faint",
                         )}
                       >
-                        <span className="mr-1" aria-hidden>
+                        <span className="me-1" aria-hidden>
                           {n.emoji}
                         </span>
-                        {liveNode ? n.label : `${n.label} ${COPY.nodeDown}`}
+                        {liveNode ? nodeLabel(id) : `${nodeLabel(id)} ${COPY.nodeDown}`}
                       </button>
                     );
                   })}
@@ -406,7 +409,7 @@ export function PlayPage() {
                       }}
                       className="min-h-11 rounded-md border border-danger bg-surface-2 px-3 text-sm text-fg disabled:opacity-50"
                     >
-                      <span className="mr-1" aria-hidden>
+                      <span className="me-1" aria-hidden>
                         {COPY.spiderEmoji}
                       </span>
                       {COPY.spiderHole}
@@ -443,13 +446,13 @@ export function PlayPage() {
               </p>
               <dl className="mt-2 grid grid-cols-2 gap-2 font-mono text-xs">
                 <Stat
-                  k={`Omani ${labels.omaniKill} mine`}
-                  v={`${labels.omaniShot} shot · ${labels.omaniEv}`}
+                  k={`${COPY.omaniDoor} ${labels.omaniKill} ${COPY.mineKill}`}
+                  v={`${labels.omaniShot} ${COPY.shotKill} · ${labels.omaniEv}`}
                   hot={labels.omaniEv.startsWith("-")}
                 />
                 <Stat
-                  k={`Iran ${labels.iranKill} mine`}
-                  v={`${labels.iranShot} shot · ${labels.iranEv}`}
+                  k={`${COPY.iranDoor} ${labels.iranKill} ${COPY.mineKill}`}
+                  v={`${labels.iranShot} ${COPY.shotKill} · ${labels.iranEv}`}
                   hot={labels.iranEv.startsWith("-")}
                 />
               </dl>
@@ -684,13 +687,13 @@ function SittingButton({
   selected: boolean;
   onPick: (id: ScenarioId) => void;
 }) {
-  const sc = SCENARIO_KIT[id];
+  const sc = sittingKit()[id];
   return (
     <button
       type="button"
       onClick={() => onPick(id)}
       className={cn(
-        "min-h-11 rounded-md border px-3 py-2 text-left text-sm transition-transform duration-150 ease-out active:scale-[0.96]",
+        "min-h-11 rounded-md border px-3 py-2 text-start text-sm transition-transform duration-150 ease-out active:scale-[0.96]",
         selected ? "border-accent bg-surface-2 text-accent" : "border-border text-muted",
       )}
     >
@@ -712,11 +715,12 @@ function Stat({ k, v, hot = false }: { k: string; v: string; hot?: boolean }) {
 }
 
 function Log({ lines }: { lines: string[] }) {
+  const COPY = useCopy();
   const tail = lines.slice(-8);
   return (
     <section className="rounded-lg border border-border bg-surface p-4">
       <h3 className="font-mono text-xs uppercase tracking-widest text-faint">
-        After-action
+        {COPY.afterAction}
       </h3>
       <ol className="mt-3 space-y-1.5 text-sm text-muted">
         {tail.map((line, i) => (
@@ -728,9 +732,10 @@ function Log({ lines }: { lines: string[] }) {
 }
 
 function DebugPanel({ d }: { d: DebugSnapshot }) {
+  const COPY = useCopy();
   return (
     <section className="rounded-lg border border-dashed border-border p-4 font-mono text-xs">
-      <h3 className="uppercase tracking-widest text-accent">Debug</h3>
+      <h3 className="uppercase tracking-widest text-accent">{COPY.debugTitle}</h3>
       <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-muted">
         {JSON.stringify(d, null, 2)}
       </pre>

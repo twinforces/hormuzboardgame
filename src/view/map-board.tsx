@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import type { GameState, MineCircle, NmPolyline } from "@/model/types.ts";
 import { IRANIAN_INBOUND, JMIC_INBOUND, JMIC_OUTBOUND, DEEP_WATER, MAP, PLACES, WATER_LABELS, COUNTRY_LABELS, radiusNm } from "@/model/balance.ts";
-import { COPY, fogTip } from "@/model/copy.ts";
+import { fogTip, placeLabel } from "@/model/copy.ts";
 import { lonLatToNm, mineHoles, nmRadiusToPx, nmToPx, pickMine, pxToNm } from "@/model/geo.ts";
 import { cn } from "@/lib/cn.ts";
+import { useCopy } from "./locale.tsx";
 
 /** Visible crop height in viewBox units. Matches aspect-[2016/1220] + object-top. */
 const CHART_VIEW_H = 1220;
@@ -51,9 +52,9 @@ function polyD(path: NmPolyline): string {
     .join(" ");
 }
 
-const DOOR_LABELS = [
-  { id: "omani-door", label: COPY.omaniDoor, lat: 26.14, lon: 56.25, fill: "fill-lane" },
-  { id: "iran-door", label: COPY.iranDoor, lat: 26.82, lon: 56.31, fill: "fill-danger" },
+const DOOR_LABELS_POS = [
+  { id: "omani-door", key: "omaniDoor" as const, lat: 26.14, lon: 56.25, fill: "fill-lane" },
+  { id: "iran-door", key: "iranDoor" as const, lat: 26.82, lon: 56.31, fill: "fill-danger" },
 ] as const;
 
 const OMANI_PARK = lonLatToNm({ lat: 26.12, lon: 56.22 });
@@ -81,6 +82,7 @@ export function MapBoard({
   onBoardAct,
   onPlanStrikes,
 }: Props) {
+  const COPY = useCopy();
   const lastPath = state.tankerPath;
   const scale = nmRadiusToPx(10);
   const scaleOrigin = { x: 90, y: 1140 };
@@ -281,7 +283,7 @@ export function MapBoard({
                 fill="fill-fg/85"
                 anchor="middle"
               >
-                {place.label}
+                {placeLabel(place.id, place.label)}
               </ChartLabel>
             );
           })}
@@ -297,7 +299,7 @@ export function MapBoard({
                 anchor="middle"
                 tracking
               >
-                {place.label}
+                {placeLabel(place.id, place.label)}
               </ChartLabel>
             );
           })}
@@ -313,12 +315,12 @@ export function MapBoard({
                   size={26}
                   fill="fill-fg/90"
                 >
-                  {place.label}
+                  {placeLabel(place.id, place.label)}
                 </ChartLabel>
               </g>
             );
           })}
-          {DOOR_LABELS.map((place) => {
+          {DOOR_LABELS_POS.map((place) => {
             const c = nmToPx(lonLatToNm(place));
             return (
               <ChartLabel
@@ -330,7 +332,7 @@ export function MapBoard({
                 anchor="middle"
                 tracking
               >
-                {place.label}
+                {COPY[place.key]}
               </ChartLabel>
             );
           })}
@@ -513,6 +515,7 @@ function CorridorHit({
 }
 
 function MineTip({ mine }: { mine: MineCircle }) {
+  const COPY = useCopy();
   const lines = fogTip(mine);
   const head = lines[0] ?? COPY.mineEst;
   const rest = lines.slice(1);
@@ -587,6 +590,7 @@ function HullMarker({
   alive: boolean;
   turn: number;
 }) {
+  const COPY = useCopy();
   const park = nmToPx(OMANI_PARK);
   const end = path.length >= 2 ? nmToPx(path[path.length - 1]!) : park;
   const fill = !alive ? "fill-danger" : door === "iran" ? "fill-danger" : "fill-accent";
@@ -672,6 +676,7 @@ function IntelHud({
   holesOpen: string;
   beat: string;
 }) {
+  const COPY = useCopy();
   const chips: Array<[string, string]> = [
     [COPY.navyPunched, navyPunched],
     [COPY.fogBlobs, fogBlobs],
@@ -752,18 +757,20 @@ function ChartLabel({
   anchor?: "start" | "middle" | "end";
   tracking?: boolean;
 }) {
+  const fa = useCopy() && typeof document !== "undefined" && document.documentElement.lang === "fa";
   return (
     <text
       x={x}
       y={y}
       className={`${fill} stroke-bg`}
       fontSize={size}
-      fontFamily="IBM Plex Sans, sans-serif"
+      fontFamily={fa ? "Vazirmatn, IBM Plex Sans, sans-serif" : "IBM Plex Sans, sans-serif"}
       textAnchor={anchor}
-      letterSpacing={tracking ? 4 : 0}
+      letterSpacing={tracking && !fa ? 4 : 0}
       strokeWidth={5}
       paintOrder="stroke"
       strokeLinejoin="round"
+      direction={fa ? "rtl" : "ltr"}
     >
       {children}
     </text>

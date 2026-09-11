@@ -32,6 +32,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html.locale-fa {
+    --font-sans: "Vazirmatn", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Vazirmatn", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
   html,
   body,
   #app {
